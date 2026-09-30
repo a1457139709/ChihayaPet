@@ -1,0 +1,10 @@
+{
+  "source": "assets/chihaya_character/chi_a.png",
+  "crop": {
+    "left": 24,
+    "top": 180,
+    "width": 216,
+    "height": 192
+  },
+  "referenceScale": 4
+}

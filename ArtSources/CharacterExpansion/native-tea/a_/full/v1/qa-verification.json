@@ -1,0 +1,78 @@
+{
+  "date": "2026-09-30",
+  "timezone": "Asia/Shanghai",
+  "canvas": [
+    268,
+    606
+  ],
+  "changedPixels": 24555,
+  "outsideRGBAMismatches": 0,
+  "headRGBAMismatches": 0,
+  "faceRegionRGBAMismatches": 0,
+  "protectedHairRGBAMismatches": 0,
+  "originalBodySHA256": "passed",
+  "originalFaceSHA256": "12/12 passed",
+  "faceOffset": [
+    79,
+    76
+  ],
+  "faceSize": [
+    122,
+    104
+  ],
+  "transparentPixels": 74671,
+  "partialAlphaPixels": 31513,
+  "previewFaces": [
+    "00",
+    "04"
+  ],
+  "allOriginalFaces": [
+    "00",
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11"
+  ],
+  "offlinePreviewHeights": [
+    240,
+    256,
+    480
+  ],
+  "backgrounds": [
+    "light",
+    "dark"
+  ],
+  "userReview": "passed",
+  "application": "not-integrated",
+  "report": {
+    "javaScriptSyntax": "passed",
+    "imageReferences": 182,
+    "motherHash": "passed",
+    "separateExpressions": "12 original summer faces; preview only",
+    "reviewStatus": "passed"
+  },
+  "browser": {
+    "status": "passed",
+    "summerFullView": "visible",
+    "motherImage": "loaded 268x606",
+    "expressionLayer": "original summer PNG at (79,76)",
+    "hideExpression": "one body image remains; body URL unchanged",
+    "face04": "loaded 122x104 original face; body URL unchanged",
+    "nativeSizeDialog": "inspected",
+    "deliveredView": "summer front / full / original face 00",
+    "screenshot": "qa-progress-page.png"
+  },
+  "approval": {
+    "date": "2026-09-30",
+    "timezone": "Asia/Shanghai",
+    "message": "ok",
+    "scope": "夏服正面全景母图与原脸分层适配"
+  }
+}

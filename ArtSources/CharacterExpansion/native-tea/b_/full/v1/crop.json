@@ -1,0 +1,17 @@
+{
+  "variant": "b_/full",
+  "source": "assets/chihaya_character/chi_b_.png",
+  "sourceSHA256": "1650f1d49c2fca349d91ad05cd5e4d380f68f8d8266734974132ea29e0c79e7a",
+  "nativeCanvas": [
+    310,
+    606
+  ],
+  "crop": {
+    "left": 24,
+    "top": 186,
+    "width": 264,
+    "height": 366
+  },
+  "inputPreviewScale": 4,
+  "note": "Only a shoulder-to-old-hand garment crop is supplied to imagegen. The original head, transparent face opening and all expression PNGs stay outside generation."
+}

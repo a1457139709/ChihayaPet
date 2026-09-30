@@ -1,0 +1,30 @@
+{
+  "report": "docs/reports/chihaya-character-progress.html",
+  "variant": "b/close",
+  "validation": "Static payload, referenced files and JavaScript syntax only; no browser or DOM execution.",
+  "nativeCanvas": [
+    508,
+    606
+  ],
+  "originalFaces": 7,
+  "faceOffset": [
+    163,
+    66
+  ],
+  "independentExpressionLayers": true,
+  "compositeExports": 0,
+  "userReview": "passed",
+  "referencesChecked": 182,
+  "scriptSyntax": "passed",
+  "browserInteraction": "not-verified",
+  "browserLimitation": "The browser security policy disallows file:// navigation. No alternate browser surface or indirect preview was attempted after that denial.",
+  "approval": {
+    "by": "user",
+    "recordedAt": "2026-09-30T18:04:33+08:00",
+    "message": "ok",
+    "scope": [
+      "mother"
+    ],
+    "motherSHA256": "6d9f4812c0624aad43165c01703183a2ed31ed1fdd761dff611eed36ede1b41b"
+  }
+}

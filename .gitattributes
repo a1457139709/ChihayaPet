@@ -1,0 +1,3 @@
+# Preserve original Shift-JIS notices and their CRLF bytes exactly.
+assets/fansitekit-notice-original.txt -text -diff
+ChihayaPet/Resources/fansitekit-notice-original.txt -text -diff

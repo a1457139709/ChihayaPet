@@ -1,0 +1,208 @@
+{
+  "variant": "a/close",
+  "mother": "ArtSources/CharacterExpansion/native-tea/a/close/v1/mother-body.png",
+  "motherSHA256": "3b7fbda8d515f7e7b15282562328bd515c03a4c6c4a3dda16b0510de588a3eb7",
+  "canvas": [
+    454,
+    606
+  ],
+  "faceOffset": [
+    120,
+    85
+  ],
+  "method": "Copy original face RGBA; source-over only where face alpha overlaps body alpha. No image generation or resampling.",
+  "results": [
+    {
+      "id": "00",
+      "path": "ArtSources/CharacterExpansion/native-tea/a/close/v1/composites/tea-a-close-face-00.png",
+      "sha256": "aab02d07ec148ef13c366b3050e0b92ca56c463723e65e7c6be51fb00dcb6509",
+      "source": "assets/chihaya_character/chi00a@.png",
+      "sourceSHA256": "0d479d6e1eca514440c2736f91da5eeb174a43fb89385d8e59970ccb2865474c",
+      "faceOffset": [
+        120,
+        85
+      ],
+      "checks": {
+        "outsideFaceRGBAMismatches": 0,
+        "opaqueFaceRGBAMismatches": 0,
+        "faceOverTransparentBodyRGBAMismatches": 0
+      }
+    },
+    {
+      "id": "01",
+      "path": "ArtSources/CharacterExpansion/native-tea/a/close/v1/composites/tea-a-close-face-01.png",
+      "sha256": "94a99e7e9fc681f0ecda5286e4affeb27dec9b359ffe5996acaed15df7d689d1",
+      "source": "assets/chihaya_character/chi01a@.png",
+      "sourceSHA256": "ed455eeada97a7ce863f3ed0d47989e9ac0a5ebab7818e75d99f524d5958d505",
+      "faceOffset": [
+        120,
+        85
+      ],
+      "checks": {
+        "outsideFaceRGBAMismatches": 0,
+        "opaqueFaceRGBAMismatches": 0,
+        "faceOverTransparentBodyRGBAMismatches": 0
+      }
+    },
+    {
+      "id": "02",
+      "path": "ArtSources/CharacterExpansion/native-tea/a/close/v1/composites/tea-a-close-face-02.png",
+      "sha256": "5e1ad8ec1a43b5ae46e663148a23bb624f88ea40739c62fbbe12e824c652f447",
+      "source": "assets/chihaya_character/chi02a@.png",
+      "sourceSHA256": "505e6dfcd9e2eb2e227802b4bcae05500019af87f451378d70749a11038c978b",
+      "faceOffset": [
+        120,
+        85
+      ],
+      "checks": {
+        "outsideFaceRGBAMismatches": 0,
+        "opaqueFaceRGBAMismatches": 0,
+        "faceOverTransparentBodyRGBAMismatches": 0
+      }
+    },
+    {
+      "id": "03",
+      "path": "ArtSources/CharacterExpansion/native-tea/a/close/v1/composites/tea-a-close-face-03.png",
+      "sha256": "ccba4f7d6d789b269af30c82da98e9296fa3141b378050828175e297bbda4d33",
+      "source": "assets/chihaya_character/chi03a@.png",
+      "sourceSHA256": "56ec8deb92d91ae4b911764343b4477ea54d7f8057b04269818e60172e013035",
+      "faceOffset": [
+        120,
+        85
+      ],
+      "checks": {
+        "outsideFaceRGBAMismatches": 0,
+        "opaqueFaceRGBAMismatches": 0,
+        "faceOverTransparentBodyRGBAMismatches": 0
+      }
+    },
+    {
+      "id": "04",
+      "path": "ArtSources/CharacterExpansion/native-tea/a/close/v1/composites/tea-a-close-face-04.png",
+      "sha256": "68e0720dfa6da26d72273ceed8e79139a2fdcca8c85159e0c51324a18c7c511e",
+      "source": "assets/chihaya_character/chi04a@.png",
+      "sourceSHA256": "15d3990540f5615c32c570ae2fb3c4286f9bfc96dc19324dc6677bdcce94b5f6",
+      "faceOffset": [
+        120,
+        85
+      ],
+      "checks": {
+        "outsideFaceRGBAMismatches": 0,
+        "opaqueFaceRGBAMismatches": 0,
+        "faceOverTransparentBodyRGBAMismatches": 0
+      }
+    },
+    {
+      "id": "05",
+      "path": "ArtSources/CharacterExpansion/native-tea/a/close/v1/composites/tea-a-close-face-05.png",
+      "sha256": "400a6769e83f431a47475ee334e2d3227cca33161cbe019fe28cc18a630c7206",
+      "source": "assets/chihaya_character/chi05a@.png",
+      "sourceSHA256": "2f4e09a987bc68eb11b3d8d7bc13d9645e1ccb0599227b3635f66629113b23b6",
+      "faceOffset": [
+        120,
+        85
+      ],
+      "checks": {
+        "outsideFaceRGBAMismatches": 0,
+        "opaqueFaceRGBAMismatches": 0,
+        "faceOverTransparentBodyRGBAMismatches": 0
+      }
+    },
+    {
+      "id": "06",
+      "path": "ArtSources/CharacterExpansion/native-tea/a/close/v1/composites/tea-a-close-face-06.png",
+      "sha256": "b805991b38763c884c06b044322002f63060e253a4623e9164a6337c39130703",
+      "source": "assets/chihaya_character/chi06a@.png",
+      "sourceSHA256": "d2c03bce15ccbaab8232dbaff1be3420c03581bb3d5b304045316f32fae31b21",
+      "faceOffset": [
+        120,
+        85
+      ],
+      "checks": {
+        "outsideFaceRGBAMismatches": 0,
+        "opaqueFaceRGBAMismatches": 0,
+        "faceOverTransparentBodyRGBAMismatches": 0
+      }
+    },
+    {
+      "id": "07",
+      "path": "ArtSources/CharacterExpansion/native-tea/a/close/v1/composites/tea-a-close-face-07.png",
+      "sha256": "cf8f0b3cb45b0490fd16e3128bcb3166e8dcc6afac95fd9f2accd57c6cd72c13",
+      "source": "assets/chihaya_character/chi07a@.png",
+      "sourceSHA256": "fbf4a5b94ed20cd81f1f534637bc022f2be811a03d37377c63fa2e90a8b8255c",
+      "faceOffset": [
+        120,
+        85
+      ],
+      "checks": {
+        "outsideFaceRGBAMismatches": 0,
+        "opaqueFaceRGBAMismatches": 0,
+        "faceOverTransparentBodyRGBAMismatches": 0
+      }
+    },
+    {
+      "id": "08",
+      "path": "ArtSources/CharacterExpansion/native-tea/a/close/v1/composites/tea-a-close-face-08.png",
+      "sha256": "afd5f9db0f056a6d3cf3f99eacd486bf99d1ac22df1ed89556308ef87cdea2c5",
+      "source": "assets/chihaya_character/chi08a@.png",
+      "sourceSHA256": "1152f3e33727b730d12476cf16edf816f4bd1240c344d2bbb943d0706f9c8fea",
+      "faceOffset": [
+        120,
+        85
+      ],
+      "checks": {
+        "outsideFaceRGBAMismatches": 0,
+        "opaqueFaceRGBAMismatches": 0,
+        "faceOverTransparentBodyRGBAMismatches": 0
+      }
+    },
+    {
+      "id": "09",
+      "path": "ArtSources/CharacterExpansion/native-tea/a/close/v1/composites/tea-a-close-face-09.png",
+      "sha256": "84e50dabcbe446e79d734656ab9299a1f4fb106ac635fdbd2729a4e02b6922bb",
+      "source": "assets/chihaya_character/chi09a@.png",
+      "sourceSHA256": "df91c2fef59f76d7f270c976094ab3f95bc6e588b9c673dbd55ae4b688415f1a",
+      "faceOffset": [
+        120,
+        85
+      ],
+      "checks": {
+        "outsideFaceRGBAMismatches": 0,
+        "opaqueFaceRGBAMismatches": 0,
+        "faceOverTransparentBodyRGBAMismatches": 0
+      }
+    },
+    {
+      "id": "10",
+      "path": "ArtSources/CharacterExpansion/native-tea/a/close/v1/composites/tea-a-close-face-10.png",
+      "sha256": "0e5b2b7edec7ed870f799267c183203af83b3d18444ddf77ac60fccf69f7dc7b",
+      "source": "assets/chihaya_character/chi10a@.png",
+      "sourceSHA256": "da512dccad8aeb4071bad81d8eeaf4f93f59a726e2a6f8aa7a6542413ed6db26",
+      "faceOffset": [
+        120,
+        85
+      ],
+      "checks": {
+        "outsideFaceRGBAMismatches": 0,
+        "opaqueFaceRGBAMismatches": 0,
+        "faceOverTransparentBodyRGBAMismatches": 0
+      }
+    },
+    {
+      "id": "11",
+      "path": "ArtSources/CharacterExpansion/native-tea/a/close/v1/composites/tea-a-close-face-11.png",
+      "sha256": "bb3d96f587b11cae9abccb0677e98044c2cb6eef255fd22f7784760269cdbdfb",
+      "source": "assets/chihaya_character/chi11a@.png",
+      "sourceSHA256": "49fca7c44b3fd624bdee6b591049f713e3d9dfc84537c72d8cc2e5c75238c5ac",
+      "faceOffset": [
+        120,
+        85
+      ],
+      "checks": {
+        "outsideFaceRGBAMismatches": 0,
+        "opaqueFaceRGBAMismatches": 0,
+        "faceOverTransparentBodyRGBAMismatches": 0
+      }
+    }
+  ]
+}

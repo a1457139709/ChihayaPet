@@ -1,0 +1,194 @@
+{
+  "date": "2026-09-30",
+  "timezone": "Asia/Shanghai",
+  "canvas": [
+    310,
+    606
+  ],
+  "faceSize": [
+    114,
+    100
+  ],
+  "faceOffset": [
+    101,
+    80
+  ],
+  "sourceBodySHA256": "1650f1d49c2fca349d91ad05cd5e4d380f68f8d8266734974132ea29e0c79e7a",
+  "motherSHA256": "beaa1a69df2a9e04c15983e6ec0a43298b69694ff4792fbab4ecbd3486510115",
+  "changedPixels": 33561,
+  "transparentPixels": 95783,
+  "partialAlphaPixels": 26708,
+  "checks": {
+    "outsideMaskRGBAMismatches": 0,
+    "headRGBAMismatches": 0,
+    "faceRegionRGBAMismatches": 0,
+    "protectedOpaqueHairRGBAMismatches": 0
+  },
+  "faceSwitching": [
+    {
+      "id": "00",
+      "source": "assets/chihaya_character/chi00b_.png",
+      "sourceSHA256": "aea16b05bac51c431f9ce63b337b4fe6b4e183d1ecca73622130fc150a2bec9a",
+      "offset": [
+        101,
+        80
+      ],
+      "outsideFaceRGBAMismatches": 0,
+      "opaqueFaceRGBAMismatches": 0,
+      "faceOverTransparentBodyRGBAMismatches": 0
+    },
+    {
+      "id": "01",
+      "source": "assets/chihaya_character/chi01b_.png",
+      "sourceSHA256": "bcc7afaaa11fe88c96eb907d16a9354611e3f503aa04253fdc08c11197b2f0c3",
+      "offset": [
+        101,
+        80
+      ],
+      "outsideFaceRGBAMismatches": 0,
+      "opaqueFaceRGBAMismatches": 0,
+      "faceOverTransparentBodyRGBAMismatches": 0
+    },
+    {
+      "id": "02",
+      "source": "assets/chihaya_character/chi02b_.png",
+      "sourceSHA256": "c8a4e44ff2483decde2e74cac272784f7fe37072c1a6e686b472d9fc037741fc",
+      "offset": [
+        101,
+        80
+      ],
+      "outsideFaceRGBAMismatches": 0,
+      "opaqueFaceRGBAMismatches": 0,
+      "faceOverTransparentBodyRGBAMismatches": 0
+    },
+    {
+      "id": "03",
+      "source": "assets/chihaya_character/chi03b_.png",
+      "sourceSHA256": "5d2aac1a76fd41bc8382459947bc454368f2c009a97edfa22a65abcf5e6f0506",
+      "offset": [
+        101,
+        80
+      ],
+      "outsideFaceRGBAMismatches": 0,
+      "opaqueFaceRGBAMismatches": 0,
+      "faceOverTransparentBodyRGBAMismatches": 0
+    },
+    {
+      "id": "04",
+      "source": "assets/chihaya_character/chi04b_.png",
+      "sourceSHA256": "297c7e6be7e78b3ff36fc1643d9392c389a7988a14a24a290df2de350d5547eb",
+      "offset": [
+        101,
+        80
+      ],
+      "outsideFaceRGBAMismatches": 0,
+      "opaqueFaceRGBAMismatches": 0,
+      "faceOverTransparentBodyRGBAMismatches": 0
+    },
+    {
+      "id": "05",
+      "source": "assets/chihaya_character/chi05b_.png",
+      "sourceSHA256": "e3ad7aaeab4e7b49c40bc500f477b9ee08b560b13e722e5516f3a06754f7a4ad",
+      "offset": [
+        101,
+        80
+      ],
+      "outsideFaceRGBAMismatches": 0,
+      "opaqueFaceRGBAMismatches": 0,
+      "faceOverTransparentBodyRGBAMismatches": 0
+    },
+    {
+      "id": "06",
+      "source": "assets/chihaya_character/chi06b_.png",
+      "sourceSHA256": "707f85a25ea73164d51a5344a608a271154992a518eb80d5752dcebcec4a9734",
+      "offset": [
+        101,
+        80
+      ],
+      "outsideFaceRGBAMismatches": 0,
+      "opaqueFaceRGBAMismatches": 0,
+      "faceOverTransparentBodyRGBAMismatches": 0
+    }
+  ],
+  "previewFaces": [
+    "00",
+    "04",
+    "06"
+  ],
+  "expressionInventory": "The seven side-facing original expressions do not contain a closed-eye smile. No new expression or blink frame was generated.",
+  "offlinePreviewHeights": [
+    240,
+    256,
+    480
+  ],
+  "backgrounds": [
+    "light",
+    "dark"
+  ],
+  "visualInspection": "inspected",
+  "review": "passed",
+  "application": "not-integrated",
+  "visualInspectionImages": [
+    "qa-native-layers-light-dark.png",
+    "qa-light-dark-scales.png",
+    "qa-assembly-detail-dark.png"
+  ],
+  "pageChecks": {
+    "javaScriptSyntax": "passed",
+    "allImageURLsAndHashes": "passed",
+    "referencesChecked": 190,
+    "motherRecord": "passed",
+    "bodyAndExpressionLayers": "separate",
+    "userReview": "pending"
+  },
+  "pageUI": {
+    "status": "passed",
+    "environment": "Isolated localhost preview containing only the report, referenced PNGs and art metadata",
+    "outfit": "b_",
+    "view": "full",
+    "imagesLoaded": "passed",
+    "expressionSelection": [
+      "00",
+      "04",
+      "hidden"
+    ],
+    "bodyUnchangedWhenExpressionSwitches": true,
+    "nativeBodyCSSSize": [
+      310,
+      606
+    ],
+    "nativeFaceCSSSize": [
+      114,
+      100
+    ],
+    "nativeFaceCSSOffset": [
+      101,
+      79.9921875
+    ],
+    "gameFaceOffset": [
+      101,
+      80
+    ],
+    "cssOffsetRoundingLessThanOneSixtyFourthPixel": true,
+    "nativeViewer": "passed",
+    "screenshots": [
+      "qa-page-layered-gallery.jpg",
+      "qa-page-native-viewer.jpg"
+    ],
+    "userReview": "pending"
+  },
+  "approval": {
+    "message": "ok",
+    "approvedAt": "2026-09-30T18:52:07+08:00",
+    "outfit": "b_",
+    "view": "full",
+    "scope": "Summer side-facing full-view tea mother and original-face fit",
+    "motherSHA256": "beaa1a69df2a9e04c15983e6ec0a43298b69694ff4792fbab4ecbd3486510115"
+  },
+  "compositeExports": {
+    "manifest": "composites/composites.json",
+    "count": 7,
+    "allPixelChecks": "passed",
+    "motherSHA256": "beaa1a69df2a9e04c15983e6ec0a43298b69694ff4792fbab4ecbd3486510115"
+  }
+}

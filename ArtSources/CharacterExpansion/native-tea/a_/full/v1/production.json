@@ -1,0 +1,894 @@
+{
+  "version": 1,
+  "outfit": "a_",
+  "view": "full",
+  "date": "2026-09-30",
+  "timezone": "Asia/Shanghai",
+  "status": "approved",
+  "production": "Built-in imagegen edits only the local torso/arms/tea crop. A second local edit removes generated alignment hair. The native game head, face opening and visible silver hair are preserved during deterministic masked assembly; no complete character or expression is generated.",
+  "canvas": [
+    268,
+    606
+  ],
+  "mother": "ArtSources/CharacterExpansion/native-tea/a_/full/v1/mother-body.png",
+  "source": {
+    "body": "assets/chihaya_character/chi_a_.png",
+    "sha256": "80a5afbfc5dab932a74bb8f0f13eccf7a4049996900d58548f48818ebbf536b2",
+    "faceOffset": [
+      79,
+      76
+    ],
+    "faceSize": [
+      122,
+      104
+    ],
+    "faces": [
+      {
+        "id": "00",
+        "path": "assets/chihaya_character/chi00a_.png",
+        "sha256": "2f63269f5ece92aa9135633ebefc8fd3db203c7081c7a59f3208f519e180e04b"
+      },
+      {
+        "id": "01",
+        "path": "assets/chihaya_character/chi01a_.png",
+        "sha256": "66b6690dfeedd20b09e1f1d55528e1661348068b9d4bb5565c4d7d25faf762e3"
+      },
+      {
+        "id": "02",
+        "path": "assets/chihaya_character/chi02a_.png",
+        "sha256": "3aee68b0acd5d1571a909499a2937eec2fb8a705f3daadb81cb7fac6670c6364"
+      },
+      {
+        "id": "03",
+        "path": "assets/chihaya_character/chi03a_.png",
+        "sha256": "e76bb08e911a6f32a53ec05c2999c16080a1f7577eb0d053c9263f0015414c95"
+      },
+      {
+        "id": "04",
+        "path": "assets/chihaya_character/chi04a_.png",
+        "sha256": "e5131f5cb5e977f95406b729b4e564b7e469c3d1ce8eeebeb8655257bca1907f"
+      },
+      {
+        "id": "05",
+        "path": "assets/chihaya_character/chi05a_.png",
+        "sha256": "21004e8d02b23d5976fcb8fd6c71856ae1d12c9e4102973b2c755506be6d1ee0"
+      },
+      {
+        "id": "06",
+        "path": "assets/chihaya_character/chi06a_.png",
+        "sha256": "05de4462d85d9f5c17883c2e15b272646f640627539c275c03aa272cfe97dce8"
+      },
+      {
+        "id": "07",
+        "path": "assets/chihaya_character/chi07a_.png",
+        "sha256": "9ccea11a53ed521ef8654817d231dcdde204fb86493cde954aa3e9a10319b3cc"
+      },
+      {
+        "id": "08",
+        "path": "assets/chihaya_character/chi08a_.png",
+        "sha256": "5eb9c186076763429526a4b27606a009830f8dddd50d56b7ce1d4901df2d8811"
+      },
+      {
+        "id": "09",
+        "path": "assets/chihaya_character/chi09a_.png",
+        "sha256": "0d32e32d01f82aea5f1c265d5f4c6d52e3ad0565e7f410dbea3367404679bfd2"
+      },
+      {
+        "id": "10",
+        "path": "assets/chihaya_character/chi10a_.png",
+        "sha256": "29401faf71f052e14c40539d0354684aa53cdf53a117969396012be502ae88e9"
+      },
+      {
+        "id": "11",
+        "path": "assets/chihaya_character/chi11a_.png",
+        "sha256": "c374d86638c39053af12fb39024de8eaf8c7bcafc78c15092a0130acfba442aa"
+      }
+    ]
+  },
+  "generation": {
+    "tool": "built-in imagegen",
+    "inputs": [
+      "torso-edit-input.png",
+      "ArtSources/CharacterExpansion/native-tea/a/full/v1/torso-imagegen-refined.png"
+    ],
+    "raw": "torso-imagegen-raw.png",
+    "refined": "torso-imagegen-refined.png",
+    "prompts": [
+      "imagegen-prompt.txt",
+      "imagegen-refine-prompt.txt"
+    ],
+    "rawSHA256": "b6f3bf3731d994bcbc3b032abccfd717d1209a6b6f9438c9b7d595c132640fb3",
+    "refinedSHA256": "4a3ed3943a33c06499ac662b9daeeed4d8509bef0ed0585ed57ddc8c2145a324",
+    "scope": "torso-only crop; no head, face or complete person"
+  },
+  "assembly": {
+    "script": "assemble.cjs",
+    "crop": {
+      "left": 24,
+      "top": 180,
+      "width": 216,
+      "height": 192
+    },
+    "editPolygon": [
+      [
+        57,
+        190
+      ],
+      [
+        79,
+        181
+      ],
+      [
+        198,
+        181
+      ],
+      [
+        217,
+        206
+      ],
+      [
+        228,
+        243
+      ],
+      [
+        217,
+        289
+      ],
+      [
+        218,
+        334
+      ],
+      [
+        204,
+        355
+      ],
+      [
+        194,
+        371
+      ],
+      [
+        72,
+        371
+      ],
+      [
+        63,
+        359
+      ],
+      [
+        44,
+        334
+      ],
+      [
+        40,
+        294
+      ],
+      [
+        31,
+        247
+      ],
+      [
+        45,
+        214
+      ]
+    ],
+    "mask": "local-edit-mask.png",
+    "maskSHA256": "eddcf998f1a22393a851115d8084d9a0445cd7bc170e94ab823f9adafa56789f",
+    "protectedHairMask": "original-hair-preservation-mask.png",
+    "hairPreservationMethod": "Continuous front and side lock bands traced on native summer body pixels; old skin is excluded.",
+    "sourceHairInspection": "qa-source-hair-grid.png",
+    "frontLockRows": [
+      [
+        [
+          180,
+          74,
+          101
+        ],
+        [
+          185,
+          75,
+          103
+        ],
+        [
+          190,
+          75,
+          102
+        ],
+        [
+          195,
+          76,
+          100
+        ],
+        [
+          200,
+          78,
+          99
+        ],
+        [
+          205,
+          80,
+          100
+        ],
+        [
+          210,
+          83,
+          105
+        ],
+        [
+          215,
+          88,
+          108
+        ],
+        [
+          220,
+          90,
+          100
+        ],
+        [
+          225,
+          92,
+          101
+        ],
+        [
+          230,
+          90,
+          100
+        ],
+        [
+          235,
+          86,
+          96
+        ],
+        [
+          240,
+          82,
+          91
+        ],
+        [
+          245,
+          79,
+          87
+        ],
+        [
+          250,
+          77,
+          84
+        ],
+        [
+          255,
+          77,
+          85
+        ],
+        [
+          260,
+          79,
+          89
+        ],
+        [
+          265,
+          82,
+          96
+        ],
+        [
+          270,
+          87,
+          104
+        ],
+        [
+          274,
+          95,
+          102
+        ]
+      ],
+      [
+        [
+          180,
+          103,
+          114
+        ],
+        [
+          185,
+          104,
+          116
+        ],
+        [
+          190,
+          108,
+          119
+        ],
+        [
+          195,
+          110,
+          121
+        ],
+        [
+          200,
+          113,
+          123
+        ],
+        [
+          205,
+          114,
+          125
+        ],
+        [
+          210,
+          115,
+          126
+        ],
+        [
+          215,
+          116,
+          126
+        ],
+        [
+          220,
+          115,
+          126
+        ],
+        [
+          225,
+          114,
+          124
+        ],
+        [
+          230,
+          111,
+          120
+        ],
+        [
+          235,
+          108,
+          116
+        ],
+        [
+          240,
+          104,
+          113
+        ],
+        [
+          245,
+          100,
+          109
+        ],
+        [
+          250,
+          97,
+          105
+        ],
+        [
+          255,
+          94,
+          104
+        ],
+        [
+          260,
+          94,
+          107
+        ],
+        [
+          265,
+          98,
+          109
+        ],
+        [
+          269,
+          104,
+          109
+        ]
+      ],
+      [
+        [
+          180,
+          150,
+          177
+        ],
+        [
+          185,
+          151,
+          176
+        ],
+        [
+          190,
+          152,
+          171
+        ],
+        [
+          195,
+          152,
+          165
+        ],
+        [
+          200,
+          153,
+          165
+        ],
+        [
+          205,
+          154,
+          166
+        ],
+        [
+          210,
+          157,
+          169
+        ],
+        [
+          215,
+          160,
+          173
+        ],
+        [
+          220,
+          162,
+          175
+        ],
+        [
+          225,
+          164,
+          179
+        ],
+        [
+          230,
+          167,
+          181
+        ],
+        [
+          235,
+          171,
+          184
+        ],
+        [
+          240,
+          175,
+          189
+        ],
+        [
+          245,
+          179,
+          192
+        ],
+        [
+          250,
+          181,
+          194
+        ],
+        [
+          255,
+          180,
+          194
+        ],
+        [
+          260,
+          177,
+          189
+        ],
+        [
+          265,
+          173,
+          183
+        ],
+        [
+          270,
+          169,
+          177
+        ],
+        [
+          275,
+          167,
+          175
+        ],
+        [
+          279,
+          171,
+          178
+        ]
+      ],
+      [
+        [
+          255,
+          189,
+          194
+        ],
+        [
+          260,
+          189,
+          194
+        ],
+        [
+          265,
+          186,
+          193
+        ],
+        [
+          270,
+          183,
+          192
+        ],
+        [
+          275,
+          178,
+          189
+        ],
+        [
+          279,
+          174,
+          183
+        ]
+      ]
+    ],
+    "sideHairRows": [
+      [
+        [
+          180,
+          0,
+          64
+        ],
+        [
+          190,
+          0,
+          63
+        ],
+        [
+          200,
+          0,
+          62
+        ],
+        [
+          210,
+          0,
+          60
+        ],
+        [
+          220,
+          0,
+          57
+        ],
+        [
+          230,
+          0,
+          52
+        ],
+        [
+          240,
+          0,
+          44
+        ],
+        [
+          250,
+          0,
+          36
+        ],
+        [
+          260,
+          0,
+          28
+        ],
+        [
+          270,
+          0,
+          40
+        ],
+        [
+          280,
+          0,
+          53
+        ],
+        [
+          290,
+          0,
+          56
+        ],
+        [
+          300,
+          0,
+          58
+        ],
+        [
+          310,
+          0,
+          61
+        ],
+        [
+          320,
+          0,
+          69
+        ],
+        [
+          330,
+          0,
+          80
+        ],
+        [
+          340,
+          0,
+          88
+        ],
+        [
+          350,
+          0,
+          86
+        ],
+        [
+          360,
+          0,
+          80
+        ],
+        [
+          371,
+          0,
+          76
+        ]
+      ],
+      [
+        [
+          180,
+          195,
+          267
+        ],
+        [
+          190,
+          194,
+          267
+        ],
+        [
+          200,
+          194,
+          267
+        ],
+        [
+          210,
+          200,
+          267
+        ],
+        [
+          220,
+          203,
+          267
+        ],
+        [
+          230,
+          211,
+          267
+        ],
+        [
+          240,
+          220,
+          267
+        ],
+        [
+          250,
+          230,
+          267
+        ],
+        [
+          260,
+          233,
+          267
+        ],
+        [
+          270,
+          212,
+          267
+        ],
+        [
+          280,
+          209,
+          267
+        ],
+        [
+          290,
+          211,
+          267
+        ],
+        [
+          300,
+          214,
+          267
+        ],
+        [
+          310,
+          215,
+          267
+        ],
+        [
+          320,
+          216,
+          267
+        ],
+        [
+          330,
+          213,
+          267
+        ],
+        [
+          340,
+          210,
+          267
+        ],
+        [
+          350,
+          202,
+          267
+        ],
+        [
+          360,
+          196,
+          267
+        ],
+        [
+          371,
+          194,
+          267
+        ]
+      ]
+    ],
+    "teaForeground": [
+      [
+        107,
+        237
+      ],
+      [
+        162,
+        237
+      ],
+      [
+        163,
+        257
+      ],
+      [
+        155,
+        266
+      ],
+      [
+        176,
+        268
+      ],
+      [
+        175,
+        275
+      ],
+      [
+        113,
+        279
+      ],
+      [
+        99,
+        274
+      ],
+      [
+        101,
+        257
+      ],
+      [
+        103,
+        241
+      ]
+    ],
+    "armForeground": [
+      [
+        [
+          62,
+          281
+        ],
+        [
+          88,
+          292
+        ],
+        [
+          100,
+          311
+        ],
+        [
+          79,
+          339
+        ],
+        [
+          67,
+          357
+        ],
+        [
+          56,
+          357
+        ],
+        [
+          43,
+          341
+        ],
+        [
+          50,
+          306
+        ]
+      ],
+      [
+        [
+          161,
+          289
+        ],
+        [
+          189,
+          303
+        ],
+        [
+          212,
+          327
+        ],
+        [
+          209,
+          352
+        ],
+        [
+          193,
+          354
+        ],
+        [
+          175,
+          335
+        ]
+      ]
+    ],
+    "topOriginalRows": 194,
+    "edgeBlendPixels": 3,
+    "waistBlendPixels": 8,
+    "changedPixels": 24555,
+    "editablePixels": 24772,
+    "protectedHairPixels": 25374,
+    "changedBoundsXYXY": [
+      33,
+      194,
+      227,
+      371
+    ],
+    "overlap": "Hands, cup, saucer and bent forearms occlude rear hair; remaining visible locks are native summer body pixels."
+  },
+  "layers": {
+    "body": "mother-body.png",
+    "localPart": "torso-part-native.png",
+    "replacement": "local-replacement-layer.png",
+    "expression": "Original summer face PNGs remain separate and unmodified, with native offset (79,76)."
+  },
+  "teaWare": {
+    "reference": "ArtSources/CharacterExpansion/native-tea/tea-ware-reference.json",
+    "design": "Approved plain white porcelain cup and shallow saucer; image-left hand holds left handle, image-right palm supports saucer."
+  },
+  "checks": {
+    "nativeCanvas": "passed",
+    "alpha": "passed",
+    "outsideRGBA": "passed",
+    "outsideRGBAMismatches": 0,
+    "faceRegion": "passed",
+    "faceRegionRGBAMismatches": 0,
+    "seams": "inspected",
+    "review": "passed",
+    "application": "not-integrated",
+    "originalFaceFiles": "12/12 SHA-256 verified",
+    "protectedHairRGBA": "passed",
+    "headRGBA": "passed",
+    "originalFaceFit": "passed",
+    "previewSizes": [
+      240,
+      256,
+      480
+    ],
+    "previewBackgrounds": [
+      "light",
+      "dark"
+    ],
+    "pageUI": "inspected; separate body, hide/show expression and native-size preview passed"
+  },
+  "outputSHA256": "1bd5571d3105cc52b0ba6ccf6f5ebc3186869f5d77f7be59aec991579efdafad",
+  "qa": "qa-verification.json",
+  "visualInspection": {
+    "nativeLayers": "qa-native-layers.png",
+    "allOriginalFaces": "qa-all-original-faces.png",
+    "lightDarkScales": "qa-light-dark-scales.png",
+    "torsoDetail": "qa-torso-detail-dark.png",
+    "notes": "Native original head/face opening and visible silver locks preserved; no old hands remain; shoulder, neck, face, waist and hair occlusion checked at native scale and on light/dark backgrounds.",
+    "progressPage": "qa-progress-page.png"
+  },
+  "approval": {
+    "date": "2026-09-30",
+    "timezone": "Asia/Shanghai",
+    "message": "ok",
+    "scope": "夏服正面全景母图与原脸分层适配"
+  }
+}

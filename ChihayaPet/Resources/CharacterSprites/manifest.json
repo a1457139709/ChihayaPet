@@ -1,0 +1,2122 @@
+{
+  "version": 1,
+  "styles": [
+    {
+      "id": "a",
+      "name": "冬服·正面"
+    },
+    {
+      "id": "a_",
+      "name": "夏服·正面"
+    },
+    {
+      "id": "b",
+      "name": "冬服·侧身"
+    },
+    {
+      "id": "b_",
+      "name": "夏服·侧身"
+    },
+    {
+      "id": "c",
+      "name": "米色便服"
+    },
+    {
+      "id": "d",
+      "name": "粉色裙装"
+    },
+    {
+      "id": "e",
+      "name": "体操服"
+    }
+  ],
+  "expressions": [
+    {
+      "id": "neutral",
+      "name": "日常"
+    },
+    {
+      "id": "serious",
+      "name": "认真"
+    },
+    {
+      "id": "smile",
+      "name": "微笑"
+    },
+    {
+      "id": "surprised",
+      "name": "惊讶"
+    }
+  ],
+  "variants": {
+    "a/full": {
+      "width": 268,
+      "height": 606,
+      "body": "assets/body-a-full.png",
+      "faceOffset": [
+        79,
+        76
+      ],
+      "frames": {
+        "neutral": {
+          "open": {
+            "closed": "assets/face-989fbc984f649574bf61.png",
+            "small": "assets/face-ccafd931677ee24a680b.png",
+            "medium": "assets/face-8c7d6c0615baab0557d7.png"
+          },
+          "half": {
+            "closed": "assets/face-bbf7881c5b00cf7842da.png",
+            "small": "assets/face-2d0ba96e23dfc68df514.png",
+            "medium": "assets/face-b618bd7953f53fa96e93.png"
+          },
+          "closed": {
+            "closed": "assets/face-b6b502cc8b8b358f9bca.png",
+            "small": "assets/face-a72d66fe3d06f67c3550.png",
+            "medium": "assets/face-23b95fdf3914476219dc.png"
+          }
+        },
+        "serious": {
+          "open": {
+            "closed": "assets/face-b70a6247e41a636efc5f.png",
+            "small": "assets/face-2986b6d27764c0f53818.png",
+            "medium": "assets/face-606c14af3bdadabbe11f.png"
+          },
+          "half": {
+            "closed": "assets/face-58baf816a0b1304b3c8c.png",
+            "small": "assets/face-4e83ccda74f56f56a9bf.png",
+            "medium": "assets/face-ba3359fca1ab39416fa6.png"
+          },
+          "closed": {
+            "closed": "assets/face-f1f2ad744f4a19e6a1db.png",
+            "small": "assets/face-bc0e7b5e912227657e5e.png",
+            "medium": "assets/face-518786615f6f01af77af.png"
+          }
+        },
+        "smile": {
+          "open": {
+            "closed": "assets/face-aa341fe8742fae310b41.png",
+            "small": "assets/face-842fa37fe1c75cf1f7d1.png",
+            "medium": "assets/face-2df8e85ef1449c4fd7ee.png"
+          },
+          "half": {
+            "closed": "assets/face-aa341fe8742fae310b41.png",
+            "small": "assets/face-842fa37fe1c75cf1f7d1.png",
+            "medium": "assets/face-2df8e85ef1449c4fd7ee.png"
+          },
+          "closed": {
+            "closed": "assets/face-aa341fe8742fae310b41.png",
+            "small": "assets/face-842fa37fe1c75cf1f7d1.png",
+            "medium": "assets/face-2df8e85ef1449c4fd7ee.png"
+          }
+        },
+        "surprised": {
+          "open": {
+            "closed": "assets/face-875b688a90e38eff5b99.png",
+            "small": "assets/face-0324bb9a7f53cb0b07fd.png",
+            "medium": "assets/face-04f49cecd04ba1642cad.png"
+          },
+          "half": {
+            "closed": "assets/face-14f89ecb6a86ba31f30d.png",
+            "small": "assets/face-3548bc303290895ec748.png",
+            "medium": "assets/face-16206f966363b69d2311.png"
+          },
+          "closed": {
+            "closed": "assets/face-a64214aeb0c6822a8750.png",
+            "small": "assets/face-421d4cc8cfc8d68404a4.png",
+            "medium": "assets/face-c5e50c785e16e399b93b.png"
+          }
+        }
+      },
+      "sourceBody": "chi_a.png",
+      "sourceFaces": {
+        "neutral": "chi00a.png",
+        "serious": "chi01a.png",
+        "smile": "chi04a.png",
+        "surprised": "chi06a.png"
+      },
+      "faceSize": [
+        122,
+        104
+      ],
+      "speech": {
+        "mouth": [
+          133,
+          160
+        ],
+        "hairLeft": 34,
+        "hairRight": 213
+      }
+    },
+    "a/close": {
+      "width": 454,
+      "height": 670,
+      "body": "assets/body-a-close.png",
+      "faceOffset": [
+        120,
+        149
+      ],
+      "frames": {
+        "neutral": {
+          "open": {
+            "closed": "assets/face-1a877e71726ae44a7317.png",
+            "small": "assets/face-1236e1a3fe4df5dbb24b.png",
+            "medium": "assets/face-6e5286c83bb49063c009.png"
+          },
+          "half": {
+            "closed": "assets/face-7d7ba17bd6dcce144a53.png",
+            "small": "assets/face-edc7c0f5def11128b8d4.png",
+            "medium": "assets/face-548290129f6bf5b6fd59.png"
+          },
+          "closed": {
+            "closed": "assets/face-00275f5c5115671e55f2.png",
+            "small": "assets/face-717c3289e46c2e711543.png",
+            "medium": "assets/face-0e0125a00a8420995e2c.png"
+          }
+        },
+        "serious": {
+          "open": {
+            "closed": "assets/face-336ad8b718064b8f0083.png",
+            "small": "assets/face-aab69c8d3f98b9992691.png",
+            "medium": "assets/face-c1a6f9eaf77a02e6ae22.png"
+          },
+          "half": {
+            "closed": "assets/face-04b40c187754b3c9a931.png",
+            "small": "assets/face-ca98d84d408ff3253756.png",
+            "medium": "assets/face-5fb2d97809b6611da2fd.png"
+          },
+          "closed": {
+            "closed": "assets/face-65df60c823ffbf95b699.png",
+            "small": "assets/face-226e29a68b048ef6ef0c.png",
+            "medium": "assets/face-a480b634bb12b3c8ebe6.png"
+          }
+        },
+        "smile": {
+          "open": {
+            "closed": "assets/face-36b212da1a499d4963db.png",
+            "small": "assets/face-abd05340a89eb12da349.png",
+            "medium": "assets/face-8451ac74f4e664a9114a.png"
+          },
+          "half": {
+            "closed": "assets/face-36b212da1a499d4963db.png",
+            "small": "assets/face-abd05340a89eb12da349.png",
+            "medium": "assets/face-8451ac74f4e664a9114a.png"
+          },
+          "closed": {
+            "closed": "assets/face-36b212da1a499d4963db.png",
+            "small": "assets/face-abd05340a89eb12da349.png",
+            "medium": "assets/face-8451ac74f4e664a9114a.png"
+          }
+        },
+        "surprised": {
+          "open": {
+            "closed": "assets/face-4bc519374a3eef383c21.png",
+            "small": "assets/face-cec2b5c8090b04c808bc.png",
+            "medium": "assets/face-48c7b57a1e02c5a7c92a.png"
+          },
+          "half": {
+            "closed": "assets/face-02289ec611fb7e3a1c05.png",
+            "small": "assets/face-ccf5b98fcf647dbd92f3.png",
+            "medium": "assets/face-ed67b7373f617170b584.png"
+          },
+          "closed": {
+            "closed": "assets/face-e9cc0ffe381b7366a9aa.png",
+            "small": "assets/face-01f08b1853bb2b97b9fb.png",
+            "medium": "assets/face-569cda0756b0bcce4f34.png"
+          }
+        }
+      },
+      "sourceBody": "chi_a@.png",
+      "sourceFaces": {
+        "neutral": "chi00a@.png",
+        "serious": "chi01a@.png",
+        "smile": "chi04a@.png",
+        "surprised": "chi06a@.png"
+      },
+      "faceSize": [
+        204,
+        154
+      ],
+      "speech": {
+        "mouth": [
+          224,
+          273
+        ],
+        "hairLeft": 54,
+        "hairRight": 375
+      }
+    },
+    "a_/full": {
+      "width": 268,
+      "height": 606,
+      "body": "assets/body-a_-full.png",
+      "faceOffset": [
+        79,
+        76
+      ],
+      "frames": {
+        "neutral": {
+          "open": {
+            "closed": "assets/face-989fbc984f649574bf61.png",
+            "small": "assets/face-ccafd931677ee24a680b.png",
+            "medium": "assets/face-8c7d6c0615baab0557d7.png"
+          },
+          "half": {
+            "closed": "assets/face-bbf7881c5b00cf7842da.png",
+            "small": "assets/face-2d0ba96e23dfc68df514.png",
+            "medium": "assets/face-b618bd7953f53fa96e93.png"
+          },
+          "closed": {
+            "closed": "assets/face-b6b502cc8b8b358f9bca.png",
+            "small": "assets/face-a72d66fe3d06f67c3550.png",
+            "medium": "assets/face-23b95fdf3914476219dc.png"
+          }
+        },
+        "serious": {
+          "open": {
+            "closed": "assets/face-b70a6247e41a636efc5f.png",
+            "small": "assets/face-2986b6d27764c0f53818.png",
+            "medium": "assets/face-606c14af3bdadabbe11f.png"
+          },
+          "half": {
+            "closed": "assets/face-58baf816a0b1304b3c8c.png",
+            "small": "assets/face-4e83ccda74f56f56a9bf.png",
+            "medium": "assets/face-ba3359fca1ab39416fa6.png"
+          },
+          "closed": {
+            "closed": "assets/face-f1f2ad744f4a19e6a1db.png",
+            "small": "assets/face-bc0e7b5e912227657e5e.png",
+            "medium": "assets/face-518786615f6f01af77af.png"
+          }
+        },
+        "smile": {
+          "open": {
+            "closed": "assets/face-aa341fe8742fae310b41.png",
+            "small": "assets/face-842fa37fe1c75cf1f7d1.png",
+            "medium": "assets/face-2df8e85ef1449c4fd7ee.png"
+          },
+          "half": {
+            "closed": "assets/face-aa341fe8742fae310b41.png",
+            "small": "assets/face-842fa37fe1c75cf1f7d1.png",
+            "medium": "assets/face-2df8e85ef1449c4fd7ee.png"
+          },
+          "closed": {
+            "closed": "assets/face-aa341fe8742fae310b41.png",
+            "small": "assets/face-842fa37fe1c75cf1f7d1.png",
+            "medium": "assets/face-2df8e85ef1449c4fd7ee.png"
+          }
+        },
+        "surprised": {
+          "open": {
+            "closed": "assets/face-875b688a90e38eff5b99.png",
+            "small": "assets/face-0324bb9a7f53cb0b07fd.png",
+            "medium": "assets/face-04f49cecd04ba1642cad.png"
+          },
+          "half": {
+            "closed": "assets/face-14f89ecb6a86ba31f30d.png",
+            "small": "assets/face-3548bc303290895ec748.png",
+            "medium": "assets/face-16206f966363b69d2311.png"
+          },
+          "closed": {
+            "closed": "assets/face-a64214aeb0c6822a8750.png",
+            "small": "assets/face-421d4cc8cfc8d68404a4.png",
+            "medium": "assets/face-c5e50c785e16e399b93b.png"
+          }
+        }
+      },
+      "sourceBody": "chi_a_.png",
+      "sourceFaces": {
+        "neutral": "chi00a_.png",
+        "serious": "chi01a_.png",
+        "smile": "chi04a_.png",
+        "surprised": "chi06a_.png"
+      },
+      "faceSize": [
+        122,
+        104
+      ],
+      "speech": {
+        "mouth": [
+          133,
+          160
+        ],
+        "hairLeft": 34,
+        "hairRight": 213
+      }
+    },
+    "a_/close": {
+      "width": 454,
+      "height": 670,
+      "body": "assets/body-a_-close.png",
+      "faceOffset": [
+        120,
+        149
+      ],
+      "frames": {
+        "neutral": {
+          "open": {
+            "closed": "assets/face-1a877e71726ae44a7317.png",
+            "small": "assets/face-1236e1a3fe4df5dbb24b.png",
+            "medium": "assets/face-6e5286c83bb49063c009.png"
+          },
+          "half": {
+            "closed": "assets/face-7d7ba17bd6dcce144a53.png",
+            "small": "assets/face-edc7c0f5def11128b8d4.png",
+            "medium": "assets/face-548290129f6bf5b6fd59.png"
+          },
+          "closed": {
+            "closed": "assets/face-00275f5c5115671e55f2.png",
+            "small": "assets/face-717c3289e46c2e711543.png",
+            "medium": "assets/face-0e0125a00a8420995e2c.png"
+          }
+        },
+        "serious": {
+          "open": {
+            "closed": "assets/face-336ad8b718064b8f0083.png",
+            "small": "assets/face-aab69c8d3f98b9992691.png",
+            "medium": "assets/face-c1a6f9eaf77a02e6ae22.png"
+          },
+          "half": {
+            "closed": "assets/face-04b40c187754b3c9a931.png",
+            "small": "assets/face-ca98d84d408ff3253756.png",
+            "medium": "assets/face-5fb2d97809b6611da2fd.png"
+          },
+          "closed": {
+            "closed": "assets/face-65df60c823ffbf95b699.png",
+            "small": "assets/face-226e29a68b048ef6ef0c.png",
+            "medium": "assets/face-a480b634bb12b3c8ebe6.png"
+          }
+        },
+        "smile": {
+          "open": {
+            "closed": "assets/face-36b212da1a499d4963db.png",
+            "small": "assets/face-abd05340a89eb12da349.png",
+            "medium": "assets/face-8451ac74f4e664a9114a.png"
+          },
+          "half": {
+            "closed": "assets/face-36b212da1a499d4963db.png",
+            "small": "assets/face-abd05340a89eb12da349.png",
+            "medium": "assets/face-8451ac74f4e664a9114a.png"
+          },
+          "closed": {
+            "closed": "assets/face-36b212da1a499d4963db.png",
+            "small": "assets/face-abd05340a89eb12da349.png",
+            "medium": "assets/face-8451ac74f4e664a9114a.png"
+          }
+        },
+        "surprised": {
+          "open": {
+            "closed": "assets/face-4bc519374a3eef383c21.png",
+            "small": "assets/face-cec2b5c8090b04c808bc.png",
+            "medium": "assets/face-48c7b57a1e02c5a7c92a.png"
+          },
+          "half": {
+            "closed": "assets/face-02289ec611fb7e3a1c05.png",
+            "small": "assets/face-ccf5b98fcf647dbd92f3.png",
+            "medium": "assets/face-ed67b7373f617170b584.png"
+          },
+          "closed": {
+            "closed": "assets/face-e9cc0ffe381b7366a9aa.png",
+            "small": "assets/face-01f08b1853bb2b97b9fb.png",
+            "medium": "assets/face-569cda0756b0bcce4f34.png"
+          }
+        }
+      },
+      "sourceBody": "chi_a_@.png",
+      "sourceFaces": {
+        "neutral": "chi00a_@.png",
+        "serious": "chi01a_@.png",
+        "smile": "chi04a_@.png",
+        "surprised": "chi06a_@.png"
+      },
+      "faceSize": [
+        204,
+        154
+      ],
+      "speech": {
+        "mouth": [
+          224,
+          273
+        ],
+        "hairLeft": 54,
+        "hairRight": 375
+      }
+    },
+    "b/full": {
+      "width": 310,
+      "height": 606,
+      "body": "assets/body-b-full.png",
+      "faceOffset": [
+        101,
+        80
+      ],
+      "frames": {
+        "neutral": {
+          "open": {
+            "closed": "assets/face-bc1ad9cf6cf970bd43f7.png",
+            "small": "assets/face-ccf883fa5828e432da35.png",
+            "medium": "assets/face-38e2d47307afd11d9592.png"
+          },
+          "half": {
+            "closed": "assets/face-bf0f3cf618f6a1ef6f91.png",
+            "small": "assets/face-8b8291dfc9b53dea795b.png",
+            "medium": "assets/face-d1ec1c320a2d11e56fb5.png"
+          },
+          "closed": {
+            "closed": "assets/face-d1531182081f0f96832c.png",
+            "small": "assets/face-c0add5e74a7bea9a3ea3.png",
+            "medium": "assets/face-7dbb8cd2996a196c09c1.png"
+          }
+        },
+        "serious": {
+          "open": {
+            "closed": "assets/face-5e07dd9e23d3dcd3527b.png",
+            "small": "assets/face-cbd658bf12d9bcc7f57f.png",
+            "medium": "assets/face-4f32c0936417ce5ef7a2.png"
+          },
+          "half": {
+            "closed": "assets/face-e7f5669778d6d395161e.png",
+            "small": "assets/face-1b9b07d11874abd25dfd.png",
+            "medium": "assets/face-ee71a20c4ef7455c0854.png"
+          },
+          "closed": {
+            "closed": "assets/face-4f14f2c941731ecfc0b2.png",
+            "small": "assets/face-27940f94a18811f443c8.png",
+            "medium": "assets/face-97826185367a8c1425d4.png"
+          }
+        },
+        "smile": {
+          "open": {
+            "closed": "assets/face-0b24d1038376226d5569.png",
+            "small": "assets/face-80b27bec3bf05a02f01d.png",
+            "medium": "assets/face-b78ac3c30393133a521b.png"
+          },
+          "half": {
+            "closed": "assets/face-836be47c7e39cedcb101.png",
+            "small": "assets/face-d2105c724218506fd9ff.png",
+            "medium": "assets/face-e9ba05c9239c9fe9f7c7.png"
+          },
+          "closed": {
+            "closed": "assets/face-a7bae9aa0f25397a2969.png",
+            "small": "assets/face-d0e00abbaa9f17bf7cf7.png",
+            "medium": "assets/face-0774d50532fd69b906a2.png"
+          }
+        },
+        "surprised": {
+          "open": {
+            "closed": "assets/face-4596701f8ef63dd99e2d.png",
+            "small": "assets/face-b3d8aab8516078685756.png",
+            "medium": "assets/face-ec95fb83a38ca0bfdee2.png"
+          },
+          "half": {
+            "closed": "assets/face-e432084229f2619f0a72.png",
+            "small": "assets/face-5be4d395584ef5115e3f.png",
+            "medium": "assets/face-373768e18d708656721a.png"
+          },
+          "closed": {
+            "closed": "assets/face-58a90cc3dfe10b5fd3e0.png",
+            "small": "assets/face-a31aac340a0aba9f8f76.png",
+            "medium": "assets/face-3dce57485ff6dbd5c11e.png"
+          }
+        }
+      },
+      "sourceBody": "chi_b.png",
+      "sourceFaces": {
+        "neutral": "chi00b.png",
+        "serious": "chi01b.png",
+        "smile": "chi04b.png",
+        "surprised": "chi06b.png"
+      },
+      "faceSize": [
+        114,
+        100
+      ],
+      "speech": {
+        "mouth": [
+          160,
+          159
+        ],
+        "hairLeft": 63,
+        "hairRight": 242
+      }
+    },
+    "b/close": {
+      "width": 508,
+      "height": 670,
+      "body": "assets/body-b-close.png",
+      "faceOffset": [
+        163,
+        130
+      ],
+      "frames": {
+        "neutral": {
+          "open": {
+            "closed": "assets/face-0c1ebffa487185d05773.png",
+            "small": "assets/face-3f3a20c71fa0414dc5e1.png",
+            "medium": "assets/face-f939ea9388e5ca2630bb.png"
+          },
+          "half": {
+            "closed": "assets/face-3064f7b4c0a747bbab6e.png",
+            "small": "assets/face-f23620ce7c9c294dbeb6.png",
+            "medium": "assets/face-00ffe988005f3a0bd9a7.png"
+          },
+          "closed": {
+            "closed": "assets/face-007aee2ad93d96538f4c.png",
+            "small": "assets/face-02be33204c6db4c3f494.png",
+            "medium": "assets/face-92658d9c002b96b96755.png"
+          }
+        },
+        "serious": {
+          "open": {
+            "closed": "assets/face-9587004a85db027d45ce.png",
+            "small": "assets/face-57a556b7e0d6bdd6f9bb.png",
+            "medium": "assets/face-ef619245d8f437c7654f.png"
+          },
+          "half": {
+            "closed": "assets/face-fa02c10526eece133de3.png",
+            "small": "assets/face-146c4d50ea23c445b627.png",
+            "medium": "assets/face-e6c24b04d30120e46947.png"
+          },
+          "closed": {
+            "closed": "assets/face-b6ff9f6c8fb902b64749.png",
+            "small": "assets/face-715fdcedafd4ec70d14e.png",
+            "medium": "assets/face-1b7fe0823d936ea3ecac.png"
+          }
+        },
+        "smile": {
+          "open": {
+            "closed": "assets/face-317dba9d2c1180304348.png",
+            "small": "assets/face-7cc4b871c7532c78be96.png",
+            "medium": "assets/face-08629feca53a0ad22d3f.png"
+          },
+          "half": {
+            "closed": "assets/face-39c9a83ea9c29b32966f.png",
+            "small": "assets/face-d6e8325e7b5233720a2b.png",
+            "medium": "assets/face-d1e75148b4705f0244e5.png"
+          },
+          "closed": {
+            "closed": "assets/face-1df2f53412248a3e347d.png",
+            "small": "assets/face-b56f6874a7e2514c8b0e.png",
+            "medium": "assets/face-b3b98800f80979e1e5ba.png"
+          }
+        },
+        "surprised": {
+          "open": {
+            "closed": "assets/face-70ab8155de5a86b6ad9b.png",
+            "small": "assets/face-30408e26c107f3c2ff80.png",
+            "medium": "assets/face-ea899acc20b4dc95ddfa.png"
+          },
+          "half": {
+            "closed": "assets/face-8c13d1ec79776968db95.png",
+            "small": "assets/face-89f64bc43adfc7e87354.png",
+            "medium": "assets/face-844cd42ce32c75df10a8.png"
+          },
+          "closed": {
+            "closed": "assets/face-923bec274eda349d7ebf.png",
+            "small": "assets/face-da7baea5d89475884bcb.png",
+            "medium": "assets/face-dbc36bc80cf119d75ccf.png"
+          }
+        }
+      },
+      "sourceBody": "chi_b@.png",
+      "sourceFaces": {
+        "neutral": "chi00b@.png",
+        "serious": "chi01b@.png",
+        "smile": "chi04b@.png",
+        "surprised": "chi06b@.png"
+      },
+      "faceSize": [
+        203,
+        183
+      ],
+      "speech": {
+        "mouth": [
+          267,
+          267
+        ],
+        "hairLeft": 102,
+        "hairRight": 412
+      }
+    },
+    "b_/full": {
+      "width": 310,
+      "height": 606,
+      "body": "assets/body-b_-full.png",
+      "faceOffset": [
+        101,
+        80
+      ],
+      "frames": {
+        "neutral": {
+          "open": {
+            "closed": "assets/face-bc1ad9cf6cf970bd43f7.png",
+            "small": "assets/face-ccf883fa5828e432da35.png",
+            "medium": "assets/face-38e2d47307afd11d9592.png"
+          },
+          "half": {
+            "closed": "assets/face-bf0f3cf618f6a1ef6f91.png",
+            "small": "assets/face-8b8291dfc9b53dea795b.png",
+            "medium": "assets/face-d1ec1c320a2d11e56fb5.png"
+          },
+          "closed": {
+            "closed": "assets/face-d1531182081f0f96832c.png",
+            "small": "assets/face-c0add5e74a7bea9a3ea3.png",
+            "medium": "assets/face-7dbb8cd2996a196c09c1.png"
+          }
+        },
+        "serious": {
+          "open": {
+            "closed": "assets/face-5e07dd9e23d3dcd3527b.png",
+            "small": "assets/face-cbd658bf12d9bcc7f57f.png",
+            "medium": "assets/face-4f32c0936417ce5ef7a2.png"
+          },
+          "half": {
+            "closed": "assets/face-e7f5669778d6d395161e.png",
+            "small": "assets/face-1b9b07d11874abd25dfd.png",
+            "medium": "assets/face-ee71a20c4ef7455c0854.png"
+          },
+          "closed": {
+            "closed": "assets/face-4f14f2c941731ecfc0b2.png",
+            "small": "assets/face-27940f94a18811f443c8.png",
+            "medium": "assets/face-97826185367a8c1425d4.png"
+          }
+        },
+        "smile": {
+          "open": {
+            "closed": "assets/face-0b24d1038376226d5569.png",
+            "small": "assets/face-80b27bec3bf05a02f01d.png",
+            "medium": "assets/face-b78ac3c30393133a521b.png"
+          },
+          "half": {
+            "closed": "assets/face-836be47c7e39cedcb101.png",
+            "small": "assets/face-d2105c724218506fd9ff.png",
+            "medium": "assets/face-e9ba05c9239c9fe9f7c7.png"
+          },
+          "closed": {
+            "closed": "assets/face-a7bae9aa0f25397a2969.png",
+            "small": "assets/face-d0e00abbaa9f17bf7cf7.png",
+            "medium": "assets/face-0774d50532fd69b906a2.png"
+          }
+        },
+        "surprised": {
+          "open": {
+            "closed": "assets/face-4596701f8ef63dd99e2d.png",
+            "small": "assets/face-b3d8aab8516078685756.png",
+            "medium": "assets/face-ec95fb83a38ca0bfdee2.png"
+          },
+          "half": {
+            "closed": "assets/face-e432084229f2619f0a72.png",
+            "small": "assets/face-5be4d395584ef5115e3f.png",
+            "medium": "assets/face-373768e18d708656721a.png"
+          },
+          "closed": {
+            "closed": "assets/face-58a90cc3dfe10b5fd3e0.png",
+            "small": "assets/face-a31aac340a0aba9f8f76.png",
+            "medium": "assets/face-3dce57485ff6dbd5c11e.png"
+          }
+        }
+      },
+      "sourceBody": "chi_b_.png",
+      "sourceFaces": {
+        "neutral": "chi00b_.png",
+        "serious": "chi01b_.png",
+        "smile": "chi04b_.png",
+        "surprised": "chi06b_.png"
+      },
+      "faceSize": [
+        114,
+        100
+      ],
+      "speech": {
+        "mouth": [
+          160,
+          159
+        ],
+        "hairLeft": 63,
+        "hairRight": 242
+      }
+    },
+    "b_/close": {
+      "width": 508,
+      "height": 670,
+      "body": "assets/body-b_-close.png",
+      "faceOffset": [
+        163,
+        130
+      ],
+      "frames": {
+        "neutral": {
+          "open": {
+            "closed": "assets/face-0c1ebffa487185d05773.png",
+            "small": "assets/face-3f3a20c71fa0414dc5e1.png",
+            "medium": "assets/face-f939ea9388e5ca2630bb.png"
+          },
+          "half": {
+            "closed": "assets/face-3064f7b4c0a747bbab6e.png",
+            "small": "assets/face-f23620ce7c9c294dbeb6.png",
+            "medium": "assets/face-00ffe988005f3a0bd9a7.png"
+          },
+          "closed": {
+            "closed": "assets/face-007aee2ad93d96538f4c.png",
+            "small": "assets/face-02be33204c6db4c3f494.png",
+            "medium": "assets/face-92658d9c002b96b96755.png"
+          }
+        },
+        "serious": {
+          "open": {
+            "closed": "assets/face-9587004a85db027d45ce.png",
+            "small": "assets/face-57a556b7e0d6bdd6f9bb.png",
+            "medium": "assets/face-ef619245d8f437c7654f.png"
+          },
+          "half": {
+            "closed": "assets/face-fa02c10526eece133de3.png",
+            "small": "assets/face-146c4d50ea23c445b627.png",
+            "medium": "assets/face-e6c24b04d30120e46947.png"
+          },
+          "closed": {
+            "closed": "assets/face-b6ff9f6c8fb902b64749.png",
+            "small": "assets/face-715fdcedafd4ec70d14e.png",
+            "medium": "assets/face-1b7fe0823d936ea3ecac.png"
+          }
+        },
+        "smile": {
+          "open": {
+            "closed": "assets/face-317dba9d2c1180304348.png",
+            "small": "assets/face-7cc4b871c7532c78be96.png",
+            "medium": "assets/face-08629feca53a0ad22d3f.png"
+          },
+          "half": {
+            "closed": "assets/face-39c9a83ea9c29b32966f.png",
+            "small": "assets/face-d6e8325e7b5233720a2b.png",
+            "medium": "assets/face-d1e75148b4705f0244e5.png"
+          },
+          "closed": {
+            "closed": "assets/face-1df2f53412248a3e347d.png",
+            "small": "assets/face-b56f6874a7e2514c8b0e.png",
+            "medium": "assets/face-b3b98800f80979e1e5ba.png"
+          }
+        },
+        "surprised": {
+          "open": {
+            "closed": "assets/face-70ab8155de5a86b6ad9b.png",
+            "small": "assets/face-30408e26c107f3c2ff80.png",
+            "medium": "assets/face-ea899acc20b4dc95ddfa.png"
+          },
+          "half": {
+            "closed": "assets/face-8c13d1ec79776968db95.png",
+            "small": "assets/face-89f64bc43adfc7e87354.png",
+            "medium": "assets/face-844cd42ce32c75df10a8.png"
+          },
+          "closed": {
+            "closed": "assets/face-923bec274eda349d7ebf.png",
+            "small": "assets/face-da7baea5d89475884bcb.png",
+            "medium": "assets/face-dbc36bc80cf119d75ccf.png"
+          }
+        }
+      },
+      "sourceBody": "chi_b_@.png",
+      "sourceFaces": {
+        "neutral": "chi00b_@.png",
+        "serious": "chi01b_@.png",
+        "smile": "chi04b_@.png",
+        "surprised": "chi06b_@.png"
+      },
+      "faceSize": [
+        203,
+        183
+      ],
+      "speech": {
+        "mouth": [
+          267,
+          267
+        ],
+        "hairLeft": 102,
+        "hairRight": 412
+      }
+    },
+    "c/full": {
+      "width": 268,
+      "height": 606,
+      "body": "assets/body-c-full.png",
+      "faceOffset": [
+        79,
+        76
+      ],
+      "frames": {
+        "neutral": {
+          "open": {
+            "closed": "assets/face-f344a75365d603825844.png",
+            "small": "assets/face-a654ba4228d6ebb22014.png",
+            "medium": "assets/face-842624a2edc3d405fc86.png"
+          },
+          "half": {
+            "closed": "assets/face-7191ecea9e3e2075b1ac.png",
+            "small": "assets/face-fd1c34e4bde61f276802.png",
+            "medium": "assets/face-969621d42eea48dde707.png"
+          },
+          "closed": {
+            "closed": "assets/face-409ecc55081f565d2c6d.png",
+            "small": "assets/face-1bdfa44558c30efc6d35.png",
+            "medium": "assets/face-c7833292f3964fdbf38d.png"
+          }
+        },
+        "serious": {
+          "open": {
+            "closed": "assets/face-25102385eafcf35d0a39.png",
+            "small": "assets/face-45581629450954940531.png",
+            "medium": "assets/face-50ca38348b214f21fc2b.png"
+          },
+          "half": {
+            "closed": "assets/face-e8fdfd59013f02c48124.png",
+            "small": "assets/face-1664686d10b38d340e1e.png",
+            "medium": "assets/face-d44d59f9b3ffa8328a2c.png"
+          },
+          "closed": {
+            "closed": "assets/face-12f913e2f1cc235c6520.png",
+            "small": "assets/face-fe7769778cc45a4c13f3.png",
+            "medium": "assets/face-2b03f2e68850e9c377a5.png"
+          }
+        },
+        "smile": {
+          "open": {
+            "closed": "assets/face-f485dcc9336188bba774.png",
+            "small": "assets/face-6529d8b53f0a1c1cfe88.png",
+            "medium": "assets/face-2055f69a31dabebaac75.png"
+          },
+          "half": {
+            "closed": "assets/face-f485dcc9336188bba774.png",
+            "small": "assets/face-6529d8b53f0a1c1cfe88.png",
+            "medium": "assets/face-2055f69a31dabebaac75.png"
+          },
+          "closed": {
+            "closed": "assets/face-f485dcc9336188bba774.png",
+            "small": "assets/face-6529d8b53f0a1c1cfe88.png",
+            "medium": "assets/face-2055f69a31dabebaac75.png"
+          }
+        },
+        "surprised": {
+          "open": {
+            "closed": "assets/face-84aa5e0d831e10b4ec37.png",
+            "small": "assets/face-f602ee4606169efcbdf2.png",
+            "medium": "assets/face-3cbe13bebbf992e7eb9d.png"
+          },
+          "half": {
+            "closed": "assets/face-4d9e4b14af75aae2c7bc.png",
+            "small": "assets/face-d339a1b416a278cee802.png",
+            "medium": "assets/face-49d9cab01e715aa64d12.png"
+          },
+          "closed": {
+            "closed": "assets/face-cb9f691092d6896d6640.png",
+            "small": "assets/face-2a476177512504ccc7e9.png",
+            "medium": "assets/face-90a2a935b08931f49e3a.png"
+          }
+        }
+      },
+      "sourceBody": "chi_c.png",
+      "sourceFaces": {
+        "neutral": "chi00c.png",
+        "serious": "chi01c.png",
+        "smile": "chi04c.png",
+        "surprised": "chi06c.png"
+      },
+      "faceSize": [
+        122,
+        104
+      ],
+      "speech": {
+        "mouth": [
+          133,
+          160
+        ],
+        "hairLeft": 34,
+        "hairRight": 213
+      }
+    },
+    "c/close": {
+      "width": 454,
+      "height": 670,
+      "body": "assets/body-c-close.png",
+      "faceOffset": [
+        120,
+        149
+      ],
+      "frames": {
+        "neutral": {
+          "open": {
+            "closed": "assets/face-f613653a4da263f97fc2.png",
+            "small": "assets/face-5dd9af2c734cb51400da.png",
+            "medium": "assets/face-6567c0405c31a196860e.png"
+          },
+          "half": {
+            "closed": "assets/face-efdaea29cf9b69cc0ff3.png",
+            "small": "assets/face-9d09dcff7c73dedc0cbd.png",
+            "medium": "assets/face-314d98f4153f1225acdc.png"
+          },
+          "closed": {
+            "closed": "assets/face-a1fd8150fa392ecaa5a9.png",
+            "small": "assets/face-59fea8b0e7d03c1ac8bd.png",
+            "medium": "assets/face-5985a53470898423d1c6.png"
+          }
+        },
+        "serious": {
+          "open": {
+            "closed": "assets/face-7f6a0dc1836d0a65e210.png",
+            "small": "assets/face-4958d9853b1b2fb5b42f.png",
+            "medium": "assets/face-021d48356aff4d3b00a8.png"
+          },
+          "half": {
+            "closed": "assets/face-33173ff2364bdb297302.png",
+            "small": "assets/face-cd431bcff007ca3eebe3.png",
+            "medium": "assets/face-57c7a1af41ada756d826.png"
+          },
+          "closed": {
+            "closed": "assets/face-b44a0e3b8b0ceb2150dc.png",
+            "small": "assets/face-0b2cc52ae12b02e4a172.png",
+            "medium": "assets/face-36eec67e962cf14ce60a.png"
+          }
+        },
+        "smile": {
+          "open": {
+            "closed": "assets/face-0f1aec439bf474a20ef5.png",
+            "small": "assets/face-563a09b614d725558ad2.png",
+            "medium": "assets/face-73bbd5b028ab0e43a0c4.png"
+          },
+          "half": {
+            "closed": "assets/face-0f1aec439bf474a20ef5.png",
+            "small": "assets/face-563a09b614d725558ad2.png",
+            "medium": "assets/face-73bbd5b028ab0e43a0c4.png"
+          },
+          "closed": {
+            "closed": "assets/face-0f1aec439bf474a20ef5.png",
+            "small": "assets/face-563a09b614d725558ad2.png",
+            "medium": "assets/face-73bbd5b028ab0e43a0c4.png"
+          }
+        },
+        "surprised": {
+          "open": {
+            "closed": "assets/face-b9795583766de4b35d00.png",
+            "small": "assets/face-1c44591a216ce399fd5e.png",
+            "medium": "assets/face-86d8632b06cc8d80cb11.png"
+          },
+          "half": {
+            "closed": "assets/face-840bfa596afbc5085160.png",
+            "small": "assets/face-61560dddfb33a814f2a0.png",
+            "medium": "assets/face-e348a11c2c1770f6bc75.png"
+          },
+          "closed": {
+            "closed": "assets/face-3caff582c5dabf930873.png",
+            "small": "assets/face-e215c7af53f950943744.png",
+            "medium": "assets/face-b5971bcf225d49b28d30.png"
+          }
+        }
+      },
+      "sourceBody": "chi_c@.png",
+      "sourceFaces": {
+        "neutral": "chi00c@.png",
+        "serious": "chi01c@.png",
+        "smile": "chi04c@.png",
+        "surprised": "chi06c@.png"
+      },
+      "faceSize": [
+        204,
+        154
+      ],
+      "speech": {
+        "mouth": [
+          224,
+          273
+        ],
+        "hairLeft": 54,
+        "hairRight": 375
+      }
+    },
+    "d/full": {
+      "width": 268,
+      "height": 606,
+      "body": "assets/body-d-full.png",
+      "faceOffset": [
+        79,
+        76
+      ],
+      "frames": {
+        "neutral": {
+          "open": {
+            "closed": "assets/face-b9c0354ca21153ce945b.png",
+            "small": "assets/face-b342522228cc2bae45eb.png",
+            "medium": "assets/face-7e835007fd0fc77580f1.png"
+          },
+          "half": {
+            "closed": "assets/face-afbea09ba37b3f6dcbda.png",
+            "small": "assets/face-dfbdd7f27616dea1769d.png",
+            "medium": "assets/face-e0bee29aeda4188de95f.png"
+          },
+          "closed": {
+            "closed": "assets/face-37ce5b7ec41ce32297b3.png",
+            "small": "assets/face-1a20d0304fe3cea98232.png",
+            "medium": "assets/face-8b503d55148b9f6f01c9.png"
+          }
+        },
+        "serious": {
+          "open": {
+            "closed": "assets/face-3e064a0e14d172c0cd8a.png",
+            "small": "assets/face-783fce805d4ff768dbd7.png",
+            "medium": "assets/face-711fe0e18dc90a60c8b7.png"
+          },
+          "half": {
+            "closed": "assets/face-d28372be5c90013c7c88.png",
+            "small": "assets/face-030462281fccd80ff345.png",
+            "medium": "assets/face-8c8b06ea7276df1d15ac.png"
+          },
+          "closed": {
+            "closed": "assets/face-4e32275cdc947c5aac2e.png",
+            "small": "assets/face-f407fedc207a9b1995dc.png",
+            "medium": "assets/face-bbd7d554180f2eb3e4cc.png"
+          }
+        },
+        "smile": {
+          "open": {
+            "closed": "assets/face-ad841e0c2b5c17826eb2.png",
+            "small": "assets/face-9ebba37b33e788c61a33.png",
+            "medium": "assets/face-eebd870e63290ab5746f.png"
+          },
+          "half": {
+            "closed": "assets/face-ad841e0c2b5c17826eb2.png",
+            "small": "assets/face-9ebba37b33e788c61a33.png",
+            "medium": "assets/face-eebd870e63290ab5746f.png"
+          },
+          "closed": {
+            "closed": "assets/face-ad841e0c2b5c17826eb2.png",
+            "small": "assets/face-9ebba37b33e788c61a33.png",
+            "medium": "assets/face-eebd870e63290ab5746f.png"
+          }
+        },
+        "surprised": {
+          "open": {
+            "closed": "assets/face-d246bf2e4d0048226878.png",
+            "small": "assets/face-4167325079b90edf25e2.png",
+            "medium": "assets/face-65e96f2b11ffff7c4548.png"
+          },
+          "half": {
+            "closed": "assets/face-6797186fb2ed9ee376a4.png",
+            "small": "assets/face-bb73bb9f21878e304af0.png",
+            "medium": "assets/face-2643087ec8113e47fbaf.png"
+          },
+          "closed": {
+            "closed": "assets/face-18baa6c97f034c290dc1.png",
+            "small": "assets/face-60955bea1a3d807ec80d.png",
+            "medium": "assets/face-a9d07aede387b70464ec.png"
+          }
+        }
+      },
+      "sourceBody": "chi_d.png",
+      "sourceFaces": {
+        "neutral": "chi00d.png",
+        "serious": "chi01d.png",
+        "smile": "chi04d.png",
+        "surprised": "chi06d.png"
+      },
+      "faceSize": [
+        122,
+        104
+      ],
+      "speech": {
+        "mouth": [
+          133,
+          160
+        ],
+        "hairLeft": 34,
+        "hairRight": 213
+      }
+    },
+    "d/close": {
+      "width": 454,
+      "height": 670,
+      "body": "assets/body-d-close.png",
+      "faceOffset": [
+        120,
+        149
+      ],
+      "frames": {
+        "neutral": {
+          "open": {
+            "closed": "assets/face-f0b6d89cf225e3407da9.png",
+            "small": "assets/face-60e8521929193d218439.png",
+            "medium": "assets/face-c7016b700267f079504f.png"
+          },
+          "half": {
+            "closed": "assets/face-6cbfd20c85a0c092fcf5.png",
+            "small": "assets/face-0d03615d274a8c94de64.png",
+            "medium": "assets/face-18f5ca86906481beaadc.png"
+          },
+          "closed": {
+            "closed": "assets/face-c14f137a1ae9c9dd4fef.png",
+            "small": "assets/face-db7898ac3d65d8f0c03a.png",
+            "medium": "assets/face-acc118bb7846e921f439.png"
+          }
+        },
+        "serious": {
+          "open": {
+            "closed": "assets/face-b85abb725be4c9224596.png",
+            "small": "assets/face-736a599e37945dbd2579.png",
+            "medium": "assets/face-64bb44b067415205a3f4.png"
+          },
+          "half": {
+            "closed": "assets/face-e3b1930e6f70d68feb55.png",
+            "small": "assets/face-a83743dc650ccd31780c.png",
+            "medium": "assets/face-6da4e8363ad7c0b91b8a.png"
+          },
+          "closed": {
+            "closed": "assets/face-4438e05582b3c3d2928f.png",
+            "small": "assets/face-260d08ccc3f04221dacb.png",
+            "medium": "assets/face-70cac1fe0363007905cd.png"
+          }
+        },
+        "smile": {
+          "open": {
+            "closed": "assets/face-d4284aa9b7dbd0913e8f.png",
+            "small": "assets/face-155e69738486d10b880a.png",
+            "medium": "assets/face-26d1e33ec7fb6b5269db.png"
+          },
+          "half": {
+            "closed": "assets/face-d4284aa9b7dbd0913e8f.png",
+            "small": "assets/face-155e69738486d10b880a.png",
+            "medium": "assets/face-26d1e33ec7fb6b5269db.png"
+          },
+          "closed": {
+            "closed": "assets/face-d4284aa9b7dbd0913e8f.png",
+            "small": "assets/face-155e69738486d10b880a.png",
+            "medium": "assets/face-26d1e33ec7fb6b5269db.png"
+          }
+        },
+        "surprised": {
+          "open": {
+            "closed": "assets/face-b03cc3f0377c4721c5e4.png",
+            "small": "assets/face-a35ebf03c07ad5c3f751.png",
+            "medium": "assets/face-ddc138f720cb562b8b12.png"
+          },
+          "half": {
+            "closed": "assets/face-dfafed974a09acbdec69.png",
+            "small": "assets/face-bbed1c1660bfed5429d9.png",
+            "medium": "assets/face-9bc62d5eceeba239d7f9.png"
+          },
+          "closed": {
+            "closed": "assets/face-4cfe1e010b0f333bcddb.png",
+            "small": "assets/face-62adbd5ab1453f29334b.png",
+            "medium": "assets/face-5fb01c7fd73442c57f20.png"
+          }
+        }
+      },
+      "sourceBody": "chi_d@.png",
+      "sourceFaces": {
+        "neutral": "chi00d@.png",
+        "serious": "chi01d@.png",
+        "smile": "chi04d@.png",
+        "surprised": "chi06d@.png"
+      },
+      "faceSize": [
+        204,
+        154
+      ],
+      "speech": {
+        "mouth": [
+          224,
+          273
+        ],
+        "hairLeft": 54,
+        "hairRight": 375
+      }
+    },
+    "e/full": {
+      "width": 268,
+      "height": 606,
+      "body": "assets/body-e-full.png",
+      "faceOffset": [
+        79,
+        76
+      ],
+      "frames": {
+        "neutral": {
+          "open": {
+            "closed": "assets/face-6c6d181c3e6325eb8b15.png",
+            "small": "assets/face-18f87c536e6ba4bf85ac.png",
+            "medium": "assets/face-da8aed546bb36f29d281.png"
+          },
+          "half": {
+            "closed": "assets/face-da2485c72ad8791609af.png",
+            "small": "assets/face-cb9b62998f6aadd7cdcd.png",
+            "medium": "assets/face-0bba2703c27c1efb432a.png"
+          },
+          "closed": {
+            "closed": "assets/face-0e9041ac964461fb37bd.png",
+            "small": "assets/face-65a642eb391b540cdae7.png",
+            "medium": "assets/face-af0b6f25920daf327941.png"
+          }
+        },
+        "serious": {
+          "open": {
+            "closed": "assets/face-fd4a9bd310b6253c830d.png",
+            "small": "assets/face-928b3fbb35c3eba6e516.png",
+            "medium": "assets/face-a909ea30685a5a763c5f.png"
+          },
+          "half": {
+            "closed": "assets/face-31e98f4241dc99e6c703.png",
+            "small": "assets/face-bcab420fd66dce97159b.png",
+            "medium": "assets/face-002f4389f8e47493218e.png"
+          },
+          "closed": {
+            "closed": "assets/face-826c29e1f1cf2f1bfd93.png",
+            "small": "assets/face-adc80b7904a9bc5d66fd.png",
+            "medium": "assets/face-292ef0834d287dc1778a.png"
+          }
+        },
+        "smile": {
+          "open": {
+            "closed": "assets/face-6558d53f1c4f6a1111f2.png",
+            "small": "assets/face-5a2b706478c9ead4e06a.png",
+            "medium": "assets/face-34dfeed8a122c48b131a.png"
+          },
+          "half": {
+            "closed": "assets/face-6558d53f1c4f6a1111f2.png",
+            "small": "assets/face-5a2b706478c9ead4e06a.png",
+            "medium": "assets/face-34dfeed8a122c48b131a.png"
+          },
+          "closed": {
+            "closed": "assets/face-6558d53f1c4f6a1111f2.png",
+            "small": "assets/face-5a2b706478c9ead4e06a.png",
+            "medium": "assets/face-34dfeed8a122c48b131a.png"
+          }
+        },
+        "surprised": {
+          "open": {
+            "closed": "assets/face-d74ec9ac54e3909abeee.png",
+            "small": "assets/face-832252cf6a664c689f58.png",
+            "medium": "assets/face-c4f02ca22fe100369324.png"
+          },
+          "half": {
+            "closed": "assets/face-c93cec65f81058987a73.png",
+            "small": "assets/face-cba1051b4bcba0c51ae7.png",
+            "medium": "assets/face-b5ec07a7083cdb5bb270.png"
+          },
+          "closed": {
+            "closed": "assets/face-cd90ee4d1b406f7aeeab.png",
+            "small": "assets/face-1b31631f02ff82e9073e.png",
+            "medium": "assets/face-3889aebd07c70d412a94.png"
+          }
+        }
+      },
+      "sourceBody": "chi_e.png",
+      "sourceFaces": {
+        "neutral": "chi00e.png",
+        "serious": "chi01e.png",
+        "smile": "chi04e.png",
+        "surprised": "chi06e.png"
+      },
+      "faceSize": [
+        122,
+        104
+      ],
+      "speech": {
+        "mouth": [
+          133,
+          160
+        ],
+        "hairLeft": 34,
+        "hairRight": 213
+      }
+    },
+    "e/close": {
+      "width": 454,
+      "height": 670,
+      "body": "assets/body-e-close.png",
+      "faceOffset": [
+        120,
+        149
+      ],
+      "frames": {
+        "neutral": {
+          "open": {
+            "closed": "assets/face-6fc69d9952338c3d432e.png",
+            "small": "assets/face-ece14ef039dcd634d293.png",
+            "medium": "assets/face-30533300eaf6c452a071.png"
+          },
+          "half": {
+            "closed": "assets/face-1917ef3c45658af1f8d9.png",
+            "small": "assets/face-ea5d196d5fcf26cdfa39.png",
+            "medium": "assets/face-dcf419b2432bef5db84d.png"
+          },
+          "closed": {
+            "closed": "assets/face-0dc399602f9f66700f7a.png",
+            "small": "assets/face-860511b70afe36450da1.png",
+            "medium": "assets/face-bb1d3b212bd3a1f2d7e0.png"
+          }
+        },
+        "serious": {
+          "open": {
+            "closed": "assets/face-e1b85fc6fb2d2ec999be.png",
+            "small": "assets/face-3e3faffdf9f4cacb1b82.png",
+            "medium": "assets/face-b547bf3a25bd5d793c07.png"
+          },
+          "half": {
+            "closed": "assets/face-66b8e3ba96fa0f4c9c95.png",
+            "small": "assets/face-49d02b63ae72db1d6e03.png",
+            "medium": "assets/face-4f00578387eabef8fae1.png"
+          },
+          "closed": {
+            "closed": "assets/face-002e134c6b2b43d0b400.png",
+            "small": "assets/face-320f2e877a731c511a5a.png",
+            "medium": "assets/face-7e30cd85284922f80827.png"
+          }
+        },
+        "smile": {
+          "open": {
+            "closed": "assets/face-b469afc4cd756c3f9e9a.png",
+            "small": "assets/face-d62e4a33bfdce826e5ef.png",
+            "medium": "assets/face-961dcf9a8f6ecddf09f2.png"
+          },
+          "half": {
+            "closed": "assets/face-b469afc4cd756c3f9e9a.png",
+            "small": "assets/face-d62e4a33bfdce826e5ef.png",
+            "medium": "assets/face-961dcf9a8f6ecddf09f2.png"
+          },
+          "closed": {
+            "closed": "assets/face-b469afc4cd756c3f9e9a.png",
+            "small": "assets/face-d62e4a33bfdce826e5ef.png",
+            "medium": "assets/face-961dcf9a8f6ecddf09f2.png"
+          }
+        },
+        "surprised": {
+          "open": {
+            "closed": "assets/face-23ddb5dccb1778e992b3.png",
+            "small": "assets/face-221f12dc929ccb9ea2d0.png",
+            "medium": "assets/face-ef2c4d0dca57e5c8663a.png"
+          },
+          "half": {
+            "closed": "assets/face-258c4e84c46f857524db.png",
+            "small": "assets/face-d8ae53276e40129a6e6e.png",
+            "medium": "assets/face-efb549caa59087027926.png"
+          },
+          "closed": {
+            "closed": "assets/face-0b195932da240f0dfdf2.png",
+            "small": "assets/face-4f08d7221a06c3e241a1.png",
+            "medium": "assets/face-906893911e59ae4dde3e.png"
+          }
+        }
+      },
+      "sourceBody": "chi_e@.png",
+      "sourceFaces": {
+        "neutral": "chi00e@.png",
+        "serious": "chi01e@.png",
+        "smile": "chi04e@.png",
+        "surprised": "chi06e@.png"
+      },
+      "faceSize": [
+        204,
+        154
+      ],
+      "speech": {
+        "mouth": [
+          224,
+          273
+        ],
+        "hairLeft": 54,
+        "hairRight": 375
+      }
+    }
+  },
+  "notes": [
+    "保留原游戏立绘；AI 辅助补充局部眼部与嘴型。",
+    "自然眨眼为补画帧；正面微笑沿用原画的闭眼笑。",
+    "正面说话嘴型取自原画差分，侧身说话嘴型使用 AI 局部补画。",
+    "当前为无声口型演示，并非语音同步或 Live2D 模型。",
+    "七套近景头顶已补全；画布上方增加 64 像素，原有身体像素不变，脸部与嘴部坐标同步下移。原图另存，不打包进应用。"
+  ],
+  "provenance": {
+    "tool": "built-in image_gen",
+    "aiSheets": [
+      "front-sheet.png",
+      "side-sheet.png"
+    ],
+    "prompts": "Prompts retained in the reviewed preview source archive; not required at runtime.",
+    "method": "Only registered eye and mouth regions are composited. Original alpha is retained. Sheet backgrounds are discarded.",
+    "sources": {
+      "chi00a.png": "2f63269f5ece92aa9135633ebefc8fd3db203c7081c7a59f3208f519e180e04b",
+      "chi00a@.png": "0d479d6e1eca514440c2736f91da5eeb174a43fb89385d8e59970ccb2865474c",
+      "chi00a_.png": "2f63269f5ece92aa9135633ebefc8fd3db203c7081c7a59f3208f519e180e04b",
+      "chi00a_@.png": "0d479d6e1eca514440c2736f91da5eeb174a43fb89385d8e59970ccb2865474c",
+      "chi00b.png": "aea16b05bac51c431f9ce63b337b4fe6b4e183d1ecca73622130fc150a2bec9a",
+      "chi00b@.png": "c84e9d394b4434ec42c2a9c70525c49e8d242b1720c21c44752ce3f163a36273",
+      "chi00b_.png": "aea16b05bac51c431f9ce63b337b4fe6b4e183d1ecca73622130fc150a2bec9a",
+      "chi00b_@.png": "c84e9d394b4434ec42c2a9c70525c49e8d242b1720c21c44752ce3f163a36273",
+      "chi00c.png": "209b1fe474cf6461727d91976a4b52d63568ae232fd67f3a21e75bd4abba2a85",
+      "chi00c@.png": "bafe4b7d5d2dadd9dd6cce0df694254a84182d7d8e733bc58a7eda03924e02ec",
+      "chi00d.png": "7e6094a6ab5f1b3c15d3fda6856003d570e38dd7fe37480a9676c5d21fc5a865",
+      "chi00d@.png": "a8965703b1f6500e0c782246ba3b81ea6c4ad15cf090253c5b88cc46aed18010",
+      "chi00e.png": "f054ef4d02a6f46c31a3acbb33b55c9773c2396308b25548b2011d28195ee587",
+      "chi00e@.png": "c06486e43861cdb3a6677a263d1fa3f7934ad3a49002164dd5ff6342da424bd7",
+      "chi01a.png": "66b6690dfeedd20b09e1f1d55528e1661348068b9d4bb5565c4d7d25faf762e3",
+      "chi01a@.png": "ed455eeada97a7ce863f3ed0d47989e9ac0a5ebab7818e75d99f524d5958d505",
+      "chi01a_.png": "66b6690dfeedd20b09e1f1d55528e1661348068b9d4bb5565c4d7d25faf762e3",
+      "chi01a_@.png": "ed455eeada97a7ce863f3ed0d47989e9ac0a5ebab7818e75d99f524d5958d505",
+      "chi01b.png": "bcc7afaaa11fe88c96eb907d16a9354611e3f503aa04253fdc08c11197b2f0c3",
+      "chi01b@.png": "c71b1d3dfd250c37c37f50cbd473d31ee6dc2ad0305ccf61fe6b11d0be439312",
+      "chi01b_.png": "bcc7afaaa11fe88c96eb907d16a9354611e3f503aa04253fdc08c11197b2f0c3",
+      "chi01b_@.png": "c71b1d3dfd250c37c37f50cbd473d31ee6dc2ad0305ccf61fe6b11d0be439312",
+      "chi01c.png": "5d2bf0609bfc23f3a07fdc69082cbec59449a9b9fc57b420e2149c66f2e7d418",
+      "chi01c@.png": "edfd4923f299e5169ef22f7087b44a8b8f1bdc7fff22f1c5150a05f35c3be2a6",
+      "chi01d.png": "42ae869dd78110dd43b1bc8f998a0004cc38fb8959230a02ffa436d63821d96d",
+      "chi01d@.png": "f9646215b2efea772f0f78de3489616691437d9c7974647798bdabea2053a503",
+      "chi01e.png": "dce64592d461d203d571cecca5107d691bd16ac2aac86f332a5f99febece7312",
+      "chi01e@.png": "94c685e63bde725313b92b556698b4fb7a8cbc45537f390321dfa8dc0add985d",
+      "chi02a.png": "3aee68b0acd5d1571a909499a2937eec2fb8a705f3daadb81cb7fac6670c6364",
+      "chi02a@.png": "505e6dfcd9e2eb2e227802b4bcae05500019af87f451378d70749a11038c978b",
+      "chi02a_.png": "3aee68b0acd5d1571a909499a2937eec2fb8a705f3daadb81cb7fac6670c6364",
+      "chi02a_@.png": "505e6dfcd9e2eb2e227802b4bcae05500019af87f451378d70749a11038c978b",
+      "chi02b.png": "c8a4e44ff2483decde2e74cac272784f7fe37072c1a6e686b472d9fc037741fc",
+      "chi02b@.png": "0d24b0f1c944cc89c1e5562ee97eb6d23345348b4b7a485d21d0be990ac3090b",
+      "chi02b_.png": "c8a4e44ff2483decde2e74cac272784f7fe37072c1a6e686b472d9fc037741fc",
+      "chi02b_@.png": "0d24b0f1c944cc89c1e5562ee97eb6d23345348b4b7a485d21d0be990ac3090b",
+      "chi02c.png": "63c8e5f7bb9c9803246ea1ed530726e637d4e17612fa094ecd76c72bf342caed",
+      "chi02c@.png": "ceb9405aed29e796583a57570e4d1eb64beb65b76595f582c902574aed33e70a",
+      "chi02d.png": "3fc224f12f956613ae1a58fc21f0fbc6a06bc5bb4315f22fdc7657c8c8d9a3a6",
+      "chi02d@.png": "ae50777313dc64cbb4d37accd2935e5be99fad5c4ee2320456a425e5a92c7743",
+      "chi02e.png": "d168dbadeabbc23a40a24f702153e7e23257490dd0c7f52c6b3df8e7aeeee694",
+      "chi02e@.png": "1aead53512640077d6b0e649437d3d4963a74a233ec8b7e9b2c467abb0bd9274",
+      "chi03a.png": "e76bb08e911a6f32a53ec05c2999c16080a1f7577eb0d053c9263f0015414c95",
+      "chi03a@.png": "56ec8deb92d91ae4b911764343b4477ea54d7f8057b04269818e60172e013035",
+      "chi03a_.png": "e76bb08e911a6f32a53ec05c2999c16080a1f7577eb0d053c9263f0015414c95",
+      "chi03a_@.png": "56ec8deb92d91ae4b911764343b4477ea54d7f8057b04269818e60172e013035",
+      "chi03b.png": "5d2aac1a76fd41bc8382459947bc454368f2c009a97edfa22a65abcf5e6f0506",
+      "chi03b@.png": "5a3d5c9309119939f671b5f9a60de33ff8afeed2a8b58a0353247deeab03b119",
+      "chi03b_.png": "5d2aac1a76fd41bc8382459947bc454368f2c009a97edfa22a65abcf5e6f0506",
+      "chi03b_@.png": "5a3d5c9309119939f671b5f9a60de33ff8afeed2a8b58a0353247deeab03b119",
+      "chi03c.png": "74f805064c93746eca0fa34c81fabb4177db7f43e46beed41711e8845512f553",
+      "chi03c@.png": "5c74c8e51d1696cc2fc4c9f390f9459b9e5e4df2a4f0947bb0502f7840207d91",
+      "chi03d.png": "031f240948aed8b5d5aee143e85d631d22972611a848b651cad949b27aad974f",
+      "chi03d@.png": "5408ab9874813ba188385b8b7b6843915fecde3864c4abac280f5f523b3927c2",
+      "chi03e.png": "6d87db19cf47a3a451f99424862f7220618e5157511bff5ec435d47b98fc85ff",
+      "chi03e@.png": "9fdc1af5f735a98b19262cb0accdf6f8056d2cea643e044101eee401cfad9487",
+      "chi04a.png": "e5131f5cb5e977f95406b729b4e564b7e469c3d1ce8eeebeb8655257bca1907f",
+      "chi04a@.png": "15d3990540f5615c32c570ae2fb3c4286f9bfc96dc19324dc6677bdcce94b5f6",
+      "chi04a_.png": "e5131f5cb5e977f95406b729b4e564b7e469c3d1ce8eeebeb8655257bca1907f",
+      "chi04a_@.png": "15d3990540f5615c32c570ae2fb3c4286f9bfc96dc19324dc6677bdcce94b5f6",
+      "chi04b.png": "297c7e6be7e78b3ff36fc1643d9392c389a7988a14a24a290df2de350d5547eb",
+      "chi04b@.png": "810647e3743e70c1a089c04aff90c4b8e98485113c252790ec410892f23c6fa5",
+      "chi04b_.png": "297c7e6be7e78b3ff36fc1643d9392c389a7988a14a24a290df2de350d5547eb",
+      "chi04b_@.png": "810647e3743e70c1a089c04aff90c4b8e98485113c252790ec410892f23c6fa5",
+      "chi04c.png": "5f51f207047671c6ce6bf6688d8ac74596673cd88229694f9f0d3fcd3bc97eac",
+      "chi04c@.png": "b6793b4886f699cebeff7475b90ad3364e5d63a81da03eb6e55d718895299dcc",
+      "chi04d.png": "510aa29855f63554b7625f7ae4e738de88db6833a5a1512a681201680bf24145",
+      "chi04d@.png": "641a9bc72318dc3437967a420f75a9a28747383eda53b05f338c0dc098ae3101",
+      "chi04e.png": "cb3588e272678f9e3ab1083fea802ff4599d3562743739c91e6c270742ecc110",
+      "chi04e@.png": "afa4c91b79ca9071a2cf5a3910cfec81f6dd67cea61c27864834971e3dfd7cc4",
+      "chi05a.png": "21004e8d02b23d5976fcb8fd6c71856ae1d12c9e4102973b2c755506be6d1ee0",
+      "chi05a@.png": "2f4e09a987bc68eb11b3d8d7bc13d9645e1ccb0599227b3635f66629113b23b6",
+      "chi05a_.png": "21004e8d02b23d5976fcb8fd6c71856ae1d12c9e4102973b2c755506be6d1ee0",
+      "chi05a_@.png": "2f4e09a987bc68eb11b3d8d7bc13d9645e1ccb0599227b3635f66629113b23b6",
+      "chi05b.png": "e3ad7aaeab4e7b49c40bc500f477b9ee08b560b13e722e5516f3a06754f7a4ad",
+      "chi05b@.png": "9981056ec526ebe6342b534a624be84a9167e683e21efb1310cd699d3e0336bf",
+      "chi05b_.png": "e3ad7aaeab4e7b49c40bc500f477b9ee08b560b13e722e5516f3a06754f7a4ad",
+      "chi05b_@.png": "9981056ec526ebe6342b534a624be84a9167e683e21efb1310cd699d3e0336bf",
+      "chi05c.png": "289961b88af9c40b09bddd26dd73b3eb7f25396c286f824aa813932ca1654f1b",
+      "chi05c@.png": "9ab3c5acd79184ea7a87d4e9479a5d656ae13519e96b1be3ed6da1b668cfcdff",
+      "chi05d.png": "fdd50ccf44d4e2953e6e3fe9924c9512f967db423e5407e2c705ee4859e1f2b4",
+      "chi05d@.png": "ce9648985506a36af7de021b0d067dcf0727390cb215e7e9c3c514b48c26c9f1",
+      "chi05e.png": "23b2cc50552d632a4055fe1a857aff57e0ed93eba99cf9667e6b288cfb4a0be2",
+      "chi05e@.png": "a84bcd92d9accfc056d20e0892720411bc17b04cc7b784c0522ef6d83cc80ca3",
+      "chi06a.png": "05de4462d85d9f5c17883c2e15b272646f640627539c275c03aa272cfe97dce8",
+      "chi06a@.png": "d2c03bce15ccbaab8232dbaff1be3420c03581bb3d5b304045316f32fae31b21",
+      "chi06a_.png": "05de4462d85d9f5c17883c2e15b272646f640627539c275c03aa272cfe97dce8",
+      "chi06a_@.png": "d2c03bce15ccbaab8232dbaff1be3420c03581bb3d5b304045316f32fae31b21",
+      "chi06b.png": "707f85a25ea73164d51a5344a608a271154992a518eb80d5752dcebcec4a9734",
+      "chi06b@.png": "562683fb854f503f4e0ec4bfb0568ac25394c7debdb0c57d4edf638cbb4a11b8",
+      "chi06b_.png": "707f85a25ea73164d51a5344a608a271154992a518eb80d5752dcebcec4a9734",
+      "chi06b_@.png": "562683fb854f503f4e0ec4bfb0568ac25394c7debdb0c57d4edf638cbb4a11b8",
+      "chi06c.png": "ca9d7174e63ea4be5ce21ba78dd5f7d733910918584212d26398f886e289cbb8",
+      "chi06c@.png": "8036b0527001a286874a55653ba6a10f068d29d3519fa6be66a4018dc14a66af",
+      "chi06d.png": "a4e5b4ac3fd52bcfa771d634398981ea3a0434d9ed4bf8928d318bf213ca791c",
+      "chi06d@.png": "7c4ddcfd072df261b25d7cda9545b6d944da0329702cc32d9054942a0dac677a",
+      "chi06e.png": "3dc6c513be284c887f777d2ac6e303a9c0af7f7f26fb0696d17bd9d18cce0e2c",
+      "chi06e@.png": "354d92f617ffd64d7c34f698f4ff2395ba9ec1293a543603fdcba25cb55583e1",
+      "chi07a.png": "9ccea11a53ed521ef8654817d231dcdde204fb86493cde954aa3e9a10319b3cc",
+      "chi07a@.png": "fbf4a5b94ed20cd81f1f534637bc022f2be811a03d37377c63fa2e90a8b8255c",
+      "chi07a_.png": "9ccea11a53ed521ef8654817d231dcdde204fb86493cde954aa3e9a10319b3cc",
+      "chi07a_@.png": "fbf4a5b94ed20cd81f1f534637bc022f2be811a03d37377c63fa2e90a8b8255c",
+      "chi07c.png": "b21dbf21f7219d34ef906276f29b8eca92a7f8076ab5f8a8a23612de1b9dcbc4",
+      "chi07c@.png": "95eb110633729ed31b38dd81ff2ede1c8d59287d77a6118abb14188866c8dfeb",
+      "chi07d.png": "8fe626946c9312a63a37ba341d6f7d500ae662408e921cf373be5429f53af570",
+      "chi07d@.png": "e1b6e3fa6780b29a4c256816ab9aacd190ff8071c9c64f686711c196a2dfc887",
+      "chi07e.png": "fcfce1863ad8ab2701ee24cfebecae6a173065d9af0f6418aed4b6bfd26a9ad4",
+      "chi07e@.png": "4ea0f728146ecfc31e7b69dc41bbaf68e1755e1ab0abf2e98a5d92d487f1e2cf",
+      "chi08a.png": "5eb9c186076763429526a4b27606a009830f8dddd50d56b7ce1d4901df2d8811",
+      "chi08a@.png": "1152f3e33727b730d12476cf16edf816f4bd1240c344d2bbb943d0706f9c8fea",
+      "chi08a_.png": "5eb9c186076763429526a4b27606a009830f8dddd50d56b7ce1d4901df2d8811",
+      "chi08a_@.png": "1152f3e33727b730d12476cf16edf816f4bd1240c344d2bbb943d0706f9c8fea",
+      "chi08c.png": "b6637a6e0e9d5eb8a6eb0316595066cde0808c7d60a5725807d34d3d50792662",
+      "chi08c@.png": "acbedd0836259ab4b05ec537b35da8cac52db0278ca4832c097c8daf8ca1d1c2",
+      "chi08d.png": "1cc547dd235bbfd8c7feef148884a0c7b89f51c39836b6c498050f08f7855122",
+      "chi08d@.png": "b4644a77754375cefd4bab0b506e77edec5e0a1ff508ad6e436d9e7900eda465",
+      "chi08e.png": "b49f907884d3302ceb23fe27f3dcecefd76594344efe21db7964217c5365900c",
+      "chi08e@.png": "36316bb0da48d8748b62d095c6b0163432216d60f6c3fe322eeb760bd7159209",
+      "chi09a.png": "0d32e32d01f82aea5f1c265d5f4c6d52e3ad0565e7f410dbea3367404679bfd2",
+      "chi09a@.png": "df91c2fef59f76d7f270c976094ab3f95bc6e588b9c673dbd55ae4b688415f1a",
+      "chi09a_.png": "0d32e32d01f82aea5f1c265d5f4c6d52e3ad0565e7f410dbea3367404679bfd2",
+      "chi09a_@.png": "df91c2fef59f76d7f270c976094ab3f95bc6e588b9c673dbd55ae4b688415f1a",
+      "chi09c.png": "013ba9408ba0d834d6f08fc8b9c4e4320ad9661826ddb45adac5db841da1ae87",
+      "chi09c@.png": "1d6e9fae54a7c7614c689eeff4543bede2ee4c7d086dd9a331e325e90d2d0fcf",
+      "chi09d.png": "2b0da4de0ceba56a6de7286d3c3517d80b7bcb200f69f93e23bc3654dbabeb8c",
+      "chi09d@.png": "be79fbebccfa83b9dc5b86571c4596c332e0e604ec59b8a2cc4b9c3ab345802b",
+      "chi09e.png": "d1862b5ec824add92db92dd728286c6a23fc01733145940ba82e655468bf8c9f",
+      "chi09e@.png": "4214f7ce4cb0463456afc6bdc66744db950629138664f4a84d87989274e603e1",
+      "chi10a.png": "29401faf71f052e14c40539d0354684aa53cdf53a117969396012be502ae88e9",
+      "chi10a@.png": "da512dccad8aeb4071bad81d8eeaf4f93f59a726e2a6f8aa7a6542413ed6db26",
+      "chi10a_.png": "29401faf71f052e14c40539d0354684aa53cdf53a117969396012be502ae88e9",
+      "chi10a_@.png": "da512dccad8aeb4071bad81d8eeaf4f93f59a726e2a6f8aa7a6542413ed6db26",
+      "chi10c.png": "c17ea857f27f03cbc907865ccbc9df30b4e1340d761c4311b4ceda91c7b1f83b",
+      "chi10c@.png": "06c43711f011e127b59c0de8f6c7cf44b0a0be0fa3aff4692456f0d8eb762a0a",
+      "chi10d.png": "d59c16da945f9c7867c7ad39bc656f4088c30fec79f843127c31279ef272e533",
+      "chi10d@.png": "f897cdb69bb0ff8fa4dcf057e4130f0e618b1be34c4d7b11176d1fdccb3735a7",
+      "chi10e.png": "612e4513c642fd92369db4665171c9bc5310d8f8bbe568c64e3581db5d1cb556",
+      "chi10e@.png": "efc303585bbc2693880c0ccb4e0ca9bbe66d6ff07a344e4168878fbe0fd8fe93",
+      "chi11a.png": "c374d86638c39053af12fb39024de8eaf8c7bcafc78c15092a0130acfba442aa",
+      "chi11a@.png": "49fca7c44b3fd624bdee6b591049f713e3d9dfc84537c72d8cc2e5c75238c5ac",
+      "chi11a_.png": "c374d86638c39053af12fb39024de8eaf8c7bcafc78c15092a0130acfba442aa",
+      "chi11a_@.png": "49fca7c44b3fd624bdee6b591049f713e3d9dfc84537c72d8cc2e5c75238c5ac",
+      "chi11c.png": "6cd72d07593de6a9467673110abbb57d4ead720f7d5a10304b51b3a56cc94114",
+      "chi11c@.png": "49fca7c44b3fd624bdee6b591049f713e3d9dfc84537c72d8cc2e5c75238c5ac",
+      "chi11d.png": "7e04665e1ff1fb06332ca176e8f5f74cef02dc677f208b9bf1000f944729a31e",
+      "chi11d@.png": "49fca7c44b3fd624bdee6b591049f713e3d9dfc84537c72d8cc2e5c75238c5ac",
+      "chi11e.png": "6258a32a5552812c80eb3bf6513d34c12d00faafa4c9c9d65198b4cff0e2da2c",
+      "chi11e@.png": "49fca7c44b3fd624bdee6b591049f713e3d9dfc84537c72d8cc2e5c75238c5ac",
+      "chi_a.png": "5ca8ec807ecfa9914bb4c81005f2065a4e7924392ddcf8340da3b29bacfb4c98",
+      "chi_a@.png": "4bf7e22a414947111630c5ad56432c662811774379eb154f853c359204c5d10b",
+      "chi_a_.png": "80a5afbfc5dab932a74bb8f0f13eccf7a4049996900d58548f48818ebbf536b2",
+      "chi_a_@.png": "eb97022cf90c5e7a3cce9887e0fc22ab2a6cc1fa0d23c53c53b9200dd02943f0",
+      "chi_b.png": "46d139124bfd9a4fb5985860d1805ba5c24db608aba781db2e27a52f775587bf",
+      "chi_b@.png": "f8360d2810014ff0768831191febf61971cdd801e2252d1a62d12c5028a6b546",
+      "chi_b_.png": "1650f1d49c2fca349d91ad05cd5e4d380f68f8d8266734974132ea29e0c79e7a",
+      "chi_b_@.png": "22061d089955a88a13458a8df683208d68d98f45bca6558859a305e7cda32c43",
+      "chi_c.png": "839cd680f9de686f5610e6702284156b545171cdb755bfc830b1b0376ebc2e02",
+      "chi_c@.png": "e4247a88d052af303b98db84a941855cb6847ff57f079b89588ae7fc53f0c2b0",
+      "chi_d.png": "2c49d2c91c010074ba14f4be27eac40552c4fa23ba0974a2d866842fdc6fbb55",
+      "chi_d@.png": "15c1aa4ee7386893b8f5280f114e910fd462e99df8ef0357a65c60f21e3a152c",
+      "chi_e.png": "920d5c553a955efc89468723eee240efb95b455f9920040dc238f6559e1ad58f",
+      "chi_e@.png": "d46f3a648109037f47a8c1d49a83045d01cb112a95d102957c29732d6182cd21",
+      "chihaya-summer.png": "56a1f650616eb45380c8317cac274c29ae4f276b417250db8c203a60feb4028f",
+      "chihaya-winter.png": "ad3e8465fc3d25fb7dcfc3ecca2006d3578eab795a3ce406985ca5daaeb805d0"
+    },
+    "previewManifestSHA256": "3847ff91b2cb1aa99ac88dd62cb16771e87e76e6db9f8cc4fc0de8fae7bf620f",
+    "hairRepair": {
+      "version": 1,
+      "date": "2026-09-14",
+      "tool": "built-in image_gen; Swift/ImageIO alignment and alpha extraction",
+      "method": "AI crown pixels are confined to 64 newly added rows. The original 606 RGBA rows are retained unchanged at offset (0,64). Existing face frames are reused.",
+      "originalArchive": "ChihayaPet/Resources/OriginalCharacterSprites",
+      "repairManifestSHA256": "ddb5c46d2754da098a62abba1f5acbcf989230f259ebf003b9fba65a028d835c",
+      "promptSetSHA256": "d613290291fa60ea8d551275c55395b3899a68e2172e4e9ac184fe4ef6c9f5b0",
+      "assets": {
+        "assets/body-a-close.png": {
+          "variant": "a/close",
+          "originalSHA256": "4bf7e22a414947111630c5ad56432c662811774379eb154f853c359204c5d10b",
+          "repairedAsset": "bodies/body-a-close-hair-complete.png",
+          "originalOffset": [
+            0,
+            64
+          ],
+          "originalGeometry": {
+            "width": 454,
+            "height": 606,
+            "faceOffset": [
+              120,
+              85
+            ],
+            "speech": {
+              "mouth": [
+                224,
+                209
+              ],
+              "hairLeft": 54,
+              "hairRight": 375
+            }
+          }
+        },
+        "assets/body-a_-close.png": {
+          "variant": "a_/close",
+          "originalSHA256": "eb97022cf90c5e7a3cce9887e0fc22ab2a6cc1fa0d23c53c53b9200dd02943f0",
+          "repairedAsset": "bodies/body-a_-close-hair-complete.png",
+          "originalOffset": [
+            0,
+            64
+          ],
+          "originalGeometry": {
+            "width": 454,
+            "height": 606,
+            "faceOffset": [
+              120,
+              85
+            ],
+            "speech": {
+              "mouth": [
+                224,
+                209
+              ],
+              "hairLeft": 54,
+              "hairRight": 375
+            }
+          }
+        },
+        "assets/body-b-close.png": {
+          "variant": "b/close",
+          "originalSHA256": "f8360d2810014ff0768831191febf61971cdd801e2252d1a62d12c5028a6b546",
+          "repairedAsset": "bodies/body-b-close-hair-complete.png",
+          "originalOffset": [
+            0,
+            64
+          ],
+          "originalGeometry": {
+            "width": 508,
+            "height": 606,
+            "faceOffset": [
+              163,
+              66
+            ],
+            "speech": {
+              "mouth": [
+                267,
+                203
+              ],
+              "hairLeft": 102,
+              "hairRight": 412
+            }
+          }
+        },
+        "assets/body-b_-close.png": {
+          "variant": "b_/close",
+          "originalSHA256": "22061d089955a88a13458a8df683208d68d98f45bca6558859a305e7cda32c43",
+          "repairedAsset": "bodies/body-b_-close-hair-complete.png",
+          "originalOffset": [
+            0,
+            64
+          ],
+          "originalGeometry": {
+            "width": 508,
+            "height": 606,
+            "faceOffset": [
+              163,
+              66
+            ],
+            "speech": {
+              "mouth": [
+                267,
+                203
+              ],
+              "hairLeft": 102,
+              "hairRight": 412
+            }
+          }
+        },
+        "assets/body-c-close.png": {
+          "variant": "c/close",
+          "originalSHA256": "e4247a88d052af303b98db84a941855cb6847ff57f079b89588ae7fc53f0c2b0",
+          "repairedAsset": "bodies/body-c-close-hair-complete.png",
+          "originalOffset": [
+            0,
+            64
+          ],
+          "originalGeometry": {
+            "width": 454,
+            "height": 606,
+            "faceOffset": [
+              120,
+              85
+            ],
+            "speech": {
+              "mouth": [
+                224,
+                209
+              ],
+              "hairLeft": 54,
+              "hairRight": 375
+            }
+          }
+        },
+        "assets/body-d-close.png": {
+          "variant": "d/close",
+          "originalSHA256": "15c1aa4ee7386893b8f5280f114e910fd462e99df8ef0357a65c60f21e3a152c",
+          "repairedAsset": "bodies/body-d-close-hair-complete.png",
+          "originalOffset": [
+            0,
+            64
+          ],
+          "originalGeometry": {
+            "width": 454,
+            "height": 606,
+            "faceOffset": [
+              120,
+              85
+            ],
+            "speech": {
+              "mouth": [
+                224,
+                209
+              ],
+              "hairLeft": 54,
+              "hairRight": 375
+            }
+          }
+        },
+        "assets/body-e-close.png": {
+          "variant": "e/close",
+          "originalSHA256": "d46f3a648109037f47a8c1d49a83045d01cb112a95d102957c29732d6182cd21",
+          "repairedAsset": "bodies/body-e-close-hair-complete.png",
+          "originalOffset": [
+            0,
+            64
+          ],
+          "originalGeometry": {
+            "width": 454,
+            "height": 606,
+            "faceOffset": [
+              120,
+              85
+            ],
+            "speech": {
+              "mouth": [
+                224,
+                209
+              ],
+              "hairLeft": 54,
+              "hairRight": 375
+            }
+          }
+        }
+      }
+    }
+  },
+  "assetHashes": {
+    "assets/body-a-close.png": "e137d1b635dbf4405f5c537ceff95d95f004f09072eb264c478dd7538b80b1ef",
+    "assets/body-a-full.png": "5ca8ec807ecfa9914bb4c81005f2065a4e7924392ddcf8340da3b29bacfb4c98",
+    "assets/body-a_-close.png": "577368404ae6c072572a2bdb7179afba5c4eb728c53d4fe327fdbdd60f561465",
+    "assets/body-a_-full.png": "80a5afbfc5dab932a74bb8f0f13eccf7a4049996900d58548f48818ebbf536b2",
+    "assets/body-b-close.png": "cd46bae8dfdf328aceede42d6a6e8c59d2f489f19b28f471394f1e92462a5383",
+    "assets/body-b-full.png": "46d139124bfd9a4fb5985860d1805ba5c24db608aba781db2e27a52f775587bf",
+    "assets/body-b_-close.png": "615a54759c916275a1850334f3ac82d1c898fc93e7709a7fc3be83282dde13fb",
+    "assets/body-b_-full.png": "1650f1d49c2fca349d91ad05cd5e4d380f68f8d8266734974132ea29e0c79e7a",
+    "assets/body-c-close.png": "83563719d77d5c8ea3d4ff25466b469f9f6545416b06f025d33e331f59cd2c4b",
+    "assets/body-c-full.png": "839cd680f9de686f5610e6702284156b545171cdb755bfc830b1b0376ebc2e02",
+    "assets/body-d-close.png": "85e9c84b2a7cabfe3b9d6b67d3636410f22732fccd84bdb38fcb966d28456097",
+    "assets/body-d-full.png": "2c49d2c91c010074ba14f4be27eac40552c4fa23ba0974a2d866842fdc6fbb55",
+    "assets/body-e-close.png": "e463d4ee9e659664855b854608ff0ae631998d267b786146c779c0da8b957f2e",
+    "assets/body-e-full.png": "920d5c553a955efc89468723eee240efb95b455f9920040dc238f6559e1ad58f",
+    "assets/face-00275f5c5115671e55f2.png": "b96fef58f3786a0a57645c65ac0912ec3ed8aded96c10c7fce71d66dab261d5c",
+    "assets/face-002e134c6b2b43d0b400.png": "bc4307dec9fe8a9d19c3d1343b6fc58e447b23fce562cea36a7d9fbc76c8572f",
+    "assets/face-002f4389f8e47493218e.png": "fa874aea9d142d51f9b657d67032b0f3d626c71b16a0c0d81c541cd3b5b2d4d4",
+    "assets/face-007aee2ad93d96538f4c.png": "5f3d30dbbd8c0b9d5d98aacf55674ffb6b7ffee77502fedd7ea10320a47d73e5",
+    "assets/face-00ffe988005f3a0bd9a7.png": "0ddf783cf9f2ab1e0b2cb672b1798d4831252b8565eb6a8ae6cb6ebc37b9be78",
+    "assets/face-01f08b1853bb2b97b9fb.png": "15b0e17ef4bc1186219eb0999ddaab919ab04039f84a1f86c3d32a6db1334b4c",
+    "assets/face-021d48356aff4d3b00a8.png": "c51092eea52cb21bdb0dd975db345f8dc1c3df09b1497ea56a0701b9d2a9a70e",
+    "assets/face-02289ec611fb7e3a1c05.png": "b1983f8d3ab6d4edc37d5246d7a60ec9c9b10d6d53f5fd6bc3beac5110104e6f",
+    "assets/face-02be33204c6db4c3f494.png": "2904d6b6e11cf7ec8a548f2060c6aaa723763da698ab5c78f0de556110a19fde",
+    "assets/face-030462281fccd80ff345.png": "dcff69c29d838b2e170ab778a17e299a01005f2cce8126e954de793074e06974",
+    "assets/face-0324bb9a7f53cb0b07fd.png": "7ab269f27d90097ac0ab2710d7ff835c7928b89e4dd241b9fddb63396bd177cc",
+    "assets/face-04b40c187754b3c9a931.png": "45fd3520d95765d94c3034308fab74dc22467f4ebb7d40adb47ccc9831b17922",
+    "assets/face-04f49cecd04ba1642cad.png": "01c31707ffa220e50bd10f98d52ff5092c34924ee25d363325f3bee728bfe996",
+    "assets/face-0774d50532fd69b906a2.png": "9eb02a4c36633426a915fa29a7e5de384afda5e0647e3be897431677bdc972aa",
+    "assets/face-08629feca53a0ad22d3f.png": "d8d81cea3bdcdcb9cafc89210295c1c809068fed1f17db2abe64102f9a228858",
+    "assets/face-0b195932da240f0dfdf2.png": "f2cad146d08b45fb594424f821498f21007e5883b2a7dd56c579a353f21fac6a",
+    "assets/face-0b24d1038376226d5569.png": "c227c67f4f4ad7ca9119e6809c69cc02631173da9f94ea860c63bf05ee5882a1",
+    "assets/face-0b2cc52ae12b02e4a172.png": "afb75f3eca7b5cda216d280dced928083e19afd908b2d6b2885e8b002ddc4f72",
+    "assets/face-0bba2703c27c1efb432a.png": "3af0b3213f395ec4c3847eb45931f8d9c2f020a661c8072cbe2896e31974a4a3",
+    "assets/face-0c1ebffa487185d05773.png": "957f43854c7e3a486323c685f1397b8d94fd8740d88abae7c2707708cd0cf921",
+    "assets/face-0d03615d274a8c94de64.png": "a3cdc243b24f985d8cd76f37d4ad310ec7be90e70cb8db3cb6fed3ad5fa3a217",
+    "assets/face-0dc399602f9f66700f7a.png": "0f07fb3adcec1c2e0dd3721c12b98d90ddb926489289d6e69ff9415237103f3e",
+    "assets/face-0e0125a00a8420995e2c.png": "b2a8ee5057cfd1661d8d6841c33a7bdae7508349c7e31324e82c018bc7a20ccd",
+    "assets/face-0e9041ac964461fb37bd.png": "fe5afa3b8248b07f9a9042e11588f7aea873b41807859760a22ef413a41aaeb4",
+    "assets/face-0f1aec439bf474a20ef5.png": "b0e7b95e15e73e01bbc4586a9051c60059703af67ee9fcf3539abacd566132b4",
+    "assets/face-1236e1a3fe4df5dbb24b.png": "59a090a9cfba4b2232fcbc0d362be356166a6a75be0cde6c314a09c46502bbe1",
+    "assets/face-12f913e2f1cc235c6520.png": "56cea65d0fdc9e43c767c8743e071c0f86e91f34fa3dbc6e8bd981042768137b",
+    "assets/face-146c4d50ea23c445b627.png": "959d89d6eb630d4cd1d7509f031e4136cb752c92cef6e7f56e21471f9a77a314",
+    "assets/face-14f89ecb6a86ba31f30d.png": "bb779660cfa1c1b3d8d8ca86e41beaf2a72871a8ae86bb41cea60ba3c13c3e21",
+    "assets/face-155e69738486d10b880a.png": "59a0eadb5428c48046c66035c71567270ac0146026f4c7cba0149f41c54ad8bb",
+    "assets/face-16206f966363b69d2311.png": "be4657318c16a6b127ba5576607c0d2f49270dfd9f7abeeab2a814e6a3aa53d6",
+    "assets/face-1664686d10b38d340e1e.png": "f576c5c69760c934733ec212f3a4969a543f1ef19ba990f762203b0f44ba0548",
+    "assets/face-18baa6c97f034c290dc1.png": "500d5876a18f20689e7a9ea075018822430897b109e13a52999200c63fa66c5f",
+    "assets/face-18f5ca86906481beaadc.png": "6996a124a0c7cf76e8148f4f9d4b891a6fcb09dd798b18c390bdd4ffbca6dd6d",
+    "assets/face-18f87c536e6ba4bf85ac.png": "a6a1d7bdc4e81d3727d4f6dfdfe146cd696f06434ea108a73195b2ae8e13b215",
+    "assets/face-1917ef3c45658af1f8d9.png": "ca9e52c004be8ec4467a3f8863b167bb3d47ceb1a7f727568d1845097b493207",
+    "assets/face-1a20d0304fe3cea98232.png": "105b4e0ad23f154f7565f23fb09d076df29d7ecf2d74bfb5dc2b72d184ec0235",
+    "assets/face-1a877e71726ae44a7317.png": "8d26aabc7aedfab682443e6a2f6749795dda744ba5de1025a1367511bd95506c",
+    "assets/face-1b31631f02ff82e9073e.png": "263d58db30c840010201eebba9993bf13f70b79c8b01472dcc9a306b4828fe5f",
+    "assets/face-1b7fe0823d936ea3ecac.png": "b3b5bb6288b8a44e53aa91553cbdcf3aec582bfac658d13a2b46a150d4bed629",
+    "assets/face-1b9b07d11874abd25dfd.png": "cdd60d1381651483a134d0a7f05bbf66aaecfaf85458568076364f8b40712d4d",
+    "assets/face-1bdfa44558c30efc6d35.png": "0c7d8fb7ff4523245c504063047afa5c6bd2d3b5af07bd5642138e81f4f6a0d0",
+    "assets/face-1c44591a216ce399fd5e.png": "69275eae9ebba4940d472a54a2cd9ff1f8d206d3957825d22d9661cd83d50a97",
+    "assets/face-1df2f53412248a3e347d.png": "33a23c2901f7828bf887f76be71085f488f633424664e65cd1eaf637d385c3b4",
+    "assets/face-2055f69a31dabebaac75.png": "fd1369915eb08d158a7b85946e7b42719e753f19da13d1c00c036a99ae3cd7c3",
+    "assets/face-221f12dc929ccb9ea2d0.png": "1c5fb789e4dc1ec0f0476c8cda597d4bc1db06d2cb8f9b15947a70c0ee77fef1",
+    "assets/face-226e29a68b048ef6ef0c.png": "3607dc5c4e17bb3d58fc672f18104e5e144807609bbb8385ea7c7e754a9d1ad4",
+    "assets/face-23b95fdf3914476219dc.png": "ea088390d7b41836f5d2a185749e0ef117ce2f434f29e83f5a02eacca6e287e8",
+    "assets/face-23ddb5dccb1778e992b3.png": "20ba2d3d4defd58f3e7794978f32ba2d19cb3eae96d20a14a75d49cf6dcea3b0",
+    "assets/face-25102385eafcf35d0a39.png": "c1176eb65cab0f4586efaa4a1743665ce94cf1b27afe7b2e2f29d5a07de97272",
+    "assets/face-258c4e84c46f857524db.png": "77c51ac6ef1d7ff1ad037e57169200a1f3e4807b812c7aaed5979f0c8a3d7237",
+    "assets/face-260d08ccc3f04221dacb.png": "06ad16425d4031fb0b87c313670fda3e2d1d9748b0582652a1010c6b8aaae7fb",
+    "assets/face-2643087ec8113e47fbaf.png": "5152396bf2e5f6d746c77765d3e2a69326e2f117c58a79d7c2e43af812a577ce",
+    "assets/face-26d1e33ec7fb6b5269db.png": "10b595e03a185b629f07ab8cdfa934859686787a25af13811b86c5b8aeff01c1",
+    "assets/face-27940f94a18811f443c8.png": "49488e0d7530c6e1258d226db0e0b883ede89b8707c635e263558bc06f2a7f8b",
+    "assets/face-292ef0834d287dc1778a.png": "a004abc8d5da044119865bd6aa33955e7d4b83d52788fe2da86dc625588f5f4e",
+    "assets/face-2986b6d27764c0f53818.png": "f31801c8efab9cc1c575f51f1c1185e19b2073e17cf3c18b9234d9df7974f1ee",
+    "assets/face-2a476177512504ccc7e9.png": "8d83887eae5d50b2fd07349b5f95ab38d254181b20ad58a8ac9662064e4b8217",
+    "assets/face-2b03f2e68850e9c377a5.png": "76dbc8437f979afc355a5ddc8c11122aeb5de23bd553cfe65ea41f11d476e655",
+    "assets/face-2d0ba96e23dfc68df514.png": "b6bb45dc56870d294685dea03c9c7c3bc5b083203bf8ae3153de3233e75118c4",
+    "assets/face-2df8e85ef1449c4fd7ee.png": "382434780f2ac39f18f468350a14739ed5be7a89e8fbf199be20a7db2d78b30a",
+    "assets/face-30408e26c107f3c2ff80.png": "653e1f00923ff8d4766de8bf763e71cc98b0ba013b0dd7bf92363c1bd9ea5998",
+    "assets/face-30533300eaf6c452a071.png": "89f3c8d811acad9a0feeac4852e3b224896cd357fc349afeeb55a29a4a9fa58b",
+    "assets/face-3064f7b4c0a747bbab6e.png": "fb7a9155c05dd1014065839bb2f532c709257cd02e0e2568db6fcd65c6c53648",
+    "assets/face-314d98f4153f1225acdc.png": "14ea05c86821996f863bd6b8b088b8c2c0e6c5c00c1fee196dde72bac95064d9",
+    "assets/face-317dba9d2c1180304348.png": "bed145e1203199cb63a388451517afef341badffdb9686f9c4b7c1df4d6ac60e",
+    "assets/face-31e98f4241dc99e6c703.png": "3692ad645c75a56b13f467122817b3ff7512ed4bf461719b0f5b29879f5f4e34",
+    "assets/face-320f2e877a731c511a5a.png": "803cbb6f164b709ca8c5e580316d94a212fc07be4286be9b5fe21e77ee5d1fcf",
+    "assets/face-33173ff2364bdb297302.png": "a242b8792794adc8238ae7373d4d972a84af2232ebdddc00f19adebfe43b7e46",
+    "assets/face-336ad8b718064b8f0083.png": "dfe25f16851eebc040e06aef336572948fc2de0f6a5e2ee154c1d47bc6e5bd9b",
+    "assets/face-34dfeed8a122c48b131a.png": "8e59911ae9579fce8a78d69f8b1b80bbb65d0e7be11e6f64d652e7ec38419cc0",
+    "assets/face-3548bc303290895ec748.png": "a71b0c1278ab13565e911a3f1632fd0f436ef0646ebcc7e13c071e2675c1460c",
+    "assets/face-36b212da1a499d4963db.png": "7300c82b6684f524171b5f57fcee2d9858adef210e5404beba2b64b78d68737e",
+    "assets/face-36eec67e962cf14ce60a.png": "2454c3e59a1fba4b9b2f2df74d0ab686d3e62cabc0ef0008b9ce2469721b8d12",
+    "assets/face-373768e18d708656721a.png": "8b2eaafb5641e0001c0147ee39712dabf644bf7d40992154ace92846880ea316",
+    "assets/face-37ce5b7ec41ce32297b3.png": "3f27eac84a628b686afd9c0594644540aa0c1de18e2ef0af46000e38f46fd63a",
+    "assets/face-3889aebd07c70d412a94.png": "b4d6196d82c4b35cbc5c361aaddd2764651d3eef69bef16a1da1cbe69a9b45c2",
+    "assets/face-38e2d47307afd11d9592.png": "e8e58a95e3258a4aa712be1ecc131b22134f74354be8aea157aa61ebd7a167ef",
+    "assets/face-39c9a83ea9c29b32966f.png": "7f505c16e49149f0a8fee335a7438a2605af4eeb30bccef714f118b87e1e8f11",
+    "assets/face-3caff582c5dabf930873.png": "3e1462390f18f4527575a43bc461b3e8842540b536c93a08b40ed0403dca69a4",
+    "assets/face-3cbe13bebbf992e7eb9d.png": "3e83d8a59857bbf4ac44d8e75e96afd2eedb2553eccc38dd9f33b18397d6b062",
+    "assets/face-3dce57485ff6dbd5c11e.png": "3ed8b6bc8db51c95431cad31406b7010f9ccb1d0eff9efa5f582aa165e06d8d8",
+    "assets/face-3e064a0e14d172c0cd8a.png": "905b982a1bfddc8c2445ec8bd05975b3974756fbf5361430abae30321b040092",
+    "assets/face-3e3faffdf9f4cacb1b82.png": "8a04f26c930277ff6c383ebb9a97fc57eabb21125c87fa73b86d07ab34a312a8",
+    "assets/face-3f3a20c71fa0414dc5e1.png": "d34a2032ee22e939bb9ba67eed066c5d8303c12f672254bb84091418ef777f12",
+    "assets/face-409ecc55081f565d2c6d.png": "6b53ecdd92e139ee35285718207e610effb00bb51f8b63d2e577e74f0ee56f41",
+    "assets/face-4167325079b90edf25e2.png": "bf6bdc864ee28325fa896d8a0e67b08cc4ab1fe172e04ac3017e1b78a5f8007b",
+    "assets/face-421d4cc8cfc8d68404a4.png": "03e23aa0569bf6b6a6c418cc7cb1fd379df1dfa3f518a51c69708e95a6fefd95",
+    "assets/face-4438e05582b3c3d2928f.png": "9feb34abe00114e1d6db28acfa4e2c19bf42c968037dfd46f7313692376c2351",
+    "assets/face-45581629450954940531.png": "f542217a849cb1cba0d2531d438283d00ddc9bf390859ff2df320fc7f4e17c84",
+    "assets/face-4596701f8ef63dd99e2d.png": "4388b93bb543862a18d66fb5a21afb310a524ecd7a8f24b680a347f8fccd2e0c",
+    "assets/face-48c7b57a1e02c5a7c92a.png": "674059a1098212caf8a9c17fa6cfd032c32e6a6a9420b1e65fdf037f1d5e37d8",
+    "assets/face-4958d9853b1b2fb5b42f.png": "94170c5360f5f2215c9c72ccc030921763c2f755c8f981c102f3fcdaf58bb8fe",
+    "assets/face-49d02b63ae72db1d6e03.png": "8edfded1cf54d9c7f0e655cc44ce56bfc907a3a29c7ccff89ac39b4950cec9e7",
+    "assets/face-49d9cab01e715aa64d12.png": "ff682d0b1b18f80ae14acb5d489b5270a12e5c5d47d35d43d0fdbff67e061483",
+    "assets/face-4bc519374a3eef383c21.png": "6e9ceb579d5fd826f0267ade6f2bb7752210034c87284b0ad14cf85322be6d8f",
+    "assets/face-4cfe1e010b0f333bcddb.png": "12f2eaecb4a4a27b5703f08250ea6af8812fee18ecf53bb8c499d16ec05bafe0",
+    "assets/face-4d9e4b14af75aae2c7bc.png": "67d4d7c2e693f9a993604195b6dc9c3b003828817e480291b29e21474579514d",
+    "assets/face-4e32275cdc947c5aac2e.png": "7cbab63d1280baee84e516fb5fa31337151fcd3bfae1d07d98c13262c0955f06",
+    "assets/face-4e83ccda74f56f56a9bf.png": "d9668da2198b00a64c24ad82102f517b6d75dee3c6d86b9896d337aa37e7cd8f",
+    "assets/face-4f00578387eabef8fae1.png": "4b090a1f529022729da1eacedc97262aa809bb89b76c4d1d36eb2fd75256e6b1",
+    "assets/face-4f08d7221a06c3e241a1.png": "79ecc20a330b298f59f6153758c189480f569acb85503dd32d4712ec7730d51f",
+    "assets/face-4f14f2c941731ecfc0b2.png": "d8a82bdfad66618f7f2da8c8ea62b5c69fb83f807aa6b1410944befebc33be00",
+    "assets/face-4f32c0936417ce5ef7a2.png": "9a9f3483219bf562eaabb63090e63ca597c9024661cd8370bf6d7a28c3c26957",
+    "assets/face-50ca38348b214f21fc2b.png": "d8b3931dd7656a34c8213d0f6ad9fab82260939b0720790de8423c909c880791",
+    "assets/face-518786615f6f01af77af.png": "c9e2dd1dd8137d084765ea25863e0566e36f52904443532af5ffe78e70f8e37e",
+    "assets/face-548290129f6bf5b6fd59.png": "4243db6890f776a8b0e29eed6972d854d748e20948b5bd9d14155280d10a50c8",
+    "assets/face-563a09b614d725558ad2.png": "d67aefc3db543e6bcee22531784adce175a7b9b2621daa84b350f03680c552d3",
+    "assets/face-569cda0756b0bcce4f34.png": "dd31e63d410128bf11eccbdfb25b835d039c088ddbdb937521da1f2d606eb043",
+    "assets/face-57a556b7e0d6bdd6f9bb.png": "6a3e9bb0c4341fb2df7cf143b7355ee670059d940a14e19f7f78101aa6261a45",
+    "assets/face-57c7a1af41ada756d826.png": "efb3a0573424d69f73021a729b8a7e1c84a68f9006813542285355d85a1056e4",
+    "assets/face-58a90cc3dfe10b5fd3e0.png": "338ec5f9643730762ff9b055d0849ed490f64fcc338bc17a453e46e9c2980470",
+    "assets/face-58baf816a0b1304b3c8c.png": "e3ffc5949edbd189303102d2496c51ef594cacb35dc1024b9dccc01c8d2fd23b",
+    "assets/face-5985a53470898423d1c6.png": "d1c97c401e817571cb87d4e4e4e3571e0fabfe3002734b8390cecd81d5052b11",
+    "assets/face-59fea8b0e7d03c1ac8bd.png": "e274845f16496f0816a30059991b64942c535327204ca92920da3d03eaa64990",
+    "assets/face-5a2b706478c9ead4e06a.png": "fb7f3552bc8f7823a4efaa2a1b04aae40d74839e94418a57a825d7247da5d200",
+    "assets/face-5be4d395584ef5115e3f.png": "df13d7fd0038a86d154c09b2865984421b6301999d03cb1168045228f436a95f",
+    "assets/face-5dd9af2c734cb51400da.png": "02ade2847904e822735ef4ea6e14aca1b0f29f880530da68a960551e4d93bd29",
+    "assets/face-5e07dd9e23d3dcd3527b.png": "717313ec7bd0cf2104a32f469e12cebe4d2ee121a70ec549a53828f1dc9cd6fd",
+    "assets/face-5fb01c7fd73442c57f20.png": "52b2baa8739671f2b5ebd692005b7b6887a83a91487a35bef94dd8cd6dd5883b",
+    "assets/face-5fb2d97809b6611da2fd.png": "d78a38e4e359749ef6ba28c69f9a94c57acbbc037d1b99ce6de682a7ef900945",
+    "assets/face-606c14af3bdadabbe11f.png": "440f1d2d0fbbac0f2fb6e90c732454309aa674d0be55888cf79317e10758e69d",
+    "assets/face-60955bea1a3d807ec80d.png": "0d1027222a76284b96f392c0e79308c24430c433dbebf17068fb67f43ebe6082",
+    "assets/face-60e8521929193d218439.png": "2a4bf4e46465a160534a3d683f90aedc2036d1a8ebc6f743ca5d8d59fbf8051d",
+    "assets/face-61560dddfb33a814f2a0.png": "331c6ee287b56bb02eac239e3763f2ec9bb875c754a86fca011a79afc6498882",
+    "assets/face-62adbd5ab1453f29334b.png": "cedde7015da4854a5a79430667186267ee3de7521b49e70e51b4d7a09261eacb",
+    "assets/face-64bb44b067415205a3f4.png": "2f78af5714d6ed55554c176e4875fa4a8e7a94abe1cb6626ef50fd8a3cb49a1b",
+    "assets/face-6529d8b53f0a1c1cfe88.png": "833c142eb26b6d3e690ed5eeb3cdb3dde15dc3163dda4c7e10e714c2625a7999",
+    "assets/face-6558d53f1c4f6a1111f2.png": "dde813fdc9827fbbd7320ee384bcf3aabdfe2e5fcde3e1dc251a203d622ff8e3",
+    "assets/face-6567c0405c31a196860e.png": "10cb6a3f7a3e80f17aba3cc4d86b9b8741841771e21f0c39a8bb058e29c6a2d0",
+    "assets/face-65a642eb391b540cdae7.png": "33d709922c05d796a72560070eb4d8c40dea9f3f5295a9462d7cd76006923ee9",
+    "assets/face-65df60c823ffbf95b699.png": "8e3757bd63763bd84800b5948826fc1c1fdec226333933455a0322dba0ae8d33",
+    "assets/face-65e96f2b11ffff7c4548.png": "6e18e6d1ced2ffea05c981789183693e0d54d7eb65e00198fc22b49123696fb6",
+    "assets/face-66b8e3ba96fa0f4c9c95.png": "a1ea32b4bf059f1158c008c02eddafef28c5da17edc237c596e1e9c80a1cfb45",
+    "assets/face-6797186fb2ed9ee376a4.png": "81a5d8f4c2d3c3f97b576b78f4b7b54ee1a8ed602629bc0bde37ab481c6411af",
+    "assets/face-6c6d181c3e6325eb8b15.png": "1f6dcaf580bf8515d5d57b64071af619124ed81fb272e96cbcb93de43889a9bd",
+    "assets/face-6cbfd20c85a0c092fcf5.png": "39d0cdfb42809bf9d3239ba3a31c01535a94020336b599e7f4c417e7703b6217",
+    "assets/face-6da4e8363ad7c0b91b8a.png": "a85e655bec5593d1907af35d59c8c57ed7b2932057f83ef56f77154786461d3b",
+    "assets/face-6e5286c83bb49063c009.png": "0c05a25b72428a4c237b413dea8d0bada77604b797169bcb06455eaaa9e24c6c",
+    "assets/face-6fc69d9952338c3d432e.png": "73648c8844a875a3c28808d10d8df1846e55859dff9640b1de96471d8b5f6431",
+    "assets/face-70ab8155de5a86b6ad9b.png": "164c8eca54ba541143ca4b3b1e4cacdbcfc8167627a2a44afd9b186e13099aba",
+    "assets/face-70cac1fe0363007905cd.png": "05d6eb1ca0ba4b3e5b57ceeeb1398704419224bf15e3ce3f6b293723d55aafc1",
+    "assets/face-711fe0e18dc90a60c8b7.png": "712547d597ba5fc765cf0b09fa36c8d4f5923b9c829ea9cfdb51946492c00825",
+    "assets/face-715fdcedafd4ec70d14e.png": "19c137b7cb2591d28a3ce153027d2e06a1dd592a5476f053812a59958a3f562d",
+    "assets/face-717c3289e46c2e711543.png": "3c66adfd16bc7d122b4619a52c053883ad2105cd626463c4c94e42762c241ae9",
+    "assets/face-7191ecea9e3e2075b1ac.png": "8d9c6a771f742ee1c6354c45cf84fb7a54b4fc1c722e2ea89f594071277d85c6",
+    "assets/face-736a599e37945dbd2579.png": "2d5ac4589b518c2d2d4296b46a60872a07cdc2958480bf0cd2347826a86c968f",
+    "assets/face-73bbd5b028ab0e43a0c4.png": "c6d1bfd9331010e6dc7b1772b75914e08b649b772e44ad2c428ec27d466a035e",
+    "assets/face-783fce805d4ff768dbd7.png": "30dcb0334bceb41fbaf70c9480966ce8e0da267d5d507e646769d10a565c4f20",
+    "assets/face-7cc4b871c7532c78be96.png": "c61130b91e36bfbdbc2577806b5995b19031581672bfe0cc77fb8ea8a3418a73",
+    "assets/face-7d7ba17bd6dcce144a53.png": "fec3acd0884be3e400b1c680d46a01acd5e9b73cfa82d627131e49a938519c8d",
+    "assets/face-7dbb8cd2996a196c09c1.png": "dae3f7065d30319e110d80c2df08d946ca55deb64bf9be159985201908cace9f",
+    "assets/face-7e30cd85284922f80827.png": "17e252a7b202c480246da7ce3743c2e295c1fc4bc18588973c69f54894b8ef6e",
+    "assets/face-7e835007fd0fc77580f1.png": "61d3aadcd98c252e802699202615db50aeafa55561d9447668d186201db6aab4",
+    "assets/face-7f6a0dc1836d0a65e210.png": "937b808f2bc6c87dee22299064e0ce9c70334a4fc6c4e86993318af208090be4",
+    "assets/face-80b27bec3bf05a02f01d.png": "dc213e9cbf074b5829e51b04b6c35d08635d9ce4b2415ed2966eea369668211d",
+    "assets/face-826c29e1f1cf2f1bfd93.png": "ea1b51c5e5242d06125aeb7986df9ff871260bd00bb15aa630a75915f07f085e",
+    "assets/face-832252cf6a664c689f58.png": "6dc9424fb7b09d88752b2461dbcced5fbfe05e44d95a1097d3645e37e91f82fd",
+    "assets/face-836be47c7e39cedcb101.png": "563b773053e1c13163d2e54c32e07c5d224e1c12fe7555a893e88de09486aa75",
+    "assets/face-840bfa596afbc5085160.png": "b8374ecd285fd18a04237bf9a8142683f5755851011923b99ad8f224def204c8",
+    "assets/face-842624a2edc3d405fc86.png": "69e505f02fc8365630e3e50be3f3289b0cf66b561b27879d573e9f4893e4c7ff",
+    "assets/face-842fa37fe1c75cf1f7d1.png": "0d96076944ae2da4601bff1b68aba6927febbea3df017577c21347d74b99e441",
+    "assets/face-844cd42ce32c75df10a8.png": "ee419568f8e6c4aab66410ce8ca1d65611a66919db57d0e7b5a274991d513816",
+    "assets/face-8451ac74f4e664a9114a.png": "91f120f4ca0dc3aca89bb658b52ac53b345d93be6f7bc7779c4b89fc9178626c",
+    "assets/face-84aa5e0d831e10b4ec37.png": "c85f9d151ecf4e3aec35c5c0b3f59d8cfa1c549bec71deb8612397b85ff0bf28",
+    "assets/face-860511b70afe36450da1.png": "e0ef909f21fe2a959f15676efbd353bca8c606b311e9e42914e3f17e9c65c2c2",
+    "assets/face-86d8632b06cc8d80cb11.png": "d8d6941556a9134572deeae17002dbf140c17ddbd2d2415711bcb2fdca5c0a6d",
+    "assets/face-875b688a90e38eff5b99.png": "f1bfcc22b117825ae9cccf7178d28789522e4b86833b849a4fd544f0231a4b8f",
+    "assets/face-89f64bc43adfc7e87354.png": "cc1150c35fd60d7d163c9bdc1e1eee7ab22154005fbd17f91086247542297ed7",
+    "assets/face-8b503d55148b9f6f01c9.png": "2b76bc4c56124e9216bcd9488856349f9e6433e1b94690ab6a0852c8bcc06f93",
+    "assets/face-8b8291dfc9b53dea795b.png": "6e26256ca92b472e5767f5bc862337f0af0f2242128770287d510930a17dcff5",
+    "assets/face-8c13d1ec79776968db95.png": "1e65896baccfefce4131fa0093a685f486aa0bf0c41b584dcdd62b56544e7a12",
+    "assets/face-8c7d6c0615baab0557d7.png": "b5af59363642f33cfdb6aaf50a9df05d1eda4c4e35420985385663224672b2e9",
+    "assets/face-8c8b06ea7276df1d15ac.png": "98049e71a0aaae2d0b1fef0bfec16c2157f8af844299c43b63399774e2c3fe71",
+    "assets/face-906893911e59ae4dde3e.png": "03c310dc8970e932e3ffd986cc3d51f3d1bd48aeb89aaf0755863d24201012f0",
+    "assets/face-90a2a935b08931f49e3a.png": "d43e1f399d255da35fd7f05d5678e3c938c9d941fc4d9b9e22295d3225730145",
+    "assets/face-923bec274eda349d7ebf.png": "87966c15b9b87c90b4f6006566232528023de9a6708021fc2a8c6542d5553fb5",
+    "assets/face-92658d9c002b96b96755.png": "5dac22d8f4d88716534428d1eb63f8364558d64dc421b9826f7d03cdd8795cf0",
+    "assets/face-928b3fbb35c3eba6e516.png": "398589a1fb7fbe3cecb8b53029aef71c700f92c40fe9de12366a6970eae0a8f4",
+    "assets/face-9587004a85db027d45ce.png": "eabb75da883d86e28ad5ee72c713a2ed4887eaf1aa55052e2bd78b93e6e01229",
+    "assets/face-961dcf9a8f6ecddf09f2.png": "8d0e88826062ce14c992f6852db582b9f38449f7c54f6f9f412c785f2b117f8d",
+    "assets/face-969621d42eea48dde707.png": "7a2287bd1ba846ec19d56d4d96bb174a86bedf05c5931d2b20088eeddc8f1038",
+    "assets/face-97826185367a8c1425d4.png": "0567dee3833466c2c5e8972733eb7b4c09c343814df0b5b20d7fcd65b84c8341",
+    "assets/face-989fbc984f649574bf61.png": "0e3ea4841934ece6a3cca8f7297bef20bfd569dd3a55237c4eebbe333c9d109f",
+    "assets/face-9bc62d5eceeba239d7f9.png": "9379c950a35f776a4c600c66a1c299964d4ee39d32ad8fa4b81ba2c373624fa0",
+    "assets/face-9d09dcff7c73dedc0cbd.png": "1f7ec9319cc76c33b51cb6744f032f296f3273769b0107d98de94c4e9cffc11b",
+    "assets/face-9ebba37b33e788c61a33.png": "9f37d2485de26e07ccac18ef7227f6de6fef6dc5b67cd9927d2c912bf4a2e6ba",
+    "assets/face-a1fd8150fa392ecaa5a9.png": "1c7ccd9ea97cbfb3510b3bd1da7a4b6cc894d3661b852de735cef958407d7e0b",
+    "assets/face-a31aac340a0aba9f8f76.png": "2eafa4d59cdfc20f2b5a58eda34d352e224645bfc8f1021c21a0af4087300b8b",
+    "assets/face-a35ebf03c07ad5c3f751.png": "a38ac8a5cd169d94bc74fb5bba4acd67e9a9541f62f0df31d8fe446f06f65a2e",
+    "assets/face-a480b634bb12b3c8ebe6.png": "e35b346afaf4f4d84e08f9bf359e6e380d492ce61f588727225c779345ac1fec",
+    "assets/face-a64214aeb0c6822a8750.png": "3840d88857cbf5947c96f000e614675c09f421edc96aabf2e459cae76463b574",
+    "assets/face-a654ba4228d6ebb22014.png": "fe1d25b0dae69e9d5367dcd475c1799f98ac519381dcbe134cc34f8fd00073e5",
+    "assets/face-a72d66fe3d06f67c3550.png": "3dfa80db595042cc4938243b867f7884c6a4e5cdb089a304da4db477ca3766c1",
+    "assets/face-a7bae9aa0f25397a2969.png": "458f6e6a791d7cf568c013656fac433d3d13b9a807201984bcc817ce05a1050c",
+    "assets/face-a83743dc650ccd31780c.png": "27113ec27aaa7d3d1b639f51adf1f922ce1ccb10c0f87867c6f179fdb56e214f",
+    "assets/face-a909ea30685a5a763c5f.png": "fd08b1c6ef3319ee5f1edd62af7b36cd6a5c4c7264089e3002138b85e8f82704",
+    "assets/face-a9d07aede387b70464ec.png": "3bfe08d85a417841aa4be47edb484067f943035b43b6c229b82d6bb5308ca198",
+    "assets/face-aa341fe8742fae310b41.png": "afcd8a873a7a3716f9b751b1f740add4c5ca74aed1ac8c05290e7a8266ab242a",
+    "assets/face-aab69c8d3f98b9992691.png": "4ebc05a5392cf4288e1792a91683fe2aab97f363e4cdba8e7b853ce000b2c3c6",
+    "assets/face-abd05340a89eb12da349.png": "951844ba37b82cb7a7c0b30519ce56b1a9c3f206f242f7f7a21ab30af0b4b3cd",
+    "assets/face-acc118bb7846e921f439.png": "705e4fc6864e1c13873c75fa86d64a9e662fc7f68b040ebf28c0686a2ddd951f",
+    "assets/face-ad841e0c2b5c17826eb2.png": "1e193b9a4f964026fde749a183918bc9e959df59e94088f91d45019d40f69a6f",
+    "assets/face-adc80b7904a9bc5d66fd.png": "0a904ab2e80197707b825c80037001e98bdcbd55378dd0256e15c83cdd3a5a03",
+    "assets/face-af0b6f25920daf327941.png": "76044bef5369c5904235b3f1d11b0f796ca148e7b9222fa412068e4157b560b9",
+    "assets/face-afbea09ba37b3f6dcbda.png": "4c8ca91157afceb6085e216c2e292e804e352dd2202c9ed67d6c485949394084",
+    "assets/face-b03cc3f0377c4721c5e4.png": "42fdc37c593d86c7bef5704f55f870d156b9cae5a3c759e6adc9d72efec775bd",
+    "assets/face-b342522228cc2bae45eb.png": "83c2bfb9bd657e92626d9a8f9519926e0621edaf6336bb5c04c03e8c426aae2d",
+    "assets/face-b3b98800f80979e1e5ba.png": "a9b0e958cf998a6fd93475be92f7f788e121a58d35274707c24acdf1383ad531",
+    "assets/face-b3d8aab8516078685756.png": "2929012fdbba079c928ae6155dd117d6b4fc17e13faca57ccf6657324acc0185",
+    "assets/face-b44a0e3b8b0ceb2150dc.png": "c7e1486e51db1c6719e5bf4b8f03df02b03bbfa26e32d8efddf9371d20092423",
+    "assets/face-b469afc4cd756c3f9e9a.png": "4472d003ae796832674a9799f4f33472a2fb0a13a2f35e6631fef10565f1cdc9",
+    "assets/face-b547bf3a25bd5d793c07.png": "be5efc08e4d7f7e2e44996d1f5389b2e957c34195e10b33ce9622c211b5f7666",
+    "assets/face-b56f6874a7e2514c8b0e.png": "47134fa2a4ba63cea81a4397e75fcd6edcd298498b894e5b3772c7c397b8a563",
+    "assets/face-b5971bcf225d49b28d30.png": "0f604e1e97919fe1b95354bb4d83f5459af4ff5f773ef3d0dcddb1f679cccd68",
+    "assets/face-b5ec07a7083cdb5bb270.png": "6742759fca0699d40b5bab74a01447db9771e3d1a09c6706a1a00c4290fdc52c",
+    "assets/face-b618bd7953f53fa96e93.png": "af48ca171c61bc9e813372b9e214b180fb06443e71b39441d208222dafeaee14",
+    "assets/face-b6b502cc8b8b358f9bca.png": "9c5a2d2ebaaeafe755ab909171f53d9321ede5fea29e1ca42747a74acfda2aa0",
+    "assets/face-b6ff9f6c8fb902b64749.png": "bb2c652d31cb106f9a1ef409deddaabe3096a9ca0da9d173bf16d9db11fd5886",
+    "assets/face-b70a6247e41a636efc5f.png": "1c64c41dd76fd814d76c35c8f0ca1f1733c9a338674225b1e5e2288192a0f7dd",
+    "assets/face-b78ac3c30393133a521b.png": "303a2152bf172f0f09611da256a512eea58de66fadbeab4d1253b71b3b6e5288",
+    "assets/face-b85abb725be4c9224596.png": "e30347f8f8431dab7d4eddf48416affa036a586ca5951c3feec49f7780e3f761",
+    "assets/face-b9795583766de4b35d00.png": "4d36d6c53f7dc5aa94aa200feae1b77a83bd733d8228ac65db610c603b7609a1",
+    "assets/face-b9c0354ca21153ce945b.png": "b523543f9119392226eefca5f3ebe83e3f54ce3107847d4c801bb06173034ab0",
+    "assets/face-ba3359fca1ab39416fa6.png": "70655bd926250f2810ed1ed5f793786c59bbb08576bd78239a8c2b3f2a7ff111",
+    "assets/face-bb1d3b212bd3a1f2d7e0.png": "99ea38f2bf9694a28c78dd3db839b93ba22cae7b4db25d6fd4bd64ab992266fa",
+    "assets/face-bb73bb9f21878e304af0.png": "feafed3817519e3ecacf1bba246e10eb9706f05186fd470244017eebcf894c61",
+    "assets/face-bbd7d554180f2eb3e4cc.png": "18fd9789535d5ad05cf2a1859190aec0997e2f3d199850559c74f730ebe33cf8",
+    "assets/face-bbed1c1660bfed5429d9.png": "ab807383a739afbebc1615908834b77d4ce9cf73a0a00ff77f1853a500a3bb3f",
+    "assets/face-bbf7881c5b00cf7842da.png": "f6bab90e461d8a9d660f4f89ec093280f7056552327a2db519c08fd912f4ad42",
+    "assets/face-bc0e7b5e912227657e5e.png": "da603eaef2bec6873b44c4010c6b894a3d40eed164d8a6377cd798ed6d21ef0e",
+    "assets/face-bc1ad9cf6cf970bd43f7.png": "dc68639f1265c886e750e7c8a8b38d91cb062d40c06d20d361f5aab6e2611a5b",
+    "assets/face-bcab420fd66dce97159b.png": "bfe3d009a8a57e1949575ccaa59d8edd1624635f5a2ffcb6e0da7444b1b13186",
+    "assets/face-bf0f3cf618f6a1ef6f91.png": "90adb26ca8357b4fd9988398d6ee930299dfc1c9021550ad13d47a3f88db9805",
+    "assets/face-c0add5e74a7bea9a3ea3.png": "ac89c86afdb7769875e94f4c117bb44ebe2f6d38b95bbd5d74300fc55d135ef0",
+    "assets/face-c14f137a1ae9c9dd4fef.png": "8a15f3b82d324035f2eaa5a123aedd12444e0ee2d3e38862d3decbba9b3a5cb1",
+    "assets/face-c1a6f9eaf77a02e6ae22.png": "387e4e22996ef5d0ba9900c6fdd073adf6ed727263f02a952a24957d1e7a649f",
+    "assets/face-c4f02ca22fe100369324.png": "5c64d2d31744f0a6c7f595b821cec40ccf9560461614a976d7699b9591d0c530",
+    "assets/face-c5e50c785e16e399b93b.png": "83b93829f75c02a43c3521d74680d2aa85e9f1697296a61d8393e46a7a8f75ad",
+    "assets/face-c7016b700267f079504f.png": "31ecc675c7f8da1b23e74ec6ca845671a9ecbd862ad07bbd6059a310df3cf401",
+    "assets/face-c7833292f3964fdbf38d.png": "d42598e13020992321f86c9601feb96727f3ad3b48118ffa2a56abd0cb8c49a0",
+    "assets/face-c93cec65f81058987a73.png": "f8a434bf99d372c3efbadd935072bf079dfed29aee4a1001d4452b8046217717",
+    "assets/face-ca98d84d408ff3253756.png": "ddaee29b77da1b9e3bac2a9bbb9acc1553aacd0ae14da583763b0c3a97d286f8",
+    "assets/face-cb9b62998f6aadd7cdcd.png": "74fa12a3e146dc64b8b17f022e6e6c22dd516acefd0572850ee4fe58ebc902cd",
+    "assets/face-cb9f691092d6896d6640.png": "fc1aefad922243961b70e271ba4b0d8e1355b5b8413b5c8af215ce7cb470e24e",
+    "assets/face-cba1051b4bcba0c51ae7.png": "beec0fa11b30f7c5b09894adf1d56794eabae0710d13ae31b3ef6483b66c6a5a",
+    "assets/face-cbd658bf12d9bcc7f57f.png": "b897c7a565a6a8b133a6d36e4399c2621c1fe8b1231d105cb6db9d41d85b000e",
+    "assets/face-ccafd931677ee24a680b.png": "a9ca903bc24038aba1715d04cfe3fddfe3251dd0609110018b98fdc20b4a0155",
+    "assets/face-ccf5b98fcf647dbd92f3.png": "dc3017aea6cb1ec3267b7aac3a1746bd046fb8e2b6b1d0d74253f6ee759e59f0",
+    "assets/face-ccf883fa5828e432da35.png": "3d3e3bab4bca46240b25e8ccea225a3d08a88b1c4d523697ca7dd11450ca1783",
+    "assets/face-cd431bcff007ca3eebe3.png": "3f7f08c45c8be92623690c6792f17a5186e96b4b179c889759ed0f1a21384b63",
+    "assets/face-cd90ee4d1b406f7aeeab.png": "3bea0a27b1f632c51bc9391b4cc536cb713b38b7a465a56114a8fc035edc9968",
+    "assets/face-cec2b5c8090b04c808bc.png": "0f43726ff59e2a658d2767912df6ce13f6a321ef4c9ffec61e33ab71cf416138",
+    "assets/face-d0e00abbaa9f17bf7cf7.png": "0418be0cc20fcf8d180ef28f58bccc7e6fd3527846c94d804827b2aaa8dd1c36",
+    "assets/face-d1531182081f0f96832c.png": "afe303f02b9b191d3ada65e3dc2d8a69473eaed9e112487deb9110e8bc7b1ce3",
+    "assets/face-d1e75148b4705f0244e5.png": "03e8d1eebef310acf76a3ff9792227e09652d9d75816493524da4f6d51c449f0",
+    "assets/face-d1ec1c320a2d11e56fb5.png": "e948cb5384570d5963569ae386f03948a485cbf7d1109d47c8d683b7a7cd570a",
+    "assets/face-d2105c724218506fd9ff.png": "1350aec5b82f50d334ead1999f9180a6728609960cec77713129780b49cf6b37",
+    "assets/face-d246bf2e4d0048226878.png": "f1aeccf98f2e0baaeb9ed6f55d33a274929a919153b93fc59e67695f5c060a02",
+    "assets/face-d28372be5c90013c7c88.png": "06edc093a95cb9493ae5a55560a38c7bdad406f2c591f8c288c658eb8d2f9233",
+    "assets/face-d339a1b416a278cee802.png": "b9798994af1769246de1353c5179eb11013f83a1d7a87bf98eaa0ff9d674e003",
+    "assets/face-d4284aa9b7dbd0913e8f.png": "12b1901b6334c3ea3895b5edbbdfe3ea184875da2ae1a06d988cfd0f92b30d79",
+    "assets/face-d44d59f9b3ffa8328a2c.png": "7c3a18d11235d4056e81b197f0e8b2f1960b817c475a9d2aa291130a2114a635",
+    "assets/face-d62e4a33bfdce826e5ef.png": "d79b451070228d1f18bbc6def4fc8a36296b48b7092a239569fefd4eb2568737",
+    "assets/face-d6e8325e7b5233720a2b.png": "d24ea8684527e6bfba2129050d1d28a1cbc714f34ce1d5b9eb279e155f97faa5",
+    "assets/face-d74ec9ac54e3909abeee.png": "9b7fcf2286cad2e97201c32a730f080f49c80460d5212c30464c85430e772674",
+    "assets/face-d8ae53276e40129a6e6e.png": "c9ee3fbbaa334cf7b1374a1c18d171ea9b76c0e864bc25cd1bd9aad947de07a0",
+    "assets/face-da2485c72ad8791609af.png": "cb84e4f477755bc48f6fd7e649333611b12c863893af2f99187db40da309f411",
+    "assets/face-da7baea5d89475884bcb.png": "15935ea27b0f9ed6f43613f2a5836e75b51c312d0d987f1790bfccc45e84fe6d",
+    "assets/face-da8aed546bb36f29d281.png": "4075d75ab90c7b40b9133bc3c8206c2a465bcc67d9a6a6bdb0b355a0bfdf7feb",
+    "assets/face-db7898ac3d65d8f0c03a.png": "6a4ab8e65f387852e133622a3a1d4f72f5184d818ba75a5740d0bac5e90ce5b4",
+    "assets/face-dbc36bc80cf119d75ccf.png": "db5d71d01f58e00811c3e1a021e8183e10acc5f9886238c6ab2ef473ac266135",
+    "assets/face-dcf419b2432bef5db84d.png": "672884b4d367adcdbf8da33f3e4b1893259d3b834796cf14807b176a5830272b",
+    "assets/face-ddc138f720cb562b8b12.png": "39b9a5c1816f4febe8ec5f7407cd212c79f386baa023ff48d6802e1ff477a846",
+    "assets/face-dfafed974a09acbdec69.png": "a8279824ec4217869abf66acf89d6d61184e589ddd6edd5bcfcb0e703c761a51",
+    "assets/face-dfbdd7f27616dea1769d.png": "c0d5ee43289fed4eff07ea1e576154e315be845046927bc14491e026ae74d22a",
+    "assets/face-e0bee29aeda4188de95f.png": "f6819d713219caad0a6356062c2a0d01f3fed600c93249e2cc1f5f706e1407b9",
+    "assets/face-e1b85fc6fb2d2ec999be.png": "3c3f31bb07d587602efe8c03ebf68f67cbceb842517ed64b0cbc06211782f160",
+    "assets/face-e215c7af53f950943744.png": "81c50ac25599265c9de2897425a17b2f1c58375a1dad4a96a90e89571b475fc3",
+    "assets/face-e348a11c2c1770f6bc75.png": "2907920aace977fac53292cb374277bfb65881c4182d3095eb07cad634041400",
+    "assets/face-e3b1930e6f70d68feb55.png": "585e2d62517ced004a951573fa18873e3e2dfe4b3227b01cb97fb324522b78f6",
+    "assets/face-e432084229f2619f0a72.png": "9c073eee466b654d7568b813248ba34da54559daf9a281218f424db1f26215d6",
+    "assets/face-e6c24b04d30120e46947.png": "fa336b12c10ebbaf9de6d7d375e537480b36c7321ed8fe9fee4a2405116ae283",
+    "assets/face-e7f5669778d6d395161e.png": "3f61aeff9497849b3825f459cbf92cbcdc99b303b747e41d05f2eab3e71c8c4f",
+    "assets/face-e8fdfd59013f02c48124.png": "a203e17501a80c604ca4cefdab8b648e2ea535f86c1bf29a41e00eda28e256ee",
+    "assets/face-e9ba05c9239c9fe9f7c7.png": "a9f2f1282951e0aabfea816073db407416ce2449433ec640ac0a5bc87ab7eea5",
+    "assets/face-e9cc0ffe381b7366a9aa.png": "3753a686e98770d5a27d76b5711fa98b4e36b2e71fd4fc70518587d31a2c5031",
+    "assets/face-ea5d196d5fcf26cdfa39.png": "9f504d2677a5a7b3fdbd8c11705799338d96e9b125b93e733624f15db12763c1",
+    "assets/face-ea899acc20b4dc95ddfa.png": "5ed5d81281445e3ff281514c778bb0ce86d25013c5a2a9641aeb1a9322160ca5",
+    "assets/face-ec95fb83a38ca0bfdee2.png": "fb9cc10696e6cca4784e890b9ce8b919489d9ea2613539d69a81a69d9ff68c21",
+    "assets/face-ece14ef039dcd634d293.png": "22327c517349da3a5ac1edb322e4f676c0855ad28b74c7dd08dfc83de9f2e558",
+    "assets/face-ed67b7373f617170b584.png": "2f5efd278b13fab2e3bf9d8e47fc226d55dc72500207f1f2fe647ecca7bf2460",
+    "assets/face-edc7c0f5def11128b8d4.png": "fa894814df696b78980c14c19670fb94cea79e4404ae8d931212c243cf3da1ea",
+    "assets/face-ee71a20c4ef7455c0854.png": "27a4f345a7fe39683481c603336ec01de5e6141c2a73ca37dc88dcfac97e749a",
+    "assets/face-eebd870e63290ab5746f.png": "de729f38724775da4e160e12bdf038d942ac0ff0920c41ed74176b1fd8a1bec3",
+    "assets/face-ef2c4d0dca57e5c8663a.png": "18acd7f8b38015ecef75c33ec171bc7091cb707043e84125e499536edeec30f3",
+    "assets/face-ef619245d8f437c7654f.png": "172bad47ff8c022402adc20fcd740993bf4f3967da901404f46cb68d8fda6775",
+    "assets/face-efb549caa59087027926.png": "955bf6bbe9098b572c75b48a3f9cb51c8b9b37acb6822c2ea8a955a05722c7b5",
+    "assets/face-efdaea29cf9b69cc0ff3.png": "232b898f30fc2c44056812fd91babb9b7ba96916e4070a62ec6d59c093806781",
+    "assets/face-f0b6d89cf225e3407da9.png": "daf1687541a71016639e2af9548a7c8e0235328dc485de7ec07c9ffc62854966",
+    "assets/face-f1f2ad744f4a19e6a1db.png": "b4972cf45dca8039ffdd624e765237376404b23484d14e2acdc1ae7f92572aca",
+    "assets/face-f23620ce7c9c294dbeb6.png": "c59b75e1ed2242699192f7eb6dbe047fb4d3c18f405743e20adaed144b18b8b8",
+    "assets/face-f344a75365d603825844.png": "9a464bcafec5358e60fe882320e08c608b2ad49525c8dcc4774fa7a867c5e1d4",
+    "assets/face-f407fedc207a9b1995dc.png": "e18d394fb16094949d4d3336c13c3f08d3f44e77e187e2ebfaab5c79844f06e2",
+    "assets/face-f485dcc9336188bba774.png": "808663dcf87955f92d587faa9994e42f6d65c81c0af39faac6275fa63012456d",
+    "assets/face-f602ee4606169efcbdf2.png": "a40d1ea1a4610a97497284e0e4477b12215c4fb23201e751af8e3177b18aa813",
+    "assets/face-f613653a4da263f97fc2.png": "3dfe936e14ec19c98418cf1124e8facf6fcee606a19d0ea6a7fa8ca48c5664f8",
+    "assets/face-f939ea9388e5ca2630bb.png": "fdb57eb2ea501974608322d07678cd5814393a29d2f31cc28dfb2d242f0a32e5",
+    "assets/face-fa02c10526eece133de3.png": "a084a21a1dc37849748f0f54e9d3aa7ac872538ab8943cce59fdd50e52fd52ba",
+    "assets/face-fd1c34e4bde61f276802.png": "175c7be4eb3c52419541887a3ff6b80a7e42956545045a54908af58923fa9deb",
+    "assets/face-fd4a9bd310b6253c830d.png": "fbc2571e5fb317f6d2483d0922c85dd70b3f85a50c5287b9152b97c9b0b17594",
+    "assets/face-fe7769778cc45a4c13f3.png": "fb815f8d92ce0661e3194b43258cdbbb78b69719e03aca3080d711576daaa80c"
+  }
+}

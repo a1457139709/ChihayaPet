@@ -1,0 +1,30 @@
+.DS_Store
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+.env
+.env.*
+!.env.example
+credentials.json
+.credentials-*.tmp
+/config.json
+/.config-*.tmp
+/Music/
+/.music-migration-*/
+__pycache__/
+*.log
+/tmp/
+/output/
+# Local reference and audio libraries are not application resources.
+/assets/*/
+
+# Original PNG inputs are required by the checked-in artwork progress page.
+!/assets/chihaya_character/
+/assets/chihaya_character/*
+!/assets/chihaya_character/*.png
+
+# Windows Electron dependencies and build artifacts
+/windows/node_modules/
+/windows/dist/
+/windows/.cache/

@@ -1,0 +1,30 @@
+'use strict';
+const fs=require('node:fs');const path=require('node:path');const {spawnSync}=require('node:child_process');const {sha256,extract,verifySprites,createZip,verifyZip}=require('./package-lib.cjs');const {icon}=require('./icon.cjs');const {verify}=require('./verify-package.cjs');
+async function main(){
+ const root=path.resolve(__dirname,'..'),pkg=require('../package.json');
+ const check=spawnSync(process.execPath,[path.join(__dirname,'check.cjs')],{stdio:'inherit'});if(check.status!==0)throw Error('Pre-package checks failed');
+ const {downloadArtifact}=await import('@electron/get');const asar=await import('@electron/asar');
+ const dist=path.join(root,'dist'),stage=path.join(dist,'app-stage'),runtime=path.join(dist,'ChihayaPet-win32-x64');
+ const source=path.resolve(root,'../ChihayaPet/Resources'),sprites=path.join(source,'CharacterSprites');const manifest=verifySprites(sprites);
+ fs.mkdirSync(dist,{recursive:true});
+ for(const target of [stage,runtime])fs.rmSync(target,{recursive:true,force:true});
+ fs.mkdirSync(path.join(stage,'resources','CharacterSprites','assets'),{recursive:true});
+ fs.cpSync(path.join(root,'src'),path.join(stage,'src'),{recursive:true,filter:file=>fs.statSync(file).isDirectory()||/\.(c?js|html|css)$/.test(file)});
+ fs.writeFileSync(path.join(stage,'package.json'),JSON.stringify({name:pkg.name,productName:pkg.productName,version:pkg.version,description:pkg.description,main:pkg.main,private:true},null,2));
+ for(const file of [...Object.keys(manifest.assetHashes),'manifest.json'])fs.copyFileSync(path.join(sprites,file),path.join(stage,'resources','CharacterSprites',file));
+ fs.copyFileSync(path.join(source,'fansitekit-notice-original.txt'),path.join(stage,'resources','fansitekit-notice-original.txt'));
+ fs.writeFileSync(path.join(stage,'resources','tray.png'),icon());
+ console.log(`Downloading verified Electron ${pkg.buildConfig.electronVersion} win32-x64 runtime (no application execution).`);
+ const zip=await downloadArtifact({version:pkg.buildConfig.electronVersion,artifactName:'electron',platform:'win32',arch:'x64',cacheRoot:path.join(root,'.cache'),downloadOptions:{signal:AbortSignal.timeout(10*60*1000)}});
+ await extract(zip,runtime);fs.renameSync(path.join(runtime,'electron.exe'),path.join(runtime,'ChihayaPet.exe'));
+ fs.rmSync(path.join(runtime,'resources','default_app.asar'),{force:true});
+ await asar.createPackage(stage,path.join(runtime,'resources','app.asar'));
+ fs.copyFileSync(path.resolve(root,'../docs/WINDOWS.md'),path.join(runtime,'使用说明.md'));
+ const info=await verify(runtime);const zipName=`ChihayaPet-${pkg.version}-win11-x64.zip`,destination=path.join(dist,zipName);
+ await createZip(runtime,destination);
+ await verifyZip(destination,runtime);
+ const digest=sha256(fs.readFileSync(destination));fs.writeFileSync(destination+'.sha256',`${digest}  ${zipName}\n`);
+ fs.writeFileSync(path.join(dist,'build-report.json'),JSON.stringify({version:pkg.version,electron:pkg.buildConfig.electronVersion,platform:'win32',arch:'x64',...info,zip:zipName,zipSHA256:digest,zipBytes:fs.statSync(destination).size,windowsRuntimeTested:false},null,2)+'\n');
+ fs.rmSync(stage,{recursive:true,force:true});console.log(`Built ${destination}\nSHA256 ${digest}\nWindows runtime testing: not performed (user acceptance required).`);
+}
+main().catch(error=>{console.error(error.message);process.exitCode=1;});

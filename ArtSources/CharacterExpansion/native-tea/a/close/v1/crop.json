@@ -1,0 +1,17 @@
+{
+  "variant": "a/close",
+  "source": "assets/chihaya_character/chi_a@.png",
+  "sourceSHA256": "4bf7e22a414947111630c5ad56432c662811774379eb154f853c359204c5d10b",
+  "nativeCanvas": [
+    454,
+    606
+  ],
+  "crop": {
+    "left": 24,
+    "top": 240,
+    "width": 392,
+    "height": 366
+  },
+  "inputPreviewScale": 3,
+  "note": "Only this torso crop is generated. Native head, face opening, hair and canvas are never rescaled."
+}

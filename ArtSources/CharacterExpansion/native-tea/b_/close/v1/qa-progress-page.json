@@ -1,0 +1,20 @@
+{
+  "mode": "static source/data/path validation; no browser rendered",
+  "result": "passed",
+  "imageReferencesChecked": 221,
+  "scriptSyntax": "passed",
+  "outfit": "b_",
+  "view": "close",
+  "canvas": [
+    508,
+    606
+  ],
+  "separateOriginalFaces": 7,
+  "faceOffset": [
+    163,
+    66
+  ],
+  "review": "pending",
+  "browserTest": "not-performed; IAB URL security policy rejects file: pages; no workaround attempted",
+  "motherSHA256": "eb08c33b8a5739abef309484c341b91fe8158aa69d95dd2a7d5a7b31f17d4055"
+}

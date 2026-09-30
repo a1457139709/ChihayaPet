@@ -1,0 +1,680 @@
+{
+  "version": 1,
+  "outfit": "b",
+  "view": "full",
+  "date": "2026-09-30",
+  "timezone": "Asia/Shanghai",
+  "status": "approved",
+  "production": "Built-in imagegen draws only a headless torso action part. Deterministic native-canvas masked assembly; no head, original face or complete character was generated.",
+  "canvas": [
+    310,
+    606
+  ],
+  "mother": "ArtSources/CharacterExpansion/native-tea/b/full/v1/mother-body.png",
+  "source": {
+    "body": "assets/chihaya_character/chi_b.png",
+    "sha256": "46d139124bfd9a4fb5985860d1805ba5c24db608aba781db2e27a52f775587bf",
+    "faceOffset": [
+      101,
+      80
+    ],
+    "faceSize": [
+      114,
+      100
+    ],
+    "faces": [
+      {
+        "id": "00",
+        "path": "assets/chihaya_character/chi00b.png",
+        "sha256": "aea16b05bac51c431f9ce63b337b4fe6b4e183d1ecca73622130fc150a2bec9a"
+      },
+      {
+        "id": "01",
+        "path": "assets/chihaya_character/chi01b.png",
+        "sha256": "bcc7afaaa11fe88c96eb907d16a9354611e3f503aa04253fdc08c11197b2f0c3"
+      },
+      {
+        "id": "02",
+        "path": "assets/chihaya_character/chi02b.png",
+        "sha256": "c8a4e44ff2483decde2e74cac272784f7fe37072c1a6e686b472d9fc037741fc"
+      },
+      {
+        "id": "03",
+        "path": "assets/chihaya_character/chi03b.png",
+        "sha256": "5d2aac1a76fd41bc8382459947bc454368f2c009a97edfa22a65abcf5e6f0506"
+      },
+      {
+        "id": "04",
+        "path": "assets/chihaya_character/chi04b.png",
+        "sha256": "297c7e6be7e78b3ff36fc1643d9392c389a7988a14a24a290df2de350d5547eb"
+      },
+      {
+        "id": "05",
+        "path": "assets/chihaya_character/chi05b.png",
+        "sha256": "e3ad7aaeab4e7b49c40bc500f477b9ee08b560b13e722e5516f3a06754f7a4ad"
+      },
+      {
+        "id": "06",
+        "path": "assets/chihaya_character/chi06b.png",
+        "sha256": "707f85a25ea73164d51a5344a608a271154992a518eb80d5752dcebcec4a9734"
+      }
+    ]
+  },
+  "generation": {
+    "tool": "built-in imagegen",
+    "inputs": [
+      "torso-edit-input.png",
+      "ArtSources/CharacterExpansion/native-tea/a/full/v1/torso-imagegen-refined.png"
+    ],
+    "raw": "torso-imagegen-raw.png",
+    "rawSHA256": "a2d49c9b6d896ca6284a65f91dbea984c891c77400c99cae01a53566efbc3304",
+    "prompts": [
+      "imagegen-prompt.txt"
+    ],
+    "nativePart": "torso-part-native.png"
+  },
+  "assembly": {
+    "script": "assemble.cjs",
+    "crop": {
+      "left": 24,
+      "top": 180,
+      "width": 268,
+      "height": 370
+    },
+    "actionPolygons": [
+      [
+        [
+          24,
+          204
+        ],
+        [
+          90,
+          198
+        ],
+        [
+          119,
+          234
+        ],
+        [
+          125,
+          275
+        ],
+        [
+          138,
+          320
+        ],
+        [
+          131,
+          345
+        ],
+        [
+          120,
+          373
+        ],
+        [
+          42,
+          384
+        ],
+        [
+          24,
+          340
+        ]
+      ],
+      [
+        [
+          218,
+          204
+        ],
+        [
+          274,
+          203
+        ],
+        [
+          291,
+          226
+        ],
+        [
+          291,
+          385
+        ],
+        [
+          239,
+          379
+        ],
+        [
+          201,
+          340
+        ],
+        [
+          192,
+          302
+        ],
+        [
+          207,
+          275
+        ],
+        [
+          215,
+          242
+        ]
+      ],
+      [
+        [
+          99,
+          244
+        ],
+        [
+          134,
+          237
+        ],
+        [
+          200,
+          238
+        ],
+        [
+          219,
+          256
+        ],
+        [
+          220,
+          275
+        ],
+        [
+          245,
+          277
+        ],
+        [
+          253,
+          311
+        ],
+        [
+          242,
+          336
+        ],
+        [
+          213,
+          335
+        ],
+        [
+          183,
+          310
+        ],
+        [
+          145,
+          312
+        ],
+        [
+          126,
+          337
+        ],
+        [
+          94,
+          330
+        ],
+        [
+          91,
+          294
+        ]
+      ]
+    ],
+    "removalPolygons": [
+      [
+        [
+          38,
+          344
+        ],
+        [
+          105,
+          342
+        ],
+        [
+          115,
+          373
+        ],
+        [
+          108,
+          404
+        ],
+        [
+          101,
+          439
+        ],
+        [
+          98,
+          476
+        ],
+        [
+          98,
+          491
+        ],
+        [
+          102,
+          528
+        ],
+        [
+          99,
+          547
+        ],
+        [
+          35,
+          547
+        ],
+        [
+          30,
+          438
+        ]
+      ],
+      [
+        [
+          205,
+          325
+        ],
+        [
+          283,
+          323
+        ],
+        [
+          283,
+          434
+        ],
+        [
+          197,
+          434
+        ],
+        [
+          199,
+          382
+        ]
+      ]
+    ],
+    "teaForeground": [
+      [
+        121,
+        246
+      ],
+      [
+        175,
+        243
+      ],
+      [
+        196,
+        250
+      ],
+      [
+        197,
+        270
+      ],
+      [
+        216,
+        275
+      ],
+      [
+        217,
+        284
+      ],
+      [
+        236,
+        290
+      ],
+      [
+        245,
+        302
+      ],
+      [
+        240,
+        311
+      ],
+      [
+        222,
+        312
+      ],
+      [
+        191,
+        297
+      ],
+      [
+        169,
+        296
+      ],
+      [
+        143,
+        301
+      ],
+      [
+        126,
+        325
+      ],
+      [
+        99,
+        316
+      ],
+      [
+        94,
+        295
+      ],
+      [
+        100,
+        269
+      ],
+      [
+        110,
+        253
+      ]
+    ],
+    "cuffForeground": [
+      [
+        [
+          95,
+          278
+        ],
+        [
+          132,
+          300
+        ],
+        [
+          131,
+          321
+        ],
+        [
+          119,
+          332
+        ],
+        [
+          99,
+          332
+        ],
+        [
+          84,
+          321
+        ],
+        [
+          82,
+          306
+        ],
+        [
+          88,
+          288
+        ]
+      ],
+      [
+        [
+          206,
+          294
+        ],
+        [
+          236,
+          295
+        ],
+        [
+          256,
+          304
+        ],
+        [
+          257,
+          319
+        ],
+        [
+          245,
+          335
+        ],
+        [
+          231,
+          337
+        ],
+        [
+          214,
+          324
+        ],
+        [
+          203,
+          308
+        ]
+      ]
+    ],
+    "skirtRows": [
+      [
+        374,
+        107,
+        202
+      ],
+      [
+        380,
+        103,
+        203
+      ],
+      [
+        390,
+        97,
+        205
+      ],
+      [
+        400,
+        92,
+        207
+      ],
+      [
+        410,
+        88,
+        208
+      ],
+      [
+        420,
+        84,
+        209
+      ],
+      [
+        430,
+        81,
+        210
+      ],
+      [
+        440,
+        78,
+        210
+      ],
+      [
+        450,
+        76,
+        211
+      ],
+      [
+        460,
+        74,
+        212
+      ],
+      [
+        470,
+        73,
+        212
+      ],
+      [
+        480,
+        71,
+        213
+      ],
+      [
+        490,
+        70,
+        213
+      ],
+      [
+        500,
+        69,
+        213
+      ],
+      [
+        510,
+        68,
+        214
+      ],
+      [
+        520,
+        67,
+        214
+      ],
+      [
+        530,
+        66,
+        215
+      ],
+      [
+        540,
+        65,
+        215
+      ],
+      [
+        550,
+        65,
+        216
+      ]
+    ],
+    "oldLeftArmRows": [
+      [
+        374,
+        91
+      ],
+      [
+        400,
+        89
+      ],
+      [
+        430,
+        88
+      ],
+      [
+        440,
+        91
+      ],
+      [
+        450,
+        91
+      ],
+      [
+        470,
+        92
+      ],
+      [
+        485,
+        91
+      ],
+      [
+        490,
+        85
+      ],
+      [
+        500,
+        86
+      ],
+      [
+        510,
+        90
+      ],
+      [
+        520,
+        94
+      ],
+      [
+        530,
+        96
+      ],
+      [
+        538,
+        92
+      ],
+      [
+        543,
+        84
+      ],
+      [
+        546,
+        76
+      ],
+      [
+        548,
+        64
+      ],
+      [
+        550,
+        64
+      ]
+    ],
+    "nativeSkirtRepair": "Copy visible original skirt pixels; erase the old arm outside the traced native skirt; reconstruct the narrow garment area hidden by the removed arm from the clean native edge/shadow profile at y=560, registered to the contour and color-matched to same-row x=105. The AI skirt is not used for this repair.",
+    "mask": "local-edit-mask.png",
+    "maskSHA256": "221a73384b1d20a26c064a3b815b6ce382da6739306b829496dca0383fc6a039",
+    "protectedHairMask": "original-hair-preservation-mask.png",
+    "originalTopRows": 228,
+    "shoulderBlendPixels": 10,
+    "edgeBlendPixels": 2.5,
+    "changedPixels": 28091,
+    "editablePixels": 41311,
+    "protectedHairPixels": 15925,
+    "changedBoundsXYXY": [
+      24,
+      229,
+      283,
+      547
+    ]
+  },
+  "layers": {
+    "body": "mother-body.png",
+    "localPart": "torso-part-native.png",
+    "replacement": "local-replacement-layer.png",
+    "expression": "Seven paired game face PNGs remain separate and unmodified; preview uses (101,80)."
+  },
+  "teaWare": {
+    "reference": "ArtSources/CharacterExpansion/native-tea/tea-ware-reference.json",
+    "design": "approved plain white porcelain teacup and shallow saucer; screen-left hand grips handle, screen-right palm supports saucer"
+  },
+  "checks": {
+    "nativeCanvas": "passed",
+    "alpha": "passed",
+    "outsideRGBA": "passed",
+    "outsideRGBAMismatches": 0,
+    "headRGBAMismatches": 0,
+    "faceRegion": "passed",
+    "faceRegionRGBAMismatches": 0,
+    "protectedHairRGBAMismatches": 0,
+    "originalFaceFiles": "7/7 source hashes passed",
+    "originalFaceFit": "passed",
+    "hairAndClothingSeams": "passed-user-review",
+    "review": "passed",
+    "application": "not-integrated",
+    "visualInspection": {
+      "nativeSize": "inspected",
+      "lightAndDark": "inspected",
+      "height240256480": "inspected",
+      "defaultFace00": "inspected",
+      "originalFaces00To06": "inspected; fixed coordinates and unchanged body",
+      "browserPage": "not-run; local file URL blocked by browser policy",
+      "offlinePageChecks": "JavaScript syntax, 221 image references, exact mother hash and approved review state passed"
+    },
+    "expressionInventory": "00–06 are the seven paired side faces; no closed-eye or blink frame is present.",
+    "compositeExports": "7/7 passed; exported RGBA equals independent composition"
+  },
+  "outputSHA256": "dcbd6ab25433c6ec1a1f38807def57d03f83a8d9432ca58a17d8638402b7ff47",
+  "qa": {
+    "verification": "qa-verification.json",
+    "nativeLayers": "qa-native-layers-light-dark.png",
+    "lightDarkScales": "qa-light-dark-scales.png",
+    "torsoDetail": "qa-torso-detail-dark.png",
+    "headAndFaceDetail": "qa-head-and-face-detail.png",
+    "faceSwitching": "qa-face-switching.png",
+    "originalFaceIndex": "qa-original-face-index.png",
+    "previewOnly": [
+      "qa-face00-native.png",
+      "qa-face04-native.png",
+      "qa-face06-native.png"
+    ]
+  },
+  "approval": {
+    "by": "user",
+    "recordedAt": "2026-09-30T18:06:02+08:00",
+    "message": "ok",
+    "scope": [
+      "winter-side full mother",
+      "original-face fit"
+    ],
+    "motherSHA256": "dcbd6ab25433c6ec1a1f38807def57d03f83a8d9432ca58a17d8638402b7ff47"
+  },
+  "composites": "composites/composites.json"
+}

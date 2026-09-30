@@ -1,0 +1,17 @@
+{
+  "variant": "b/close",
+  "source": "assets/chihaya_character/chi_b@.png",
+  "sourceSHA256": "f8360d2810014ff0768831191febf61971cdd801e2252d1a62d12c5028a6b546",
+  "nativeCanvas": [
+    508,
+    606
+  ],
+  "crop": {
+    "left": 64,
+    "top": 252,
+    "width": 420,
+    "height": 354
+  },
+  "inputPreviewScale": 3,
+  "note": "Only the head-free neck-to-waist crop is sent to imagegen. The native head, face opening and original face layers are not generation inputs."
+}

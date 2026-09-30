@@ -1,0 +1,985 @@
+{
+  "version": 1,
+  "scope": "原游戏身体与原脸；全景和近景均为606像素原画布",
+  "coordinateSystem": "faceOffset 是原脸左上角在对应原身体画布上的整数像素坐标；不包含运行资源补高的64行",
+  "variants": {
+    "a/full": {
+      "width": 268,
+      "height": 606,
+      "body": "assets/chihaya_character/chi_a.png",
+      "bodySHA256": "5ca8ec807ecfa9914bb4c81005f2065a4e7924392ddcf8340da3b29bacfb4c98",
+      "defaultFace": "assets/chihaya_character/chi00a.png",
+      "faceSize": [
+        122,
+        104
+      ],
+      "faceOffset": [
+        79,
+        76
+      ],
+      "faces": [
+        {
+          "id": "00",
+          "path": "assets/chihaya_character/chi00a.png",
+          "sha256": "2f63269f5ece92aa9135633ebefc8fd3db203c7081c7a59f3208f519e180e04b"
+        },
+        {
+          "id": "01",
+          "path": "assets/chihaya_character/chi01a.png",
+          "sha256": "66b6690dfeedd20b09e1f1d55528e1661348068b9d4bb5565c4d7d25faf762e3"
+        },
+        {
+          "id": "02",
+          "path": "assets/chihaya_character/chi02a.png",
+          "sha256": "3aee68b0acd5d1571a909499a2937eec2fb8a705f3daadb81cb7fac6670c6364"
+        },
+        {
+          "id": "03",
+          "path": "assets/chihaya_character/chi03a.png",
+          "sha256": "e76bb08e911a6f32a53ec05c2999c16080a1f7577eb0d053c9263f0015414c95"
+        },
+        {
+          "id": "04",
+          "path": "assets/chihaya_character/chi04a.png",
+          "sha256": "e5131f5cb5e977f95406b729b4e564b7e469c3d1ce8eeebeb8655257bca1907f"
+        },
+        {
+          "id": "05",
+          "path": "assets/chihaya_character/chi05a.png",
+          "sha256": "21004e8d02b23d5976fcb8fd6c71856ae1d12c9e4102973b2c755506be6d1ee0"
+        },
+        {
+          "id": "06",
+          "path": "assets/chihaya_character/chi06a.png",
+          "sha256": "05de4462d85d9f5c17883c2e15b272646f640627539c275c03aa272cfe97dce8"
+        },
+        {
+          "id": "07",
+          "path": "assets/chihaya_character/chi07a.png",
+          "sha256": "9ccea11a53ed521ef8654817d231dcdde204fb86493cde954aa3e9a10319b3cc"
+        },
+        {
+          "id": "08",
+          "path": "assets/chihaya_character/chi08a.png",
+          "sha256": "5eb9c186076763429526a4b27606a009830f8dddd50d56b7ce1d4901df2d8811"
+        },
+        {
+          "id": "09",
+          "path": "assets/chihaya_character/chi09a.png",
+          "sha256": "0d32e32d01f82aea5f1c265d5f4c6d52e3ad0565e7f410dbea3367404679bfd2"
+        },
+        {
+          "id": "10",
+          "path": "assets/chihaya_character/chi10a.png",
+          "sha256": "29401faf71f052e14c40539d0354684aa53cdf53a117969396012be502ae88e9"
+        },
+        {
+          "id": "11",
+          "path": "assets/chihaya_character/chi11a.png",
+          "sha256": "c374d86638c39053af12fb39024de8eaf8c7bcafc78c15092a0130acfba442aa"
+        }
+      ]
+    },
+    "a/close": {
+      "width": 454,
+      "height": 606,
+      "body": "assets/chihaya_character/chi_a@.png",
+      "bodySHA256": "4bf7e22a414947111630c5ad56432c662811774379eb154f853c359204c5d10b",
+      "defaultFace": "assets/chihaya_character/chi00a@.png",
+      "faceSize": [
+        204,
+        154
+      ],
+      "faceOffset": [
+        120,
+        85
+      ],
+      "faces": [
+        {
+          "id": "00",
+          "path": "assets/chihaya_character/chi00a@.png",
+          "sha256": "0d479d6e1eca514440c2736f91da5eeb174a43fb89385d8e59970ccb2865474c"
+        },
+        {
+          "id": "01",
+          "path": "assets/chihaya_character/chi01a@.png",
+          "sha256": "ed455eeada97a7ce863f3ed0d47989e9ac0a5ebab7818e75d99f524d5958d505"
+        },
+        {
+          "id": "02",
+          "path": "assets/chihaya_character/chi02a@.png",
+          "sha256": "505e6dfcd9e2eb2e227802b4bcae05500019af87f451378d70749a11038c978b"
+        },
+        {
+          "id": "03",
+          "path": "assets/chihaya_character/chi03a@.png",
+          "sha256": "56ec8deb92d91ae4b911764343b4477ea54d7f8057b04269818e60172e013035"
+        },
+        {
+          "id": "04",
+          "path": "assets/chihaya_character/chi04a@.png",
+          "sha256": "15d3990540f5615c32c570ae2fb3c4286f9bfc96dc19324dc6677bdcce94b5f6"
+        },
+        {
+          "id": "05",
+          "path": "assets/chihaya_character/chi05a@.png",
+          "sha256": "2f4e09a987bc68eb11b3d8d7bc13d9645e1ccb0599227b3635f66629113b23b6"
+        },
+        {
+          "id": "06",
+          "path": "assets/chihaya_character/chi06a@.png",
+          "sha256": "d2c03bce15ccbaab8232dbaff1be3420c03581bb3d5b304045316f32fae31b21"
+        },
+        {
+          "id": "07",
+          "path": "assets/chihaya_character/chi07a@.png",
+          "sha256": "fbf4a5b94ed20cd81f1f534637bc022f2be811a03d37377c63fa2e90a8b8255c"
+        },
+        {
+          "id": "08",
+          "path": "assets/chihaya_character/chi08a@.png",
+          "sha256": "1152f3e33727b730d12476cf16edf816f4bd1240c344d2bbb943d0706f9c8fea"
+        },
+        {
+          "id": "09",
+          "path": "assets/chihaya_character/chi09a@.png",
+          "sha256": "df91c2fef59f76d7f270c976094ab3f95bc6e588b9c673dbd55ae4b688415f1a"
+        },
+        {
+          "id": "10",
+          "path": "assets/chihaya_character/chi10a@.png",
+          "sha256": "da512dccad8aeb4071bad81d8eeaf4f93f59a726e2a6f8aa7a6542413ed6db26"
+        },
+        {
+          "id": "11",
+          "path": "assets/chihaya_character/chi11a@.png",
+          "sha256": "49fca7c44b3fd624bdee6b591049f713e3d9dfc84537c72d8cc2e5c75238c5ac"
+        }
+      ]
+    },
+    "a_/full": {
+      "width": 268,
+      "height": 606,
+      "body": "assets/chihaya_character/chi_a_.png",
+      "bodySHA256": "80a5afbfc5dab932a74bb8f0f13eccf7a4049996900d58548f48818ebbf536b2",
+      "defaultFace": "assets/chihaya_character/chi00a_.png",
+      "faceSize": [
+        122,
+        104
+      ],
+      "faceOffset": [
+        79,
+        76
+      ],
+      "faces": [
+        {
+          "id": "00",
+          "path": "assets/chihaya_character/chi00a_.png",
+          "sha256": "2f63269f5ece92aa9135633ebefc8fd3db203c7081c7a59f3208f519e180e04b"
+        },
+        {
+          "id": "01",
+          "path": "assets/chihaya_character/chi01a_.png",
+          "sha256": "66b6690dfeedd20b09e1f1d55528e1661348068b9d4bb5565c4d7d25faf762e3"
+        },
+        {
+          "id": "02",
+          "path": "assets/chihaya_character/chi02a_.png",
+          "sha256": "3aee68b0acd5d1571a909499a2937eec2fb8a705f3daadb81cb7fac6670c6364"
+        },
+        {
+          "id": "03",
+          "path": "assets/chihaya_character/chi03a_.png",
+          "sha256": "e76bb08e911a6f32a53ec05c2999c16080a1f7577eb0d053c9263f0015414c95"
+        },
+        {
+          "id": "04",
+          "path": "assets/chihaya_character/chi04a_.png",
+          "sha256": "e5131f5cb5e977f95406b729b4e564b7e469c3d1ce8eeebeb8655257bca1907f"
+        },
+        {
+          "id": "05",
+          "path": "assets/chihaya_character/chi05a_.png",
+          "sha256": "21004e8d02b23d5976fcb8fd6c71856ae1d12c9e4102973b2c755506be6d1ee0"
+        },
+        {
+          "id": "06",
+          "path": "assets/chihaya_character/chi06a_.png",
+          "sha256": "05de4462d85d9f5c17883c2e15b272646f640627539c275c03aa272cfe97dce8"
+        },
+        {
+          "id": "07",
+          "path": "assets/chihaya_character/chi07a_.png",
+          "sha256": "9ccea11a53ed521ef8654817d231dcdde204fb86493cde954aa3e9a10319b3cc"
+        },
+        {
+          "id": "08",
+          "path": "assets/chihaya_character/chi08a_.png",
+          "sha256": "5eb9c186076763429526a4b27606a009830f8dddd50d56b7ce1d4901df2d8811"
+        },
+        {
+          "id": "09",
+          "path": "assets/chihaya_character/chi09a_.png",
+          "sha256": "0d32e32d01f82aea5f1c265d5f4c6d52e3ad0565e7f410dbea3367404679bfd2"
+        },
+        {
+          "id": "10",
+          "path": "assets/chihaya_character/chi10a_.png",
+          "sha256": "29401faf71f052e14c40539d0354684aa53cdf53a117969396012be502ae88e9"
+        },
+        {
+          "id": "11",
+          "path": "assets/chihaya_character/chi11a_.png",
+          "sha256": "c374d86638c39053af12fb39024de8eaf8c7bcafc78c15092a0130acfba442aa"
+        }
+      ]
+    },
+    "a_/close": {
+      "width": 454,
+      "height": 606,
+      "body": "assets/chihaya_character/chi_a_@.png",
+      "bodySHA256": "eb97022cf90c5e7a3cce9887e0fc22ab2a6cc1fa0d23c53c53b9200dd02943f0",
+      "defaultFace": "assets/chihaya_character/chi00a_@.png",
+      "faceSize": [
+        204,
+        154
+      ],
+      "faceOffset": [
+        120,
+        85
+      ],
+      "faces": [
+        {
+          "id": "00",
+          "path": "assets/chihaya_character/chi00a_@.png",
+          "sha256": "0d479d6e1eca514440c2736f91da5eeb174a43fb89385d8e59970ccb2865474c"
+        },
+        {
+          "id": "01",
+          "path": "assets/chihaya_character/chi01a_@.png",
+          "sha256": "ed455eeada97a7ce863f3ed0d47989e9ac0a5ebab7818e75d99f524d5958d505"
+        },
+        {
+          "id": "02",
+          "path": "assets/chihaya_character/chi02a_@.png",
+          "sha256": "505e6dfcd9e2eb2e227802b4bcae05500019af87f451378d70749a11038c978b"
+        },
+        {
+          "id": "03",
+          "path": "assets/chihaya_character/chi03a_@.png",
+          "sha256": "56ec8deb92d91ae4b911764343b4477ea54d7f8057b04269818e60172e013035"
+        },
+        {
+          "id": "04",
+          "path": "assets/chihaya_character/chi04a_@.png",
+          "sha256": "15d3990540f5615c32c570ae2fb3c4286f9bfc96dc19324dc6677bdcce94b5f6"
+        },
+        {
+          "id": "05",
+          "path": "assets/chihaya_character/chi05a_@.png",
+          "sha256": "2f4e09a987bc68eb11b3d8d7bc13d9645e1ccb0599227b3635f66629113b23b6"
+        },
+        {
+          "id": "06",
+          "path": "assets/chihaya_character/chi06a_@.png",
+          "sha256": "d2c03bce15ccbaab8232dbaff1be3420c03581bb3d5b304045316f32fae31b21"
+        },
+        {
+          "id": "07",
+          "path": "assets/chihaya_character/chi07a_@.png",
+          "sha256": "fbf4a5b94ed20cd81f1f534637bc022f2be811a03d37377c63fa2e90a8b8255c"
+        },
+        {
+          "id": "08",
+          "path": "assets/chihaya_character/chi08a_@.png",
+          "sha256": "1152f3e33727b730d12476cf16edf816f4bd1240c344d2bbb943d0706f9c8fea"
+        },
+        {
+          "id": "09",
+          "path": "assets/chihaya_character/chi09a_@.png",
+          "sha256": "df91c2fef59f76d7f270c976094ab3f95bc6e588b9c673dbd55ae4b688415f1a"
+        },
+        {
+          "id": "10",
+          "path": "assets/chihaya_character/chi10a_@.png",
+          "sha256": "da512dccad8aeb4071bad81d8eeaf4f93f59a726e2a6f8aa7a6542413ed6db26"
+        },
+        {
+          "id": "11",
+          "path": "assets/chihaya_character/chi11a_@.png",
+          "sha256": "49fca7c44b3fd624bdee6b591049f713e3d9dfc84537c72d8cc2e5c75238c5ac"
+        }
+      ]
+    },
+    "b/full": {
+      "width": 310,
+      "height": 606,
+      "body": "assets/chihaya_character/chi_b.png",
+      "bodySHA256": "46d139124bfd9a4fb5985860d1805ba5c24db608aba781db2e27a52f775587bf",
+      "defaultFace": "assets/chihaya_character/chi00b.png",
+      "faceSize": [
+        114,
+        100
+      ],
+      "faceOffset": [
+        101,
+        80
+      ],
+      "faces": [
+        {
+          "id": "00",
+          "path": "assets/chihaya_character/chi00b.png",
+          "sha256": "aea16b05bac51c431f9ce63b337b4fe6b4e183d1ecca73622130fc150a2bec9a"
+        },
+        {
+          "id": "01",
+          "path": "assets/chihaya_character/chi01b.png",
+          "sha256": "bcc7afaaa11fe88c96eb907d16a9354611e3f503aa04253fdc08c11197b2f0c3"
+        },
+        {
+          "id": "02",
+          "path": "assets/chihaya_character/chi02b.png",
+          "sha256": "c8a4e44ff2483decde2e74cac272784f7fe37072c1a6e686b472d9fc037741fc"
+        },
+        {
+          "id": "03",
+          "path": "assets/chihaya_character/chi03b.png",
+          "sha256": "5d2aac1a76fd41bc8382459947bc454368f2c009a97edfa22a65abcf5e6f0506"
+        },
+        {
+          "id": "04",
+          "path": "assets/chihaya_character/chi04b.png",
+          "sha256": "297c7e6be7e78b3ff36fc1643d9392c389a7988a14a24a290df2de350d5547eb"
+        },
+        {
+          "id": "05",
+          "path": "assets/chihaya_character/chi05b.png",
+          "sha256": "e3ad7aaeab4e7b49c40bc500f477b9ee08b560b13e722e5516f3a06754f7a4ad"
+        },
+        {
+          "id": "06",
+          "path": "assets/chihaya_character/chi06b.png",
+          "sha256": "707f85a25ea73164d51a5344a608a271154992a518eb80d5752dcebcec4a9734"
+        }
+      ]
+    },
+    "b/close": {
+      "width": 508,
+      "height": 606,
+      "body": "assets/chihaya_character/chi_b@.png",
+      "bodySHA256": "f8360d2810014ff0768831191febf61971cdd801e2252d1a62d12c5028a6b546",
+      "defaultFace": "assets/chihaya_character/chi00b@.png",
+      "faceSize": [
+        203,
+        183
+      ],
+      "faceOffset": [
+        163,
+        66
+      ],
+      "faces": [
+        {
+          "id": "00",
+          "path": "assets/chihaya_character/chi00b@.png",
+          "sha256": "c84e9d394b4434ec42c2a9c70525c49e8d242b1720c21c44752ce3f163a36273"
+        },
+        {
+          "id": "01",
+          "path": "assets/chihaya_character/chi01b@.png",
+          "sha256": "c71b1d3dfd250c37c37f50cbd473d31ee6dc2ad0305ccf61fe6b11d0be439312"
+        },
+        {
+          "id": "02",
+          "path": "assets/chihaya_character/chi02b@.png",
+          "sha256": "0d24b0f1c944cc89c1e5562ee97eb6d23345348b4b7a485d21d0be990ac3090b"
+        },
+        {
+          "id": "03",
+          "path": "assets/chihaya_character/chi03b@.png",
+          "sha256": "5a3d5c9309119939f671b5f9a60de33ff8afeed2a8b58a0353247deeab03b119"
+        },
+        {
+          "id": "04",
+          "path": "assets/chihaya_character/chi04b@.png",
+          "sha256": "810647e3743e70c1a089c04aff90c4b8e98485113c252790ec410892f23c6fa5"
+        },
+        {
+          "id": "05",
+          "path": "assets/chihaya_character/chi05b@.png",
+          "sha256": "9981056ec526ebe6342b534a624be84a9167e683e21efb1310cd699d3e0336bf"
+        },
+        {
+          "id": "06",
+          "path": "assets/chihaya_character/chi06b@.png",
+          "sha256": "562683fb854f503f4e0ec4bfb0568ac25394c7debdb0c57d4edf638cbb4a11b8"
+        }
+      ]
+    },
+    "b_/full": {
+      "width": 310,
+      "height": 606,
+      "body": "assets/chihaya_character/chi_b_.png",
+      "bodySHA256": "1650f1d49c2fca349d91ad05cd5e4d380f68f8d8266734974132ea29e0c79e7a",
+      "defaultFace": "assets/chihaya_character/chi00b_.png",
+      "faceSize": [
+        114,
+        100
+      ],
+      "faceOffset": [
+        101,
+        80
+      ],
+      "faces": [
+        {
+          "id": "00",
+          "path": "assets/chihaya_character/chi00b_.png",
+          "sha256": "aea16b05bac51c431f9ce63b337b4fe6b4e183d1ecca73622130fc150a2bec9a"
+        },
+        {
+          "id": "01",
+          "path": "assets/chihaya_character/chi01b_.png",
+          "sha256": "bcc7afaaa11fe88c96eb907d16a9354611e3f503aa04253fdc08c11197b2f0c3"
+        },
+        {
+          "id": "02",
+          "path": "assets/chihaya_character/chi02b_.png",
+          "sha256": "c8a4e44ff2483decde2e74cac272784f7fe37072c1a6e686b472d9fc037741fc"
+        },
+        {
+          "id": "03",
+          "path": "assets/chihaya_character/chi03b_.png",
+          "sha256": "5d2aac1a76fd41bc8382459947bc454368f2c009a97edfa22a65abcf5e6f0506"
+        },
+        {
+          "id": "04",
+          "path": "assets/chihaya_character/chi04b_.png",
+          "sha256": "297c7e6be7e78b3ff36fc1643d9392c389a7988a14a24a290df2de350d5547eb"
+        },
+        {
+          "id": "05",
+          "path": "assets/chihaya_character/chi05b_.png",
+          "sha256": "e3ad7aaeab4e7b49c40bc500f477b9ee08b560b13e722e5516f3a06754f7a4ad"
+        },
+        {
+          "id": "06",
+          "path": "assets/chihaya_character/chi06b_.png",
+          "sha256": "707f85a25ea73164d51a5344a608a271154992a518eb80d5752dcebcec4a9734"
+        }
+      ]
+    },
+    "b_/close": {
+      "width": 508,
+      "height": 606,
+      "body": "assets/chihaya_character/chi_b_@.png",
+      "bodySHA256": "22061d089955a88a13458a8df683208d68d98f45bca6558859a305e7cda32c43",
+      "defaultFace": "assets/chihaya_character/chi00b_@.png",
+      "faceSize": [
+        203,
+        183
+      ],
+      "faceOffset": [
+        163,
+        66
+      ],
+      "faces": [
+        {
+          "id": "00",
+          "path": "assets/chihaya_character/chi00b_@.png",
+          "sha256": "c84e9d394b4434ec42c2a9c70525c49e8d242b1720c21c44752ce3f163a36273"
+        },
+        {
+          "id": "01",
+          "path": "assets/chihaya_character/chi01b_@.png",
+          "sha256": "c71b1d3dfd250c37c37f50cbd473d31ee6dc2ad0305ccf61fe6b11d0be439312"
+        },
+        {
+          "id": "02",
+          "path": "assets/chihaya_character/chi02b_@.png",
+          "sha256": "0d24b0f1c944cc89c1e5562ee97eb6d23345348b4b7a485d21d0be990ac3090b"
+        },
+        {
+          "id": "03",
+          "path": "assets/chihaya_character/chi03b_@.png",
+          "sha256": "5a3d5c9309119939f671b5f9a60de33ff8afeed2a8b58a0353247deeab03b119"
+        },
+        {
+          "id": "04",
+          "path": "assets/chihaya_character/chi04b_@.png",
+          "sha256": "810647e3743e70c1a089c04aff90c4b8e98485113c252790ec410892f23c6fa5"
+        },
+        {
+          "id": "05",
+          "path": "assets/chihaya_character/chi05b_@.png",
+          "sha256": "9981056ec526ebe6342b534a624be84a9167e683e21efb1310cd699d3e0336bf"
+        },
+        {
+          "id": "06",
+          "path": "assets/chihaya_character/chi06b_@.png",
+          "sha256": "562683fb854f503f4e0ec4bfb0568ac25394c7debdb0c57d4edf638cbb4a11b8"
+        }
+      ]
+    },
+    "c/full": {
+      "width": 268,
+      "height": 606,
+      "body": "assets/chihaya_character/chi_c.png",
+      "bodySHA256": "839cd680f9de686f5610e6702284156b545171cdb755bfc830b1b0376ebc2e02",
+      "defaultFace": "assets/chihaya_character/chi00c.png",
+      "faceSize": [
+        122,
+        104
+      ],
+      "faceOffset": [
+        79,
+        76
+      ],
+      "faces": [
+        {
+          "id": "00",
+          "path": "assets/chihaya_character/chi00c.png",
+          "sha256": "209b1fe474cf6461727d91976a4b52d63568ae232fd67f3a21e75bd4abba2a85"
+        },
+        {
+          "id": "01",
+          "path": "assets/chihaya_character/chi01c.png",
+          "sha256": "5d2bf0609bfc23f3a07fdc69082cbec59449a9b9fc57b420e2149c66f2e7d418"
+        },
+        {
+          "id": "02",
+          "path": "assets/chihaya_character/chi02c.png",
+          "sha256": "63c8e5f7bb9c9803246ea1ed530726e637d4e17612fa094ecd76c72bf342caed"
+        },
+        {
+          "id": "03",
+          "path": "assets/chihaya_character/chi03c.png",
+          "sha256": "74f805064c93746eca0fa34c81fabb4177db7f43e46beed41711e8845512f553"
+        },
+        {
+          "id": "04",
+          "path": "assets/chihaya_character/chi04c.png",
+          "sha256": "5f51f207047671c6ce6bf6688d8ac74596673cd88229694f9f0d3fcd3bc97eac"
+        },
+        {
+          "id": "05",
+          "path": "assets/chihaya_character/chi05c.png",
+          "sha256": "289961b88af9c40b09bddd26dd73b3eb7f25396c286f824aa813932ca1654f1b"
+        },
+        {
+          "id": "06",
+          "path": "assets/chihaya_character/chi06c.png",
+          "sha256": "ca9d7174e63ea4be5ce21ba78dd5f7d733910918584212d26398f886e289cbb8"
+        },
+        {
+          "id": "07",
+          "path": "assets/chihaya_character/chi07c.png",
+          "sha256": "b21dbf21f7219d34ef906276f29b8eca92a7f8076ab5f8a8a23612de1b9dcbc4"
+        },
+        {
+          "id": "08",
+          "path": "assets/chihaya_character/chi08c.png",
+          "sha256": "b6637a6e0e9d5eb8a6eb0316595066cde0808c7d60a5725807d34d3d50792662"
+        },
+        {
+          "id": "09",
+          "path": "assets/chihaya_character/chi09c.png",
+          "sha256": "013ba9408ba0d834d6f08fc8b9c4e4320ad9661826ddb45adac5db841da1ae87"
+        },
+        {
+          "id": "10",
+          "path": "assets/chihaya_character/chi10c.png",
+          "sha256": "c17ea857f27f03cbc907865ccbc9df30b4e1340d761c4311b4ceda91c7b1f83b"
+        },
+        {
+          "id": "11",
+          "path": "assets/chihaya_character/chi11c.png",
+          "sha256": "6cd72d07593de6a9467673110abbb57d4ead720f7d5a10304b51b3a56cc94114"
+        }
+      ]
+    },
+    "c/close": {
+      "width": 454,
+      "height": 606,
+      "body": "assets/chihaya_character/chi_c@.png",
+      "bodySHA256": "e4247a88d052af303b98db84a941855cb6847ff57f079b89588ae7fc53f0c2b0",
+      "defaultFace": "assets/chihaya_character/chi00c@.png",
+      "faceSize": [
+        204,
+        154
+      ],
+      "faceOffset": [
+        120,
+        85
+      ],
+      "faces": [
+        {
+          "id": "00",
+          "path": "assets/chihaya_character/chi00c@.png",
+          "sha256": "bafe4b7d5d2dadd9dd6cce0df694254a84182d7d8e733bc58a7eda03924e02ec"
+        },
+        {
+          "id": "01",
+          "path": "assets/chihaya_character/chi01c@.png",
+          "sha256": "edfd4923f299e5169ef22f7087b44a8b8f1bdc7fff22f1c5150a05f35c3be2a6"
+        },
+        {
+          "id": "02",
+          "path": "assets/chihaya_character/chi02c@.png",
+          "sha256": "ceb9405aed29e796583a57570e4d1eb64beb65b76595f582c902574aed33e70a"
+        },
+        {
+          "id": "03",
+          "path": "assets/chihaya_character/chi03c@.png",
+          "sha256": "5c74c8e51d1696cc2fc4c9f390f9459b9e5e4df2a4f0947bb0502f7840207d91"
+        },
+        {
+          "id": "04",
+          "path": "assets/chihaya_character/chi04c@.png",
+          "sha256": "b6793b4886f699cebeff7475b90ad3364e5d63a81da03eb6e55d718895299dcc"
+        },
+        {
+          "id": "05",
+          "path": "assets/chihaya_character/chi05c@.png",
+          "sha256": "9ab3c5acd79184ea7a87d4e9479a5d656ae13519e96b1be3ed6da1b668cfcdff"
+        },
+        {
+          "id": "06",
+          "path": "assets/chihaya_character/chi06c@.png",
+          "sha256": "8036b0527001a286874a55653ba6a10f068d29d3519fa6be66a4018dc14a66af"
+        },
+        {
+          "id": "07",
+          "path": "assets/chihaya_character/chi07c@.png",
+          "sha256": "95eb110633729ed31b38dd81ff2ede1c8d59287d77a6118abb14188866c8dfeb"
+        },
+        {
+          "id": "08",
+          "path": "assets/chihaya_character/chi08c@.png",
+          "sha256": "acbedd0836259ab4b05ec537b35da8cac52db0278ca4832c097c8daf8ca1d1c2"
+        },
+        {
+          "id": "09",
+          "path": "assets/chihaya_character/chi09c@.png",
+          "sha256": "1d6e9fae54a7c7614c689eeff4543bede2ee4c7d086dd9a331e325e90d2d0fcf"
+        },
+        {
+          "id": "10",
+          "path": "assets/chihaya_character/chi10c@.png",
+          "sha256": "06c43711f011e127b59c0de8f6c7cf44b0a0be0fa3aff4692456f0d8eb762a0a"
+        },
+        {
+          "id": "11",
+          "path": "assets/chihaya_character/chi11c@.png",
+          "sha256": "49fca7c44b3fd624bdee6b591049f713e3d9dfc84537c72d8cc2e5c75238c5ac"
+        }
+      ]
+    },
+    "d/full": {
+      "width": 268,
+      "height": 606,
+      "body": "assets/chihaya_character/chi_d.png",
+      "bodySHA256": "2c49d2c91c010074ba14f4be27eac40552c4fa23ba0974a2d866842fdc6fbb55",
+      "defaultFace": "assets/chihaya_character/chi00d.png",
+      "faceSize": [
+        122,
+        104
+      ],
+      "faceOffset": [
+        79,
+        76
+      ],
+      "faces": [
+        {
+          "id": "00",
+          "path": "assets/chihaya_character/chi00d.png",
+          "sha256": "7e6094a6ab5f1b3c15d3fda6856003d570e38dd7fe37480a9676c5d21fc5a865"
+        },
+        {
+          "id": "01",
+          "path": "assets/chihaya_character/chi01d.png",
+          "sha256": "42ae869dd78110dd43b1bc8f998a0004cc38fb8959230a02ffa436d63821d96d"
+        },
+        {
+          "id": "02",
+          "path": "assets/chihaya_character/chi02d.png",
+          "sha256": "3fc224f12f956613ae1a58fc21f0fbc6a06bc5bb4315f22fdc7657c8c8d9a3a6"
+        },
+        {
+          "id": "03",
+          "path": "assets/chihaya_character/chi03d.png",
+          "sha256": "031f240948aed8b5d5aee143e85d631d22972611a848b651cad949b27aad974f"
+        },
+        {
+          "id": "04",
+          "path": "assets/chihaya_character/chi04d.png",
+          "sha256": "510aa29855f63554b7625f7ae4e738de88db6833a5a1512a681201680bf24145"
+        },
+        {
+          "id": "05",
+          "path": "assets/chihaya_character/chi05d.png",
+          "sha256": "fdd50ccf44d4e2953e6e3fe9924c9512f967db423e5407e2c705ee4859e1f2b4"
+        },
+        {
+          "id": "06",
+          "path": "assets/chihaya_character/chi06d.png",
+          "sha256": "a4e5b4ac3fd52bcfa771d634398981ea3a0434d9ed4bf8928d318bf213ca791c"
+        },
+        {
+          "id": "07",
+          "path": "assets/chihaya_character/chi07d.png",
+          "sha256": "8fe626946c9312a63a37ba341d6f7d500ae662408e921cf373be5429f53af570"
+        },
+        {
+          "id": "08",
+          "path": "assets/chihaya_character/chi08d.png",
+          "sha256": "1cc547dd235bbfd8c7feef148884a0c7b89f51c39836b6c498050f08f7855122"
+        },
+        {
+          "id": "09",
+          "path": "assets/chihaya_character/chi09d.png",
+          "sha256": "2b0da4de0ceba56a6de7286d3c3517d80b7bcb200f69f93e23bc3654dbabeb8c"
+        },
+        {
+          "id": "10",
+          "path": "assets/chihaya_character/chi10d.png",
+          "sha256": "d59c16da945f9c7867c7ad39bc656f4088c30fec79f843127c31279ef272e533"
+        },
+        {
+          "id": "11",
+          "path": "assets/chihaya_character/chi11d.png",
+          "sha256": "7e04665e1ff1fb06332ca176e8f5f74cef02dc677f208b9bf1000f944729a31e"
+        }
+      ]
+    },
+    "d/close": {
+      "width": 454,
+      "height": 606,
+      "body": "assets/chihaya_character/chi_d@.png",
+      "bodySHA256": "15c1aa4ee7386893b8f5280f114e910fd462e99df8ef0357a65c60f21e3a152c",
+      "defaultFace": "assets/chihaya_character/chi00d@.png",
+      "faceSize": [
+        204,
+        154
+      ],
+      "faceOffset": [
+        120,
+        85
+      ],
+      "faces": [
+        {
+          "id": "00",
+          "path": "assets/chihaya_character/chi00d@.png",
+          "sha256": "a8965703b1f6500e0c782246ba3b81ea6c4ad15cf090253c5b88cc46aed18010"
+        },
+        {
+          "id": "01",
+          "path": "assets/chihaya_character/chi01d@.png",
+          "sha256": "f9646215b2efea772f0f78de3489616691437d9c7974647798bdabea2053a503"
+        },
+        {
+          "id": "02",
+          "path": "assets/chihaya_character/chi02d@.png",
+          "sha256": "ae50777313dc64cbb4d37accd2935e5be99fad5c4ee2320456a425e5a92c7743"
+        },
+        {
+          "id": "03",
+          "path": "assets/chihaya_character/chi03d@.png",
+          "sha256": "5408ab9874813ba188385b8b7b6843915fecde3864c4abac280f5f523b3927c2"
+        },
+        {
+          "id": "04",
+          "path": "assets/chihaya_character/chi04d@.png",
+          "sha256": "641a9bc72318dc3437967a420f75a9a28747383eda53b05f338c0dc098ae3101"
+        },
+        {
+          "id": "05",
+          "path": "assets/chihaya_character/chi05d@.png",
+          "sha256": "ce9648985506a36af7de021b0d067dcf0727390cb215e7e9c3c514b48c26c9f1"
+        },
+        {
+          "id": "06",
+          "path": "assets/chihaya_character/chi06d@.png",
+          "sha256": "7c4ddcfd072df261b25d7cda9545b6d944da0329702cc32d9054942a0dac677a"
+        },
+        {
+          "id": "07",
+          "path": "assets/chihaya_character/chi07d@.png",
+          "sha256": "e1b6e3fa6780b29a4c256816ab9aacd190ff8071c9c64f686711c196a2dfc887"
+        },
+        {
+          "id": "08",
+          "path": "assets/chihaya_character/chi08d@.png",
+          "sha256": "b4644a77754375cefd4bab0b506e77edec5e0a1ff508ad6e436d9e7900eda465"
+        },
+        {
+          "id": "09",
+          "path": "assets/chihaya_character/chi09d@.png",
+          "sha256": "be79fbebccfa83b9dc5b86571c4596c332e0e604ec59b8a2cc4b9c3ab345802b"
+        },
+        {
+          "id": "10",
+          "path": "assets/chihaya_character/chi10d@.png",
+          "sha256": "f897cdb69bb0ff8fa4dcf057e4130f0e618b1be34c4d7b11176d1fdccb3735a7"
+        },
+        {
+          "id": "11",
+          "path": "assets/chihaya_character/chi11d@.png",
+          "sha256": "49fca7c44b3fd624bdee6b591049f713e3d9dfc84537c72d8cc2e5c75238c5ac"
+        }
+      ]
+    },
+    "e/full": {
+      "width": 268,
+      "height": 606,
+      "body": "assets/chihaya_character/chi_e.png",
+      "bodySHA256": "920d5c553a955efc89468723eee240efb95b455f9920040dc238f6559e1ad58f",
+      "defaultFace": "assets/chihaya_character/chi00e.png",
+      "faceSize": [
+        122,
+        104
+      ],
+      "faceOffset": [
+        79,
+        76
+      ],
+      "faces": [
+        {
+          "id": "00",
+          "path": "assets/chihaya_character/chi00e.png",
+          "sha256": "f054ef4d02a6f46c31a3acbb33b55c9773c2396308b25548b2011d28195ee587"
+        },
+        {
+          "id": "01",
+          "path": "assets/chihaya_character/chi01e.png",
+          "sha256": "dce64592d461d203d571cecca5107d691bd16ac2aac86f332a5f99febece7312"
+        },
+        {
+          "id": "02",
+          "path": "assets/chihaya_character/chi02e.png",
+          "sha256": "d168dbadeabbc23a40a24f702153e7e23257490dd0c7f52c6b3df8e7aeeee694"
+        },
+        {
+          "id": "03",
+          "path": "assets/chihaya_character/chi03e.png",
+          "sha256": "6d87db19cf47a3a451f99424862f7220618e5157511bff5ec435d47b98fc85ff"
+        },
+        {
+          "id": "04",
+          "path": "assets/chihaya_character/chi04e.png",
+          "sha256": "cb3588e272678f9e3ab1083fea802ff4599d3562743739c91e6c270742ecc110"
+        },
+        {
+          "id": "05",
+          "path": "assets/chihaya_character/chi05e.png",
+          "sha256": "23b2cc50552d632a4055fe1a857aff57e0ed93eba99cf9667e6b288cfb4a0be2"
+        },
+        {
+          "id": "06",
+          "path": "assets/chihaya_character/chi06e.png",
+          "sha256": "3dc6c513be284c887f777d2ac6e303a9c0af7f7f26fb0696d17bd9d18cce0e2c"
+        },
+        {
+          "id": "07",
+          "path": "assets/chihaya_character/chi07e.png",
+          "sha256": "fcfce1863ad8ab2701ee24cfebecae6a173065d9af0f6418aed4b6bfd26a9ad4"
+        },
+        {
+          "id": "08",
+          "path": "assets/chihaya_character/chi08e.png",
+          "sha256": "b49f907884d3302ceb23fe27f3dcecefd76594344efe21db7964217c5365900c"
+        },
+        {
+          "id": "09",
+          "path": "assets/chihaya_character/chi09e.png",
+          "sha256": "d1862b5ec824add92db92dd728286c6a23fc01733145940ba82e655468bf8c9f"
+        },
+        {
+          "id": "10",
+          "path": "assets/chihaya_character/chi10e.png",
+          "sha256": "612e4513c642fd92369db4665171c9bc5310d8f8bbe568c64e3581db5d1cb556"
+        },
+        {
+          "id": "11",
+          "path": "assets/chihaya_character/chi11e.png",
+          "sha256": "6258a32a5552812c80eb3bf6513d34c12d00faafa4c9c9d65198b4cff0e2da2c"
+        }
+      ]
+    },
+    "e/close": {
+      "width": 454,
+      "height": 606,
+      "body": "assets/chihaya_character/chi_e@.png",
+      "bodySHA256": "d46f3a648109037f47a8c1d49a83045d01cb112a95d102957c29732d6182cd21",
+      "defaultFace": "assets/chihaya_character/chi00e@.png",
+      "faceSize": [
+        204,
+        154
+      ],
+      "faceOffset": [
+        120,
+        85
+      ],
+      "faces": [
+        {
+          "id": "00",
+          "path": "assets/chihaya_character/chi00e@.png",
+          "sha256": "c06486e43861cdb3a6677a263d1fa3f7934ad3a49002164dd5ff6342da424bd7"
+        },
+        {
+          "id": "01",
+          "path": "assets/chihaya_character/chi01e@.png",
+          "sha256": "94c685e63bde725313b92b556698b4fb7a8cbc45537f390321dfa8dc0add985d"
+        },
+        {
+          "id": "02",
+          "path": "assets/chihaya_character/chi02e@.png",
+          "sha256": "1aead53512640077d6b0e649437d3d4963a74a233ec8b7e9b2c467abb0bd9274"
+        },
+        {
+          "id": "03",
+          "path": "assets/chihaya_character/chi03e@.png",
+          "sha256": "9fdc1af5f735a98b19262cb0accdf6f8056d2cea643e044101eee401cfad9487"
+        },
+        {
+          "id": "04",
+          "path": "assets/chihaya_character/chi04e@.png",
+          "sha256": "afa4c91b79ca9071a2cf5a3910cfec81f6dd67cea61c27864834971e3dfd7cc4"
+        },
+        {
+          "id": "05",
+          "path": "assets/chihaya_character/chi05e@.png",
+          "sha256": "a84bcd92d9accfc056d20e0892720411bc17b04cc7b784c0522ef6d83cc80ca3"
+        },
+        {
+          "id": "06",
+          "path": "assets/chihaya_character/chi06e@.png",
+          "sha256": "354d92f617ffd64d7c34f698f4ff2395ba9ec1293a543603fdcba25cb55583e1"
+        },
+        {
+          "id": "07",
+          "path": "assets/chihaya_character/chi07e@.png",
+          "sha256": "4ea0f728146ecfc31e7b69dc41bbaf68e1755e1ab0abf2e98a5d92d487f1e2cf"
+        },
+        {
+          "id": "08",
+          "path": "assets/chihaya_character/chi08e@.png",
+          "sha256": "36316bb0da48d8748b62d095c6b0163432216d60f6c3fe322eeb760bd7159209"
+        },
+        {
+          "id": "09",
+          "path": "assets/chihaya_character/chi09e@.png",
+          "sha256": "4214f7ce4cb0463456afc6bdc66744db950629138664f4a84d87989274e603e1"
+        },
+        {
+          "id": "10",
+          "path": "assets/chihaya_character/chi10e@.png",
+          "sha256": "efc303585bbc2693880c0ccb4e0ca9bbe66d6ff07a344e4168878fbe0fd8fe93"
+        },
+        {
+          "id": "11",
+          "path": "assets/chihaya_character/chi11e@.png",
+          "sha256": "49fca7c44b3fd624bdee6b591049f713e3d9dfc84537c72d8cc2e5c75238c5ac"
+        }
+      ]
+    }
+  }
+}

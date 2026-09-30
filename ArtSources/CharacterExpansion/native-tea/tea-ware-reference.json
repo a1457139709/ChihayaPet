@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "approvedAt": "2026-09-30T15:16:55+08:00",
+  "approvalMessage": "嗯，我认为没问题，表情也很适配",
+  "outfit": "a",
+  "view": "full",
+  "body": "ArtSources/CharacterExpansion/native-tea/a/full/v1/mother-body.png",
+  "bodySHA256": "6518e558a4ae2619213c560be111fc00c9ffc50c88ddd018fe5c64ce9223f5c8",
+  "localPart": "ArtSources/CharacterExpansion/native-tea/a/full/v1/torso-part-native.png",
+  "highResolutionPart": "ArtSources/CharacterExpansion/native-tea/a/full/v1/torso-imagegen-refined.png",
+  "highResolutionPartSHA256": "dcbdd41939b2d98af1ff24664282d134f3e5f15485261bef9519632323369a9a",
+  "design": "素白瓷杯与浅碟，不增加花纹或饰边；画面左手持杯柄、右手掌托碟，胸前待饮。"
+}
