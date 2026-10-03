@@ -50,6 +50,11 @@ try {
   });
   await pet.evaluate(() => window.chihaya.act({ type: 'desktop', field: 'animations', value: false }));
   await pet.waitForFunction(() => !document.body.classList.contains('motion'));
+  await checkSpaces('pet', true);
+  for (const value of [true, true, false, true]) {
+    await pet.evaluate(value => window.chihaya.act({ type: 'desktop', field: 'onTop', value }), value);
+    await checkSpaces('pet', true);
+  }
   const opaque = await pet.evaluate(() => {
     const c = document.querySelector('canvas'), pixels = c.getContext('2d').getImageData(0, 0, c.width, c.height).data, rect = c.getBoundingClientRect();
     for (let y = Math.floor(c.height / 3); y < c.height - 12; y++) for (let x = 12; x < c.width - 12; x++) if ([-12, 0, 12].every(dy => [-12, 0, 12].every(dx => pixels[((y + dy) * c.width + x + dx) * 4 + 3] > 250))) return { x: rect.left + (x + .5) / c.width * rect.width, y: rect.top + (y + .5) / c.height * rect.height };
@@ -66,13 +71,30 @@ try {
   await pet.waitForTimeout(100); assert.equal(await ignoresMouse(), false);
   mkdirSync(path.join(root, 'build/QA/runtime'), { recursive: true });
   await pet.screenshot({ path: path.join(root, 'build/QA/runtime/pet.png'), omitBackground: true });
-  const settings = await openWindow({ type: 'settings' }); await settings.waitForSelector('#baseURL');
+  let settings = await openWindow({ type: 'settings' }); await settings.waitForSelector('#baseURL');
   await checkSpaces('settings', false);
+  await settings.locator('[data-tab="persona"]').click();
+  await settings.locator('#prompt').fill('未保存的角色草稿');
+  const missing = await openWindow({ type: 'chat' }); await missing.waitForSelector('#input');
+  await missing.locator('#input').fill('缺少配置时定位设置字段'); await missing.locator('#input').press('Enter');
+  await settings.waitForFunction(() => document.querySelector('[data-tab="service"]').getAttribute('aria-selected') === 'true' && document.activeElement.id === 'baseURL', undefined, { timeout: 5000 });
+  assert.equal(await settings.locator('#prompt').inputValue(), '未保存的角色草稿');
+  await settings.locator('#baseURL').fill('https://example.com/v1'); await settings.locator('#model').fill('unsaved-model');
+  await settings.locator('[data-tab="persona"]').click(); await missing.locator('#input').press('Enter');
+  await settings.waitForFunction(() => document.activeElement.id === 'key', undefined, { timeout: 5000 });
+  assert.equal(await settings.locator('#model').inputValue(), 'unsaved-model');
+  await settings.locator('#key').fill('unsaved-key'); await settings.locator('[data-tab="persona"]').click(); await missing.locator('#input').press('Enter');
+  await settings.waitForFunction(() => document.querySelector('[data-tab="service"]').getAttribute('aria-selected') === 'true', undefined, { timeout: 5000 });
+  await closeWindow(settings);
+  const reopening = app.waitForEvent('window'); await missing.locator('#input').press('Enter'); settings = await reopening;
+  await settings.waitForFunction(() => document.activeElement.id === 'baseURL', undefined, { timeout: 5000 });
+  await missing.evaluate(() => window.chihaya.act({ type: 'clear' })); await closeWindow(missing);
   await settings.locator('#baseURL').fill('https://Example.com/v1///'); await settings.locator('#model').fill('example-model'); await settings.locator('#key').fill('synthetic-key');
   await settings.locator('#save-service').click(); await settings.waitForFunction(() => document.querySelector('#settings-notice').textContent.includes('已保存'));
   assert.equal(JSON.parse(readFileSync(path.join(data, 'config.json'), 'utf8')).baseURL, 'https://example.com/v1');
   await settings.locator('[data-tab="desktop"]').click(); await settings.locator('#framing').selectOption('close');
   await pet.waitForFunction(() => document.querySelector('canvas').height === 670);
+  await checkSpaces('pet', true);
   await settings.locator('#expression').selectOption('03');
   await pet.waitForFunction(() => window.chihaya.snapshot().then(s => s.sprite.faceID === '03'));
   await settings.locator('#framing').selectOption('full'); await settings.locator('#expression').selectOption('11');
@@ -159,7 +181,7 @@ try {
   assert.equal(await pet.evaluate(() => window.chihaya.snapshot().then(s => s.music.wantsPlayback)), false);
   assert.equal(readFileSync(path.join(data, 'Music/library.json'), 'utf8'), JSON.stringify(fixtureTracks));
   assert.deepEqual(errors, []);
-  console.log('Runtime verified: isolated storage, approved rendering, native Spaces/fullscreen flags, alpha hit/click-through commands, settings save, expression normalization, Chinese composition, capped-history playback/prefix, scroll following/reader position, fast JSON playback, reply suppression/restoration, panel destruction, idle bubble, all six music formats, simulated sleep/manual pause and FILES.txt.');
+  console.log('Runtime verified: isolated storage, approved rendering, native Spaces/fullscreen flags after repeated top-level setters, alpha hit/click-through commands, missing service routing/focus/draft preservation/reopened settings, settings save, expression normalization, Chinese composition, capped-history playback/prefix, scroll following/reader position, fast JSON playback, reply suppression/restoration, panel destruction, idle bubble, all six music formats, simulated sleep/manual pause and FILES.txt.');
 } finally {
   await app?.close();
   if (process.platform === 'darwin') {

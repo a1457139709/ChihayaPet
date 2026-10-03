@@ -1,10 +1,33 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, rmSync } from 'node:fs';
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { Companion } from '../app/main/companion.ts';
 import { ConfigStore, JSONPreferences } from '../app/main/storage.ts';
+
+test('missing saved service routes to the first required field without discarding a settings draft', async () => {
+  const root = mkdtempSync(path.join(tmpdir(), 'chihaya-missing-service-'));
+  try {
+    for (const [baseURL, model, field] of [['', '', 'baseURL'], ['https://example.com/v1', ' ', 'model'], ['https://example.com/v1', 'model', 'key']] as const) {
+      writeFileSync(path.join(root, 'config.json'), JSON.stringify({ baseURL, model, apiKeys: {} }));
+      const app = new Companion(new ConfigStore(path.join(root, 'config.json')), new JSONPreferences(path.join(root, 'preferences.json')), async () => { throw new Error('Missing configuration must not send a request.'); });
+      const requested: unknown[] = [];
+      app.onNeedsSettings = () => requested.push(app.missingSettingsField());
+      app.beginSettings(); app.setInput('定位缺少的配置'); await app.send();
+      assert.deepEqual(requested, [field]);
+      app.setDraft('baseURL', 'https://example.com/v1'); app.setDraft('model', 'unsaved-model'); await app.send();
+      assert.deepEqual(requested, [field, 'key']);
+      app.setDraft('key', 'unsaved-key'); await app.send();
+      assert.deepEqual(requested, [field, 'key', undefined], 'Complete draft still gets a routing intent, without a missing-field focus.');
+      assert.equal(app.snapshot().draft.model, 'unsaved-model');
+      assert.equal(app.snapshot().input, '定位缺少的配置');
+      app.setInput('字'.repeat(2001)); await app.send();
+      assert.deepEqual(requested, [field, 'key', undefined], 'Invalid chat input does not open settings.');
+      app.shutdown();
+    }
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
 
 test('cancelled chat and edited connection test cannot commit a late result or release a newer request', async () => {
   const root = mkdtempSync(path.join(tmpdir(), 'chihaya-chat-'));

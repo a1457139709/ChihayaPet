@@ -36,6 +36,7 @@ export class DesktopApplication {
   private spriteData?: Buffer;
   private resourceError?: string;
   private focusTurnID?: string;
+  private settingsFocus?: Snapshot['settingsFocus'];
   private drag?: { cursor: { x: number; y: number }; frame: Rectangle; moved: boolean };
   private catalog = new IdleCatalog();
   private shutdownFlag = false;
@@ -54,11 +55,14 @@ export class DesktopApplication {
     this.desktop.expression = this.library?.mode(`${outfit}/${framing}`, this.desktop.expression) ?? '00';
     this.idleEnabled = prefs['idle.enabled'] !== false; this.idleFrequency = [1, 2, 3].includes(Number(prefs['idle.frequency'])) ? Number(prefs['idle.frequency']) : 2;
     this.pet = this.createWindow('pet', false);
-    this.pet.setBounds(this.restoreFrame(prefs)); this.pet.setAlwaysOnTop(this.desktop.onTop, 'floating');
+    this.pet.setBounds(this.restoreFrame(prefs));
     this.pet.setIgnoreMouseEvents(true, { forward: true });
     this.pet.once('ready-to-show', () => this.pet.showInactive());
     this.pet.on('closed', () => { if (!this.shutdownFlag) app.quit(); });
-    this.companion.onChange = () => this.refresh(); this.companion.onNeedsSettings = () => this.open('settings');
+    this.companion.onChange = () => this.refresh(); this.companion.onNeedsSettings = () => {
+      this.open('settings');
+      this.settingsFocus = { id: randomUUID(), field: this.companion.missingSettingsField() }; this.refresh();
+    };
     this.companion.onReply = turn => { this.candidate = turn; if (!this.chat?.isVisible()) this.presentReply(); };
     this.companion.onCleared = () => { this.candidate = undefined; this.dismissBubble(false); };
     this.music.onChange = () => this.refresh();
@@ -137,7 +141,7 @@ export class DesktopApplication {
   }
   snapshot(includeKey = false): Snapshot {
     const conversation = this.companion.snapshot(); if (!includeKey) conversation.draft.key = '';
-    return { ...conversation, desktop: { ...this.desktop }, clickThrough: this.clickThrough, visible: this.visible, awake: this.awake, reducedMotion: this.reducedMotion, sprite: this.sprite, resourceError: this.resourceError, outfits: this.manifest?.outfits ?? [], expressions: this.manifest?.variants[`${this.desktop.outfit}/${this.desktop.framing}`]?.results.map(r => r.id) ?? [], idleEnabled: this.idleEnabled, idleFrequency: this.idleFrequency, bubble: this.bubble, chatVisible: Boolean(this.chat?.isVisible()), settingsVisible: Boolean(this.settings?.isVisible()), focusTurnID: this.focusTurnID, music: this.music.snapshot() };
+    return { ...conversation, desktop: { ...this.desktop }, clickThrough: this.clickThrough, visible: this.visible, awake: this.awake, reducedMotion: this.reducedMotion, sprite: this.sprite, resourceError: this.resourceError, outfits: this.manifest?.outfits ?? [], expressions: this.manifest?.variants[`${this.desktop.outfit}/${this.desktop.framing}`]?.results.map(r => r.id) ?? [], idleEnabled: this.idleEnabled, idleFrequency: this.idleFrequency, bubble: this.bubble, chatVisible: Boolean(this.chat?.isVisible()), settingsVisible: Boolean(this.settings?.isVisible()), focusTurnID: this.focusTurnID, settingsFocus: this.settingsFocus, music: this.music.snapshot() };
   }
   private allowed(): boolean {
     const state = this.companion.snapshot();
@@ -177,7 +181,7 @@ export class DesktopApplication {
       if (kind === 'chat') this.chat = window; else this.settings = window;
       window.setBounds(nearbyPanel(this.pet.getBounds(), screen.getDisplayMatching(this.pet.getBounds()).workArea, window.getBounds()));
       window.on('closed', () => {
-        if (kind === 'chat') this.chat = undefined; else { this.settings = undefined; this.companion.endSettings(); }
+        if (kind === 'chat') this.chat = undefined; else { this.settings = undefined; this.settingsFocus = undefined; this.companion.endSettings(); }
         if (!this.chat && !this.settings) this.platform.restoreFocus();
         this.presentReply(); this.refresh();
       });
@@ -253,7 +257,14 @@ export class DesktopApplication {
         next.expression = this.library?.mode(`${next.outfit}/${next.framing}`, next.expression) ?? '00';
         if (next.expression !== this.desktop.expression) changes['desktop.numberedExpression'] = next.expression;
         if (!this.savePreferences(changes)) return;
-        this.desktop = next; this.updateSprite(); this.resize(); this.pet.setAlwaysOnTop(this.desktop.onTop, 'floating'); this.savePosition(); break;
+        this.desktop = next; this.updateSprite(); this.resize();
+        if (field === 'onTop') {
+          this.pet.setAlwaysOnTop(this.desktop.onTop, 'floating');
+          // Setting the same level resets Chromium's collection behavior without
+          // emitting always-on-top-changed; restore the policy after every call.
+          this.platform.configureWindow(this.pet.getNativeWindowHandle(), true);
+        }
+        this.savePosition(); break;
       }
       case 'drag': {
         const cursor = screen.getCursorScreenPoint();

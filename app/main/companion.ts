@@ -1,8 +1,8 @@
 import { randomUUID } from 'node:crypto';
-import type { Message, Snapshot, Turn, Configuration } from '../shared/contracts';
+import type { Message, Snapshot, Turn, Configuration, SettingsField } from '../shared/contracts';
 import { defaultPrompt } from '../shared/contracts';
 import { characterCount, validateInput } from '../shared/text';
-import { ConfigStore, connection, type PreferenceStore } from './storage';
+import { ConfigStore, connection, normalizeService, type PreferenceStore } from './storage';
 import { requestReply } from './network';
 
 type ConversationState = Pick<Snapshot, 'greeting' | 'turns' | 'didTrim' | 'input' | 'pending' | 'partial' | 'error' | 'busy' | 'settingsError' | 'settingsNotice' | 'testStatus' | 'draft'>;
@@ -28,13 +28,14 @@ export class Companion {
     if (this.active) return;
     const text = retry ? this.state.pending : this.state.input;
     if (text === undefined) return;
+    try { validateInput(text); } catch (e) { this.state.error = errorText(e); this.onChange(); return; }
     let config: { baseURL: string; model: string }, key: string;
     try {
-      validateInput(text);
-      config = connection(this.settings.baseURL, this.settings.model);
+      const baseURL = normalizeService(this.settings.baseURL);
+      config = connection(baseURL, this.settings.model);
       key = this.config.key(config.baseURL);
       if (!key.trim()) throw new Error('请填写 API Key。');
-    } catch (e) { this.state.error = errorText(e); this.onChange(); if (!this.settings.baseURL || !this.settings.model || /API Key|HTTPS/.test(this.state.error)) this.onNeedsSettings(); return; }
+    } catch (e) { this.state.error = errorText(e); this.onChange(); this.onNeedsSettings(); return; }
     const messages: Message[] = [{ role: 'system', content: this.prompt }];
     for (const turn of this.context()) messages.push({ role: 'user', content: turn.user }, { role: 'assistant', content: turn.assistant });
     messages.push({ role: 'user', content: text });
@@ -81,6 +82,12 @@ export class Companion {
     this.state.settingsNotice = undefined;
     try { this.config.load(); this.preferences.load(); this.state.settingsError = undefined; } catch (e) { this.state.settingsError = errorText(e); }
     this.loadDraftKey(); this.onChange();
+  }
+  missingSettingsField(): SettingsField | undefined {
+    try { normalizeService(this.state.draft.baseURL); } catch { return 'baseURL'; }
+    if (!this.state.draft.model.trim()) return 'model';
+    if (!this.state.draft.key.trim()) return 'key';
+    return undefined;
   }
   endSettings(): void { if (this.active?.kind === 'test') this.cancel(); this.state.testStatus = undefined; }
   setDraft(field: keyof ConversationState['draft'], text: string): void {

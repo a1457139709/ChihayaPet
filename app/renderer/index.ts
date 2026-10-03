@@ -49,6 +49,11 @@ class Writer {
 }
 const animated = () => state.desktop.animations && !state.reducedMotion && state.visible && state.awake;
 let composing = false;
+let settingsFocusID: string | undefined;
+function settingsTab(tab: string): void {
+  document.querySelectorAll<HTMLButtonElement>('[data-tab]').forEach(button => button.setAttribute('aria-selected', String(button.dataset.tab === tab)));
+  document.querySelectorAll<HTMLElement>('[data-section]').forEach(section => { section.hidden = section.dataset.section !== tab; });
+}
 if (kind === 'chat') {
   root.innerHTML = `<div class="chat"><header class="toolbar"><h1 class="name">妃宫千早</h1><button id="settings">设置</button><button id="files">文件说明</button><button id="close">收起</button></header><div id="history" aria-live="polite"></div><div class="composer"><textarea id="input" aria-label="消息" placeholder="想说些什么？"></textarea><div class="row spread"><span class="muted" id="counter"></span><div class="row"><button id="clear">清空会话</button><button id="cancel">取消请求</button><button id="send" class="primary">发送</button></div></div><div id="chat-error" class="notice error"></div><button id="retry" hidden>重试上一条</button><div id="resource-error" class="notice error"></div></div></div>`;
   const input = node<HTMLTextAreaElement>('input');
@@ -62,7 +67,7 @@ if (kind === 'chat') {
 if (kind === 'settings') {
   root.innerHTML = `<div class="settings"><header class="toolbar"><h1 class="name">千早 · 设置</h1><button id="files">文件说明</button><button id="close">关闭</button></header><nav class="tabs"><button data-tab="service" aria-selected="true">模型服务</button><button data-tab="persona">角色设定</button><button data-tab="music">背景音乐</button><button data-tab="desktop">桌宠</button></nav><section data-section="service"><h2>Chat Completions 服务</h2><label>HTTPS 基础地址<input id="baseURL" autocomplete="off" placeholder="https://example.com/v1"></label><label>模型名称<input id="model" autocomplete="off"></label><label>API Key<input id="key" type="password" autocomplete="off"></label><p class="help">保留服务的版本路径，应用追加 /chat/completions。各地址的密钥分别保存为本机明文。测试仅使用当前草稿，可能产生一次请求费用。</p><div class="row"><button id="test">测试连接</button><button id="cancel">取消测试</button><button id="save-service" class="primary">保存服务</button><button id="delete-key">删除已保存密钥</button></div><p id="test-status" class="notice"></p></section><section data-section="persona" hidden><h2>角色提示词</h2><label><textarea id="prompt" aria-label="角色提示词"></textarea></label><div class="row"><button id="save-prompt" class="primary">保存角色设定</button><button id="restore-prompt">恢复默认并保存</button></div><p class="help">保存后会清空当前会话。主动闲话使用独立的本地台词库。</p></section><section data-section="music" hidden><h2>背景音乐</h2><select id="tracks" size="6" aria-label="音乐曲库"></select><div class="row"><button id="music-import">导入音乐…</button><button id="music-remove">从曲库移除</button></div><div class="row"><button id="music-previous">上一首</button><button id="music-toggle">播放</button><button id="music-next">下一首</button></div><label>音量 <output id="volume-value"></output><input id="volume" type="range" min="0" max="1" step="0.01"></label><label>循环 <select id="loop"><option value="single">单曲循环</option><option value="playlist">列表循环</option></select></label><label><input id="autoplay" type="checkbox">启动时播放背景音乐</label><p class="help">支持 WAV、AIFF/AIF、MP3、M4A/AAC。隐藏与睡眠自动暂停，恢复时尊重手动暂停。移除索引不删除原文件及导入副本。</p><p id="music-notice" class="notice"></p><p id="music-error" class="notice error"></p></section><section data-section="desktop" hidden><h2>桌宠</h2><label>造型<select id="outfit"></select></label><label>取景<select id="framing"><option value="full">全景</option><option value="close">近景</option></select></label><label>表情<select id="expression"></select></label><label>图片高度 <output id="height-value"></output><input id="height" type="range" min="240" max="480" step="1"></label><label><input id="onTop" type="checkbox">置顶</label><label><input id="animations" type="checkbox">呼吸与轻摆</label><label><input id="idle" type="checkbox">主动闲话</label><label>闲话频率<select id="frequency"><option value="1">经常 · 1–3 分钟</option><option value="2">适中 · 3–7 分钟</option><option value="3">安静 · 10–15 分钟</option></select></label></section><footer><p id="settings-error" class="notice error"></p><p id="settings-notice" class="notice"></p></footer></div>`;
   node('files').onclick = () => act({ type: 'files' }); node('close').onclick = () => act({ type: 'close', window: 'settings' });
-  document.querySelectorAll<HTMLButtonElement>('[data-tab]').forEach(button => { button.onclick = () => { document.querySelectorAll('[data-tab]').forEach(b => b.setAttribute('aria-selected', String(b === button))); document.querySelectorAll<HTMLElement>('[data-section]').forEach(s => { s.hidden = s.dataset.section !== button.dataset.tab; }); }; });
+  document.querySelectorAll<HTMLButtonElement>('[data-tab]').forEach(button => { button.onclick = () => settingsTab(button.dataset.tab!); });
   for (const field of ['baseURL', 'model', 'key', 'prompt'] as const) {
     const input = node<HTMLInputElement | HTMLTextAreaElement>(field);
     input.addEventListener('compositionstart', () => { composing = true; }); input.addEventListener('compositionend', () => { composing = false; act({ type: 'draft', field, text: input.value }); });
@@ -187,6 +192,10 @@ function render(next: Snapshot): void {
   if (kind === 'chat') renderChat();
   if (kind === 'settings') {
     for (const field of ['baseURL', 'model', 'key', 'prompt'] as const) setValue(field, state.draft[field]);
+    if (state.settingsFocus && settingsFocusID !== state.settingsFocus.id) {
+      settingsFocusID = state.settingsFocus.id; settingsTab('service');
+      if (state.settingsFocus.field) { const field = node<HTMLInputElement>(state.settingsFocus.field); field.focus(); field.scrollIntoView({ block: 'nearest' }); }
+    }
     node('settings-error').textContent = state.settingsError ?? ''; node('settings-notice').textContent = state.settingsNotice ?? ''; node('test-status').textContent = state.testStatus ?? '';
     node<HTMLButtonElement>('test').disabled = Boolean(state.busy); node('cancel').hidden = state.busy !== 'test';
     options('tracks', state.music.tracks.map(t => ({ value: t.id, text: t.title }))); setValue('tracks', state.music.selected ?? '');
