@@ -93,6 +93,15 @@ final class DesktopController {
     var isVisible: Bool { panel.isVisible }
     var style: CharacterStyle { currentStyle }
     var expandedStyle: ExpandedCharacterStyle { currentExpandedStyle }
+    var standingOutfit: StandingCharacterOutfit { currentStandingOutfit }
+    var numberedExpressionMode: NumberedExpressionMode { renderer.numberedExpressionMode }
+    var numberedExpressions: [StandingCharacterManifest.Result] { renderer.numberedExpressions }
+    var renderedStandingVariantKey: String? { renderer.renderedStandingVariantKey }
+    var renderedNumberedFaceID: String? { renderer.renderedNumberedFaceID }
+    var isUsingStandingFallback: Bool {
+        renderer.renderedStandingVariantKey != "\(currentStandingOutfit.rawValue)/\(currentFraming.rawValue)" ||
+        numberedExpressionMode != .automatic && renderer.renderedNumberedFaceID != numberedExpressionMode.rawValue
+    }
     var framing: CharacterFraming { currentFraming }
     var expressionMode: CharacterExpressionMode { currentExpressionMode }
     var expandedExpressionMode: ExpandedCharacterExpressionMode { currentExpandedExpressionMode }
@@ -118,6 +127,8 @@ final class DesktopController {
         static let framing = "desktop.framing"
         static let expressionMode = "desktop.expressionMode"
         static let expandedStyle = "desktop.expandedStyle"
+        static let standingOutfit = "desktop.standingOutfit"
+        static let numberedExpression = "desktop.numberedExpression"
         static let expandedExpressionMode = "desktop.expandedExpressionMode"
         static let poseMode = "desktop.poseMode"
         static let gazeEnabled = "desktop.gazeEnabled"
@@ -139,9 +150,11 @@ final class DesktopController {
     private let panel: PetPanel
     private let renderer: PNGRenderer
     private let interactionView: PetInteractionView
+    private let useNumberedSprites: Bool
 
     private var currentStyle: CharacterStyle
     private var currentExpandedStyle: ExpandedCharacterStyle
+    private var currentStandingOutfit: StandingCharacterOutfit
     private var currentFraming: CharacterFraming
     private var currentExpressionMode: CharacterExpressionMode
     private var currentExpandedExpressionMode: ExpandedCharacterExpressionMode
@@ -169,12 +182,15 @@ final class DesktopController {
     init(
         defaults: UserDefaults = .standard,
         expansionResourceURL: URL? = Bundle.main.url(forResource: "CharacterExpansion", withExtension: nil),
+        standingResourceURL: URL? = Bundle.main.url(forResource: "StandingCharacterSprites", withExtension: nil),
+        useNumberedSprites: Bool = true,
         poseNow: @escaping () -> TimeInterval = { CACurrentMediaTime() },
         poseRandomDelay: @escaping () -> TimeInterval = { Double.random(in: 300...600) },
         choosePose: @escaping ([CharacterPose]) -> CharacterPose = { $0.randomElement()! }
     ) {
         self.defaults = defaults
         self.poseNow = poseNow
+        self.useNumberedSprites = useNumberedSprites
 
         if let savedStyle = defaults.string(forKey: Key.style).flatMap(CharacterStyle.init(rawValue:)) {
             currentStyle = savedStyle
@@ -189,6 +205,15 @@ final class DesktopController {
             defaults.set(currentExpandedStyle.rawValue, forKey: Key.expandedStyle)
         }
         currentFraming = defaults.string(forKey: Key.framing).flatMap(CharacterFraming.init(rawValue:)) ?? .full
+        let savedOutfit = defaults.string(forKey: Key.standingOutfit)
+        currentStandingOutfit = savedOutfit.flatMap(StandingCharacterOutfit.init(rawValue:)) ??
+            (savedOutfit == nil ? StandingCharacterOutfit.migrated(currentExpandedStyle.rawValue) : nil) ?? .winterFront
+        var numberedMode = NumberedExpressionMode(rawValue: defaults.string(forKey: Key.numberedExpression))
+        let invalidOutfit = savedOutfit.map { StandingCharacterOutfit(rawValue: $0) == nil } ?? false
+        let invalidFraming = defaults.string(forKey: Key.framing).map { CharacterFraming(rawValue: $0) == nil } ?? false
+        if invalidOutfit || invalidFraming {
+            numberedMode = .numbered("00")
+        }
         currentExpressionMode = defaults.string(forKey: Key.expressionMode).flatMap(CharacterExpressionMode.init(rawValue:)) ?? .automatic
         if let saved = defaults.string(forKey: Key.expandedExpressionMode).flatMap(ExpandedCharacterExpressionMode.init(rawValue:)) {
             currentExpandedExpressionMode = saved
@@ -196,7 +221,7 @@ final class DesktopController {
             currentExpandedExpressionMode = ExpandedCharacterExpressionMode(rawValue: currentExpressionMode.rawValue) ?? .automatic
             defaults.set(currentExpandedExpressionMode.rawValue, forKey: Key.expandedExpressionMode)
         }
-        currentPoseMode = defaults.string(forKey: Key.poseMode).flatMap(CharacterPoseMode.init(rawValue:)) ?? .automatic
+        currentPoseMode = useNumberedSprites ? .standing : (defaults.string(forKey: Key.poseMode).flatMap(CharacterPoseMode.init(rawValue:)) ?? .automatic)
         currentGazeEnabled = defaults.object(forKey: Key.gazeEnabled) == nil ? true : defaults.bool(forKey: Key.gazeEnabled)
         currentHeadPettingEnabled = defaults.object(forKey: Key.headPettingEnabled) == nil ? true : defaults.bool(forKey: Key.headPettingEnabled)
 
@@ -234,8 +259,16 @@ final class DesktopController {
             expandedStyle: currentExpandedStyle,
             pose: poseScheduler.presentedPose,
             expandedExpressionMode: currentExpandedExpressionMode,
-            expansionResourceURL: expansionResourceURL
+            expansionResourceURL: useNumberedSprites ? nil : expansionResourceURL,
+            standingOutfit: useNumberedSprites ? currentStandingOutfit : nil,
+            numberedExpressionMode: numberedMode,
+            standingResourceURL: standingResourceURL
         )
+        if useNumberedSprites {
+            defaults.set(currentStandingOutfit.rawValue, forKey: Key.standingOutfit)
+            defaults.set(currentFraming.rawValue, forKey: Key.framing)
+            defaults.set(renderer.numberedExpressionMode.rawValue, forKey: Key.numberedExpression)
+        }
         interactionView = PetInteractionView(frame: CGRect(origin: .zero, size: renderer.contentSize))
 
         let restoredFrame = Self.restoredFrame(
@@ -266,6 +299,8 @@ final class DesktopController {
         onGeometryChange?()
     }
 
+    func setContextMenu(_ menu: NSMenu) { interactionView.menu = menu }
+
     func hide() {
         guard !didShutdown else { return }
         onHide?()
@@ -284,6 +319,7 @@ final class DesktopController {
         guard value != currentStyle || currentExpandedStyle.rawValue != value.rawValue else { return }
         currentStyle = value
         currentExpandedStyle = ExpandedCharacterStyle(rawValue: value.rawValue) ?? currentExpandedStyle
+        currentStandingOutfit = StandingCharacterOutfit(rawValue: value.rawValue) ?? .winterFront
         defaults.set(value.rawValue, forKey: Key.style)
         defaults.set(currentExpandedStyle.rawValue, forKey: Key.expandedStyle)
         refreshCharacter()
@@ -292,12 +328,34 @@ final class DesktopController {
     func setExpandedStyle(_ value: ExpandedCharacterStyle) {
         guard value != currentExpandedStyle else { return }
         currentExpandedStyle = value
+        currentStandingOutfit = StandingCharacterOutfit.migrated(value.rawValue) ?? .winterFront
         defaults.set(value.rawValue, forKey: Key.expandedStyle)
         if let legacy = value.legacyStyle {
             currentStyle = legacy
             defaults.set(legacy.rawValue, forKey: Key.style)
         }
         refreshCharacter()
+    }
+
+    func setStandingOutfit(_ value: StandingCharacterOutfit) {
+        guard useNumberedSprites, currentStandingOutfit != value else { return }
+        currentStandingOutfit = value
+        if let legacy = value.legacyStyle {
+            currentStyle = legacy
+            currentExpandedStyle = ExpandedCharacterStyle(rawValue: legacy.rawValue) ?? .winterFront
+            defaults.set(legacy.rawValue, forKey: Key.style)
+            defaults.set(currentExpandedStyle.rawValue, forKey: Key.expandedStyle)
+        }
+        refreshCharacter()
+    }
+
+    func setNumberedExpressionMode(_ value: NumberedExpressionMode) {
+        guard useNumberedSprites else { return }
+        let previousSize = renderer.contentSize
+        renderer.setNumberedExpressionMode(value)
+        defaults.set(renderer.numberedExpressionMode.rawValue, forKey: Key.numberedExpression)
+        if renderer.contentSize != previousSize { resizePanel(to: renderer.contentSize) }
+        else { onGeometryChange?() }
     }
 
     func setFraming(_ value: CharacterFraming) {
@@ -356,7 +414,13 @@ final class DesktopController {
 
     private func refreshCharacter() {
         let previousSize = renderer.contentSize
-        renderer.setExpandedCharacter(style: currentExpandedStyle, pose: poseScheduler.presentedPose, framing: currentFraming)
+        if useNumberedSprites {
+            renderer.setStandingCharacter(outfit: currentStandingOutfit, framing: currentFraming)
+            defaults.set(currentStandingOutfit.rawValue, forKey: Key.standingOutfit)
+            defaults.set(renderer.numberedExpressionMode.rawValue, forKey: Key.numberedExpression)
+        } else {
+            renderer.setExpandedCharacter(style: currentExpandedStyle, pose: poseScheduler.presentedPose, framing: currentFraming)
+        }
         if renderer.contentSize != previousSize {
             resizePanel(to: renderer.contentSize)
         } else {
@@ -557,6 +621,7 @@ final class DesktopController {
     }
 
     private func applyPresentedPose() {
+        guard !useNumberedSprites else { return }
         let presented = poseScheduler.presentedPose
         let poseChanged = renderer.pose != presented
         gazeFilter.setDefaultGaze(presented.defaultGaze)

@@ -3,6 +3,7 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
+python3 scripts/verify_resources.py --source-only --require-approved-standing
 OUTPUT="${CHIHAYA_DMG_OUTPUT:-$ROOT/build/ChihayaPet.dmg}"
 ./scripts/build.sh
 WORK="$(mktemp -d "$ROOT/build/dmg.XXXXXX")"
@@ -20,7 +21,7 @@ ln -s /Applications "$WORK/staging/Applications"
 printf 'local.ChihayaPet.installer.v1\n' > "$WORK/staging/.chihaya-installer"
 
 verify_package() {
-    python3 scripts/verify_resources.py --bundle "$1/ChihayaPet.app"
+    python3 scripts/verify_resources.py --bundle "$1/ChihayaPet.app" --require-approved-standing
     codesign --verify --deep --strict "$1/ChihayaPet.app"
     python3 - "$1" <<'PY'
 from pathlib import Path

@@ -7,6 +7,7 @@ import json
 import struct
 
 from character_expansion_build import validate_expansion
+from standing_character_build import validate_standing
 
 root = Path(__file__).resolve().parent.parent
 parser = argparse.ArgumentParser()
@@ -15,6 +16,7 @@ parser.add_argument('--bundle', type=Path, default=root / 'build/ChihayaPet.app'
 parser.add_argument('--preview', type=Path)
 parser.add_argument('--repair', type=Path, help='Optionally compare approved hair-repair exports')
 parser.add_argument('--require-expansion', action='store_true')
+parser.add_argument('--require-approved-standing', action='store_true')
 args = parser.parse_args()
 sha = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
 expected = {
@@ -94,10 +96,12 @@ expansion_summary = validate_expansion(
     source_only=args.source_only,
     require_expansion=args.require_expansion,
 )
+standing_summary = validate_standing(root, bundle=args.bundle, source_only=args.source_only,
+                                    require_approved=args.require_approved_standing)
 if not args.source_only:
     resources = args.bundle / 'Contents/Resources'
     assert resources.is_dir(), f'Bundle missing: {args.bundle}'
-    expected_resources = {'Assets.car', 'fansitekit-notice-original.txt', 'CharacterSprites'}
+    expected_resources = {'Assets.car', 'fansitekit-notice-original.txt', 'CharacterSprites', 'StandingCharacterSprites'}
     if (root / 'ChihayaPet/Resources/CharacterExpansion').is_dir():
         expected_resources.add('CharacterExpansion')
     assert {p.name for p in resources.iterdir()} == expected_resources, 'Unexpected bundled resources'
@@ -109,3 +113,4 @@ if not args.source_only:
 print(f'Validated 14 variants, 504 eye/mouth combinations, {len(refs)} PNGs ({sum((source / p).stat().st_size for p in refs):,} bytes), source provenance records and resource whitelist.')
 if expansion_summary:
     print(expansion_summary)
+print(standing_summary)

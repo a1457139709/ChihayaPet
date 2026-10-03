@@ -35,6 +35,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSMenu
         status.button?.image = NSImage(systemSymbolName: "leaf", accessibilityDescription: "千早桌宠")
         status.button?.toolTip = "千早桌宠"
         let menu = NSMenu(); menu.delegate = self; status.menu = menu
+        desktop.setContextMenu(menu)
         statusItem = status
         rebuildMenu(menu)
         desktop.show()
@@ -63,6 +64,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSMenu
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { false }
     func menuNeedsUpdate(_ menu: NSMenu) { rebuildMenu(menu) }
     func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        if menuItem.action == #selector(changeExpressionMode(_:)), let id = menuItem.representedObject as? String, id != "automatic" {
+            return desktop?.numberedExpressions.first(where: { $0.id == id })?.isApproved == true
+        }
         if menuItem.action == #selector(sayIdle) { return windows?.canSayIdleLine == true }
         if menuItem.action == #selector(toggleMusic) || menuItem.action == #selector(nextMusic) || menuItem.action == #selector(previousMusic) { return music?.selectedID != nil && music?.removing != true }
         return true
@@ -72,13 +76,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSMenu
         menu.removeAllItems()
         item("打开聊天", action: #selector(openChat), to: menu)
         menu.addItem(.separator())
-        let styleItem = NSMenuItem(title: "造型 · \(desktop.expandedStyle.title)", action: nil, keyEquivalent: "")
+        let styleItem = NSMenuItem(title: "服装／姿态 · \(desktop.standingOutfit.title)", action: nil, keyEquivalent: "")
         let styles = NSMenu()
-        for value in ExpandedCharacterStyle.allCases {
+        for value in StandingCharacterOutfit.allCases {
             let entry = NSMenuItem(title: value.title, action: #selector(changeStyle(_:)), keyEquivalent: "")
             entry.target = self
             entry.representedObject = value.rawValue
-            entry.state = desktop.expandedStyle == value ? .on : .off
+            entry.state = desktop.standingOutfit == value ? .on : .off
             styles.addItem(entry)
         }
         styleItem.submenu = styles
@@ -96,29 +100,27 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSMenu
         framingItem.submenu = framings
         menu.addItem(framingItem)
 
-        let poseItem = NSMenuItem(title: "姿势 · \(desktop.poseMode.title)", action: nil, keyEquivalent: "")
-        let poses = NSMenu()
-        for value in CharacterPoseMode.allCases {
-            let entry = NSMenuItem(title: value.title, action: #selector(changePoseMode(_:)), keyEquivalent: "")
-            entry.target = self
-            entry.representedObject = value.rawValue
-            entry.state = desktop.poseMode == value ? .on : .off
-            poses.addItem(entry)
-        }
-        poseItem.submenu = poses
-        menu.addItem(poseItem)
-
-        let expressionItem = NSMenuItem(title: "表情 · \(desktop.expandedExpressionMode.title)", action: nil, keyEquivalent: "")
+        let expressionItem = NSMenuItem(title: "表情编号 · \(desktop.numberedExpressionMode.title)", action: nil, keyEquivalent: "")
         let expressions = NSMenu()
-        for value in ExpandedCharacterExpressionMode.allCases {
-            let entry = NSMenuItem(title: value.title, action: #selector(changeExpressionMode(_:)), keyEquivalent: "")
+        let automatic = NSMenuItem(title: "自动", action: #selector(changeExpressionMode(_:)), keyEquivalent: "")
+        automatic.target = self; automatic.representedObject = "automatic"
+        automatic.state = desktop.numberedExpressionMode == .automatic ? .on : .off
+        expressions.addItem(automatic)
+        expressions.addItem(.separator())
+        for result in desktop.numberedExpressions {
+            let entry = NSMenuItem(title: result.id + (result.isApproved ? "" : " · 待审核"), action: #selector(changeExpressionMode(_:)), keyEquivalent: "")
             entry.target = self
-            entry.representedObject = value.rawValue
-            entry.state = desktop.expandedExpressionMode == value ? .on : .off
+            entry.representedObject = result.id
+            entry.isEnabled = result.isApproved
+            entry.state = desktop.numberedExpressionMode == .numbered(result.id) ? .on : .off
             expressions.addItem(entry)
         }
         expressionItem.submenu = expressions
         menu.addItem(expressionItem)
+        if desktop.isUsingStandingFallback {
+            let notice = NSMenuItem(title: "当前取景／表情不可用 · 显示备用立绘", action: nil, keyEquivalent: "")
+            notice.isEnabled = false; menu.addItem(notice)
+        }
         let scale = NSMenuItem(title: "角色大小 · \(Int(desktop.imageHeight)) 点", action: nil, keyEquivalent: "")
         let sizes = NSMenu()
         for height in [240, 256, 320, 400, 480] {
@@ -136,7 +138,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSMenu
         item("置顶", action: #selector(toggleOnTop), checked: desktop.isOnTop, to: menu)
         item("鼠标穿透", action: #selector(toggleClickThrough), checked: desktop.clickThrough, to: menu)
         item("启用动效", action: #selector(toggleAnimations), checked: desktop.animationsEnabled, to: menu)
-        item("视线跟随", action: #selector(toggleGaze), checked: desktop.gazeEnabled, to: menu)
         item("摸头互动", action: #selector(toggleHeadPetting), checked: desktop.headPettingEnabled, to: menu)
         menu.addItem(.separator())
         item("主动闲话", action: #selector(toggleIdle), checked: windows?.idleEnabled == true, to: menu)
@@ -180,8 +181,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSMenu
     @objc private func openSettings() { windows?.openSettings() }
     @objc private func changeStyle(_ sender: NSMenuItem) {
         guard let rawValue = sender.representedObject as? String,
-              let value = ExpandedCharacterStyle(rawValue: rawValue) else { return }
-        desktop?.setExpandedStyle(value)
+              let value = StandingCharacterOutfit(rawValue: rawValue) else { return }
+        desktop?.setStandingOutfit(value)
     }
     @objc private func changeFraming(_ sender: NSMenuItem) {
         guard let rawValue = sender.representedObject as? String,
@@ -189,9 +190,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSMenu
         desktop?.setFraming(value)
     }
     @objc private func changeExpressionMode(_ sender: NSMenuItem) {
-        guard let rawValue = sender.representedObject as? String,
-              let value = ExpandedCharacterExpressionMode(rawValue: rawValue) else { return }
-        desktop?.setExpandedExpressionMode(value)
+        guard let rawValue = sender.representedObject as? String else { return }
+        desktop?.setNumberedExpressionMode(NumberedExpressionMode(rawValue: rawValue))
     }
     @objc private func changePoseMode(_ sender: NSMenuItem) {
         guard let rawValue = sender.representedObject as? String,
