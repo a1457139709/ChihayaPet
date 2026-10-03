@@ -17,6 +17,11 @@ final class PNGRenderer {
     private let faceLayer = CALayer()
     private let library: CharacterSpriteLibrary?
     private let expansionLibrary: ExpansionLibrary?
+    let standingLibrary: StandingCharacterLibrary?
+    private(set) var standingOutfit: StandingCharacterOutfit?
+    private(set) var numberedExpressionMode: NumberedExpressionMode
+    private(set) var standingFrame: StandingCharacterFrame?
+    private let allowPendingStandingForQA: Bool
     private var loaded: RenderedCharacter?
     private var expansionPrepared: ExpansionPreparedVariant?
     private var expansionRenderedPose: CharacterPose = .standing
@@ -36,9 +41,16 @@ final class PNGRenderer {
     var eye: CharacterEye { facePresentation.eye }
     var mouth: CharacterMouth { facePresentation.mouth }
     var isScheduling: Bool { timer != nil }
-    var usesFallback: Bool { expansionPrepared == nil && loaded == nil }
+    var usesFallback: Bool { standingFrame == nil && expansionPrepared == nil && loaded == nil }
+    var usesStanding: Bool { standingFrame != nil }
+    var renderedStandingVariantKey: String? { standingFrame?.key }
+    var renderedNumberedFaceID: String? { standingFrame?.faceID }
+    var numberedExpressions: [StandingCharacterManifest.Result] {
+        guard let standingOutfit else { return [] }
+        return standingLibrary?.variant(outfit: standingOutfit, framing: framing)?.results ?? []
+    }
     var usesExpansion: Bool { expansionPrepared != nil }
-    var cachedImageCount: Int { expansionPrepared != nil ? expansionFaceCache.count + 1 : (loaded?.frames.count ?? (fallbackImage == nil ? 0 : 1)) }
+    var cachedImageCount: Int { standingFrame != nil ? (standingLibrary?.cachedImageCount ?? 1) : (expansionPrepared != nil ? expansionFaceCache.count + 1 : (loaded?.frames.count ?? (fallbackImage == nil ? 0 : 1))) }
     var renderedExpansionPose: CharacterPose? { expansionPrepared == nil ? nil : expansionRenderedPose }
     var renderedExpansionVariantKey: String? { expansionPrepared?.key }
     private(set) var renderedExpansionFaceState: ExpansionFaceState?
@@ -66,10 +78,19 @@ final class PNGRenderer {
          resourceURL: URL? = Bundle.main.url(forResource: "CharacterSprites", withExtension: nil),
          expansionResourceURL: URL? = Bundle.main.url(forResource: "CharacterExpansion", withExtension: nil),
          expansionLibrary injectedExpansionLibrary: ExpansionLibrary? = nil,
+         standingOutfit: StandingCharacterOutfit? = nil,
+         numberedExpressionMode: NumberedExpressionMode = .automatic,
+         standingResourceURL: URL? = Bundle.main.url(forResource: "StandingCharacterSprites", withExtension: nil),
+         standingLibrary injectedStandingLibrary: StandingCharacterLibrary? = nil,
+         allowPendingStandingForQA: Bool = false,
          animationRandom: @escaping (ClosedRange<Double>) -> Double = { Double.random(in: $0) }) {
         self.style = style; self.framing = framing; self.imageHeight = imageHeight
         self.expandedStyle = expandedStyle ?? ExpandedCharacterStyle(rawValue: style.rawValue) ?? .winterFront
         self.pose = pose
+        self.standingOutfit = standingOutfit
+        self.numberedExpressionMode = numberedExpressionMode
+        self.allowPendingStandingForQA = allowPendingStandingForQA
+        standingLibrary = injectedStandingLibrary ?? standingResourceURL.flatMap { try? StandingCharacterLibrary(rootURL: $0) }
         self.animationsEnabled = animationsEnabled; self.expressionMode = expressionMode
         self.expandedExpressionMode = expandedExpressionMode ?? ExpandedCharacterExpressionMode(rawValue: expressionMode.rawValue) ?? .automatic
         timeline = CharacterAnimationTimeline(random: animationRandom)
@@ -109,7 +130,9 @@ final class PNGRenderer {
     var contentSize: CGSize { CGSize(width: imageFrame.width + 2 * Self.margin, height: imageHeight + 2 * Self.margin) }
     var imageFrame: CGRect {
         let size: CGSize
-        if let expansionPrepared, let base = expansionPrepared.images[expansionPrepared.variant.base] {
+        if let standingFrame {
+            size = standingFrame.variant.size
+        } else if let expansionPrepared, let base = expansionPrepared.images[expansionPrepared.variant.base] {
             size = CGSize(width: base.width, height: base.height)
         } else {
             size = loaded.map { CGSize(width: $0.variant.width, height: $0.variant.height) } ?? Self.fallbackImageSize
@@ -117,6 +140,7 @@ final class PNGRenderer {
         return CGRect(x: Self.margin, y: Self.margin, width: imageHeight * size.width / size.height, height: imageHeight)
     }
     var speechAttachment: CharacterSpeechAttachment {
+        if let standingFrame { return standingFrame.variant.attachment(imageHeight: imageHeight, margin: Self.margin) }
         if let expansionPrepared, let base = expansionPrepared.images[expansionPrepared.variant.base] {
             let scale = imageHeight / CGFloat(base.height)
             let point = expansionPrepared.variant.mouth.bottomLeftPoint(canvasHeight: Double(base.height))
@@ -144,6 +168,18 @@ final class PNGRenderer {
         expandedStyle = style; self.pose = pose; self.framing = framing
         if let legacyStyle = style.legacyStyle { self.style = legacyStyle }
         loadCharacter()
+    }
+    func setStandingCharacter(outfit: StandingCharacterOutfit, framing: CharacterFraming) {
+        guard !didShutdown, standingOutfit != outfit || self.framing != framing else { return }
+        standingOutfit = outfit; self.framing = framing
+        if let legacyStyle = outfit.legacyStyle { style = legacyStyle }
+        numberedExpressionMode = numberedExpressionMode.validated(in: standingLibrary?.variant(outfit: outfit, framing: framing))
+        loadCharacter()
+    }
+    func setNumberedExpressionMode(_ value: NumberedExpressionMode) {
+        guard !didShutdown, let standingOutfit else { return }
+        numberedExpressionMode = value.validated(in: standingLibrary?.variant(outfit: standingOutfit, framing: framing))
+        withoutActions { updateStandingExpression() }
     }
     func setPose(_ value: CharacterPose) { setExpandedCharacter(style: expandedStyle, pose: value, framing: framing) }
     func setOutfit(_ value: String) { setCharacter(style: value == "summer" ? .summerFront : .winterFront, framing: framing) }
@@ -182,10 +218,35 @@ final class PNGRenderer {
         didShutdown = true; refresh()
         withoutActions { bodyLayer.contents = nil; faceLayer.contents = nil }
         loaded = nil; expansionPrepared = nil; expansionFaceCache.removeAll(); expansionPrewarmedExpression = nil
+        standingFrame = nil; standingLibrary?.removeAllCachedImages()
         renderedExpansionFaceState = nil; fallbackImage = nil
     }
     private var motionAllowed: Bool { !didShutdown && animationsEnabled && !reducedMotion && isPresented && isAwake }
     private func loadCharacter() {
+        if let standingOutfit {
+            let variant = standingLibrary?.variant(outfit: standingOutfit, framing: framing)
+            numberedExpressionMode = numberedExpressionMode.validated(in: variant)
+            let id: String
+            switch numberedExpressionMode { case .automatic: id = "00"; case .numbered(let value): id = value }
+            let key = "\(standingOutfit.rawValue)/\(framing.rawValue)"
+            let next: StandingCharacterFrame?
+            if allowPendingStandingForQA {
+                next = try? standingLibrary?.image(key: key, faceID: id, allowPendingForQA: true)
+            } else {
+                next = standingLibrary?.resolve(outfit: standingOutfit, framing: framing, faceID: id)
+            }
+            withoutActions {
+                standingFrame = next
+                expansionPrepared = nil; loaded = nil; expansionFaceCache.removeAll()
+                expansionPrewarmedExpression = nil; renderedExpansionFaceState = nil
+                fallbackImage = next == nil ? NSImage(named: NSImage.Name("chihaya-\(outfit)"))?.cgImage(forProposedRect: nil, context: nil, hints: nil) : nil
+                bodyLayer.contents = next?.image ?? fallbackImage
+                bodyLayer.isHidden = false; faceLayer.contents = nil; faceLayer.isHidden = true
+                layout(); refresh()
+            }
+            return
+        }
+        standingFrame = nil
         if let presentation = prepareExpansionPresentation() {
             withoutActions {
                 expansionPrepared = presentation.prepared
@@ -317,6 +378,7 @@ final class PNGRenderer {
         }
     }
     private func updateFace() {
+        if standingOutfit != nil { updateStandingExpression(); return }
         if let expansionPrepared {
             let state = ExpansionFaceState(
                 expression: facePresentation.expression, eye: facePresentation.eye,
@@ -331,6 +393,25 @@ final class PNGRenderer {
         renderedExpansionFaceState = nil
         guard let loaded, let path = loaded.variant.face(expression, timeline.eye, timeline.mouth) else { faceLayer.contents = nil; return }
         faceLayer.contents = loaded.frames[path]
+    }
+    private func updateStandingExpression() {
+        guard let standingOutfit, let standingLibrary else { return }
+        let variant = standingLibrary.variant(outfit: standingOutfit, framing: framing)
+        let id: String
+        switch numberedExpressionMode {
+        case .numbered(let value): id = value
+        case .automatic:
+            id = variant?.automaticMappings[expression.rawValue] ??
+                (standingFrame?.key == "\(standingOutfit.rawValue)/\(framing.rawValue)" ? standingFrame?.faceID : nil) ?? "00"
+        }
+        guard standingFrame?.faceID != id || standingFrame?.key != "\(standingOutfit.rawValue)/\(framing.rawValue)" else { return }
+        let next = allowPendingStandingForQA
+            ? try? standingLibrary.image(key: "\(standingOutfit.rawValue)/\(framing.rawValue)", faceID: id, allowPendingForQA: true)
+            : standingLibrary.resolve(outfit: standingOutfit, framing: framing, faceID: id)
+        guard let next else { return }
+        let changedSize = standingFrame?.variant.canvas != next.variant.canvas
+        standingFrame = next; bodyLayer.contents = next.image
+        if changedSize { layout() }
     }
     private func resolvedFacePresentation(
         pose resolvedPose: CharacterPose? = nil,
@@ -356,12 +437,14 @@ final class PNGRenderer {
         }
     }
     var faceRegion: CGRect {
+        if let standingFrame { return standingFrame.variant.rect(standingFrame.variant.faceRect, imageHeight: imageHeight, margin: Self.margin) }
         guard let expansionPrepared, let base = expansionPrepared.images[expansionPrepared.variant.base] else { return .zero }
         let rect = expansionPrepared.variant.face.bottomLeftRect(canvasHeight: Double(base.height))
         let scale = imageHeight / CGFloat(base.height)
         return CGRect(x: Self.margin + rect.minX * scale, y: Self.margin + rect.minY * scale, width: rect.width * scale, height: rect.height * scale)
     }
     var headRegion: CGRect {
+        if let standingFrame { return standingFrame.variant.rect(standingFrame.variant.headRect, imageHeight: imageHeight, margin: Self.margin) }
         guard let expansionPrepared, let base = expansionPrepared.images[expansionPrepared.variant.base] else { return .zero }
         let rect = expansionPrepared.variant.head.bottomLeftRect(canvasHeight: Double(base.height))
         let scale = imageHeight / CGFloat(base.height)

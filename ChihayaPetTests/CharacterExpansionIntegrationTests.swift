@@ -47,6 +47,7 @@ final class CharacterExpansionIntegrationTests: XCTestCase {
         let desktop = DesktopController(
             defaults: defaults,
             expansionResourceURL: nil,
+            useNumberedSprites: false,
             poseNow: { now },
             poseRandomDelay: { 300 },
             choosePose: { $0[0] }
@@ -194,7 +195,7 @@ final class CharacterExpansionIntegrationTests: XCTestCase {
         defaults.set(CharacterStyle.pink.rawValue, forKey: "desktop.style")
         defaults.set(CharacterExpressionMode.surprised.rawValue, forKey: "desktop.expressionMode")
 
-        let first = DesktopController(defaults: defaults, expansionResourceURL: nil)
+        let first = DesktopController(defaults: defaults, expansionResourceURL: nil, useNumberedSprites: false)
         XCTAssertEqual(first.expandedStyle, .pink)
         XCTAssertEqual(first.expandedExpressionMode, .surprised)
         XCTAssertEqual(first.poseMode, .automatic)
@@ -209,7 +210,7 @@ final class CharacterExpansionIntegrationTests: XCTestCase {
         first.setClickThrough(true)
         first.shutdown()
 
-        let restored = DesktopController(defaults: defaults, expansionResourceURL: nil)
+        let restored = DesktopController(defaults: defaults, expansionResourceURL: nil, useNumberedSprites: false)
         defer { restored.shutdown() }
         XCTAssertEqual(restored.expandedStyle, .blueRose)
         XCTAssertEqual(restored.style, .pink, "new-only styles preserve the legacy fallback preference")
@@ -234,6 +235,7 @@ final class CharacterExpansionIntegrationTests: XCTestCase {
         let desktop = DesktopController(
             defaults: defaults,
             expansionResourceURL: nil,
+            useNumberedSprites: false,
             poseNow: { now },
             poseRandomDelay: { 300 },
             choosePose: { $0[0] }

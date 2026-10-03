@@ -1,0 +1,240 @@
+{
+  "issue": 31,
+  "question": "是否批准刚展示的当前 23 张近景 PNG（蓝白玫瑰礼装 01–11，以及体检服-里 v13 母图对应的 v7 表情 00–11），并按审核页中的 SHA-256 登记用于 #31 正式运行？",
+  "message": "23 张全部通过",
+  "recordedAt": "2026-10-03T13:30:12+08:00",
+  "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2",
+  "images": [
+    {
+      "variant": "blue-white-rose/close",
+      "faceID": "01",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/blue-white-rose/close/01.png",
+      "sha256": "2bec612a63c4f05d29772400463e1c928f660214e78eccee520e304cb0a4975d",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "blue-white-rose/close",
+      "faceID": "02",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/blue-white-rose/close/02.png",
+      "sha256": "c5e6846c7b55fd8f5cb0c0061aa6cd9fca723b8e0af83adeb756b1ea9bb7d80b",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "blue-white-rose/close",
+      "faceID": "03",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/blue-white-rose/close/03.png",
+      "sha256": "857de0b90da35d192ff5167c71787105a103d8d6c2b7fcbf547f98f607e8c4d0",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "blue-white-rose/close",
+      "faceID": "04",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/blue-white-rose/close/04.png",
+      "sha256": "002ff375377aa1066b53e6253289c646b64ed8851b6fae58d70857b9ab8b41d6",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "blue-white-rose/close",
+      "faceID": "05",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/blue-white-rose/close/05.png",
+      "sha256": "0519fbf56d5aa9de405e219600fea21431ca5690f4ea0d77d64e424e10cfdce1",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "blue-white-rose/close",
+      "faceID": "06",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/blue-white-rose/close/06.png",
+      "sha256": "2111f81764687a930f40dde31ecbd3af7c6c3c83b42da0ca04bb9b9e5153386c",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "blue-white-rose/close",
+      "faceID": "07",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/blue-white-rose/close/07.png",
+      "sha256": "2ee217ef60b39821f5c7ed9cca029fadf716b4f5a89fbef64c671975e223aaf7",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "blue-white-rose/close",
+      "faceID": "08",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/blue-white-rose/close/08.png",
+      "sha256": "9682f30219b6db0cce9c37d7b298eb6150ccf1070f69af92f492caa447eb4fce",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "blue-white-rose/close",
+      "faceID": "09",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/blue-white-rose/close/09.png",
+      "sha256": "9ffb3bac567671a243ccc14008a38e6a0f3fc9642ac0d775bf038f31a41f58fb",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "blue-white-rose/close",
+      "faceID": "10",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/blue-white-rose/close/10.png",
+      "sha256": "d851cd10122c4ebbd94368206496d19ec79f00c40b04f72a71f86b9b4e613e6e",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "blue-white-rose/close",
+      "faceID": "11",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/blue-white-rose/close/11.png",
+      "sha256": "31f232d65f3b2f4f67edf795075618e7f3531c84cdbb324ab0c65c476f317a7c",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "loose-long-shirt-experiment-v4/close",
+      "faceID": "00",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/loose-long-shirt-experiment-v4/close/00.png",
+      "sha256": "b691c03e0aa5e751bf0c184e80583ab30155ac6a680d98839dc9dfc1290f715f",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "loose-long-shirt-experiment-v4/close",
+      "faceID": "01",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/loose-long-shirt-experiment-v4/close/01.png",
+      "sha256": "d2c0e212bffa4b4c2fca1b5bcb61ea0bf71e3d08152e4c879948138d49d9f15f",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "loose-long-shirt-experiment-v4/close",
+      "faceID": "02",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/loose-long-shirt-experiment-v4/close/02.png",
+      "sha256": "efd6e35449f9344a9e0cf1531dc2ac1f8a779e785516ffc14ee42fcdbe432e64",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "loose-long-shirt-experiment-v4/close",
+      "faceID": "03",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/loose-long-shirt-experiment-v4/close/03.png",
+      "sha256": "98f5c76371d793819dce440b9aebafd521592d4f3de7726852920c0a413e18b0",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "loose-long-shirt-experiment-v4/close",
+      "faceID": "04",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/loose-long-shirt-experiment-v4/close/04.png",
+      "sha256": "8b41feb355874fd36260eff97e856ca89d00740e1872b9d9131007f64d8c2557",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "loose-long-shirt-experiment-v4/close",
+      "faceID": "05",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/loose-long-shirt-experiment-v4/close/05.png",
+      "sha256": "efb59748d22273103f6a878c7ca8156f02524ade3cca12a9c1a91cad14b5c78e",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "loose-long-shirt-experiment-v4/close",
+      "faceID": "06",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/loose-long-shirt-experiment-v4/close/06.png",
+      "sha256": "8efe91c44772ded4a1c2f613f6b627bbde68b5c794c8c9e3dfb056d3f1638958",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "loose-long-shirt-experiment-v4/close",
+      "faceID": "07",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/loose-long-shirt-experiment-v4/close/07.png",
+      "sha256": "5827a1ea6153617597a567bcc4aa16d2bf498183974269339d3603b0c52e8727",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "loose-long-shirt-experiment-v4/close",
+      "faceID": "08",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/loose-long-shirt-experiment-v4/close/08.png",
+      "sha256": "bdaf6aad091556d524cc9977fb3397fae872b04dc73d475554f83f7125555729",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "loose-long-shirt-experiment-v4/close",
+      "faceID": "09",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/loose-long-shirt-experiment-v4/close/09.png",
+      "sha256": "5697f0ea07afe21c7ee9fa1c13af1a91d368b10376d5707b1f946a84b05372e1",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "loose-long-shirt-experiment-v4/close",
+      "faceID": "10",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/loose-long-shirt-experiment-v4/close/10.png",
+      "sha256": "855b4071e553fec8c2e215416077ab55c62de30754dab6d41b4a5cd9e765e6aa",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    },
+    {
+      "variant": "loose-long-shirt-experiment-v4/close",
+      "faceID": "11",
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/sprites/loose-long-shirt-experiment-v4/close/11.png",
+      "sha256": "144780d86ab06d75d74a5183ec4a3030805879fc33fe17d654d1aed3d65ef125",
+      "status": "approved",
+      "message": "23 张全部通过",
+      "recordedAt": "2026-10-03T13:30:12+08:00",
+      "source": "Explicit user reply in the current Codex chat to request_user_input_async call_DQ72Xa67oehDVyQyZuAXh4r2"
+    }
+  ],
+  "scope": "Current 23 displayed numbered expression PNGs only; no approval transfer to other versions or future edits"
+}
