@@ -1,3 +1,15 @@
+# 共用桌宠设计
+
+2026-10-03 的活动实现为 Electron + TypeScript。迁移范围与文件契约以 [Issue #62](https://github.com/a1457139709/ChihayaPet/issues/62) 为准，当前架构见 [实现说明](development/IMPLEMENTATION.md)，行为及入口见 [README](../README.md)。
+
+共享应用支持 macOS 26+ arm64 和 Windows 11 x64。透明人物、编号 PNG、会话、请求、设置、闲话和音乐只实现一次；平台模块处理 CFPreferences／Windows JSON、焦点、显示器与系统差异。默认背景节流保留，面板关闭销毁，图片按需解码，音乐留在人物 renderer。
+
+Mac 配置、原偏好域和 UUID 音乐原位使用，不要求重配置或重导入。Windows 所有可控数据位于完整便携目录，路径在会话启动前设置。两端随包生成准确中文文件说明；Mac DMG 与 Windows ZIP 使用共用开发、测试和打包入口。
+
+下面保留原生阶段设计作为历史依据；其技术栈、早期图片数量、窗口尺寸、打包与验证方式已被以上现行契约替代，不能作为缩小迁移范围的依据。
+
+---
+
 # 妃宫千早 macOS 桌宠设计方案
 
 设计日期：2026-09-05；修订日期：2026-09-07。状态：静态首版已实施；2026-09-08 实际验证结果见 [VALIDATION.md](VALIDATION.md)。本文保留原始设计与验收要求。

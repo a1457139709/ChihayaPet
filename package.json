@@ -1,0 +1,39 @@
+{
+  "name": "chihaya-pet",
+  "productName": "ChihayaPet",
+  "version": "0.2.0",
+  "private": true,
+  "description": "妃宫千早 · 共享 Electron 桌宠",
+  "author": "redAndWhite",
+  "main": "dist/main.cjs",
+  "scripts": {
+    "dev": "npm run build && electron .",
+    "build": "npm run typecheck && node scripts/build-electron.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "test:runtime": "node scripts/check-runtime.mjs",
+    "package": "npm run build && node scripts/package-electron.mjs",
+    "verify": "python3 scripts/verify_resources.py --source-only --require-approved-standing && node scripts/verify-package.mjs"
+  },
+  "dependencies": {
+    "pngjs": "7.0.0"
+  },
+  "devDependencies": {
+    "@electron/asar": "3.4.1",
+    "@types/node": "^24.0.0",
+    "@types/pngjs": "^6.0.5",
+    "7zip-bin": "5.2.0",
+    "electron": "44.5.1",
+    "electron-builder": "26.15.3",
+    "esbuild": "0.28.2",
+    "ffmpeg-static": "5.3.0",
+    "playwright-core": "^1.56.0",
+    "tsx": "^4.20.0",
+    "typescript": "7.0.2"
+  },
+  "allowScripts": {
+    "electron@44.5.1": true,
+    "esbuild@0.28.2": true,
+    "ffmpeg-static@5.3.0": true
+  }
+}

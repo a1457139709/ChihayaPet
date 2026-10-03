@@ -1,6 +1,12 @@
 # macOS and Xcode state
 .DS_Store
 build/
+dist/
+node_modules/
+release/
+/Data/
+/ElectronRuntime/
+/FILES.txt
 DerivedData/
 *.xcuserstate
 xcuserdata/

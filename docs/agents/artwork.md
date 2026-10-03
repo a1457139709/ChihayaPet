@@ -10,7 +10,7 @@ Git 仓库保留应用源码、工程、测试、构建工具、运行资源和�
 | [manifest.json](../../ChihayaPet/Resources/Characters/Standing/manifest.json) | 记录编号、画布、嘴部与发丝锚点、批准状态和 PNG SHA-256。 |
 | [原始素材说明](../../ChihayaPet/Resources/fansitekit-notice-original.txt) | 保留原始 Shift-JIS 编码与字节，随应用打包。 |
 
-运行库仅保存清单和正式 PNG。加载指定图片失败时返回 `nil`，清空画面并停止动效。旧分层 Animation、Assets.xcassets 和 Windows 实现已移除。
+运行库仅保存清单和正式 PNG。共享 Electron 应用从这里读取，发行包复制到 `resources/RuntimeResources/`（Mac 为 `.app/Contents/Resources/RuntimeResources/`）。加载指定图片失败时返回空帧，清空画面并停止动效。旧分层 Animation、Assets.xcassets 和独立 Windows 实现已移除。
 
 资源变更后执行：
 

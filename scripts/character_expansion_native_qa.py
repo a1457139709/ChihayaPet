@@ -14,6 +14,8 @@ import plistlib
 import shlex
 import subprocess
 import sys
+import io
+import tarfile
 
 
 def main():
@@ -25,6 +27,17 @@ def main():
     parser.add_argument("--timeout", type=int, default=3600, help="Per-build/test process timeout in seconds")
     args = parser.parse_args()
     root = Path(__file__).resolve().parent.parent
+    # Historical AppKit renderer is a pinned, disposable art-validation fixture.
+    # It is not an active application or a dependency of Electron builds.
+    legacy = root / 'build/native-artwork-validation-source'
+    if not (legacy / 'scripts/generate_project.py').exists():
+        legacy.mkdir(parents=True, exist_ok=True)
+        data = subprocess.check_output(['git', 'archive', 'b6a2f10f759de40665b7d7ab664c33a0004ea244'], cwd=root)
+        with tarfile.open(fileobj=io.BytesIO(data)) as archive:
+            for member in archive.getmembers():
+                if legacy not in (legacy / member.name).resolve().parents or member.issym() or member.islnk():
+                    raise ValueError('Unsafe native QA fixture path')
+            archive.extractall(legacy)
     output = args.output.resolve()
     run = output.with_name(output.name + ".run")
     resources = (root / "ChihayaPet/Resources").resolve()
@@ -44,7 +57,7 @@ def main():
         commands.append(shlex.join(map(str, command)))
         (run / "commands.json").write_text(json.dumps(commands, indent=2) + "\n")
         with (run / log).open("x") as stream:
-            subprocess.run(command, cwd=root, env=environment, stdout=stream, stderr=subprocess.STDOUT,
+            subprocess.run(command, cwd=legacy, env=environment, stdout=stream, stderr=subprocess.STDOUT,
                            timeout=timeout, check=True)
 
     execute(["xcodebuild", "-version"], "xcode-version.txt", 30)
