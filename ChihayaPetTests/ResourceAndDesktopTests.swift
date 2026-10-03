@@ -26,11 +26,14 @@ final class ResourceAndDesktopTests: XCTestCase {
         XCTAssertEqual(notifiedSelections.last?.1, .close)
     }
 
-    func testBundledOutfitsLoadWithOriginalAspectAndTransparency() throws {
-        for name in ["chihaya-summer", "chihaya-winter"] {
-            let image = try XCTUnwrap(NSImage(named: NSImage.Name(name)))
-            XCTAssertEqual(image.size.width / image.size.height, 441.0 / 516.0, accuracy: 0.0001)
-            let bitmap = try XCTUnwrap(NSBitmapImageRep(data: try XCTUnwrap(image.tiffRepresentation)))
+    func testBundledStandingImagesLoadWithManifestAspectAndTransparency() throws {
+        let root = try XCTUnwrap(Bundle.main.url(forResource: "Standing", withExtension: nil, subdirectory: "Characters"))
+        let library = try StandingCharacterLibrary(rootURL: root)
+        for key in ["a/full", "a_/full"] {
+            let frame = try library.image(key: key, faceID: "00")
+            XCTAssertEqual(frame.image.width, frame.variant.canvas[0])
+            XCTAssertEqual(frame.image.height, frame.variant.canvas[1])
+            let bitmap = NSBitmapImageRep(cgImage: frame.image)
             XCTAssertTrue(bitmap.hasAlpha)
             XCTAssertEqual(try XCTUnwrap(bitmap.colorAt(x: 0, y: 0)).alphaComponent, 0)
         }

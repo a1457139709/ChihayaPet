@@ -3,6 +3,7 @@
 
 from pathlib import Path
 import hashlib
+import json
 import os
 import subprocess
 
@@ -14,8 +15,8 @@ class ExpansionValidationError(AssertionError):
 VALIDATOR = Path(__file__).resolve().with_name("validate_character_expansion.sh")
 
 
-def _run_validator(pack, legacy, project_root=None):
-    command = [str(VALIDATOR), "--pack", str(pack), "--legacy", str(legacy)]
+def _run_validator(pack, project_root=None):
+    command = [str(VALIDATOR), "--pack", str(pack)]
     if project_root is not None:
         command.extend(("--project-root", str(project_root)))
     environment = os.environ.copy()
@@ -39,7 +40,6 @@ def validate_expansion(project_root, bundle=None, source_only=False, require_exp
     """Validate an optional source pack and, when requested, its exact bundled copy."""
     project_root = Path(project_root).resolve()
     source = project_root / "ChihayaPet/Resources/CharacterExpansion"
-    legacy = project_root / "ChihayaPet/Resources/CharacterSprites"
     if source.is_symlink():
         raise ExpansionValidationError(f"CharacterExpansion root must not be a symlink: {source}")
     if not source.exists():
@@ -49,7 +49,10 @@ def validate_expansion(project_root, bundle=None, source_only=False, require_exp
     if not source.is_dir():
         raise ExpansionValidationError(f"CharacterExpansion is not a directory: {source}")
 
-    summary = _run_validator(source, legacy, project_root)
+    manifest = json.loads((source / 'manifest.json').read_text())
+    if any(asset.get('origin') != 'extensionPack' for asset in manifest.get('assets', {}).values()):
+        raise ExpansionValidationError('Runtime CharacterExpansion assets must be self-contained')
+    summary = _run_validator(source)
     if source_only:
         return summary
 
@@ -58,7 +61,7 @@ def validate_expansion(project_root, bundle=None, source_only=False, require_exp
     bundled = Path(bundle) / "Contents/Resources/CharacterExpansion"
     if not bundled.is_dir():
         raise ExpansionValidationError(f"Bundle missing CharacterExpansion: {bundled}")
-    _run_validator(bundled, Path(bundle) / "Contents/Resources/CharacterSprites")
+    _run_validator(bundled)
 
     source_files = _files(source)
     bundled_files = _files(bundled)

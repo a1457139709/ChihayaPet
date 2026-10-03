@@ -13,7 +13,7 @@ final class StandingCharacterVisualAcceptanceTests: XCTestCase {
         }
         let output = URL(fileURLWithPath: directory, isDirectory: true)
         try FileManager.default.createDirectory(at: output, withIntermediateDirectories: true)
-        let root = try XCTUnwrap(Bundle.main.url(forResource: "StandingCharacterSprites", withExtension: nil))
+        let root = try XCTUnwrap(Bundle.main.url(forResource: "Standing", withExtension: nil, subdirectory: "Characters"))
         let library = try StandingCharacterLibrary(rootURL: root)
         var captures: [[String: Any]] = []
         var bubbles: [[String: Any]] = []
@@ -22,7 +22,7 @@ final class StandingCharacterVisualAcceptanceTests: XCTestCase {
                 let key = "\(outfit.rawValue)/\(framing.rawValue)"
                 let variant = try XCTUnwrap(library.manifest.variants[key])
                 let renderer = PNGRenderer(style: outfit.legacyStyle ?? .casual, framing: framing,
-                    imageHeight: 256, animationsEnabled: false, resourceURL: nil, expansionResourceURL: nil,
+                    imageHeight: 256, animationsEnabled: false, expansionResourceURL: nil,
                     standingOutfit: outfit, standingLibrary: library, allowPendingStandingForQA: true)
                 defer { renderer.shutdown() }
                 for height: CGFloat in [240, 256, 480] {

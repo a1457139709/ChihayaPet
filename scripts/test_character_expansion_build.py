@@ -11,7 +11,7 @@ import tempfile
 import unittest
 import zlib
 
-from character_expansion_build import ExpansionValidationError, validate_expansion
+from character_expansion_build import ExpansionValidationError, _run_validator, validate_expansion
 
 
 STYLES = ("a", "a_", "b", "b_", "c", "d", "e", "blue_rose", "red_skirt", "long_shirt")
@@ -43,7 +43,6 @@ class ExpansionFixture:
     def __init__(self, directory):
         self.root = Path(directory)
         self.pack = self.root / "ChihayaPet/Resources/CharacterExpansion"
-        self.legacy = self.root / "ChihayaPet/Resources/CharacterSprites"
         self.source = self.root / "art/source.png"
         self.asset = self.pack / "assets/base.png"
         self.bundle = self.root / "build/Test.app"
@@ -52,11 +51,9 @@ class ExpansionFixture:
     def _write(self):
         pixel = png_rgba(12, 34, 56)
         self.asset.parent.mkdir(parents=True)
-        self.legacy.mkdir(parents=True)
         self.source.parent.mkdir(parents=True)
         self.asset.write_bytes(pixel)
         self.source.write_bytes(pixel)
-        (self.legacy / "manifest.json").write_text(json.dumps({"assetHashes": {}}))
 
         states = [
             {"expression": expression, "eye": eye, "gaze": gaze, "mouth": mouth}
@@ -122,7 +119,6 @@ class ExpansionFixture:
         target = self.bundle / "Contents/Resources/CharacterExpansion"
         target.parent.mkdir(parents=True)
         shutil.copytree(self.pack, target)
-        shutil.copytree(self.legacy, target.parent / "CharacterSprites")
         return target
 
     def move_runtime_asset(self, relative_path):
@@ -145,7 +141,7 @@ class CharacterExpansionBuildValidationTests(unittest.TestCase):
         self.addCleanup(temporary.cleanup)
         return ExpansionFixture(temporary.name)
 
-    def test_delegates_complete_schema_and_verifies_project_sources(self):
+    def test_delegates_complete_schema(self):
         fixture = self.fixture()
         summary = validate_expansion(fixture.root, source_only=True, require_expansion=True)
         self.assertIn("80 variants, 360 face states", summary)
@@ -157,11 +153,17 @@ class CharacterExpansionBuildValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(ExpansionValidationError, "80 variants"):
             validate_expansion(fixture.root, source_only=True, require_expansion=True)
 
-    def test_rejects_source_artwork_hash_mismatch(self):
+    def test_explicit_source_qa_rejects_artwork_hash_mismatch(self):
         fixture = self.fixture()
         fixture.source.write_bytes(png_rgba(99, 88, 77))
         with self.assertRaisesRegex(ExpansionValidationError, "invalidSource"):
-            validate_expansion(fixture.root, source_only=True, require_expansion=True)
+            _run_validator(fixture.pack, fixture.root)
+
+    def test_runtime_pack_build_does_not_require_source_artwork(self):
+        fixture = self.fixture()
+        fixture.source.unlink()
+        fixture.install_bundle_pack()
+        validate_expansion(fixture.root, bundle=fixture.bundle, require_expansion=True)
 
     def test_rejects_unreferenced_and_raw_qa_pack_entries(self):
         for relative_path in (
@@ -196,7 +198,7 @@ class CharacterExpansionBuildValidationTests(unittest.TestCase):
                 ):
                     validate_expansion(fixture.root, source_only=True, require_expansion=True)
 
-    def test_source_artwork_cannot_alias_a_shipped_runtime_asset(self):
+    def test_explicit_source_qa_rejects_a_shipped_asset_as_source(self):
         fixture = self.fixture()
         manifest_path = fixture.pack / "manifest.json"
         manifest = json.loads(manifest_path.read_text())
@@ -206,7 +208,7 @@ class CharacterExpansionBuildValidationTests(unittest.TestCase):
             ExpansionValidationError,
             "Source artwork must be outside CharacterExpansion",
         ):
-            validate_expansion(fixture.root, source_only=True, require_expansion=True)
+            _run_validator(fixture.pack, fixture.root)
 
     def test_rejects_symlinks_even_when_the_target_is_expected(self):
         fixture = self.fixture()

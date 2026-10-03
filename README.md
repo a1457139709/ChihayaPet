@@ -1,15 +1,13 @@
-# 妃宫千早桌宠 · macOS / Windows 11
+# 妃宫千早桌宠 · macOS
 
-**Windows 11 x64 版：**新增 Electron 实现及可解压运行的 EXE ZIP。下载位置、源码打包命令和实机验收步骤见 [Windows 使用说明](docs/WINDOWS.md)。Windows 运行测试由用户完成；下文为原生 macOS 版说明。
+这是个人自用的原生 macOS 桌宠，已接入妃宫千早 13 组立绘与 292 张已批准编号表情，支持透明悬浮、拖动、菜单栏控制和兼容 Chat Completions 的文字聊天。不需要运行原游戏或预览网页，也不需要安装 Live2D 软件。人物直接显示完整合成 PNG，支持呼吸、轻摆和点击缩放。
 
-这是个人自用的原生 macOS 桌宠，已接入妃宫千早七套动态立绘，支持透明悬浮、拖动、菜单栏控制和兼容 Chat Completions 的文字聊天。不需要运行原游戏或预览网页，也不需要安装 Live2D 软件。人物由身体与脸部 PNG 原生组合，包含眨眼、呼吸、轻摆和对白嘴型；当前不是 Cubism 模型。
-
-可运行应用位于 [`build/ChihayaPet.app`](build/ChihayaPet.app)，工程为 [`ChihayaPet.xcodeproj`](ChihayaPet.xcodeproj)。实际通过和仍待手动完成的检查见 [验收记录](docs/VALIDATION.md)。
+构建后的应用位于 [`build/ChihayaPet.app`](build/ChihayaPet.app)，工程为 [`ChihayaPet.xcodeproj`](ChihayaPet.xcodeproj)。实际通过和仍待手动完成的检查见 [验收记录](docs/VALIDATION.md)。
 
 ## 当前功能
 
 - 目标设备：Apple Silicon（M 系列）、macOS 26；用户设备为 48GB 内存。
-- 角色：妃宫千早；冬服正面、夏服正面、冬服侧身、夏服侧身、米色便服、粉色裙装、体操服，共七套造型。默认冬服正面、全景、自动表情、高度 256 点，缩放范围 240–480 点。
+- 角色：妃宫千早；13 组服装／朝向／姿态，26 个全景／近景取景。默认冬服正面、全景、自动表情、高度 256 点，缩放范围 240–480 点。
 - 交互：透明悬浮、拖动、换装、缩放、位置记忆、菜单栏控制和轻微动效。
 - 聊天：可配置兼容 Chat Completions 的云端服务，文字输入和回复气泡；测试连接和聊天共享一个在途请求名额，取消或配置失效后的迟到结果不更新界面。
 - 记忆：聊天仅存在于本次运行的内存中；请求上下文最多 10 轮／12,000 个 Swift Character，界面历史最多 50 轮／100,000 个 Swift Character，分别按完整轮次裁剪。单条回复超过 20,000 个 Swift Character 时按响应过大报错。退出或清空后不保留聊天；服务配置和桌宠偏好可保存。按用户选择，API Key 以明文保存在本机配置文件，不使用钥匙串。
@@ -37,32 +35,24 @@
 
 ## 后续路线
 
-当前分层 PNG 动画已完成原生接入。形象扩展继续使用透明 PNG、局部差分和 Core Animation。2026-09-30 的新方案保留十组服装／朝向的站姿与喝茶，目标为20张基础图、40个全景／近景组合；取消看书、打瞌睡与方向视线。喝茶使用游戏原尺寸画布，局部制作手臂、手与统一杯碟，固定母图后直接合成游戏原脸。前四组服装的全景／近景共8张喝茶母图已通过像素检查及人工审核，正式原脸合成已覆盖6个取景；其余母图继续逐张制作，应用接入另行验收。详见[当前制作计划](docs/plans/2026-09-30-native-tea-and-original-faces.md)与[图片进度清单](docs/reports/chihaya-character-progress.html)。
-
-制作任务见 [GitHub 总 issue #1](https://github.com/a1457139709/ChihayaPet/issues/1)：每组服装分别建立全景／近景子任务，共20个；8个已审核母图子任务已关闭，其余12个保持开放。首次建立的完整对应表见 [issue 索引](docs/reports/2026-09-30-github-issues.md)，后续状态以 GitHub 与图片进度数据为准。
+当前应用已接入 13 组服装／朝向／姿态、26 个全景／近景取景和 292 张已批准编号表情，按编号切换完整 PNG。程序直接读取仓库中的运行清单与图片。母图、审核副本、制作脚本和历史记录保留在本机美术档案。
 
 未来 App Store 发布另立阶段，处理素材替换或授权、运行时许可及发布适配，不属于首版交付。当前参考图片与素材包说明不能视为该阶段的发布授权。
 
-## 原始资料目录（保留）
+## 运行资源与本地数据
+
+仓库包含源码、Xcode 工程、测试、构建脚本、运行资源和程序文档，直接检出即可构建。资源规范见[资源导航](docs/agents/artwork.md)。
 
 ```text
-ChihayaPet/
-├── README.md
-├── docs/
-│   └── DESIGN.md
-└── assets/
-    ├── chihaya-summer.png
-    ├── chihaya-winter.png
-    ├── SOURCES.md
-    ├── fansitekit-notice-original.txt
-    ├── pixiv/       # 17 张参考图片，不进入首版应用资源
-    └── baozhen/     # 11 张参考图片，不进入首版应用资源
+ChihayaPet/Resources/
+├── Characters/
+│   └── Standing/
+│       ├── manifest.json
+│       └── sprites/             # 292 张正式编号表情
+└── fansitekit-notice-original.txt
 ```
 
-- [夏服立绘](assets/chihaya-summer.png)、[冬服立绘](assets/chihaya-winter.png)：原始 PNG 的逐字节副本。
-- [素材来源与校验值](assets/SOURCES.md)：原文件名、来源、透明通道和 SHA-256。
-- [素材包原始使用说明](assets/fansitekit-notice-original.txt)：保留原始 Shift-JIS 编码。
-- `assets/pixiv/`、`assets/baozhen/`：仅作角色外观及后续选材参考，逐项清单见来源记录。目录名不代表已核实来源或授权。
+`artwork/` 是本机美术开发档案，`assets/` 是本机来源库，`work/` 保存工作记录；三者均由 Git 忽略。开发版 `Music/` 保存导入曲库，`config.json` 保存个人服务配置；这些用户数据也留在本地。旧验收输出 `output/` 已删除。
 
 ## 构建和运行
 
@@ -81,9 +71,9 @@ open build/ChihayaPet.app
 
 - 首次启动在屏幕右下方显示冬服正面全景立绘，菜单栏出现叶子图标，不常驻 Dock。
 - 点击人物打开聊天，拖动超过 4 点后只移动位置；菜单栏可以换装、调整 240–480 点大小、置顶、穿透、控制动效、隐藏或退出。
-- 菜单“造型”选择七套服装；“取景”选择全景或近景；“表情”选择自动、日常、认真、微笑或惊讶。三项分别记忆；旧冬服／夏服偏好首次迁移为对应正面造型，保留高度与位置。
-- 自动表情：可见对白逐字播放时微笑并切换嘴型，聊天等待回复时认真，其余日常。测试连接不改变表情。固定表情仍会随对白动嘴；页末、显示全文、回看已读页、停止或关闭气泡立即闭嘴。
-- 隐藏、休眠、关闭动效或系统开启“减少动态效果”会停止眼嘴调度和身体动作。恢复后重新安排眨眼，不补播积压动作。
+- 菜单“造型”选择 13 组立绘；“取景”选择全景或近景；“表情”选择自动或已批准编号。三项分别记忆；旧冬服／夏服偏好首次迁移为对应正面造型，保留高度与位置。
+- 自动表情只使用清单中明确登记的编号映射；没有可靠映射时保持当前有效编号或初始 `00`。完整立绘不生成额外眨眼或口型帧。
+- 隐藏、休眠、关闭动效或系统开启“减少动态效果”会停止身体动作。图片不存在、损坏或未批准时加载返回 `nil`，清空画面；菜单栏仍可换装和打开聊天。
 - 在设置中填写 HTTPS 基础地址、模型名称和 API Key。基础地址保留服务的版本路径，应用追加 `/chat/completions`，不会自动添加 `/v1`。
 - “测试连接”使用当前填写的草稿，可能产生一次请求费用；它不保存配置。点击“保存服务”后，地址、模型名和 API Key 一起原子保存到数据目录的 `config.json`，文件权限为 0600，重启后继续使用。安装版使用 `~/Library/Application Support/ChihayaPet/`，开发运行使用项目根目录。密钥为明文；切换服务不会沿用其他地址的密钥，也不访问钥匙串。
 - Enter 发送、Shift+Enter 换行，等待时可取消；最新回复同时显示在可关闭气泡中。上下文和界面历史按设计中的独立上限裁剪。
@@ -107,7 +97,7 @@ open build/ChihayaPet.dmg
 
 打开 DMG 后，将 `ChihayaPet.app` 拖到 `Applications` 快捷方式，再从“应用程序”启动千早桌宠。新版应用启动约 3 秒后自动推出带有本项目安装标记的 DMG 挂载卷，清理 `/Volumes/` 下的安装入口，保留原始 `.dmg` 文件。仅复制完成不会触发清理；直接从 DMG、开发或便携目录运行不触发清理。卷仍被占用时不强制推出，可手动在 Finder 推出，或关闭占用后下次启动应用再尝试。旧版无标记的安装卷仍需手动推出。产物为 `build/ChihayaPet.dmg`，适用于 Apple Silicon、macOS 26.0+。继续使用本机 ad-hoc 签名，未进行 Developer ID 签名或 Apple 公证，不保证下载到其他 Mac 后能通过 Gatekeeper。
 
-打包脚本只复制经过校验的 Release 应用、`Applications` 快捷方式和隐藏安装标记 `.chihaya-installer`；不打包根目录 `assets/`、本地 `Music/`、原图备份、开发文档或任何 `config.json`（也不会把示例配置改名后放入包中）。运行必需的图片和素材说明已有 `ChihayaPet/Resources/` 下的独立副本；其中 `CharacterSprites/assets/` 是运行资源，与项目根目录的开发素材 `assets/` 不同。脚本检查应用签名和资源白名单，拒绝包含 `config.json` 的产物，并挂载最终 DMG 再次校验。
+打包脚本只复制经过校验的 Release 应用、`Applications` 快捷方式和隐藏安装标记 `.chihaya-installer`。运行必需的图片和素材说明使用 `ChihayaPet/Resources/` 下的独立副本；`artwork/`、本地 `Music/`、开发文档和个人配置留在工作区。脚本检查应用签名和资源白名单，并挂载最终 DMG 再次校验。
 
 安装版将配置和音乐保存在 `~/Library/Application Support/ChihayaPet/`：没有配置文件时使用空服务配置，用户点击“保存服务”后才创建 `config.json`，音乐从设置中自行导入。不会自动复制开发环境的配置或曲库。开发构建继续向上定位项目根目录；旧便携目录的 `.chihaya-root` 标记仍受支持。路径不依赖终端工作目录，配置和音乐都位于 `.app` 外，保存不会破坏签名。
 
@@ -127,23 +117,15 @@ python3 scripts/verify_resources.py
 
 图片已经有透明通道。部分预览工具会显示完全透明像素中存储的洋红色 RGB；不要根据这种预览重新抠图。“全景”指原始立绘的完整画幅；部分原图本身裁切了脚部。人物保持靠近可用区域底边的立绘展示。图片显示区域四周各留 12 点透明动画空间，窗口底边贴合 `visibleFrame`；留白不写入原图。
 
-全景画幅高度为 606 像素；七套近景已补全头顶，在原图上方增加 64 像素，画幅高度为 670 像素。原有身体像素保持不变，脸部及嘴部锚点同步下移。原静态回退图为 516 像素。默认 256 点在 2× Retina 下约占 512 像素；放大到 480 点约需 960 像素，可能变柔。尺寸设置控制整个图片画布的显示高度，不包含窗口的动画留白。
+全景画幅高度为 606 像素；七套近景已补全头顶，在原图上方增加 64 像素，画幅高度为 670 像素。原有身体像素保持不变，脸部及嘴部锚点同步下移。默认 256 点在 2× Retina 下约占 512 像素；放大到 480 点约需 960 像素，可能变柔。尺寸设置控制整个图片画布的显示高度，不包含窗口的动画留白。
 
-素材包附带的原始说明限制个人使用，并限制未经许可的转载、提供下载和商业使用。具体以 [原文](assets/fansitekit-notice-original.txt) 为准；本资料包保留图片里的版权文字。
+素材包附带的原始说明限制个人使用，并限制未经许可的转载、提供下载和商业使用。具体以[原文](ChihayaPet/Resources/fansitekit-notice-original.txt)为准；保留图片里的版权文字。原始说明使用 Shift-JIS 编码。
 
-在资料包根目录打开终端，可检查所复制文件的 SHA-256：
-
-```sh
-shasum -a 256 assets/chihaya-summer.png assets/chihaya-winter.png assets/fansitekit-notice-original.txt
-```
-
-将输出与 [SOURCES.md](assets/SOURCES.md) 比较；十六进制大小写不影响哈希值。新的 Markdown 文档均为 UTF-8；原始使用说明如显示乱码，使用支持 Shift-JIS 的编辑器打开。
-
-应用资源中的 `CharacterSprites/manifest.json` 保存组合坐标、嘴部与发丝锚点、原始素材来源哈希和 326 张运行图片的 SHA-256；运行 PNG 合计 15,264,618 字节。修复前的七张近景运行图及清单另存于 `ChihayaPet/Resources/OriginalCharacterSprites/`，游戏导出原件保留在 `assets/`。旧美术预览移至项目外临时备份，原图配对与坐标另存于 `ArtSources/CharacterExpansion/native-tea/originals.json`。工程仅打包当前清单和运行 PNG，另保留原静态立绘作为加载失败回退。构建前会检查资源完整性、原图备份及修复坐标，缺失或哈希不符即构建失败。正常构建不依赖 `output/`，也不携带原图备份、预览页面、GIF、QA 图和 AI 原始图。
+[运行清单](ChihayaPet/Resources/Characters/Standing/manifest.json)登记 292 张编号表情、几何锚点、批准记录和 SHA-256，PNG 合计 87,124,123 字节。应用只打包运行库和原始素材说明。资源校验无需本机游戏原件或制作记录。旧分层资源、静态回退和 Windows 实现已移除。
 
 ## 验证状态
 
-公开仓库为 [a1457139709/ChihayaPet](https://github.com/a1457139709/ChihayaPet)，默认分支为 `main`，以 2026-09-30 当前工作区为初始快照；已有本地历史分支保留。源码、工程、文档、运行必需素材及 HTML 所需的游戏原 PNG 均纳入版本控制。构建产物、个人配置、`assets/` 下的音乐／背景／其他参考子目录已忽略，原文件继续保留本地。使用 `git log --oneline` 查看版本，`git status --short` 查看待提交变更。
+公开仓库为 [a1457139709/ChihayaPet](https://github.com/a1457139709/ChihayaPet)，默认分支为 `main`。版本控制只纳入程序所需文件；美术开发档案、工作记录、音乐、个人配置及构建产物保留本机。使用 `git log --oneline` 查看版本，`git status --short` 查看待提交变更。
 
 历次应用构建、自动化、界面和运行检查，以及本次原生动态立绘接入的实际验证范围见 [验收记录](docs/VALIDATION.md)。用户配置的真实服务已通过连接测试及两轮中文上下文补验；其他未完成项仍明确列在验收记录中。
 

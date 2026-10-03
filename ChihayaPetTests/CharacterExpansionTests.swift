@@ -318,7 +318,7 @@ final class CharacterExpansionTests: XCTestCase {
         try FileManager.default.removeItem(at: root.appendingPathComponent("base.png"))
         XCTAssertThrowsError(try active.switchTo(style: .winterFront, pose: .standing, framing: .full, library: lib))
         XCTAssertTrue(active.current === identity)
-        XCTAssertEqual(try active.switchTo(style: .blueRose, pose: .tea, framing: .full, library: lib), .legacyStatic)
+        XCTAssertEqual(try active.switchTo(style: .blueRose, pose: .tea, framing: .full, library: lib), .unavailable)
         XCTAssertTrue(active.current === identity)
     }
     func testFaceOnlyCompositionNoReadsAndCacheEviction() throws {

@@ -17,7 +17,7 @@ final class CharacterExpansionIntegrationTests: XCTestCase {
         defer { try? FileManager.default.removeItem(at: fixture.root) }
         let renderer = PNGRenderer(
             style: .winterFront, framing: .full, imageHeight: 8, animationsEnabled: true,
-            resourceURL: nil, expansionResourceURL: nil, expansionLibrary: fixture.library,
+            expansionResourceURL: nil, expansionLibrary: fixture.library,
             animationRandom: { $0.lowerBound }
         )
         defer { renderer.shutdown() }
@@ -81,7 +81,7 @@ final class CharacterExpansionIntegrationTests: XCTestCase {
         defer { try? FileManager.default.removeItem(at: fixture.root) }
         let renderer = PNGRenderer(
             style: .winterFront, framing: .full, imageHeight: 8, animationsEnabled: false,
-            resourceURL: nil, expansionResourceURL: nil, expansionLibrary: fixture.library
+            expansionResourceURL: nil, expansionLibrary: fixture.library
         )
         defer { renderer.shutdown() }
 
@@ -100,22 +100,22 @@ final class CharacterExpansionIntegrationTests: XCTestCase {
     }
 
     @MainActor
-    func testNeutralOnlyRequestedPoseRetriesStandingWhenItsInitialFaceIsUnavailable() throws {
+    func testUnavailableRequestedPoseClearsTheRenderer() throws {
         let neutral = ExpansionFaceState(expression: .neutral, eye: .open, gaze: .center, mouth: .closed)
         let fixture = try makeExpansionFixture(states: [neutral], poses: [.standing, .reading])
         defer { try? FileManager.default.removeItem(at: fixture.root) }
         let renderer = PNGRenderer(
             style: .winterFront, framing: .full, imageHeight: 8, animationsEnabled: false,
-            resourceURL: nil, expansionResourceURL: nil, expansionLibrary: fixture.library
+            expansionResourceURL: nil, expansionLibrary: fixture.library
         )
         defer { renderer.shutdown() }
 
         renderer.setPose(.reading)
-        XCTAssertTrue(renderer.usesExpansion)
+        XCTAssertFalse(renderer.hasImage)
         XCTAssertEqual(renderer.pose, .reading)
-        XCTAssertEqual(renderer.renderedExpansionVariantKey, "a/standing/full", "observation must report installed variant rather than requested pose")
-        XCTAssertEqual(renderer.renderedExpansionPose, .standing)
-        XCTAssertEqual(renderer.renderedExpansionFaceState, neutral)
+        XCTAssertNil(renderer.renderedExpansionVariantKey)
+        XCTAssertNil(renderer.renderedExpansionPose)
+        XCTAssertNil(renderer.renderedExpansionFaceState)
     }
 
     func testFacePolicyUsesManualThenTypingWaitingPetAndPosePriority() {
@@ -318,12 +318,12 @@ final class CharacterExpansionIntegrationTests: XCTestCase {
         let library = try ExpansionLibrary(rootURL: root, manifest: manifest)
         let renderer = PNGRenderer(
             style: .winterFront, framing: .full, imageHeight: 8, animationsEnabled: false,
-            resourceURL: nil, expansionResourceURL: nil, expansionLibrary: library
+            expansionResourceURL: nil, expansionLibrary: library
         )
         defer { renderer.shutdown() }
         XCTAssertTrue(renderer.usesExpansion)
         renderer.setPose(.reading)
-        XCTAssertTrue(renderer.usesExpansion, "a broken requested pose retries the same style's standing variant")
+        XCTAssertFalse(renderer.hasImage, "A broken requested image clears the renderer")
 
         let prepared = try XCTUnwrap(library.prepare(style: .winterFront, pose: .standing, framing: .full).prepared)
         let base = try XCTUnwrap(prepared.images[prepared.variant.base])

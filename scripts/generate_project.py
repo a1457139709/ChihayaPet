@@ -19,8 +19,7 @@ for path in sorted(root.glob('ChihayaPet/**/*.swift')) + sorted(root.glob('Chiha
     build=obj('build.'+rel,'isa = PBXBuildFile; fileRef = '+ref+';')
     (test_sources if rel.startswith('ChihayaPetTests/') else app_sources).append(build)
 resources=[]
-resource_specs=[('ChihayaPet/Resources/Assets.xcassets','folder.assetcatalog'),('ChihayaPet/Resources/fansitekit-notice-original.txt','text'),('ChihayaPet/Resources/CharacterSprites','folder')]
-resource_specs.append(('ChihayaPet/Resources/StandingCharacterSprites', 'folder'))
+resource_specs=[('ChihayaPet/Resources/fansitekit-notice-original.txt','text'),('ChihayaPet/Resources/Characters','folder')]
 expansion_rel='ChihayaPet/Resources/CharacterExpansion'
 if (root/expansion_rel).is_dir():
     resource_specs.append((expansion_rel,'folder'))

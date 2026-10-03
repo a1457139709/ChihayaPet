@@ -22,7 +22,7 @@ Keep a linked task list in the parent for scanning and a `Part of #<parent>` ref
 
 ## Art progress and completion evidence
 
-For the tea-pose work, use `docs/plans/2026-09-30-native-tea-and-original-faces.md` and the per-view records embedded in `docs/reports/chihaya-character-progress.html`; the underlying data lives in `ArtSources/CharacterExpansion/native-tea/progress.json`.
+For the tea-pose work, use `docs/plans/2026-09-30-native-tea-and-original-faces.md` and the per-view records embedded in `docs/reports/chihaya-character-progress.html`; the underlying data lives in `artwork/archive/tea-action/progress.json`.
 
 Close a mother-image production/review child only when that view has a real image at the required canvas size, passed pixel checks and an explicit recorded human approval. Record the image, production evidence and approval message in the issue. Original-face-fit review, saved composite PNG exports and application integration retain their own recorded status.
 

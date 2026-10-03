@@ -13,7 +13,6 @@ final class CharacterExpansionVisualAcceptanceTests: XCTestCase {
         canonical(environment["CHIHAYA_EXPANSION_QA_PROJECT_ROOT"].map { URL(fileURLWithPath: $0) }
             ?? URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent())
     }
-    private var legacy: URL { project.appendingPathComponent("ChihayaPet/Resources/CharacterSprites") }
     private func canonical(_ url: URL) -> URL { url.resolvingSymlinksInPath().standardizedFileURL }
     private func hash(_ data: Data) -> String { SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined() }
     private func require(_ condition: @autoclosure () -> Bool, _ message: String) throws {
@@ -52,9 +51,7 @@ final class CharacterExpansionVisualAcceptanceTests: XCTestCase {
         let pack = canonical(environment["CHIHAYA_EXPANSION_QA_PACK"].map { URL(fileURLWithPath: $0) }
             ?? project.appendingPathComponent("ChihayaPet/Resources/CharacterExpansion"))
         do {
-            let trusted = try CharacterSpriteLibrary(rootURL: legacy)
-            let library = try ExpansionLibrary(rootURL: pack, legacyRootURL: legacy,
-                                               allowedLegacyHashes: trusted.manifest.assetHashes)
+            let library = try ExpansionLibrary(rootURL: pack)
             try library.validate(.complete)
             try library.verifySources(at: project)
             let inputs = try inputEvidence(library: library, pack: pack)
@@ -73,13 +70,13 @@ final class CharacterExpansionVisualAcceptanceTests: XCTestCase {
                             try autoreleasepool {
                                 let renderer = PNGRenderer(style: style.legacyStyle ?? .winterFront, framing: framing,
                                     imageHeight: CGFloat(height), animationsEnabled: false, expandedStyle: style, pose: pose,
-                                    expandedExpressionMode: .automatic, resourceURL: nil, expansionResourceURL: nil,
+                                    expandedExpressionMode: .automatic, expansionResourceURL: nil,
                                     expansionLibrary: library, animationRandom: { $0.lowerBound })
                                 defer { renderer.shutdown() }
                                 renderer.setGaze(pose.defaultGaze)
                                 renderer.setReducedMotion(true)
                                 renderer.setPresented(true)
-                                try require(renderer.usesExpansion && !renderer.usesFallback, "Expansion fallback: \(key)")
+                                try require(renderer.usesExpansion && renderer.hasImage, "Expansion fallback: \(key)")
                                 try require(renderer.renderedExpansionVariantKey == key, "Wrong installed variant: \(key)")
                                 try require(renderer.renderedExpansionPose == pose && renderer.expandedStyle == style
                                     && renderer.framing == framing, "Wrong renderer selection: \(key)")
@@ -131,7 +128,7 @@ final class CharacterExpansionVisualAcceptanceTests: XCTestCase {
         }
     }
 
-    // A real legacy renderer checks native capture mechanics without pretending to cover expansion art.
+    // Standing PNGs check native capture mechanics independently of expansion art.
     @MainActor
     func testLegacyCaptureMechanicsSelfCheck() throws {
         let output = try output("CHIHAYA_EXPANSION_QA_SELFCHECK_OUTPUT")
@@ -139,11 +136,11 @@ final class CharacterExpansionVisualAcceptanceTests: XCTestCase {
         for height in heights {
             try autoreleasepool {
                 let renderer = PNGRenderer(style: .winterFront, framing: .full, imageHeight: CGFloat(height),
-                    animationsEnabled: false, resourceURL: legacy, expansionResourceURL: nil)
+                    animationsEnabled: false, expansionResourceURL: nil)
                 defer { renderer.shutdown() }
-                try require(!renderer.usesFallback && !renderer.usesExpansion, "Self-check requires actual legacy CharacterSprites")
+                try require(renderer.hasImage && !renderer.usesExpansion, "Self-check requires actual numbered Standing PNGs")
                 for background in backgrounds {
-                    let id = "legacy-mechanics--h\(height)--\(background)"
+                    let id = "standing-mechanics--h\(height)--\(background)"
                     var scene = try capture(renderer, background: background, to: output.appendingPathComponent(id + ".png"))
                     scene["id"] = id
                     scene["bubbleGeometry"] = try bubbleEvidence(renderer)
@@ -153,13 +150,14 @@ final class CharacterExpansionVisualAcceptanceTests: XCTestCase {
                 try require(!renderer.isScheduling, "Self-check left a timer active")
             }
         }
-        try json(["coverage": "legacy capture mechanics only; zero real expansion variants accepted", "scenes": scenes],
+        try json(["coverage": "standing capture mechanics only; zero real expansion variants accepted", "scenes": scenes],
                  to: output.appendingPathComponent("self-check.json"))
     }
 
     private func inputEvidence(library: ExpansionLibrary, pack: URL) throws -> [String: Any] {
         let assets: [[String: Any]] = try library.manifest.assets.sorted { $0.key < $1.key }.map { id, asset in
-            let url = canonical((asset.origin == .legacy ? legacy : pack).appendingPathComponent(asset.path))
+            try require(asset.origin == .extensionPack, "Native runtime QA requires self-contained assets")
+            let url = canonical(pack.appendingPathComponent(asset.path))
             return ["id": id, "canonicalPath": url.path, "sha256": hash(try Data(contentsOf: url)),
                     "width": asset.width, "height": asset.height, "origin": asset.origin.rawValue]
         }
@@ -170,7 +168,6 @@ final class CharacterExpansionVisualAcceptanceTests: XCTestCase {
         }
         return ["canonicalPackRoot": pack.path, "canonicalProjectRoot": project.path, "assets": assets, "sources": sources,
             "sourceManifestSHA256": hash(try Data(contentsOf: pack.appendingPathComponent("manifest.json"))),
-            "trustedLegacyManifestSHA256": hash(try Data(contentsOf: legacy.appendingPathComponent("manifest.json"))),
             "validation": ["ExpansionLibrary.validate(.complete)", "ExpansionLibrary.verifySources(at: projectRoot)"],
             "frameworks": ["AppKit", "QuartzCore", "CoreGraphics", "ImageIO", "CryptoKit", "XCTest"],
             "captureAPI": "PNGRenderer.view.layer.render(in: CGContext), scale 2, unordered AppKit host window, no visible desktop windows",

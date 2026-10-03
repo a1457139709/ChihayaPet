@@ -98,7 +98,7 @@ final class DesktopController {
     var numberedExpressions: [StandingCharacterManifest.Result] { renderer.numberedExpressions }
     var renderedStandingVariantKey: String? { renderer.renderedStandingVariantKey }
     var renderedNumberedFaceID: String? { renderer.renderedNumberedFaceID }
-    var isUsingStandingFallback: Bool {
+    var isStandingImageUnavailable: Bool {
         renderer.renderedStandingVariantKey != "\(currentStandingOutfit.rawValue)/\(currentFraming.rawValue)" ||
         numberedExpressionMode != .automatic && renderer.renderedNumberedFaceID != numberedExpressionMode.rawValue
     }
@@ -110,7 +110,6 @@ final class DesktopController {
     var poseDeadline: TimeInterval? { poseScheduler.deadline }
     var gazeEnabled: Bool { currentGazeEnabled }
     var headPettingEnabled: Bool { currentHeadPettingEnabled }
-    var outfit: String { currentStyle.fallbackOutfit }
     var imageHeight: Double { Double(currentImageHeight) }
     var isOnTop: Bool { currentOnTop }
     var animationsEnabled: Bool { currentAnimationsEnabled }
@@ -182,7 +181,7 @@ final class DesktopController {
     init(
         defaults: UserDefaults = .standard,
         expansionResourceURL: URL? = Bundle.main.url(forResource: "CharacterExpansion", withExtension: nil),
-        standingResourceURL: URL? = Bundle.main.url(forResource: "StandingCharacterSprites", withExtension: nil),
+        standingResourceURL: URL? = Bundle.main.url(forResource: "Standing", withExtension: nil, subdirectory: "Characters"),
         useNumberedSprites: Bool = true,
         poseNow: @escaping () -> TimeInterval = { CACurrentMediaTime() },
         poseRandomDelay: @escaping () -> TimeInterval = { Double.random(in: 300...600) },

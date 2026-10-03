@@ -117,8 +117,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSMenu
         }
         expressionItem.submenu = expressions
         menu.addItem(expressionItem)
-        if desktop.isUsingStandingFallback {
-            let notice = NSMenuItem(title: "当前取景／表情不可用 · 显示备用立绘", action: nil, keyEquivalent: "")
+        if desktop.isStandingImageUnavailable {
+            let notice = NSMenuItem(title: "当前取景／表情图片加载失败", action: nil, keyEquivalent: "")
             notice.isEnabled = false; menu.addItem(notice)
         }
         let scale = NSMenuItem(title: "角色大小 · \(Int(desktop.imageHeight)) 点", action: nil, keyEquivalent: "")

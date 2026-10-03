@@ -6,27 +6,17 @@ import XCTest
 @testable import ChihayaPet
 
 final class CharacterSpriteTests: XCTestCase {
-    func testAllBundledVariantsAndCombinationsDecodeAndMatchHashes() throws {
-        let root = try XCTUnwrap(Bundle.main.url(forResource: "CharacterSprites", withExtension: nil))
-        let library = try CharacterSpriteLibrary(rootURL: root)
-        XCTAssertEqual(library.manifest.variants.count, 14)
-        XCTAssertEqual(library.manifest.assetHashes.count, 326)
-        for (path, expected) in library.manifest.assetHashes {
-            let data = try Data(contentsOf: root.appendingPathComponent(path))
-            XCTAssertEqual(SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined(), expected, path)
-        }
-        for style in CharacterStyle.allCases {
-            for framing in CharacterFraming.allCases {
-                let loaded = try library.load(style: style, framing: framing)
-                XCTAssertEqual(loaded.images.count, loaded.variant.paths.count)
-                for expression in CharacterExpression.allCases {
-                    for eye in CharacterEye.allCases {
-                        for mouth in CharacterMouth.allCases {
-                            let path = try XCTUnwrap(loaded.variant.face(expression, eye, mouth))
-                            XCTAssertNotNil(loaded.images[path])
-                        }
-                    }
-                }
+    func testRuntimeBundleContainsOnlyNumberedImagesAndNotice() throws {
+        let resources = try XCTUnwrap(Bundle.main.resourceURL)
+        XCTAssertEqual(Set(try FileManager.default.contentsOfDirectory(atPath: resources.path)),
+            ["Characters", "fansitekit-notice-original.txt"])
+        let characters = resources.appendingPathComponent("Characters")
+        XCTAssertEqual(try FileManager.default.contentsOfDirectory(atPath: characters.path), ["Standing"])
+        let library = try StandingCharacterLibrary(rootURL: characters.appendingPathComponent("Standing"))
+        for (key, variant) in library.manifest.variants {
+            for result in variant.results {
+                let data = try Data(contentsOf: library.rootURL.appendingPathComponent(result.path))
+                XCTAssertEqual(SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined(), result.sha256, key)
             }
         }
     }
@@ -38,8 +28,8 @@ final class CharacterSpriteTests: XCTestCase {
         for style in CharacterStyle.allCases {
             for framing in CharacterFraming.allCases {
                 renderer.setCharacter(style: style, framing: framing)
-                XCTAssertFalse(renderer.usesFallback)
-                XCTAssertLessThanOrEqual(renderer.cachedImageCount, 37)
+                XCTAssertTrue(renderer.hasImage)
+                XCTAssertLessThanOrEqual(renderer.cachedImageCount, 12)
                 XCTAssertEqual(renderer.style, style)
                 XCTAssertEqual(renderer.framing, framing)
                 let bodyContainer = try XCTUnwrap(renderer.view.subviews.first?.layer?.sublayers?.first?.sublayers?.first)
@@ -59,17 +49,12 @@ final class CharacterSpriteTests: XCTestCase {
 
     @MainActor
     func testScalingDoesNotOpenSeamsAcrossOpaqueSourceFaceBoundary() throws {
-        let url = try XCTUnwrap(Bundle.main.url(forResource: "CharacterSprites", withExtension: nil))
-        let source = try CharacterSpriteLibrary(rootURL: url).load(style: .winterSide, framing: .close)
-        let body = NSBitmapImageRep(cgImage: try XCTUnwrap(source.images[source.variant.body]))
-        let facePath = try XCTUnwrap(source.variant.face(.neutral, .open, .closed))
-        let face = NSBitmapImageRep(cgImage: try XCTUnwrap(source.images[facePath]))
-        let offset = source.variant.faceOffset
+        let url = try XCTUnwrap(Bundle.main.url(forResource: "Standing", withExtension: nil, subdirectory: "Characters"))
+        let source = try StandingCharacterLibrary(rootURL: url).image(key: "b/close", faceID: "00")
+        let bitmapSource = NSBitmapImageRep(cgImage: source.image)
+        let offset = source.variant.faceRect
         func sourceAlpha(_ x: Int, _ y: Int) -> CGFloat {
-            let bodyAlpha = body.colorAt(x: x, y: y)!.alphaComponent
-            let fx = x - Int(offset[0]), fy = y - Int(offset[1])
-            let faceAlpha = fx >= 0 && fy >= 0 && fx < face.pixelsWide && fy < face.pixelsHigh ? face.colorAt(x: fx, y: fy)!.alphaComponent : 0
-            return faceAlpha + bodyAlpha * (1 - faceAlpha)
+            bitmapSource.colorAt(x: x, y: y)!.alphaComponent
         }
         let renderer = PNGRenderer(style: .winterSide, framing: .close, imageHeight: 480, animationsEnabled: false)
         defer { renderer.shutdown() }
@@ -79,10 +64,10 @@ final class CharacterSpriteTests: XCTestCase {
         let bitmap = try XCTUnwrap(renderer.view.bitmapImageRepForCachingDisplay(in: renderer.view.bounds))
         renderer.view.cacheDisplay(in: renderer.view.bounds, to: bitmap)
         let pixelsPerPoint = CGFloat(bitmap.pixelsHigh) / renderer.contentSize.height
-        let scale = 480.0 / source.variant.height
+        let scale = 480.0 / CGFloat(source.image.height)
         var gaps = 0
-        for y in Int(offset[1])..<(Int(offset[1]) + face.pixelsHigh) {
-            for x in Int(offset[0])..<(Int(offset[0]) + face.pixelsWide) {
+        for y in Int(offset[1])..<(Int(offset[1] + offset[3])) {
+            for x in Int(offset[0])..<(Int(offset[0] + offset[2])) {
                 // Exclude the tiny gaps already present in the original game cutout.
                 guard (-1...1).allSatisfy({ dy in (-1...1).allSatisfy({ dx in sourceAlpha(x + dx, y + dy) >= 0.999 }) }) else { continue }
                 let px = Int((PNGRenderer.margin + (CGFloat(x) + 0.5) * scale) * pixelsPerPoint)
@@ -90,7 +75,7 @@ final class CharacterSpriteTests: XCTestCase {
                 if bitmap.colorAt(x: px, y: py)!.alphaComponent < 0.98 { gaps += 1 }
             }
         }
-        XCTAssertEqual(gaps, 0, "Separately filtered complementary masks must not open a new seam")
+        XCTAssertEqual(gaps, 0, "Scaling a saved standing PNG must preserve its opaque face region")
     }
 
     @MainActor
@@ -109,7 +94,7 @@ final class CharacterSpriteTests: XCTestCase {
                     for (row, framing) in CharacterFraming.allCases.enumerated() {
                         let renderer = PNGRenderer(style: style, framing: framing, imageHeight: height, animationsEnabled: false)
                         defer { renderer.shutdown() }
-                        XCTAssertFalse(renderer.usesFallback)
+                        XCTAssertTrue(renderer.hasImage)
                         let window = NSWindow(contentRect: CGRect(origin: .zero, size: renderer.contentSize), styleMask: [.borderless], backing: .buffered, defer: false)
                         window.isReleasedWhenClosed = false
                         window.contentView = renderer.view

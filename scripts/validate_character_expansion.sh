@@ -6,7 +6,7 @@ BUILD_DIR="${CHIHAYA_VALIDATOR_BUILD_DIR:-${DERIVED_FILE_DIR:-$ROOT/build/toolin
 TOOL="$BUILD_DIR/CharacterExpansionValidator"
 MODULE_CACHE="$BUILD_DIR/module-cache"
 SOURCES=(
-    "$ROOT/ChihayaPet/Desktop/CharacterSprites.swift"
+    "$ROOT/ChihayaPet/Desktop/CharacterAppearance.swift"
     "$ROOT/ChihayaPet/Desktop/CharacterInteractionState.swift"
     "$ROOT/ChihayaPet/Desktop/CharacterExpansionResources.swift"
     "$ROOT/scripts/CharacterExpansionValidator.swift"

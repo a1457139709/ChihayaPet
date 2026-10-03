@@ -20,7 +20,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--pack", type=Path, help="Real CharacterExpansion root; defaults to source checkout resources")
-    parser.add_argument("--self-check", action="store_true", help="Six real legacy captures only, no expansion acceptance")
+    parser.add_argument("--self-check", action="store_true", help="Six real Standing captures only, no expansion acceptance")
     parser.add_argument("--derived-data", type=Path)
     parser.add_argument("--timeout", type=int, default=3600, help="Per-build/test process timeout in seconds")
     args = parser.parse_args()
@@ -95,11 +95,11 @@ def main():
     report = json.loads(report_path.read_text())  # Missing/skipped test must not return runner success.
     if args.self_check:
         if len(report["scenes"]) != 6:
-            raise RuntimeError("Legacy mechanics check did not save six scenes")
+            raise RuntimeError("Standing mechanics check did not save six scenes")
     elif not (report["captureComplete"] and report["captureCount"] == 480
               and report["variantCount"] == 80 and report["technicalAcceptance"] == "passed"):
         raise RuntimeError("Real-pack acceptance report is incomplete or failed")
-    print(f"{'Legacy mechanics only' if args.self_check else 'Real-pack technical acceptance'}: {report_path}")
+    print(f"{'Standing mechanics only' if args.self_check else 'Real-pack technical acceptance'}: {report_path}")
     print(f"Command, build, XCTest and tool evidence: {run}")
 
 

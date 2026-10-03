@@ -11,3 +11,7 @@ Use the five default triage labels. Before triaging issues, read `docs/agents/tr
 ### Domain docs
 
 Use a single-context layout with root `CONTEXT.md` and `docs/adr/`. Before exploring domain terminology or decisions, read `docs/agents/domain.md`.
+
+### Artwork resources
+
+Before locating or editing artwork, reproducing a character image, or changing resource loading or packaging, read [the artwork resource guide](docs/agents/artwork.md). It identifies the tracked runtime resources and links local artwork archives and tools; builds must work with the tracked files alone.

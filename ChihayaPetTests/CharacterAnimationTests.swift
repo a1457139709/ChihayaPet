@@ -46,49 +46,52 @@ final class CharacterAnimationTests: XCTestCase {
         XCTAssertEqual(renderer.expression, .serious)
         renderer.setActivity(waitingForReply: true, speaking: true)
         XCTAssertEqual(renderer.expression, .smile)
-        XCTAssertNotEqual(renderer.mouth, .closed)
+        XCTAssertEqual(renderer.mouth, .closed)
         renderer.setExpressionMode(.surprised)
         XCTAssertEqual(renderer.expression, .surprised)
-        XCTAssertNotEqual(renderer.mouth, .closed)
+        XCTAssertEqual(renderer.mouth, .closed)
         for suspend in [renderer.setPresented, renderer.setAwake, renderer.setAnimationsEnabled] {
             suspend(false)
             XCTAssertEqual(renderer.mouth, .closed)
             XCTAssertFalse(renderer.isScheduling)
             suspend(true)
-            XCTAssertTrue(renderer.isScheduling)
+            XCTAssertFalse(renderer.isScheduling)
         }
         renderer.setReducedMotion(true)
         XCTAssertEqual(renderer.mouth, .closed)
         XCTAssertFalse(renderer.isScheduling)
         renderer.setReducedMotion(false)
-        XCTAssertTrue(renderer.isScheduling)
+        XCTAssertFalse(renderer.isScheduling)
         renderer.shutdown()
         XCTAssertFalse(renderer.isScheduling)
     }
 
     @MainActor
-    func testFailedResourcesKeepStaticCharacterVisible() {
-        let renderer = PNGRenderer(style: .summerSide, framing: .close, imageHeight: 256, animationsEnabled: true, resourceURL: nil)
+    func testFailedResourcesLeaveNoImageOrFacialAnimation() {
+        let renderer = PNGRenderer(style: .summerSide, framing: .close, imageHeight: 256, animationsEnabled: true,
+            standingResourceURL: nil)
         defer { renderer.shutdown() }
-        XCTAssertTrue(renderer.usesFallback)
-        XCTAssertEqual(renderer.imageFrame.width, 256 * 441 / 516, accuracy: 0.001)
+        renderer.setPresented(true)
+        renderer.setActivity(waitingForReply: false, speaking: true)
+        XCTAssertFalse(renderer.hasImage)
         XCTAssertGreaterThan(renderer.contentSize.width, 0)
-        XCTAssertEqual(renderer.cachedImageCount, 1)
+        XCTAssertEqual(renderer.cachedImageCount, 0)
+        XCTAssertFalse(renderer.isScheduling)
     }
 
     @MainActor
-    func testCancelledNativeTimerCannotChangeFaceAfterHideOrShutdown() async throws {
+    func testNumberedRendererRemainsWithoutFacialTimerAfterHideOrShutdown() async throws {
         let renderer = PNGRenderer(style: .winterSide, framing: .close, imageHeight: 256, animationsEnabled: true)
         renderer.setPresented(true)
         renderer.setActivity(waitingForReply: false, speaking: true)
-        XCTAssertEqual(renderer.mouth, .small)
+        XCTAssertEqual(renderer.mouth, .closed)
         renderer.setPresented(false)
         try await Task.sleep(nanoseconds: 200_000_000)
         XCTAssertEqual(renderer.mouth, .closed)
         XCTAssertEqual(renderer.eye, .open)
         XCTAssertFalse(renderer.isScheduling)
         renderer.setPresented(true)
-        XCTAssertTrue(renderer.isScheduling)
+        XCTAssertFalse(renderer.isScheduling)
         renderer.shutdown()
         try await Task.sleep(nanoseconds: 200_000_000)
         XCTAssertEqual(renderer.mouth, .closed)

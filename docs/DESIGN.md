@@ -38,11 +38,11 @@
 
 ### 素材
 
-- [夏服](../assets/chihaya-summer.png)和[冬服](../assets/chihaya-winter.png)均为 441×516 PNG，支持透明及半透明像素。
+- 当前 [运行清单](../ChihayaPet/Resources/Characters/Standing/manifest.json)登记 13 组造型、26 个取景、292 张 RGBA PNG；本节其余细节保留首版设计背景，现行行为见 README。
 - 洋红色背景像素的 alpha 为 0，不需要抠图；保留头发边缘的半透明像素，不进行二值化。
 - 两张是下半身被裁切的立绘，不视为全身动作帧。保留版权文字，不重新绘制、裁去版权或改变原图。
 - 资源名使用 `chihaya-summer`、`chihaya-winter`，从应用 Bundle 加载，不访问资料包外的原始路径。
-- `assets/pixiv/` 和 `assets/baozhen/` 仅作参考，不加入首版 Asset Catalog、Target Membership 或 Copy Bundle Resources；逐项来源状态见 [素材记录](../assets/SOURCES.md)。
+- 制作原件和参考只保留在本机；运行库和本地开发档案的边界见[资源导航](agents/artwork.md)。
 
 ### 初始状态与控制
 
@@ -210,7 +210,7 @@
 
 - [AppKit NSWindow](https://developer.apple.com/documentation/appkit/nswindow)：窗口层级、透明度、鼠标事件和桌面行为。
 - [Chat Completions](https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create)：文本请求与非流式回复结构。
-- [素材来源](../assets/SOURCES.md)：原始文件与使用说明。
+- [素材说明](../ChihayaPet/Resources/fansitekit-notice-original.txt)：保留原始使用说明。
 
 这些参考用于实现约定，实际第三方兼容服务仍以其接口能力及测试结果为准。
 

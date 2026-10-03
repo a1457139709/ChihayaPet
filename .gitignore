@@ -1,8 +1,11 @@
+# macOS and Xcode state
 .DS_Store
 build/
 DerivedData/
 *.xcuserstate
 xcuserdata/
+
+# Local configuration and imported music
 .env
 .env.*
 !.env.example
@@ -12,19 +15,28 @@ credentials.json
 /.config-*.tmp
 /Music/
 /.music-migration-*/
+
+# Generated files and temporary work
 __pycache__/
+*.py[cod]
 *.log
 /tmp/
 /output/
-# Local reference and audio libraries are not application resources.
-/assets/*/
+/work/
+/development/
 
-# Original PNG inputs are required by the checked-in artwork progress page.
-!/assets/chihaya_character/
-/assets/chihaya_character/*
-!/assets/chihaya_character/*.png
+# Artwork production, reference libraries and agent workspaces stay local
+/artwork/
+/assets/
+/.agents/
+/.codex/
+/.superpowers/
 
-# Windows Electron dependencies and build artifacts
-/windows/node_modules/
-/windows/dist/
-/windows/.cache/
+# Working plans, art reports and research are local development records
+/docs/art-direction/
+/docs/plans/
+/docs/reports/
+/docs/research/
+/docs/superpowers/
+/docs/development/*
+!/docs/development/IMPLEMENTATION.md

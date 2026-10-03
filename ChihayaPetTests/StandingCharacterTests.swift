@@ -6,7 +6,7 @@ import XCTest
 @MainActor
 final class StandingCharacterTests: XCTestCase {
     private func library() throws -> StandingCharacterLibrary {
-        try StandingCharacterLibrary(rootURL: XCTUnwrap(Bundle.main.url(forResource: "StandingCharacterSprites", withExtension: nil)))
+        try StandingCharacterLibrary(rootURL: XCTUnwrap(Bundle.main.url(forResource: "Standing", withExtension: nil, subdirectory: "Characters")))
     }
 
     func testBundledGalleryContainsAll26ViewsAnd292NumberedImages() throws {
@@ -41,7 +41,7 @@ final class StandingCharacterTests: XCTestCase {
             for framing in CharacterFraming.allCases {
                 let key = "\(outfit.rawValue)/\(framing.rawValue)"
                 let renderer = PNGRenderer(style: outfit.legacyStyle ?? .casual, framing: framing,
-                    imageHeight: 256, animationsEnabled: false, resourceURL: nil, expansionResourceURL: nil,
+                    imageHeight: 256, animationsEnabled: false, expansionResourceURL: nil,
                     standingOutfit: outfit, standingLibrary: library, allowPendingStandingForQA: true)
                 defer { renderer.shutdown() }
                 let originalFrame = renderer.imageFrame
@@ -50,7 +50,7 @@ final class StandingCharacterTests: XCTestCase {
                     XCTAssertEqual(renderer.renderedStandingVariantKey, key)
                     XCTAssertEqual(renderer.renderedNumberedFaceID, result.id)
                     XCTAssertEqual(renderer.imageFrame, originalFrame)
-                    XCTAssertFalse(renderer.usesFallback)
+                    XCTAssertTrue(renderer.hasImage)
                     XCTAssertFalse(renderer.usesExpansion)
                     let layers = try XCTUnwrap(renderer.view.subviews.first?.layer?.sublayers?.first?.sublayers?.first?.sublayers)
                     let active = layers.filter { !$0.isHidden && $0.contents != nil }
@@ -163,7 +163,7 @@ final class StandingCharacterTests: XCTestCase {
         try JSONSerialization.data(withJSONObject: json).write(to: root.appendingPathComponent("manifest.json"))
     }
 
-    func testPendingDamagedAndMissingFramesUseApprovedFallbacks() throws {
+    func testPendingDamagedAndMissingFramesReturnNilForTheRequestedImage() throws {
         let (root, initial) = try fixture()
         defer { try? FileManager.default.removeItem(at: root) }
         var json = initial
@@ -173,18 +173,18 @@ final class StandingCharacterTests: XCTestCase {
         results[1]["review"] = ["status": "pending"]
         close["results"] = results; variants["a/close"] = close; json["variants"] = variants
         try save(json, root: root)
-        let pending = try StandingCharacterLibrary(rootURL: root)
-        XCTAssertEqual(pending.resolve(outfit: .winterFront, framing: .close, faceID: "01")?.faceID, "00")
+        XCTAssertNil(try StandingCharacterLibrary(rootURL: root).resolve(outfit: .winterFront, framing: .close, faceID: "01"))
         try Data("corrupt PNG".utf8).write(to: root.appendingPathComponent(results[2]["path"] as! String))
-        XCTAssertEqual(try StandingCharacterLibrary(rootURL: root).resolve(outfit: .winterFront, framing: .close, faceID: "02")?.faceID, "00")
+        XCTAssertNil(try StandingCharacterLibrary(rootURL: root).resolve(outfit: .winterFront, framing: .close, faceID: "02"))
         try FileManager.default.removeItem(at: root.appendingPathComponent(results[0]["path"] as! String))
-        let fallback = try StandingCharacterLibrary(rootURL: root).resolve(outfit: .winterFront, framing: .close, faceID: "02")
-        XCTAssertEqual(fallback?.key, "a/full")
-        XCTAssertEqual(fallback?.faceID, "00")
-        XCTAssertEqual(try StandingCharacterLibrary(rootURL: root).resolve(outfit: .rose, framing: .close, faceID: "00")?.key, "a/full")
+        let library = try StandingCharacterLibrary(rootURL: root)
+        XCTAssertNil(library.resolve(outfit: .winterFront, framing: .close, faceID: "00"))
+        XCTAssertNil(library.resolve(outfit: .rose, framing: .close, faceID: "00"))
+        XCTAssertNotNil(library.resolve(outfit: .winterFront, framing: .full, faceID: "00"),
+            "An available image from another view must not replace the requested image")
     }
 
-    func testUnsupportedManifestAndAbsentPackUseStaticGameFallback() throws {
+    func testUnsupportedManifestAndAbsentPackLeaveTheRendererEmpty() throws {
         let (root, initial) = try fixture()
         defer { try? FileManager.default.removeItem(at: root) }
         var json = initial; json["version"] = 99
@@ -194,10 +194,40 @@ final class StandingCharacterTests: XCTestCase {
             let renderer = PNGRenderer(style: .winterFront, framing: .close, imageHeight: 256, animationsEnabled: true,
                 standingOutfit: .maid, standingResourceURL: url)
             defer { renderer.shutdown() }
-            XCTAssertTrue(renderer.usesFallback)
-            XCTAssertFalse(renderer.usesExpansion)
-            XCTAssertEqual(renderer.cachedImageCount, 1, "A complete static game character must remain visible")
+            XCTAssertFalse(renderer.hasImage)
+            XCTAssertNil(renderer.standingFrame)
+            XCTAssertEqual(renderer.cachedImageCount, 0)
+            renderer.setPresented(true)
+            XCTAssertFalse(renderer.isScheduling)
+            XCTAssertTrue(renderer.contentSize.width.isFinite && renderer.contentSize.width > 0)
+            let layers = try XCTUnwrap(renderer.view.subviews.first?.layer?.sublayers?.first?.sublayers?.first?.sublayers)
+            XCTAssertTrue(layers.allSatisfy { $0.contents == nil })
         }
+    }
+
+    func testFailedExpressionAndViewSwitchesClearThePreviouslyDisplayedImage() throws {
+        let (root, json) = try fixture()
+        defer { try? FileManager.default.removeItem(at: root) }
+        try save(json, root: root)
+        let variants = json["variants"] as! [String: [String: Any]]
+        let results = variants["a/full"]!["results"] as! [[String: Any]]
+        try FileManager.default.removeItem(at: root.appendingPathComponent(results[1]["path"] as! String))
+        let renderer = PNGRenderer(style: .winterFront, framing: .full, imageHeight: 256, animationsEnabled: true,
+            standingLibrary: try StandingCharacterLibrary(rootURL: root))
+        defer { renderer.shutdown() }
+        renderer.setPresented(true)
+        XCTAssertTrue(renderer.hasImage)
+        renderer.setNumberedExpressionMode(.numbered("01"))
+        XCTAssertFalse(renderer.hasImage)
+        XCTAssertNil(renderer.renderedNumberedFaceID)
+        let layers = try XCTUnwrap(renderer.view.subviews.first?.layer?.sublayers?.first?.sublayers?.first?.sublayers)
+        XCTAssertTrue(layers.allSatisfy { $0.contents == nil })
+        renderer.setNumberedExpressionMode(.numbered("00"))
+        XCTAssertTrue(renderer.hasImage)
+        renderer.setStandingCharacter(outfit: .rose, framing: .close)
+        XCTAssertFalse(renderer.hasImage)
+        XCTAssertNil(renderer.renderedStandingVariantKey)
+        XCTAssertTrue(layers.allSatisfy { $0.contents == nil })
     }
 
     func testUnsafePathsAndInvalidGeometryCannotReachImageDecoding() throws {

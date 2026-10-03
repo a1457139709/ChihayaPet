@@ -100,7 +100,7 @@ enum ExpansionResourceError: Error, Equatable {
     case invalidManifest(String), unsafePath(String), invalidAsset(String), invalidSource(String), invalidVariant(String), undeclaredState
 }
 enum ExpansionValidationMode { case staged, complete }
-enum ExpansionResolution: Equatable { case exact, standing, legacyStatic }
+enum ExpansionResolution: Equatable { case exact, standing, unavailable }
 
 struct ExpansionLibrary {
     let rootURL: URL
@@ -268,7 +268,7 @@ struct ExpansionLibrary {
         let exact = "\(style.rawValue)/\(pose.rawValue)/\(framing.rawValue)"
         let standing = "\(style.rawValue)/standing/\(framing.rawValue)"
         let key = manifest.variants[exact] != nil ? exact : standing
-        guard let variant = manifest.variants[key] else { return (.legacyStatic, nil) }
+        guard let variant = manifest.variants[key] else { return (.unavailable, nil) }
         var images: [String: CGImage] = [:]
         for id in variant.runtimeAssets { images[id] = try decode(id) }
         for id in Set(variant.recipes.flatMap { $0.patches.map(\.asset) }) {

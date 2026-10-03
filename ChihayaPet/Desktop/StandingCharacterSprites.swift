@@ -188,14 +188,7 @@ final class StandingCharacterLibrary {
         return StandingCharacterFrame(key: key, variant: variant, faceID: faceID, image: image)
     }
     func resolve(outfit: StandingCharacterOutfit, framing: CharacterFraming, faceID: String) -> StandingCharacterFrame? {
-        let key = "\(outfit.rawValue)/\(framing.rawValue)"
-        // A damaged/missing expression first falls back to its own approved 00.
-        // An unavailable view then uses this outfit's full view, then winter 00.
-        let candidates = [(key, faceID), (key, "00"), ("\(outfit.rawValue)/full", "00"), ("a/full", "00")]
-        for (key, id) in candidates {
-            if let result = try? image(key: key, faceID: id) { return result }
-        }
-        return nil
+        try? image(key: "\(outfit.rawValue)/\(framing.rawValue)", faceID: faceID)
     }
     func removeAllCachedImages() { cache.removeAll(); cacheKey = nil }
 }

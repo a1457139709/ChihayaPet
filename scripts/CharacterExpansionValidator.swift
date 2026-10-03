@@ -16,7 +16,7 @@ private enum ValidatorToolError: Error, CustomStringConvertible {
 
 private struct ValidatorOptions {
     let pack: URL
-    let legacy: URL
+    let legacy: URL?
     let projectRoot: URL?
 
     init(arguments: [String]) throws {
@@ -27,7 +27,7 @@ private struct ValidatorOptions {
             guard ["--pack", "--legacy", "--project-root"].contains(option),
                   index + 1 < arguments.count else {
                 throw ValidatorToolError.usage(
-                    "Usage: CharacterExpansionValidator --pack PATH --legacy PATH [--project-root PATH]"
+                    "Usage: CharacterExpansionValidator --pack PATH [--legacy PATH] [--project-root PATH]"
                 )
             }
             guard values[option] == nil else {
@@ -36,13 +36,13 @@ private struct ValidatorOptions {
             values[option] = arguments[index + 1]
             index += 2
         }
-        guard let pack = values["--pack"], let legacy = values["--legacy"] else {
+        guard let pack = values["--pack"] else {
             throw ValidatorToolError.usage(
-                "Usage: CharacterExpansionValidator --pack PATH --legacy PATH [--project-root PATH]"
+                "Usage: CharacterExpansionValidator --pack PATH [--legacy PATH] [--project-root PATH]"
             )
         }
         self.pack = URL(fileURLWithPath: pack, isDirectory: true)
-        self.legacy = URL(fileURLWithPath: legacy, isDirectory: true)
+        self.legacy = values["--legacy"].map { URL(fileURLWithPath: $0, isDirectory: true) }
         projectRoot = values["--project-root"].map { URL(fileURLWithPath: $0, isDirectory: true) }
     }
 }
@@ -153,7 +153,7 @@ private enum CharacterExpansionValidator {
             let library = try ExpansionLibrary(
                 rootURL: options.pack,
                 legacyRootURL: options.legacy,
-                allowedLegacyHashes: try legacyHashes(at: options.legacy)
+                allowedLegacyHashes: try options.legacy.map { try legacyHashes(at: $0) } ?? [:]
             )
             try library.validate(.complete)
             let extensionAssetCount = try verifyStrictWhitelist(library)
