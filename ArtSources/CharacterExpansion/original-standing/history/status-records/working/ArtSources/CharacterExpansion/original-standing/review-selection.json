@@ -1,0 +1,72 @@
+{
+  "mode": "originals-and-selected-costumes",
+  "originalManifest": "v2/manifest.json",
+  "originalManifestSHA256": "44fee669fea56e2af78f240d72637b404dbc41ecca743828928cd94222877e14",
+  "visibleVariants": [
+    "a/full",
+    "a/close",
+    "a_/full",
+    "a_/close",
+    "b/full",
+    "b/close",
+    "b_/full",
+    "b_/close",
+    "c/full",
+    "c/close",
+    "d/full",
+    "d/close",
+    "e/full",
+    "e/close",
+    "blue-white-rose/full",
+    "blue-white-rose/close",
+    "red-white-anime-maid/full",
+    "red-white-anime-maid/close",
+    "red-white-anime-maid-work/full"
+  ],
+  "visibleImages": 213,
+  "hiddenCostumeVariants": [
+    "loose-long-shirt/full",
+    "loose-long-shirt/close",
+    "loose-long-shirt-experiment-v4/full",
+    "loose-long-shirt-experiment-v1/full",
+    "loose-long-shirt-experiment-v1/close",
+    "loose-long-shirt-experiment-v4/close"
+  ],
+  "humanDirection": "8129端口的蓝白服装和红裙女仆装怎么删除了",
+  "recordedAt": "2026-10-02T19:45:07.655374+08:00",
+  "historicalImagesDeleted": false,
+  "historicalApprovalsDeleted": false,
+  "browserOpened": false,
+  "snapshot": "work/review-page-rollback/20261002T100923Z",
+  "v4Withdrawal": [
+    {
+      "variant": "loose-long-shirt-experiment-v4/full",
+      "motherSource": "ArtSources/CharacterExpansion/long-shirt-pose-experiment/v4/full/v2/mother-body.png",
+      "motherSHA256": "165e8cc5cc5716ca1bf23bce003d094a194ccd98855c407c7cac892928886a15",
+      "reason": "用户指出脖子不合格，撤出统一审核页。"
+    },
+    {
+      "variant": "loose-long-shirt-experiment-v4/close",
+      "motherSource": "ArtSources/CharacterExpansion/long-shirt-pose-experiment/v4/close/v7/mother-body.png",
+      "motherSHA256": "eb8248ff6e98556e3306af9e5ee81e1c31502fac54ce98ff1eb17dfa50c3c54f",
+      "reason": "用户指出脖子不合格，撤出统一审核页。"
+    }
+  ],
+  "previousHumanDirection": "去除审核页中v4，刚发现图片脖子不合格。只留最开始的未修改的原图+表情即可。",
+  "restoredCostumeVariants": [
+    "blue-white-rose/full",
+    "blue-white-rose/close",
+    "red-white-anime-maid/full",
+    "red-white-anime-maid/close"
+  ],
+  "restorationReason": "撤下 v4 时 originals-only 显示范围连带隐藏蓝白礼装与红裙女仆装；恢复两套服装既有母图及全部表情，不改动 PNG、哈希或审核状态。",
+  "addedIndependentVariants": [
+    {
+      "variant": "red-white-anime-maid-work/full",
+      "images": 13,
+      "issue": "https://github.com/a1457139709/ChihayaPet/issues/56",
+      "recordedAt": "2026-10-02T22:22:59+08:00",
+      "userDirection": "完成 #56，导入审核页，不要覆盖日式动漫女仆装"
+    }
+  ]
+}

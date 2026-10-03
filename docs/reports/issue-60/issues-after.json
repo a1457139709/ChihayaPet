@@ -1,0 +1,148 @@
+[
+  {
+    "body": "## 当前状态（2026-10-03）：近景 12/12 已批准并完成 #31 应用交接\n\n当前使用 `rose-game-style/close/v1` 的固定母图及 12 张 454×670 PNG，完整 204×154 游戏原脸按 (120,149) 原生绑定。母图与 00 维持 #37 的原哈希批准；01–11 已由用户明确回复“23 张全部通过”覆盖并逐张绑定当前 SHA-256。当前 12/12 已批准、待审 0 张。\n\n本次 #60 核对发现生产目录仍保留较早的 11 张待审记录，现已与展示副本和正式运行资源同步；更新前 JSON 保存在 `original-standing/history/approval-records/`。没有修改 PNG，没有把母图或其他取景批准转移到这 11 张。\n\n- [x] 12 张实际文件、来源、绑定及技术／目视证据齐全。\n- [x] 12 张均有当前哈希对应的明确人工批准。\n- [x] 展示、生产审核副本和正式资源一致；#31 已完成独立打包、加载及实际运行验收。\n\n证据：[23 张明确批准账本](https://github.com/a1457139709/ChihayaPet/blob/20ba84add07db9efd4492e1eab3bd96706ae2833/docs/reports/2026-10-03-issue-31-human-review.json)、[#60 当前逐图与历史报告](https://github.com/a1457139709/ChihayaPet/blob/codex/issue-60-artwork-audit/docs/reports/2026-10-03-issue-60-artwork-audit.md)、[#31 分阶段验收](https://github.com/a1457139709/ChihayaPet/issues/31)。本票保留 completed；下方旧正文只作为历史。\n\n\n<details>\n<summary>Historical body before the 2026-10-03 reconciliation</summary>\n\n## 目标\n\n在本取景已批准的固定母图上，确定性导出完整 12 个游戏原表情合成立绘，并逐张交用户审核。身体共用同一文件，全部原脸原尺寸直接复用。\n\n## 前置条件\n\n对应母图与原脸适配任务完成后才开始；必须使用该任务批准的母图版本、SHA-256、保护遮罩、原脸来源及坐标。原生 blocked-by：[蓝白玫瑰礼装近景：游戏画风自然绘制母图与原脸适配审核](https://github.com/a1457139709/ChihayaPet/issues/37)；母图任务关闭但缺少真实文件或明确人工批准时仍不可开工。\n\n当前本取景尚无已批准母图及绑定，不继承礼装全景或其他取景的批准。\n\n2026-10-01 用户要求：“只抠图不符合要求，尝试自然创作，要与游戏便服图片像素、画质一致。能接入游戏原脸。”随后确认礼装全景母图与默认 00，并授权按同样方式创建表情与其他服装 issue。\n\n当前依据为 [确定三套新增服装的游戏画风母图与原表情验收路线](https://github.com/a1457139709/ChihayaPet/issues/28) 与 [蓝白玫瑰礼装全景：游戏画风自然绘制母图与人工审核](https://github.com/a1457139709/ChihayaPet/issues/30#issuecomment-5926423084)。旧候补图仅裁剪路线及喝茶成果保留为历史，不能作为本任务的已批准产物。使用 `docs/plans/2026-09-30-standing-and-original-faces.md` 与 `.agents/skills/chihaya-expression-portrait/SKILL.md`；遇到旧裁剪约束，以最新用户范围为准。\n\n## 输出与核查\n\n- 画布 454×670；来源 `assets/chihaya_character/chi00c@.png–chi11c@.png`，完整 204×154 原脸于 (120,149) 直接 alpha 合成。沿用 v2 补顶取景与 (0,64) 偏移；不得使用旧606画布或 (120,85)。\n- 输出到 `ArtSources/CharacterExpansion/rose-game-style/close/v1/face-00.png`–`face-11.png`，共 12 张 RGBA PNG；保留独立身体和完整原脸层，保存确定性合成脚本、`expressions-manifest.json`、逐图技术核查、`expressions-review.json` 与可实际显示图片的 `review.html`。\n- 来源原脸保持字节和 SHA-256 一致；禁止生成／缩放／旋转／裁切／调色原脸，禁止逐表情重绘身体。已有批准样片校验哈希后直接复用。\n- 每张脸绑定矩形 RGBA 应与游戏便服对应原合成一致（差异 0）；原脸非透明支持范围之外的母图像素不变；核对画布、alpha、图层偏移、刘海／脸缘／领口、颈部与切换定位。不得用制作遮罩自动充当唯一验收依据。\n- 逐图保存来源、母图版本与哈希、原脸哈希、坐标、输出哈希及核查结果。任何母图改动均先回到母图任务重审，相关表情批准不能沿用。\n\n## 人工审核与关闭\n\n- [ ] 完整 12 PNG 真正保存并可读取，技术核查通过，独立图层和 manifest 齐全。\n- [ ] 原尺寸、浅深背景及 240／256／480 显示高度逐张查看；审核页支持按表情切换，检查接缝与人物尺度。\n- [ ] 12 张都得到明确人工批准，记录每张文件／SHA-256／原话／日期。已批准默认 00 仅在文件哈希不变时沿用；04／10 的技术 PASS 不等于批准。\n- [ ] 更新本套进度和审核页，发布带真实图片路径、像素证据及逐图批准范围的完成评论，再关闭。\n\n本票只导出和审核本取景的完整表情。应用状态保持独立；游戏表情编号仅表示来源编号，不擅自对应运行中的情绪或动画状态。\n\nPart of [蓝白玫瑰礼装：全景与近景母图及全部原表情](https://github.com/a1457139709/ChihayaPet/issues/33)\n\n\n</details>\n",
+    "comments": [],
+    "number": 38,
+    "state": "CLOSED",
+    "title": "蓝白玫瑰礼装近景：导出 12 个游戏原表情并逐图审核",
+    "url": "https://github.com/a1457139709/ChihayaPet/issues/38"
+  },
+  {
+    "body": "## 当前状态（2026-10-03）：v13 近景母图及当前绑定已完成\n\n当前体检服-里近景母图为 `long-shirt-pose-experiment/v4/close/v13/mother-body.png`，454×670 RGBA，SHA-256 `2d6e5121375e844a9ae7131a369ce8e825a60cbe5ffb05919e4d8a33f0c86111`。用户此前对本母图与红框衔接明确回复“ok”；该范围单独保存在 v13 的 approval.json／current-review.json。\n\n当前完整 204×154 游戏原脸按 (120,149) 原生绑定，12 张表情来自 `long-shirt-pose-expressions/v4/close/v7`。用户后续明确回复“23 张全部通过”，覆盖本取景 00–11 的当前 SHA-256；母图接受与表情接受各自成立。v13 记录中的同哈希默认 00 绑定已同步这一已有反馈，旧待审记录与旧正文均保留历史。\n\n- [x] v13 母图、来源、修补范围、完整原脸及绑定已保存并核查。\n- [x] 当前母图有明确批准，默认 00／绑定有当前哈希对应的表情批准。\n- [x] #55 当前 12 张表情已批准并交给 #31；#31 应用分阶段验收独立完成。\n\n证据：[23 张明确批准账本](https://github.com/a1457139709/ChihayaPet/blob/20ba84add07db9efd4492e1eab3bd96706ae2833/docs/reports/2026-10-03-issue-31-human-review.json)、[#60 当前逐图与历史报告](https://github.com/a1457139709/ChihayaPet/blob/codex/issue-60-artwork-audit/docs/reports/2026-10-03-issue-60-artwork-audit.md)、[#31 分阶段验收](https://github.com/a1457139709/ChihayaPet/issues/31)。本票保留 completed；较早的“重新开放、近景未完成”针对当时版本，下方作为历史保留，不覆盖现在 v13／v7 的批准。\n\n\n<details>\n<summary>Historical body before the 2026-10-03 reconciliation</summary>\n\n## 当前状态：近景未完成，按用户纠正重新开放并继续验收\n\n用户在本轮仅确认全景后明确指出：“全景的完成了。但是近景未完成”。登记时间 `2026-10-02T21:50:21.678153+08:00`。本票近景恢复未完成状态；此前历史图片、哈希、批准与完成评论保留，但不据此宣称本轮近景已完成。全景 #49 的母图、原生绑定与 12 表情已确认完成，不受本次纠正影响。\n\n已有近景 454×670 母图与 12 张 PNG 均在磁盘，来源与原生绑定记录保留。当前重新核对用户所指近景问题及审核页实际展示，等待具体问题定位后修复／继续验收；不会重新生成或修改未定位的画面，也不会把全景批准转移到近景。\n\n- [x] 用户关于近景未完成的反馈已保存，恢复未完成状态。\n- [ ] 明确并修复近景剩余问题。\n- [ ] 完成当前近景交付与审核，再按实际反馈登记最终批准。\n- [ ] 近景范围实际完成后关闭。\n\n[近景逐图入口](http://127.0.0.1:8129/review.html?outfit=loose-long-shirt-experiment-v4&view=close&face=00)。本机图片与历史证据保留，应用接入独立。\n\n以下为历史制作、批准与复验记录；当前状态以本节及后续用户反馈为准。\n\n---\n\n## 当前结果：v4 近景母图与绑定已完成\n\n最新近景修订为 `ArtSources/CharacterExpansion/long-shirt-pose-experiment/v4/close/v7/`，454×670 RGBA。使用配对游戏 c/close 头部和完整 204×154 原脸，定位 (120,149)，固定母图＋原脸两层，无候选发丝前景。close/v1–v6 及原件作为历史保留。\n\n用户此前明确接受：“嗯，修复很完美。全景图片也有此问题，按照此方法一并修复”。该反馈已按母图和默认 00／绑定的实际哈希登记，时间为 2026-10-02 15:20:59（Asia/Shanghai）。本次进一步要求：“v4近景母图已完成，接入全表情。并接入 8129端口审核页。”\n\n| 已批准产物 | SHA-256 |\n| --- | --- |\n| 固定去脸母图 | `eb8248ff6e98556e3306af9e5ee81e1c31502fac54ce98ff1eb17dfa50c3c54f` |\n| 默认 00／原脸绑定 | `a4ee20c017df5db1d9203aa0c7df7ebe835d98333956ffdc31256afeb589056f` |\n\n## 制作与核查证据\n\n来源仍为试验 v4 露肩设计；头部修订按用户“修复成与游戏一致的颜色，保证表情合成后肉眼看不出来差别”的要求执行。v7 固定母图已统一游戏头部与长发来源，身体底层及旧服装遮挡后的发梢／相邻肩颈局部重建；这些派生身体像素不宣称与旧候选相同。头部 0–303 行及完整原脸保持游戏像素。\n\n- 母图制作、来源、实际生成提示词及修补蒙版：`close/v7/production.json`、`build.cjs` 与 `layers/`。\n- 独立技术及实际目视：`close/v7/qa-verification.json`、`qa-visual-inspection.json`；原脸、整圈接缝、完整头部、浅深底及 240／256／480 显示尺寸已检查。\n- 明确人工接受：`close/v7/approval.json`；母图和默认 00／绑定已批准，04／10 的逐表情人工状态保留待审。\n- [8129 当前近景审核页](http://127.0.0.1:8129/review.html?outfit=loose-long-shirt-experiment-v4&view=close)。母图与默认 00 的批准记录按相同哈希保留。\n\n- [x] 真实 454×670 近景母图、原脸及独立图层已保存。\n- [x] 游戏头发统一与原脸／头部／接缝检查通过。\n- [x] 本张母图与默认 00／绑定已获明确人工接受，已绑定原话、时间和哈希。\n- [x] 04／10 保留独立待审记录，完整 12 表情交接 #55。\n\n本票完成；#55 已从相同批准母图补齐 00–11 并接入 8129，12/12 已获逐张批准（见 #55）。全景 #49 与应用接入独立。旧 v4 色差诊断和制作过程保留在历史评论及 `docs/reports/2026-10-02-long-shirt-v4-close.md`。\n\n\n## 2026-10-02 当前 skill 复验\n\n#54 当前 close/v7 母图（454×670 RGBA）及默认 00／原生 (120,149) 绑定符合本票验收。母图 SHA-256 `eb8248ff6e98556e3306af9e5ee81e1c31502fac54ce98ff1eb17dfa50c3c54f`，默认 00 `a4ee20c017df5db1d9203aa0c7df7ebe835d98333956ffdc31256afeb589056f`，与原明确接受“嗯，修复很完美。全景图片也有此问题，按照此方法一并修复”的批准哈希相同。本次复验复用该原范围批准，没有新增或转移人工批准。\n\n完整 204×154 原脸保留，包括自带发丝；固定母图＋完整原脸两层，没有候选发丝前景。所有 12 个原脸支持范围内母图 RGBA 为零，透明隐藏 RGB 为零；母图头部 0–303 行与配对游戏母图完全一致，局部发梢修补范围外与父版相同，旧候选全部五官位于已替换的头部。实际查看母图、游戏完整头部、全 12 个合成在浅深／棋盘原尺寸、放大脸缘／颈部和 240／256／480 高度，未见旧弧形切边、双表情或发色色带。\n\n#55 的相同母图完整集合已获 12/12 逐图批准，包含本票 04／10 的相同 PNG；#54 原样片阶段记录作为历史保留，没有修改其已锁定的来源／批准文件。\n\n[8129 当前近景审核](http://127.0.0.1:8129/review.html?outfit=loose-long-shirt-experiment-v4&view=close&face=00)。\n\n本次按仓库 `chihaya-expression-portrait` skill 独立读盘核查与实际目视验收。证据在 `work/issues-49-54-55-skill-audit-2026-10-02/`：`audit.py`、`independent-verification.json`、`visual-inspection.json`、`page-verification.json`、`browser-verification.json` 和真实截图。全部原有 PNG、原脸、历史来源与批准保持字节；检查 3,027 个既有源／展示文件，唯一预期更新是展示总清单，其余 3,026 个哈希不变。技术核查、真实目视与既有人工批准分别保留。\n\n原 8129 页把新增服装清单固定为空对象，已恢复本次 v4 指定入口；默认无参数页继续显示 148 张游戏原站姿。9 个其他取景元数据保持一致，未执行任何网页批准动作。localhost 仅供本机查看，实际图像和证据保存在本地工作区。\n\n本票母图／绑定范围完成。#49 的全景颈部新版待审和应用接入各自独立。\n\n\n</details>\n",
+    "comments": [
+      {
+        "id": "IC_kwDOU07rRs8AAAABYlXWEg",
+        "author": {
+          "login": "a1457139709"
+        },
+        "authorAssociation": "OWNER",
+        "body": "已制作独立近景并接入现有 8129 展示页。当前使用 close/v2；close/v1 保留为历史对照。**母图和默认 00／绑定仍待用户明确接受，Issue 保持开放。**\n\n用户对 v1 的修改意见原话：\n> 学习别的其他去脸图像，因为有面部表情图片，所以可以去除整张人脸。\n\nv2 参考已有游戏 c/close v2 和正式长衬衫近景去脸母图，移除整张人脸，眉毛与下颌一并由近景游戏表情层回填。完整源脸 204×154 均保持原字节；派生层共用等比缩放、旋转及固定刘海上缘过渡。外侧头发、身体、露肩衣领及颈部在登记脸区之外的 RGBA 不变。此反馈是修订要求，不登记为批准。\n\n- 来源：最终 v4 assembled-source-size.png，835×1884，SHA-256 `7ea8aa09447b2f62cbc9994e2b8ccd2dd4d751b3c4494ba133013958dcf09e5f`。\n- 取景：等比 0.54、位移 (1.55,30)，454×670 RGBA；低垂双手在该近景视窗下缘之外。\n- 核查：独立复算取景和脸区，12 张原脸逐一核对同取景游戏基准；候选取景、母图／样片脸外 RGBA 差异为 0。7 个五官及下颌控制点全部挖空，2,938 个原有受保护文件未改变。\n- 实看：原尺寸浅深背景、接缝和 240／256／480 高度；浏览器检查母图与 00／04／10 加载及原脸、候选、游戏基准对照。\n- 产物：`ArtSources/CharacterExpansion/long-shirt-pose-experiment/v4/close/v2/`，包含 candidate、mother、原件／派生层、遮罩、三个样片、脚本、production.json、独立核查、视觉检查和 approval.json。\n- 报告：`docs/reports/2026-10-02-long-shirt-v4-close.md`。\n\n| 产物 | SHA-256 | 人工审核 |\n| --- | --- | --- |\n| 母图 | `c23964fdac880b966f94d5d933800a40a1e3ae9a92da2ffffa32a8eadd1e84ce` | 待审 |\n| 00 | `dadc9ba5fe9bcf207b0ef3878c9f64e8c7cce21152ac50b30d4f4718a691e196` | 待审 |\n| 04 | `2a9f59cddb5c6e0acb8dbbec02709252a6ff7df2cafc90447feff7d39ecaab5e` | 待审 |\n| 10 | `0dd35d982183b69c65a8c9e56364d52dca15eeb01df37c8b783aa6de04393401` | 待审 |\n\n统一页：[8129 · 试验 v4 近景](http://127.0.0.1:8129/review.html?outfit=loose-long-shirt-experiment-v4&view=close)。\n并排页：[近景 v2：候选、母图及三个样片](http://127.0.0.1:8129/showcase/loose-long-shirt-experiment-v4/close/v2/review.html)。\n\n后续 #55 仍等待本张近景母图及默认绑定批准；04／10 分别保留待审。尚未向应用资源目录接入，也未导出其余 9 张表情。\n",
+        "createdAt": "2026-10-02T02:55:20Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/a1457139709/ChihayaPet/issues/54#issuecomment-5944759826",
+        "viewerDidAuthor": true
+      },
+      {
+        "id": "IC_kwDOU07rRs8AAAABYmCkTw",
+        "author": {
+          "login": "a1457139709"
+        },
+        "authorAssociation": "OWNER",
+        "body": "按本次反馈修订为 **close/v3**，并接入现有 8129 展示页。**v2 已登记为需修改；v3 母图与默认 00／绑定仍待用户明确接受，#54 保持开放。**\n\n用户反馈原话：\n> 去表情图像去除的大小与游戏去表情图不一致。边缘处有明显的切割痕迹\n\n本次将游戏完整原脸 204×154 的原生 alpha 作为去脸范围，定位 (120,149)，不再缩小或旋转脸孔；独立标注全部旧五官后，额外清除 89 个超出原孔的旧下颌像素。脸孔外接尺寸与游戏一致，轮廓差异另存对照。孔内 RGBA 为零，脸区之外母图／样片 RGBA 差异为 0。\n\n合成使用独立干净母图、游戏脸缘补底、原尺寸原字节游戏原脸和固定候选发丝前景。旧候选表情没有用于底图或羽化混合。528 个眉眼交叉处发丝像素作局部重建，246 个发丝边缘像素去除肤色污染，采样来源逐像素记录。没有重新设计衣服、身体或脸外头发。\n\n母图单独验收与合成技术核查分别通过；三个保存 PNG 均查看原尺寸、浅深背景、完整头部、整圈接缝 4 倍和 240／256／480 高度，未见 v2 的连续弧形切边。12 张近景原脸全部保留原字节，2,938 个原有受保护文件未改变。局部发丝质感仍交本版人工审核，不转移旧版或全景批准。\n\n| 产物 | SHA-256 | 人工审核 |\n| --- | --- | --- |\n| 母图 | `505a99ea8e918ecff531b395c6f14d5dae38d8dcfbf95a000e519dd1b8e6d623` | 待审核 |\n| 00 | `17c1bdca6737f576bcf2ef41745adfd560dbe5225132b2dd9b81950548372992` | 待审核 |\n| 04 | `48781845330bd4e1db9fa2968465ad6014e490c9d1388b8a54ef8b4dc6c7e556` | 待审核 |\n| 10 | `d12e5e0ce430607efe9da283dc1e1d65be6888481a8aa16775d442d96073927c` | 待审核 |\n\n产物：`ArtSources/CharacterExpansion/long-shirt-pose-experiment/v4/close/v3/`。来源仍是最终 assembled-source-size.png，835×1884，哈希 `7ea8aa09447b2f62cbc9994e2b8ccd2dd4d751b3c4494ba133013958dcf09e5f`；候选等比 0.54、位移 (1.55,30)，454×670 RGBA。低垂双手在近景下缘之外。\n\n[8129 统一逐图审核](http://127.0.0.1:8129/review.html?outfit=loose-long-shirt-experiment-v4&view=close) · [v3 候选／母图／独立图层／游戏参照](http://127.0.0.1:8129/showcase/loose-long-shirt-experiment-v4/close/v3/review.html)。实页已核对原脸层、四层合成、母图与游戏脸孔及 04／10 参照；图片正常加载，人工状态为待审核，未执行批准动作。\n\n完整报告：`docs/reports/2026-10-02-long-shirt-v4-close.md`；母图独立核查、逐图观察和实页证据分别保存，不以文件哈希或页面加载替代视觉／人工验收。#55 仍等待本张母图与默认绑定获明确接受，尚未导出其余 9 张或向应用资源目录接入。\n",
+        "createdAt": "2026-10-02T04:12:36Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/a1457139709/ChihayaPet/issues/54#issuecomment-5945467983",
+        "viewerDidAuthor": true
+      },
+      {
+        "id": "IC_kwDOU07rRs8AAAABYmS7gw",
+        "author": {
+          "login": "a1457139709"
+        },
+        "authorAssociation": "OWNER",
+        "body": "补充本次逐像素对照与合成方式说明。用户提出：“与游戏原图去脸对比像素点位置和大小。你确实你是使用拼接的方式完成的表情合成吗，看起来像是覆盖”。\n\n当前 v3 的准确方法为 **原脸填入透明孔，再叠加候选发丝前景**。源原脸 PNG 的字节和尺寸不变，不代表最终显示的整个原脸区域像素不变。原脸支持与母图非透明像素重叠数为 0；发丝前景随后覆盖支持区域的 8,831 / 22,956（38.47%），平均不透明度 97.79%。原脸包含原生刘海和侧发，这不是五官面积的覆盖率。最终 8,829 个原脸支持像素的 RGB 与原件不同。\n\n| 去脸母图 | 画布 | 脸孔左上角 | 外接尺寸 | 实际清除像素 |\n| --- | --- | --- | --- | --- |\n| 游戏原图 | 454×606 | (120,85) | 204×154 | 22,956 |\n| 游戏补顶版 | 454×670 | (120,149) | 204×154 | 22,956 |\n| 当前 v3 | 454×670 | (120,149) | 204×154 | 23,045 |\n\n坐标从 0 开始。补顶只增加顶部 64 行，原 606 行 RGBA 完全相同，无缩放。v3 和游戏孔共有 22,956 像素，额外清除 89 个旧下颌像素，仅游戏清除 0；孔的外接位置／尺寸一致，轮廓并非逐像素相同。\n\n关闭前景后可以看见原脸上缘与候选头发的明显弧形接缝；当前主要通过前景发丝遮住该接缝。这个诊断不能作为新的自然适配或人工接受。旧候选表情仍未作为脸区底图使用。\n\n已接入 [8129 像素对照页](http://127.0.0.1:8129/showcase/loose-long-shirt-experiment-v4/close/v3/pixel-audit/review.html)，提供两张同坐标母图、前景开关、实际 RGBA 读数、覆盖图和 154 行孔洞坐标；统一页与 v3 独立页均有入口。实页验证 (200,160)：两张母图 RGBA 均为 0，关闭前景／原脸为 (100,87,81,255)，开启前景为 (155,145,145,255)，发丝自身为 (155,145,146,253)。数据直接从保存 PNG 解码，读数与 PNG 一致。两张对照图及全部行数据正常加载，控制台无警告或错误。\n\n证据保存于 `ArtSources/CharacterExpansion/long-shirt-pose-experiment/v4/close/v3/pixel-audit/`，含原始测量、逐行 CSV、89 个坐标、独立脚本、哈希清单和前景开关真实截图；报告已更新 `docs/reports/2026-10-02-long-shirt-v4-close.md`。本次未改动任何制作 PNG，9 个其他展示视图保留，未执行批准动作。母图、默认 00／绑定及 04／10 均继续待人工审核，#54 保持开放，#55 仍等待本版母图与绑定接受。\n",
+        "createdAt": "2026-10-02T04:42:52Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/a1457139709/ChihayaPet/issues/54#issuecomment-5945736067",
+        "viewerDidAuthor": true
+      },
+      {
+        "id": "IC_kwDOU07rRs8AAAABYml0Zw",
+        "author": {
+          "login": "a1457139709"
+        },
+        "authorAssociation": "OWNER",
+        "body": "已按最新要求保存 **close/v4 无前景版**，并更新 8129 当前入口。原话：\n> ok，不要前景发丝，保留原始人脸图片上的头发。为什么头发颜色不一致。\n\n本版没有候选发丝前景。层序为干净母图、原孔外 89 像素的游戏脸缘补底、完整游戏原脸 204×154 于 (120,149)。00／04／10 每张原脸连同自带头发的 22,956 个支持像素与游戏原件 RGBA 完全一致，没有缩放、旋转、调色、重绘或羽化。脸孔外候选 RGBA 不变，旧表情仍完整去除。母图复用 v3 的干净文件，SHA-256 `505a99ea8e918ecff531b395c6f14d5dae38d8dcfbf95a000e519dd1b8e6d623`；v1／v2／v3 PNG 均保留。\n\n| 样片 | SHA-256 | 状态 |\n| --- | --- | --- |\n| 00 | `719a544f1cffde975e4468d710cc2c45678f7e50fa143831cd152b076f9f9807` | 原脸／头发像素通过；接缝需修改；人工待审 |\n| 04 | `63c9e074ddcf7f578459fa957437a63951a70db21e543eddb87929211f12b6cb` | 原脸／头发像素通过；接缝需修改；人工待审 |\n| 10 | `25c93e4f607885de5c0646d6d1d159732e00b7de396346a7b5d2a4686b3f7a1d` | 原脸／头发像素通过；接缝需修改；人工待审 |\n\n**颜色差异来自两套头发来源。** 脸孔外候选头发更亮、偏银白，游戏原脸发丝阴影更深、偏暖灰；发束位置也不同。去掉前景后上缘弧形接缝重新显露。逐张实看原尺寸、浅深底、整圈交界与 4 倍接缝、240／256／480 高度，头部光泽和接缝连续性为需修改，不以原脸像素正确替代视觉通过。消除色差需要修订脸孔外头发，而本票要求该区域 RGBA 不变，已把扩大到游戏原头部的范围选择交给用户。\n\n[8129 无前景版](http://127.0.0.1:8129/showcase/loose-long-shirt-experiment-v4/close/v4/review.html) · [统一逐图审核](http://127.0.0.1:8129/review.html?outfit=loose-long-shirt-experiment-v4&view=close)。实页确认统一合成为三个图层，没有加载发丝前景；00／04／10 和完整原脸正常显示，04 证据链接对应自身。控制台无警告／错误，未执行批准动作，9 个其他展示视图保留。\n\n制作、独立像素核查、逐图视觉失败结论、色彩采样和实页证据保存于 `ArtSources/CharacterExpansion/long-shirt-pose-experiment/v4/close/v4/`；报告为 `docs/reports/2026-10-02-long-shirt-v4-close.md`。本次“ok”连同后续要求作为方法修订保存，没有登记母图／新默认 PNG 批准。#54 保持开放，#55 仍等待母图／绑定审核，应用未接入。\n",
+        "createdAt": "2026-10-02T05:17:52Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/a1457139709/ChihayaPet/issues/54#issuecomment-5946045543",
+        "viewerDidAuthor": true
+      },
+      {
+        "id": "IC_kwDOU07rRs8AAAABYrsEWQ",
+        "author": {
+          "login": "a1457139709"
+        },
+        "authorAssociation": "OWNER",
+        "body": "## 2026-10-02 · skill 复验完成，按 completed 关闭\n\n#54 当前 close/v7 母图（454×670 RGBA）及默认 00／原生 (120,149) 绑定符合本票验收。母图 SHA-256 `eb8248ff6e98556e3306af9e5ee81e1c31502fac54ce98ff1eb17dfa50c3c54f`，默认 00 `a4ee20c017df5db1d9203aa0c7df7ebe835d98333956ffdc31256afeb589056f`，与原明确接受“嗯，修复很完美。全景图片也有此问题，按照此方法一并修复”的批准哈希相同。本次复验复用该原范围批准，没有新增或转移人工批准。\n\n完整 204×154 原脸保留，包括自带发丝；固定母图＋完整原脸两层，没有候选发丝前景。所有 12 个原脸支持范围内母图 RGBA 为零，透明隐藏 RGB 为零；母图头部 0–303 行与配对游戏母图完全一致，局部发梢修补范围外与父版相同，旧候选全部五官位于已替换的头部。实际查看母图、游戏完整头部、全 12 个合成在浅深／棋盘原尺寸、放大脸缘／颈部和 240／256／480 高度，未见旧弧形切边、双表情或发色色带。\n\n#55 的相同母图完整集合已获 12/12 逐图批准，包含本票 04／10 的相同 PNG；#54 原样片阶段记录作为历史保留，没有修改其已锁定的来源／批准文件。\n\n[8129 当前近景审核](http://127.0.0.1:8129/review.html?outfit=loose-long-shirt-experiment-v4&view=close&face=00)。\n\n本次按仓库 `chihaya-expression-portrait` skill 独立读盘核查与实际目视验收。证据在 `work/issues-49-54-55-skill-audit-2026-10-02/`：`audit.py`、`independent-verification.json`、`visual-inspection.json`、`page-verification.json`、`browser-verification.json` 和真实截图。全部原有 PNG、原脸、历史来源与批准保持字节；检查 3,027 个既有源／展示文件，唯一预期更新是展示总清单，其余 3,026 个哈希不变。技术核查、真实目视与既有人工批准分别保留。\n\n原 8129 页把新增服装清单固定为空对象，已恢复本次 v4 指定入口；默认无参数页继续显示 148 张游戏原站姿。9 个其他取景元数据保持一致，未执行任何网页批准动作。localhost 仅供本机查看，实际图像和证据保存在本地工作区。\n\n本票母图／绑定范围完成。#49 的全景颈部新版待审和应用接入各自独立。\n",
+        "createdAt": "2026-10-02T11:27:21Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/a1457139709/ChihayaPet/issues/54#issuecomment-5951390809",
+        "viewerDidAuthor": true
+      },
+      {
+        "id": "IC_kwDOU07rRs8AAAABYuDN7A",
+        "author": {
+          "login": "a1457139709"
+        },
+        "authorAssociation": "OWNER",
+        "body": "用户在当前 Codex 对话明确纠正：\n\n> 全景的完成了。但是近景未完成\n\n本票恢复近景未完成状态，继续检查当前母图／表情及审核页实际展示。此前历史批准按原哈希保留，不以全景确认或旧近景批准代替本轮近景完成。当前已有近景 454×670 母图和 12 张 PNG；具体未完成内容正在定位，本次没有修改图片。全景 #49 保持完成。\n\n反馈和原记录备份位于 `work/issues-49-54-55-skill-audit-2026-10-02/close-reopened-review/`；[当前近景入口](http://127.0.0.1:8129/review.html?outfit=loose-long-shirt-experiment-v4&view=close&face=00)。本票保持开放，待实际近景问题处理与验收完成后再关闭。\n",
+        "createdAt": "2026-10-02T13:51:15Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/a1457139709/ChihayaPet/issues/54#issuecomment-5953867244",
+        "viewerDidAuthor": true
+      }
+    ],
+    "number": 54,
+    "state": "CLOSED",
+    "title": "宽松长衬衫试验 v4 近景：母图制作与原脸适配审核",
+    "url": "https://github.com/a1457139709/ChihayaPet/issues/54"
+  },
+  {
+    "body": "## 当前状态（2026-10-03）：v13 母图对应的 expressions-v7 近景 12/12 已批准\n\n当前体检服-里近景使用 `long-shirt-pose-experiment/v4/close/v13` 母图与 `long-shirt-pose-expressions/v4/close/v7/face-00.png`–`face-11.png`，共 12 张 454×670 RGBA PNG。完整 204×154 游戏原脸于 (120,149) 原生绑定，身体和绑定固定。\n\n用户明确回复“23 张全部通过”，覆盖本取景当前 00–11 与礼装近景 01–11，逐张批准绑定实际 SHA-256。当前 12/12 已批准、待审 0 张。#60 已核对生产 PNG、8129 展示 PNG 和 #31 正式运行 PNG 一致，并将生产目录旧的 12 张待审记录同步；更新前文件、所有旧版本及历史批准保留，没有改动图片或转移其他版本批准。\n\n- [x] 当前 12 张 PNG、v13 母图、原脸、图层、来源与绑定记录齐全。\n- [x] 当前技术／目视证据与 12 张明确人工批准分别保存。\n- [x] 8129、生产审核和正式资源一致，已完成 #31 素材交接及独立应用验收。\n\n证据：[23 张明确批准账本](https://github.com/a1457139709/ChihayaPet/blob/20ba84add07db9efd4492e1eab3bd96706ae2833/docs/reports/2026-10-03-issue-31-human-review.json)、[#60 当前逐图与历史报告](https://github.com/a1457139709/ChihayaPet/blob/codex/issue-60-artwork-audit/docs/reports/2026-10-03-issue-60-artwork-audit.md)、[#31 分阶段验收](https://github.com/a1457139709/ChihayaPet/issues/31)。本票保留 completed；较早未完成和 close/v7 母图对应 expressions-v1 的状态只作为历史。\n\n\n<details>\n<summary>Historical body before the 2026-10-03 reconciliation</summary>\n\n## 当前状态：近景未完成，按用户纠正重新开放并继续验收\n\n用户在本轮仅确认全景后明确指出：“全景的完成了。但是近景未完成”。登记时间 `2026-10-02T21:50:21.678153+08:00`。本票近景恢复未完成状态；此前历史图片、哈希、批准与完成评论保留，但不据此宣称本轮近景已完成。全景 #49 的母图、原生绑定与 12 表情已确认完成，不受本次纠正影响。\n\n已有近景 454×670 母图与 12 张 PNG 均在磁盘，来源与原生绑定记录保留。当前重新核对用户所指近景问题及审核页实际展示，等待具体问题定位后修复／继续验收；不会重新生成或修改未定位的画面，也不会把全景批准转移到近景。\n\n- [x] 用户关于近景未完成的反馈已保存，恢复未完成状态。\n- [ ] 明确并修复近景剩余问题。\n- [ ] 完成当前近景交付与审核，再按实际反馈登记最终批准。\n- [ ] 近景范围实际完成后关闭。\n\n[近景逐图入口](http://127.0.0.1:8129/review.html?outfit=loose-long-shirt-experiment-v4&view=close&face=00)。本机图片与历史证据保留，应用接入独立。\n\n以下为历史制作、批准与复验记录；当前状态以本节及后续用户反馈为准。\n\n---\n\n## 当前结果：12 张已导出、接入 8129，12/12 已获人工批准\n\n按用户“v4近景母图已完成，接入全表情。并接入 8129端口审核页”的要求，固定使用 #54 已批准的近景 `close/v7` 母图和默认原脸绑定。母图批准与全部表情审核分别登记。全景 #49、普通长衬衫及应用集成独立。\n\n- 输出：`ArtSources/CharacterExpansion/long-shirt-pose-expressions/v4/close/v1/face-00.png`–`face-11.png`，12 张 **454×670 RGBA** PNG。\n- 母图：`ArtSources/CharacterExpansion/long-shirt-pose-experiment/v4/close/v7/mother-body.png`，SHA-256 `eb8248ff6e98556e3306af9e5ee81e1c31502fac54ce98ff1eb17dfa50c3c54f`。\n- 同取景游戏原脸：`assets/chihaya_character/chi00c@.png`–`chi11c@.png`，完整 **204×154**，固定 **(120,149)**，无缩放、旋转、遮裁、调色或发丝前景。\n- 00／04／10 直接保留已有样片文件字节，其余 9 张新增；所有表情共享同一母图，脸外 RGBA 不变。\n\n[8129 统一逐图审核](http://127.0.0.1:8129/review.html?outfit=loose-long-shirt-experiment-v4&view=close) · [12 表情总览](http://127.0.0.1:8129/showcase/loose-long-shirt-experiment-v4/close/expressions-v1/review.html)。页面可显示母图、独立完整原脸、两层叠加和同编号游戏参照；00–11、浅深／透明背景及 240／256／480 高度已验证。\n\n## 检查与审核记录\n\n独立从磁盘解码全部 12 张 PNG，逐张核对原件 SHA-256、完整原脸支持范围、脸外母图和配对游戏头部。原脸支持像素、脸外母图、头部 0–303 行和完整复算图差异均为 0。已逐张实际查看原尺寸浅深底、候选／母图／游戏／合成完整头部、4 倍接缝、整圈边界及 240／256／480 对照，未见新增发色色带、双五官或漏缝。\n\n产物目录保存 `compose.py`、`verify.py`、`register_showcase.py`、独立身体／12 原脸层、`manifest.json`、`verification.json`、`visual-inspection.json`、`review.json` 与逐图 QA。浏览器证据位于 `work/issue-55-close/browser-verification.json` 与截图；报告见 `docs/reports/2026-10-02-long-shirt-v4-close-expressions.md`。\n\n母图及 00 保留 #54 相同哈希批准；2026-10-02 用户对本次完整表情交付明确回复“已通过”。01–11（含 04／10）已按各自 PNG 哈希、原话和时间逐张登记。00 首次批准记录完整保留，当前为 12/12 全部批准。证据见产物目录 approval.json、review.json。\n\n- [x] 对应近景母图及默认绑定已批准，文件和哈希锁定。\n- [x] 12 张真实 PNG、独立图层、完整来源及输出哈希已保存。\n- [x] 独立逐图像素核查和目视检查通过。\n- [x] 接入现有 8129；12 张、两层叠加、游戏对照与审核筛选均已验证，未执行批准动作。\n- [x] 本次登记时其余 9 个展示视图保留；既有 PNG 及近景来源／批准记录不变。\n- [x] 01–11 获明确人工批准，已逐张按文件哈希、原话“已通过”和日期登记。\n- [x] 全部 12 张批准，完成证据已记录，可按 completed 关闭。\n\n应用接入及运行状态映射尚未执行；本票已完成制作、审核及 8129 展示范围。\n\n## 最终批准文件\n\n| 编号 | SHA-256 | 状态 |\n| --- | --- | --- |\n| 00 | `a4ee20c017df5db1d9203aa0c7df7ebe835d98333956ffdc31256afeb589056f` | 已批准 |\n| 01 | `d5a8a6b36aec6dba3eeea6470c4a021ee236ec65010822f02acfce4c85ae4eca` | 已批准 |\n| 02 | `d9b8cb8b808ca66d50c2bdd53ca938ecb63d997e9154beb34e0371228da344ea` | 已批准 |\n| 03 | `bdd7b074515efd14b39905abbe7db114debd1736585c01b682ea4cb340948964` | 已批准 |\n| 04 | `895cf8bee508d31fe8644df5049b1ffb9e554288a6995b3770844b9c31c033b9` | 已批准 |\n| 05 | `6b1fe9a1129ab66beabe1cdf3833c5b502f69c7ed08db72b60e4a0a212e22308` | 已批准 |\n| 06 | `8b977ff57e612cc5989199368fed58b5d11965359637995c9222edd4f8f10cfb` | 已批准 |\n| 07 | `b76a530be57c0a651380cfab5161e17b594202408c87c26a40d76c5b3ce31576` | 已批准 |\n| 08 | `97e330e7ded63e18f156fe5b6e3927ff127481f0281538b7f393e302dcdff2be` | 已批准 |\n| 09 | `6a90ce77895639ed3e66a53c2d258d4f8b8e5144b9964d2bda8fa9628b1aefb0` | 已批准 |\n| 10 | `33532ac538c6a04edbfd29dd7dced0f919ce258b11efb21a1543228e3b69603b` | 已批准 |\n| 11 | `62895c77dc0f38e80599ed027a35b390eaf8bad79b8aac459534ebd5c10c5151` | 已批准 |\n\n\n## 2026-10-02 当前 skill 复验\n\n当前输出继续为 `ArtSources/CharacterExpansion/long-shirt-pose-expressions/v4/close/v1/face-00.png`–`face-11.png`，12 张 454×670 RGBA。逐张重新解码和独立 alpha 合成：原脸支持范围、支持范围外固定母图、完整复算及配对游戏头部差异均为 0。完整 204×154 游戏原脸于 (120,149)，无变换、重绘、调色或候选发丝覆盖。来源、副本与全部输出哈希匹配既有制作记录。\n\n实际逐张查看新检查板：原尺寸浅深底和棋盘、最近邻整头／脸缘／下颌／颈部、240／256／480 高度；表情、发束和肤色稳定，未见双五官、原孔漏缝或新增拼接色带。此前“已通过”的 01–11 逐图批准、00 原先批准及母图接受均对应当前 SHA-256，12/12 已批准；本次只是按原范围复用，未伪造新批准。\n\n[8129 当前近景逐图审核](http://127.0.0.1:8129/review.html?outfit=loose-long-shirt-experiment-v4&view=close&face=00)。实际浏览器逐个点击 00–11，所有磁盘 PNG 正常加载为 454×670，页面状态已批准；母图和 204×154 独立原脸两层对照正常加载。全景仅显示本次新样片 pending，未转移近景批准。\n\n本次按仓库 `chihaya-expression-portrait` skill 独立读盘核查与实际目视验收。证据在 `work/issues-49-54-55-skill-audit-2026-10-02/`：`audit.py`、`independent-verification.json`、`visual-inspection.json`、`page-verification.json`、`browser-verification.json` 和真实截图。全部原有 PNG、原脸、历史来源与批准保持字节；检查 3,027 个既有源／展示文件，唯一预期更新是展示总清单，其余 3,026 个哈希不变。技术核查、真实目视与既有人工批准分别保留。\n\n原 8129 页把新增服装清单固定为空对象，已恢复本次 v4 指定入口；默认无参数页继续显示 148 张游戏原站姿。9 个其他取景元数据保持一致，未执行任何网页批准动作。localhost 仅供本机查看，实际图像和证据保存在本地工作区。\n\n本票制作、逐图审核和 8129 展示范围已完成。#49 全景新版待审及应用接入独立。\n\n\n</details>\n",
+    "comments": [
+      {
+        "id": "IC_kwDOU07rRs8AAAABYrspGA",
+        "author": {
+          "login": "a1457139709"
+        },
+        "authorAssociation": "OWNER",
+        "body": "## 2026-10-02 · 12/12 表情 skill 复验及审核入口恢复，按 completed 关闭\n\n当前输出继续为 `ArtSources/CharacterExpansion/long-shirt-pose-expressions/v4/close/v1/face-00.png`–`face-11.png`，12 张 454×670 RGBA。逐张重新解码和独立 alpha 合成：原脸支持范围、支持范围外固定母图、完整复算及配对游戏头部差异均为 0。完整 204×154 游戏原脸于 (120,149)，无变换、重绘、调色或候选发丝覆盖。来源、副本与全部输出哈希匹配既有制作记录。\n\n实际逐张查看新检查板：原尺寸浅深底和棋盘、最近邻整头／脸缘／下颌／颈部、240／256／480 高度；表情、发束和肤色稳定，未见双五官、原孔漏缝或新增拼接色带。此前“已通过”的 01–11 逐图批准、00 原先批准及母图接受均对应当前 SHA-256，12/12 已批准；本次只是按原范围复用，未伪造新批准。\n\n[8129 当前近景逐图审核](http://127.0.0.1:8129/review.html?outfit=loose-long-shirt-experiment-v4&view=close&face=00)。实际浏览器逐个点击 00–11，所有磁盘 PNG 正常加载为 454×670，页面状态已批准；母图和 204×154 独立原脸两层对照正常加载。全景仅显示本次新样片 pending，未转移近景批准。\n\n本次按仓库 `chihaya-expression-portrait` skill 独立读盘核查与实际目视验收。证据在 `work/issues-49-54-55-skill-audit-2026-10-02/`：`audit.py`、`independent-verification.json`、`visual-inspection.json`、`page-verification.json`、`browser-verification.json` 和真实截图。全部原有 PNG、原脸、历史来源与批准保持字节；检查 3,027 个既有源／展示文件，唯一预期更新是展示总清单，其余 3,026 个哈希不变。技术核查、真实目视与既有人工批准分别保留。\n\n原 8129 页把新增服装清单固定为空对象，已恢复本次 v4 指定入口；默认无参数页继续显示 148 张游戏原站姿。9 个其他取景元数据保持一致，未执行任何网页批准动作。localhost 仅供本机查看，实际图像和证据保存在本地工作区。\n\n本票制作、逐图审核和 8129 展示范围已完成。#49 全景新版待审及应用接入独立。\n",
+        "createdAt": "2026-10-02T11:27:45Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/a1457139709/ChihayaPet/issues/55#issuecomment-5951400216",
+        "viewerDidAuthor": true
+      },
+      {
+        "id": "IC_kwDOU07rRs8AAAABYuDsLA",
+        "author": {
+          "login": "a1457139709"
+        },
+        "authorAssociation": "OWNER",
+        "body": "用户在当前 Codex 对话明确纠正：\n\n> 全景的完成了。但是近景未完成\n\n本票恢复近景未完成状态，继续检查当前母图／表情及审核页实际展示。此前历史批准按原哈希保留，不以全景确认或旧近景批准代替本轮近景完成。当前已有近景 454×670 母图和 12 张 PNG；具体未完成内容正在定位，本次没有修改图片。全景 #49 保持完成。\n\n反馈和原记录备份位于 `work/issues-49-54-55-skill-audit-2026-10-02/close-reopened-review/`；[当前近景入口](http://127.0.0.1:8129/review.html?outfit=loose-long-shirt-experiment-v4&view=close&face=00)。本票保持开放，待实际近景问题处理与验收完成后再关闭。\n",
+        "createdAt": "2026-10-02T13:51:36Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/a1457139709/ChihayaPet/issues/55#issuecomment-5953874988",
+        "viewerDidAuthor": true
+      }
+    ],
+    "number": 55,
+    "state": "CLOSED",
+    "title": "宽松长衬衫试验 v4 近景：接入 12 个游戏表情并逐图审核",
+    "url": "https://github.com/a1457139709/ChihayaPet/issues/55"
+  }
+]

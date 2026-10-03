@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "issue": "https://github.com/a1457139709/ChihayaPet/issues/38",
+  "motherSHA256": "47cadf80ed15cbb24ec5640a2353308bdff0a4e2935f7f3ffc8ffb87c3e42a10",
+  "scope": "Explicit human approval of each saved expression; technical checks are separate.",
+  "approvedCount": 1,
+  "pendingCount": 11,
+  "images": {
+    "00": {
+      "id": "00",
+      "path": "face-00.png",
+      "sha256": "4ccc87db5368f758fc1abaccc7aa62d00b311a953d64769b92c25992b5b161e9",
+      "motherSHA256": "47cadf80ed15cbb24ec5640a2353308bdff0a4e2935f7f3ffc8ffb87c3e42a10",
+      "status": "approved",
+      "message": "母图与默认 00 均通过",
+      "recordedAt": "2026-10-01T19:04:42+08:00",
+      "source": "approval.json",
+      "sourceIssueCommentURL": "https://github.com/a1457139709/ChihayaPet/issues/37#issuecomment-5930151013"
+    },
+    "01": {
+      "id": "01",
+      "path": "face-01.png",
+      "sha256": "2bec612a63c4f05d29772400463e1c928f660214e78eccee520e304cb0a4975d",
+      "motherSHA256": "47cadf80ed15cbb24ec5640a2353308bdff0a4e2935f7f3ffc8ffb87c3e42a10",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "source": null,
+      "sourceIssueCommentURL": null
+    },
+    "02": {
+      "id": "02",
+      "path": "face-02.png",
+      "sha256": "c5e6846c7b55fd8f5cb0c0061aa6cd9fca723b8e0af83adeb756b1ea9bb7d80b",
+      "motherSHA256": "47cadf80ed15cbb24ec5640a2353308bdff0a4e2935f7f3ffc8ffb87c3e42a10",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "source": null,
+      "sourceIssueCommentURL": null
+    },
+    "03": {
+      "id": "03",
+      "path": "face-03.png",
+      "sha256": "857de0b90da35d192ff5167c71787105a103d8d6c2b7fcbf547f98f607e8c4d0",
+      "motherSHA256": "47cadf80ed15cbb24ec5640a2353308bdff0a4e2935f7f3ffc8ffb87c3e42a10",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "source": null,
+      "sourceIssueCommentURL": null
+    },
+    "04": {
+      "id": "04",
+      "path": "face-04.png",
+      "sha256": "002ff375377aa1066b53e6253289c646b64ed8851b6fae58d70857b9ab8b41d6",
+      "motherSHA256": "47cadf80ed15cbb24ec5640a2353308bdff0a4e2935f7f3ffc8ffb87c3e42a10",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "source": null,
+      "sourceIssueCommentURL": null
+    },
+    "05": {
+      "id": "05",
+      "path": "face-05.png",
+      "sha256": "0519fbf56d5aa9de405e219600fea21431ca5690f4ea0d77d64e424e10cfdce1",
+      "motherSHA256": "47cadf80ed15cbb24ec5640a2353308bdff0a4e2935f7f3ffc8ffb87c3e42a10",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "source": null,
+      "sourceIssueCommentURL": null
+    },
+    "06": {
+      "id": "06",
+      "path": "face-06.png",
+      "sha256": "2111f81764687a930f40dde31ecbd3af7c6c3c83b42da0ca04bb9b9e5153386c",
+      "motherSHA256": "47cadf80ed15cbb24ec5640a2353308bdff0a4e2935f7f3ffc8ffb87c3e42a10",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "source": null,
+      "sourceIssueCommentURL": null
+    },
+    "07": {
+      "id": "07",
+      "path": "face-07.png",
+      "sha256": "2ee217ef60b39821f5c7ed9cca029fadf716b4f5a89fbef64c671975e223aaf7",
+      "motherSHA256": "47cadf80ed15cbb24ec5640a2353308bdff0a4e2935f7f3ffc8ffb87c3e42a10",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "source": null,
+      "sourceIssueCommentURL": null
+    },
+    "08": {
+      "id": "08",
+      "path": "face-08.png",
+      "sha256": "9682f30219b6db0cce9c37d7b298eb6150ccf1070f69af92f492caa447eb4fce",
+      "motherSHA256": "47cadf80ed15cbb24ec5640a2353308bdff0a4e2935f7f3ffc8ffb87c3e42a10",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "source": null,
+      "sourceIssueCommentURL": null
+    },
+    "09": {
+      "id": "09",
+      "path": "face-09.png",
+      "sha256": "9ffb3bac567671a243ccc14008a38e6a0f3fc9642ac0d775bf038f31a41f58fb",
+      "motherSHA256": "47cadf80ed15cbb24ec5640a2353308bdff0a4e2935f7f3ffc8ffb87c3e42a10",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "source": null,
+      "sourceIssueCommentURL": null
+    },
+    "10": {
+      "id": "10",
+      "path": "face-10.png",
+      "sha256": "d851cd10122c4ebbd94368206496d19ec79f00c40b04f72a71f86b9b4e613e6e",
+      "motherSHA256": "47cadf80ed15cbb24ec5640a2353308bdff0a4e2935f7f3ffc8ffb87c3e42a10",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "source": null,
+      "sourceIssueCommentURL": null
+    },
+    "11": {
+      "id": "11",
+      "path": "face-11.png",
+      "sha256": "31f232d65f3b2f4f67edf795075618e7f3531c84cdbb324ab0c65c476f317a7c",
+      "motherSHA256": "47cadf80ed15cbb24ec5640a2353308bdff0a4e2935f7f3ffc8ffb87c3e42a10",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "source": null,
+      "sourceIssueCommentURL": null
+    }
+  }
+}

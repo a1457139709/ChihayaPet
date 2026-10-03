@@ -1,0 +1,360 @@
+{
+  "recordedAt": "2026-10-03T14:56:46.340640+08:00",
+  "head": "20ba84add07db9efd4492e1eab3bd96706ae2833",
+  "branch": "codex/issue-31-all-outfits",
+  "upstream": "origin/codex/issue-31-all-outfits",
+  "aheadBehind": "0\t0",
+  "indexSHA256": "b67f71373b5c4f40ce2800fe788128eaf15e2ba92f562659f7ea47f2d2c99abe",
+  "expandedDirtyFiles": 15440,
+  "bytes": 3340984572,
+  "stagedFiles": 1411,
+  "untrackedFiles": 14028,
+  "groups": {
+    "application-31": {
+      "files": 914,
+      "bytes": 231319913,
+      "statuses": {
+        "??": 914
+      },
+      "roles": {
+        "human-review-evidence": 2,
+        "review-page-or-document": 6,
+        "reproduction-script": 4,
+        "intermediate-or-reference": 4,
+        "production-or-verification-record": 10,
+        "image": 14,
+        "inspection-evidence": 874
+      },
+      "roots": [
+        "work/issue-31"
+      ]
+    },
+    "cancelled-tea": {
+      "files": 164,
+      "bytes": 36724965,
+      "statuses": {
+        "A ": 162,
+        "M ": 1,
+        "MM": 1
+      },
+      "roles": {
+        "reproduction-script": 25,
+        "production-or-verification-record": 18,
+        "generation-prompt": 6,
+        "layer-or-mask": 21,
+        "image": 37,
+        "inspection-evidence": 56,
+        "review-page-or-document": 1
+      },
+      "roots": [
+        "ArtSources/CharacterExpansion/native-tea",
+        "docs/plans",
+        "work/issue-10-layering"
+      ]
+    },
+    "exam": {
+      "files": 2556,
+      "bytes": 476347127,
+      "statuses": {
+        "??": 2556
+      },
+      "roles": {
+        "review-page-or-document": 49,
+        "human-review-evidence": 47,
+        "reproduction-script": 81,
+        "inspection-evidence": 1162,
+        "production-or-verification-record": 242,
+        "image": 327,
+        "generation-prompt": 15,
+        "layer-or-mask": 622,
+        "intermediate-or-reference": 11
+      },
+      "roots": [
+        "ArtSources/CharacterExpansion/exam-v1-rebuild",
+        "ArtSources/CharacterExpansion/long-shirt-pose-experiment",
+        "ArtSources/CharacterExpansion/long-shirt-pose-expressions",
+        "ArtSources/CharacterExpansion/original-standing",
+        "work/exam-v1-reexecution-2026-10-03",
+        "work/issue-31",
+        "work/issue-47",
+        "work/issue-48",
+        "work/issue-52",
+        "work/issue-53-close"
+      ]
+    },
+    "exam-inner": {
+      "files": 4726,
+      "bytes": 963260351,
+      "statuses": {
+        "??": 4726
+      },
+      "roles": {
+        "review-page-or-document": 124,
+        "production-or-verification-record": 480,
+        "reproduction-script": 164,
+        "image": 905,
+        "layer-or-mask": 1292,
+        "inspection-evidence": 1599,
+        "human-review-evidence": 94,
+        "generation-prompt": 33,
+        "intermediate-or-reference": 35
+      },
+      "roots": [
+        "ArtSources/CharacterExpansion/exam-inner-skill",
+        "ArtSources/CharacterExpansion/long-shirt-pose-experiment",
+        "ArtSources/CharacterExpansion/long-shirt-pose-expressions",
+        "ArtSources/CharacterExpansion/original-standing",
+        "work/exam-inner-arm-audit-2026-10-03",
+        "work/exam-inner-neck-alignment-2026-10-03",
+        "work/exam-inner-pixel-alignment-audit-2026-10-02",
+        "work/issue-31",
+        "work/issue-49",
+        "work/issue-54-close",
+        "work/issue-55-close",
+        "work/issues-49-54-55-skill-audit-2026-10-02"
+      ]
+    },
+    "hidden-shirt": {
+      "files": 834,
+      "bytes": 194482980,
+      "statuses": {
+        "??": 834
+      },
+      "roles": {
+        "review-page-or-document": 37,
+        "generation-prompt": 4,
+        "human-review-evidence": 24,
+        "reproduction-script": 26,
+        "production-or-verification-record": 82,
+        "inspection-evidence": 465,
+        "image": 88,
+        "layer-or-mask": 102,
+        "intermediate-or-reference": 6
+      },
+      "roots": [
+        "ArtSources/CharacterExpansion/long-shirt-game-style",
+        "ArtSources/CharacterExpansion/original-standing",
+        "work/issue-43-full",
+        "work/issue-44-full",
+        "work/issue-45-close",
+        "work/issue-46-close"
+      ]
+    },
+    "maid": {
+      "files": 879,
+      "bytes": 219397846,
+      "statuses": {
+        "??": 879
+      },
+      "roles": {
+        "review-page-or-document": 33,
+        "generation-prompt": 4,
+        "human-review-evidence": 16,
+        "reproduction-script": 23,
+        "layer-or-mask": 94,
+        "production-or-verification-record": 58,
+        "inspection-evidence": 563,
+        "image": 84,
+        "intermediate-or-reference": 4
+      },
+      "roots": [
+        "ArtSources/CharacterExpansion/original-standing",
+        "ArtSources/CharacterExpansion/red-skirt-game-style",
+        "work/issue-31",
+        "work/issue-39-full",
+        "work/issue-40-full",
+        "work/issue-41-close"
+      ]
+    },
+    "maid-service": {
+      "files": 2121,
+      "bytes": 443731045,
+      "statuses": {
+        "??": 2121
+      },
+      "roles": {
+        "production-or-verification-record": 185,
+        "reproduction-script": 58,
+        "layer-or-mask": 776,
+        "image": 276,
+        "review-page-or-document": 60,
+        "generation-prompt": 15,
+        "inspection-evidence": 716,
+        "human-review-evidence": 27,
+        "intermediate-or-reference": 8
+      },
+      "roots": [
+        "ArtSources/CharacterExpansion/maid-service-actions",
+        "ArtSources/CharacterExpansion/maid-service-expressions",
+        "ArtSources/CharacterExpansion/original-standing",
+        "work/issue-31",
+        "work/issue-56",
+        "work/issue-57-completion",
+        "work/issue-57-eye-diagnosis",
+        "work/issue-57-eye-fix"
+      ]
+    },
+    "original-gallery": {
+      "files": 824,
+      "bytes": 157756335,
+      "statuses": {
+        "AM": 4,
+        "A ": 814,
+        "??": 6
+      },
+      "roles": {
+        "review-page-or-document": 9,
+        "production-or-verification-record": 11,
+        "inspection-evidence": 181,
+        "human-review-evidence": 3,
+        "image": 296,
+        "layer-or-mask": 324
+      },
+      "roots": [
+        "ArtSources/CharacterExpansion/original-standing"
+      ]
+    },
+    "original-project-archive": {
+      "files": 317,
+      "bytes": 51161990,
+      "statuses": {
+        "A ": 317
+      },
+      "roles": {
+        "review-page-or-document": 2,
+        "production-or-verification-record": 4,
+        "human-review-evidence": 1,
+        "image": 148,
+        "layer-or-mask": 162
+      },
+      "roots": [
+        "ChihayaPet/Resources/OriginalStandingSprites"
+      ]
+    },
+    "other-art-evidence": {
+      "files": 25,
+      "bytes": 2791489,
+      "statuses": {
+        "AM": 1,
+        "M ": 1,
+        "??": 23
+      },
+      "roles": {
+        "review-page-or-document": 4,
+        "generation-prompt": 3,
+        "production-or-verification-record": 13,
+        "reproduction-script": 1,
+        "intermediate-or-reference": 4
+      },
+      "roots": [
+        "ArtSources/CharacterExpansion/long-shirt-pose-experiment",
+        "ArtSources/CharacterExpansion/progress",
+        "work/review-page-exam-outfits",
+        "work/review-page-restore-v1",
+        "work/review-page-rollback"
+      ]
+    },
+    "plans-reports": {
+      "files": 26,
+      "bytes": 289890,
+      "statuses": {
+        "MM": 2,
+        "AM": 1,
+        "A ": 4,
+        "M ": 1,
+        "??": 18
+      },
+      "roles": {
+        "review-page-or-document": 25,
+        "production-or-verification-record": 1
+      },
+      "roots": [
+        "docs/art-direction",
+        "docs/plans",
+        "docs/reports",
+        "docs/research"
+      ]
+    },
+    "rose": {
+      "files": 860,
+      "bytes": 257631616,
+      "statuses": {
+        "A ": 91,
+        "AM": 8,
+        "??": 761
+      },
+      "roles": {
+        "layer-or-mask": 106,
+        "image": 119,
+        "reproduction-script": 17,
+        "production-or-verification-record": 43,
+        "inspection-evidence": 532,
+        "review-page-or-document": 24,
+        "generation-prompt": 4,
+        "human-review-evidence": 11,
+        "intermediate-or-reference": 4
+      },
+      "roots": [
+        "ArtSources/CharacterExpansion/candidate-crops",
+        "ArtSources/CharacterExpansion/original-standing",
+        "ArtSources/CharacterExpansion/rose-game-style",
+        "work/issue-30-crop",
+        "work/issue-30-game-style",
+        "work/issue-31",
+        "work/issue-36-full",
+        "work/issue-37-close",
+        "work/issue-38-close"
+      ]
+    },
+    "rose-hands": {
+      "files": 1183,
+      "bytes": 305985376,
+      "statuses": {
+        "??": 1183
+      },
+      "roles": {
+        "review-page-or-document": 29,
+        "human-review-evidence": 43,
+        "production-or-verification-record": 136,
+        "reproduction-script": 23,
+        "image": 211,
+        "layer-or-mask": 136,
+        "generation-prompt": 15,
+        "inspection-evidence": 587,
+        "intermediate-or-reference": 3
+      },
+      "roots": [
+        "ArtSources/CharacterExpansion/original-standing",
+        "ArtSources/CharacterExpansion/rose-princess-actions",
+        "work/issue-31",
+        "work/issue-50",
+        "work/issue-58",
+        "work/issue-59"
+      ]
+    },
+    "tooling-domain": {
+      "files": 11,
+      "bytes": 103649,
+      "statuses": {
+        " M": 1,
+        "AM": 2,
+        "M ": 1,
+        "??": 7
+      },
+      "roles": {
+        "review-page-or-document": 7,
+        "reproduction-script": 4
+      },
+      "roots": [
+        ".agents/skills",
+        "CONTEXT.md",
+        "scripts/build_character_progress.py",
+        "scripts/build_standing_showcase.py",
+        "scripts/compose_original_standing.py",
+        "scripts/test_standing_review_scope.cjs"
+      ]
+    }
+  },
+  "fileInventory": "workspace-changes.csv",
+  "submissionPolicy": "Only #60 audit and current metadata are scoped for this delivery; existing PNGs, production sources and work evidence remain individually indexed with their real local Git state."
+}

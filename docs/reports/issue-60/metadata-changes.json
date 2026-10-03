@@ -1,0 +1,148 @@
+{
+  "issue": 60,
+  "changes": [
+    {
+      "path": "ArtSources/CharacterExpansion/original-standing/README.md",
+      "beforeSHA256": "4c477f8dd47709441d49abeefa7d1057accb1b77f1bc276398819ceb806f48fe",
+      "afterSHA256": "2c8dcb36050bc6c29c87029bf2f839982806ba1914b760e3f1e36ac69cb2bf19",
+      "baselineStatus": "AM",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/original-standing/v2/README.md",
+      "beforeSHA256": "b4fd1bd19ff3902312a0c9b79026bfb92bc9136595f3956029cd1e48ac37da3e",
+      "afterSHA256": "6305a06534a16d8282b1ed65dcb809372d919b1b9c76c91c140435f18477d7e2",
+      "baselineStatus": "AM",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/original-standing/v2/inventory.csv",
+      "beforeSHA256": "10d48703979e32d7ecf444b950b443088e1b75dc918f131936f0119a6d72ada3",
+      "afterSHA256": "457d64d35b704cc745131e3f830a738e319e329d0d738f6269e426aadc76e3c8",
+      "baselineStatus": "A ",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/original-standing/v2/manifest.json",
+      "beforeSHA256": "44fee669fea56e2af78f240d72637b404dbc41ecca743828928cd94222877e14",
+      "afterSHA256": "63fe75da9ecaba2e7683dde1735c61dc51904b7575ca896d27df0aed9004642f",
+      "baselineStatus": "A ",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/original-standing/v2/progress.json",
+      "beforeSHA256": "a84fe7a70e2532af9e1effc850445428c90eaf4eae78729018960a3a64d01fd4",
+      "afterSHA256": "81e12b23d55ab5d99dee41ac0c370972b50003fcf0318958734b0940f6ae9c2b",
+      "baselineStatus": "A ",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/original-standing/v2/review.html",
+      "beforeSHA256": "3ecf71eb4fa8fa56b19de08ad475a96c841629512dcc4a084607837d2e75c56f",
+      "afterSHA256": "042a393a59493124cd550ba3b7932b61bd6bd0576ba0d2b5328feb8a3cf5482d",
+      "baselineStatus": "AM",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/progress/original-standing.template.html",
+      "beforeSHA256": "ce496382158adc6e8286abc1113d59bff1dea033518de58a15a66ac733ce93ef",
+      "afterSHA256": "dc64828cda86f81eed427ff61e585e454722f5ca1a1469928c20d36a7d8ee0dd",
+      "baselineStatus": "AM",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/long-shirt-pose-experiment/v4/close/v13/approval.json",
+      "beforeSHA256": "37c9cf3b761d9104f49144dff73779e7794b7721bddd94955075081a7d6258eb",
+      "afterSHA256": "f3700419a153c022eabaa8d698e6e4bba15859a2da20f5807b14b26a70c1dafc",
+      "baselineStatus": "??",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/long-shirt-pose-expressions/v4/close/v7/manifest.json",
+      "beforeSHA256": "7a6b3e249746929d4d720704e7f01f109842f580d737af2da983101a61b2bc97",
+      "afterSHA256": "2e6c3f9af1c0b12e4884a604b604723073bbdffa7987fa612602ba39b979d6e6",
+      "baselineStatus": "??",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/long-shirt-pose-expressions/v4/close/v7/review.json",
+      "beforeSHA256": "b3c66ba65b5fb76773823a9937ff0a34b30a734348c6b25549a81416ef23ac94",
+      "afterSHA256": "67e968c158c529aaff801ba3bdaafbb1bb454ed9d7d7471564c7bc444daad856",
+      "baselineStatus": "??",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/original-standing/review-selection.json",
+      "beforeSHA256": "45a730e283ceb7f2f7b580281d9f49bad9d78c4a9d56a9e1a9ed86936a94239b",
+      "afterSHA256": "46ecda7e0eb1a51484804f32efaff75bdd9e53e949942083acf253e1ba821556",
+      "baselineStatus": "??",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/original-standing/showcase/blue-white-rose/close/v1/expressions-manifest.json",
+      "beforeSHA256": "7c048015429ff0abf442863dcc9e1d5f1af41759494753afa1be1a61a784d0b4",
+      "afterSHA256": "5a0e33b06608e8ff219e800164ee159809962dc1b37a7bb00cef13eb643438cf",
+      "baselineStatus": "??",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/original-standing/showcase/blue-white-rose/close/v1/expressions-review.json",
+      "beforeSHA256": "67d11b3d8ab6e8c96f35ac39008e65aafecea6ddb386f2ecceba92ca9c14f832",
+      "afterSHA256": "9e5c7adcf0d5baab25146eb476e58cad58878d1c6cb60ecf78108a25f5f5aae6",
+      "baselineStatus": "??",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/original-standing/showcase/loose-long-shirt-experiment-v4/close/expressions-v7/manifest.json",
+      "beforeSHA256": "1eb3b928c2fb2848def38b4e4afd30d2002496bfe1ca4de5b6b3ffaa73049c72",
+      "afterSHA256": "2e6c3f9af1c0b12e4884a604b604723073bbdffa7987fa612602ba39b979d6e6",
+      "baselineStatus": "??",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/original-standing/showcase/loose-long-shirt-experiment-v4/close/expressions-v7/review.json",
+      "beforeSHA256": "00f0e9a3c8ee29a2a25f69c0ac93a0ccf68b1ea58518806d262dbfe82f0e2b90",
+      "afterSHA256": "67e968c158c529aaff801ba3bdaafbb1bb454ed9d7d7471564c7bc444daad856",
+      "baselineStatus": "??",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/original-standing/showcase/loose-long-shirt-experiment-v4/close/v13/approval.json",
+      "beforeSHA256": "37c9cf3b761d9104f49144dff73779e7794b7721bddd94955075081a7d6258eb",
+      "afterSHA256": "f3700419a153c022eabaa8d698e6e4bba15859a2da20f5807b14b26a70c1dafc",
+      "baselineStatus": "??",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/original-standing/showcase/manifest.json",
+      "beforeSHA256": "aa00bcbb5207eec580d38280f6f4879e75d348a4982adf49d300e35656d4ae4f",
+      "afterSHA256": "a04511c7ea873c9609ff1dd3083ab339981a9e7f1b334e8e007977328c01ce3c",
+      "baselineStatus": "??",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/rose-game-style/close/v1/expressions-manifest.json",
+      "beforeSHA256": "8fb4e510b8ad6c2b62e82c1aae6bc7b1be520748438e0c2c6d21b37786247d6d",
+      "afterSHA256": "5a0e33b06608e8ff219e800164ee159809962dc1b37a7bb00cef13eb643438cf",
+      "baselineStatus": "??",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "ArtSources/CharacterExpansion/rose-game-style/close/v1/expressions-review.json",
+      "beforeSHA256": "bf22d8d9a9f998172274cf228618927b149710daba0671afb26ef2edba864274",
+      "afterSHA256": "9e5c7adcf0d5baab25146eb476e58cad58878d1c6cb60ecf78108a25f5f5aae6",
+      "baselineStatus": "??",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    },
+    {
+      "path": "scripts/test_standing_review_scope.cjs",
+      "beforeSHA256": "c5750cfbd96ef9049dbc4a967d3b81f111a92cab42df6db727363f640f40aa32",
+      "afterSHA256": "e031e42644df887de3829757ee57b129a9514507d223df1caf94acb21ff49d3e",
+      "baselineStatus": "??",
+      "reason": "Current #60 metadata reconciliation; no PNG changes"
+    }
+  ],
+  "initialIndexAndWorkSnapshots": "work/issue-60/before",
+  "history": "ArtSources/CharacterExpansion/original-standing/history",
+  "newHumanApprovalCount": 0
+}

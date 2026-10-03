@@ -1,0 +1,158 @@
+{
+  "issue": 60,
+  "production": {
+    "status": "exported",
+    "evidence": "current-inventory.json"
+  },
+  "technicalVerification": {
+    "status": "current files and hashes rechecked",
+    "priorPixelEvidence": {
+      "path": "docs/reports/issue-31-pixel-verification.json",
+      "sha256": "c1a3074e751c8ad6faf618ed8031c99eb299d568e31aaeed2a31cd029fed7039",
+      "bytes": 141339
+    }
+  },
+  "humanReview": {
+    "status": "292 current expressions approved",
+    "newApprovalCount": 0,
+    "latest23": {
+      "path": "docs/reports/2026-10-03-issue-31-human-review.json",
+      "sha256": "943485318062a03cf41affaff6570dad0430c8cd6b2abcc2bb5b1f0ffa5f7078",
+      "bytes": 12415
+    }
+  },
+  "projectResources": {
+    "standingRuntime": {
+      "path": "ChihayaPet/Resources/StandingCharacterSprites/manifest.json",
+      "sha256": "035a0e557645117daafd88235cc1fcda8326eba0681694b8f26607c182a949da",
+      "bytes": 149880
+    },
+    "originalBaseArchivePNGCount": 310,
+    "originalBaseArchivePNGBytes": 50325247
+  },
+  "engineeringPackaging": {
+    "status": "passed by #31; unchanged artifact hashes rechecked here",
+    "checks": {
+      "fullTests": {
+        "executed": 188,
+        "skipped": 3,
+        "failures": 0,
+        "xcresult": "build/DerivedData/Logs/Test/Test-ChihayaPet-2026.10.03_13-47-50-+0800.xcresult"
+      },
+      "explicitNativeAcceptance": {
+        "executed": 1,
+        "skipped": 0,
+        "failures": 0,
+        "captureCount": 1000,
+        "xcresult": "build/DerivedData/Logs/Test/Test-ChihayaPet-2026.10.03_13-45-53-+0800.xcresult"
+      },
+      "resourceSourceAndBundle": "passed; CRC, RGBA, IDs, geometry, approved SHA-256 and exact whitelist",
+      "codeSignature": "codesign --verify --deep --strict passed",
+      "DMG": "hdiutil checksum and mounted-app resource/signature verification passed",
+      "standalone": "Exact bundle copied outside the repository; process executable path and actual restored UI verified"
+    },
+    "artifacts": [
+      {
+        "path": "ChihayaPet/Resources/StandingCharacterSprites/manifest.json",
+        "expectedSHA256": "035a0e557645117daafd88235cc1fcda8326eba0681694b8f26607c182a949da",
+        "exists": true,
+        "actualSHA256": "035a0e557645117daafd88235cc1fcda8326eba0681694b8f26607c182a949da",
+        "matches": true
+      },
+      {
+        "path": "docs/reports/2026-10-03-issue-31-human-review.json",
+        "expectedSHA256": "943485318062a03cf41affaff6570dad0430c8cd6b2abcc2bb5b1f0ffa5f7078",
+        "exists": true,
+        "actualSHA256": "943485318062a03cf41affaff6570dad0430c8cd6b2abcc2bb5b1f0ffa5f7078",
+        "matches": true
+      },
+      {
+        "path": "docs/reports/issue-31-resource-handoff.json",
+        "expectedSHA256": "74a5a6a8ca8a9c1cbca1b3ab644b7126662d9111873f4ed1f25e79f43c30a495",
+        "exists": true,
+        "actualSHA256": "74a5a6a8ca8a9c1cbca1b3ab644b7126662d9111873f4ed1f25e79f43c30a495",
+        "matches": true
+      },
+      {
+        "path": "docs/reports/issue-31-pixel-verification.json",
+        "expectedSHA256": "c1a3074e751c8ad6faf618ed8031c99eb299d568e31aaeed2a31cd029fed7039",
+        "exists": true,
+        "actualSHA256": "c1a3074e751c8ad6faf618ed8031c99eb299d568e31aaeed2a31cd029fed7039",
+        "matches": true
+      },
+      {
+        "path": "docs/reports/issue-31-visual-inspection.json",
+        "expectedSHA256": "aca977a3bca92b613aaeb9e4afb91cda0449a3df3f290ddbb6bf6f5a636e08e1",
+        "exists": true,
+        "actualSHA256": "aca977a3bca92b613aaeb9e4afb91cda0449a3df3f290ddbb6bf6f5a636e08e1",
+        "matches": true
+      },
+      {
+        "path": "docs/reports/issue-31-visual-acceptance/index.json",
+        "expectedSHA256": "f9510e7431bdf5824d13cf83022bb4011feb5e813e12814a6408d981611ad471",
+        "exists": true,
+        "actualSHA256": "f9510e7431bdf5824d13cf83022bb4011feb5e813e12814a6408d981611ad471",
+        "matches": true
+      },
+      {
+        "path": "docs/reports/issue-31-visual-acceptance/native-report.json",
+        "expectedSHA256": "f7ca7e199c9a9a10b522bdeff22aff130653180b0049cb6ed1549da675a50209",
+        "exists": true,
+        "actualSHA256": "f7ca7e199c9a9a10b522bdeff22aff130653180b0049cb6ed1549da675a50209",
+        "matches": true
+      },
+      {
+        "path": "build/ChihayaPet.app/Contents/MacOS/ChihayaPet",
+        "expectedSHA256": "9df5db15d9336dfe7cc8b8b6c04b66613c90e800151429f94a87395d08aa33b9",
+        "exists": true,
+        "actualSHA256": "9df5db15d9336dfe7cc8b8b6c04b66613c90e800151429f94a87395d08aa33b9",
+        "matches": true
+      },
+      {
+        "path": "build/ChihayaPet.dmg",
+        "expectedSHA256": "a4e4dd5d160579267979a775f601ab17378b8178f60660604cea2e90e67afe23",
+        "exists": true,
+        "actualSHA256": "a4e4dd5d160579267979a775f601ab17378b8178f60660604cea2e90e67afe23",
+        "matches": true
+      },
+      {
+        "path": "work/issue-31/all-tests-final.log",
+        "expectedSHA256": "cf38957d08d9884b95121e3f9e3ad0603704c800008ecc8fdf4dc8717e066903",
+        "exists": true,
+        "actualSHA256": "cf38957d08d9884b95121e3f9e3ad0603704c800008ecc8fdf4dc8717e066903",
+        "matches": true
+      },
+      {
+        "path": "work/issue-31/final-native-capture.log",
+        "expectedSHA256": "d828627b87f7a84c4e2352fc3cfc46efdf9b8cbe03c3ffb26f20415ca93ae097",
+        "exists": true,
+        "actualSHA256": "d828627b87f7a84c4e2352fc3cfc46efdf9b8cbe03c3ffb26f20415ca93ae097",
+        "matches": true
+      },
+      {
+        "path": "work/issue-31/package-final.log",
+        "expectedSHA256": "81a897618e6383e64f8e8cbe28acab5d5c59f01622c92da481b3694b74a82d44",
+        "exists": true,
+        "actualSHA256": "81a897618e6383e64f8e8cbe28acab5d5c59f01622c92da481b3694b74a82d44",
+        "matches": true
+      }
+    ]
+  },
+  "applicationLoading": {
+    "status": "passed by #31",
+    "integrationCommit": "20ba84add07db9efd4492e1eab3bd96706ae2833",
+    "evidence": {
+      "path": "docs/reports/2026-10-03-issue-31-integration.md",
+      "sha256": "2a51e23d8e8ebf6aff6c907ef1389cb13c4a153ed75a5da6256416702e4fe19d",
+      "bytes": 5582
+    }
+  },
+  "actualRuntimeAcceptance": {
+    "status": "passed by #31; no new runtime test claimed by this audit",
+    "evidence": {
+      "path": "docs/reports/issue-31-visual-inspection.json",
+      "sha256": "aca977a3bca92b613aaeb9e4afb91cda0449a3df3f290ddbb6bf6f5a636e08e1",
+      "bytes": 201874
+    }
+  }
+}

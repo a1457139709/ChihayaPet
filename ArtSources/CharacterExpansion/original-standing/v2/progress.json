@@ -1,0 +1,2792 @@
+{
+  "version": 2,
+  "issue": "https://github.com/a1457139709/ChihayaPet/issues/29",
+  "producedAt": "2026-10-01T11:24:29+08:00",
+  "production": "exported",
+  "pixelCheck": "passed",
+  "agentVisualInspection": "inspected",
+  "applicationAcceptance": "accepted-by-issue-31",
+  "humanReview": "approved",
+  "reviewCounts": {
+    "approved": 148,
+    "revise": 0,
+    "pending": 0
+  },
+  "reviewEvents": [
+    {
+      "source": "Explicit user message in this Codex conversation",
+      "message": "全景全部通过，所有近景头部头发缺失，补全身体层，可以做到自动补全表情",
+      "recordedAt": "2026-10-01T11:20:51+08:00",
+      "approvedScope": "All 74 full-view PNGs in v1, identified by their saved SHA-256",
+      "revisionScope": "All 74 close-view PNGs in v1: complete missing crown in the body layer, then automatically compose paired original expressions"
+    },
+    {
+      "source": "Explicit user message in this Codex conversation",
+      "message": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "recordedAt": "2026-10-01T12:08:09+08:00",
+      "scope": "User accepted the unified 148-image v2 review page and authorized project resource delivery. All 74 previously pending close PNGs are approved; existing full PNG approvals remain recorded.",
+      "projectResourceDelivery": "ChihayaPet/Resources/OriginalStandingSprites",
+      "applicationIntegration": "Requested as a separate new GitHub issue; not performed in this handoff"
+    }
+  ],
+  "images": {
+    "a/full/00": {
+      "path": "variants/a/full/composites/standing-a-full-face-00.png",
+      "sha256": "514d0535f325e167b1ee6232fe3a69c6723dbd5ce2193235eb6babe47625a6a8",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "514d0535f325e167b1ee6232fe3a69c6723dbd5ce2193235eb6babe47625a6a8",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "514d0535f325e167b1ee6232fe3a69c6723dbd5ce2193235eb6babe47625a6a8"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a/full/01": {
+      "path": "variants/a/full/composites/standing-a-full-face-01.png",
+      "sha256": "f11bd62280921f44b34b9cbe00425e2a3f3d4219503529ec5ad82ac604084822",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "f11bd62280921f44b34b9cbe00425e2a3f3d4219503529ec5ad82ac604084822",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "f11bd62280921f44b34b9cbe00425e2a3f3d4219503529ec5ad82ac604084822"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a/full/02": {
+      "path": "variants/a/full/composites/standing-a-full-face-02.png",
+      "sha256": "56fa33e7596125d427f5b4c52570000564df69ccc9e3d4bc834967c175d3a543",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "56fa33e7596125d427f5b4c52570000564df69ccc9e3d4bc834967c175d3a543",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "56fa33e7596125d427f5b4c52570000564df69ccc9e3d4bc834967c175d3a543"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a/full/03": {
+      "path": "variants/a/full/composites/standing-a-full-face-03.png",
+      "sha256": "4fa9b21cda093c9c5e55d332c93cd0b0c8c4d7a4bd654c948e76ae005c1e39e9",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "4fa9b21cda093c9c5e55d332c93cd0b0c8c4d7a4bd654c948e76ae005c1e39e9",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "4fa9b21cda093c9c5e55d332c93cd0b0c8c4d7a4bd654c948e76ae005c1e39e9"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a/full/04": {
+      "path": "variants/a/full/composites/standing-a-full-face-04.png",
+      "sha256": "a4111bce1939e3bcb643cb6d7d9f22648911b92793095de9cefd8f0b8f6c571c",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "a4111bce1939e3bcb643cb6d7d9f22648911b92793095de9cefd8f0b8f6c571c",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "a4111bce1939e3bcb643cb6d7d9f22648911b92793095de9cefd8f0b8f6c571c"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a/full/05": {
+      "path": "variants/a/full/composites/standing-a-full-face-05.png",
+      "sha256": "7be2496164e8ae641f240a6fd08bff1cea670e581e1bb4dd9b8472409bf14619",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "7be2496164e8ae641f240a6fd08bff1cea670e581e1bb4dd9b8472409bf14619",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "7be2496164e8ae641f240a6fd08bff1cea670e581e1bb4dd9b8472409bf14619"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a/full/06": {
+      "path": "variants/a/full/composites/standing-a-full-face-06.png",
+      "sha256": "e82f12aa9fe08ea1a5e21a79dc94268b87d3d6d6e506e84c1416244fed08a17e",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "e82f12aa9fe08ea1a5e21a79dc94268b87d3d6d6e506e84c1416244fed08a17e",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "e82f12aa9fe08ea1a5e21a79dc94268b87d3d6d6e506e84c1416244fed08a17e"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a/full/07": {
+      "path": "variants/a/full/composites/standing-a-full-face-07.png",
+      "sha256": "2d04a5fbab2c21ae1b17dfac3d894f93d97684c6817bd75f43cec569e86a79b6",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "2d04a5fbab2c21ae1b17dfac3d894f93d97684c6817bd75f43cec569e86a79b6",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "2d04a5fbab2c21ae1b17dfac3d894f93d97684c6817bd75f43cec569e86a79b6"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a/full/08": {
+      "path": "variants/a/full/composites/standing-a-full-face-08.png",
+      "sha256": "1136171d245029db36ca63da66bcf48f65aae6784934eb48e711f9999f1df248",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "1136171d245029db36ca63da66bcf48f65aae6784934eb48e711f9999f1df248",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "1136171d245029db36ca63da66bcf48f65aae6784934eb48e711f9999f1df248"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a/full/09": {
+      "path": "variants/a/full/composites/standing-a-full-face-09.png",
+      "sha256": "c1b3ab6ed23d3297e8dbdc9ab643aa25d321968a77b511a00472f732e600503c",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "c1b3ab6ed23d3297e8dbdc9ab643aa25d321968a77b511a00472f732e600503c",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "c1b3ab6ed23d3297e8dbdc9ab643aa25d321968a77b511a00472f732e600503c"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a/full/10": {
+      "path": "variants/a/full/composites/standing-a-full-face-10.png",
+      "sha256": "013249cc438ddf8981b329faf687a17f33a42e6952814a870f0279d39402ee80",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "013249cc438ddf8981b329faf687a17f33a42e6952814a870f0279d39402ee80",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "013249cc438ddf8981b329faf687a17f33a42e6952814a870f0279d39402ee80"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a/full/11": {
+      "path": "variants/a/full/composites/standing-a-full-face-11.png",
+      "sha256": "466a35c8ec4e03f4668849c19e9f08cd62056aba7f9438fff833dc6929f69021",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "466a35c8ec4e03f4668849c19e9f08cd62056aba7f9438fff833dc6929f69021",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "466a35c8ec4e03f4668849c19e9f08cd62056aba7f9438fff833dc6929f69021"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a/close/00": {
+      "path": "variants/a/close/composites/standing-a-close-face-00.png",
+      "sha256": "f3d9afe20dd70cab00692a5dfb0e88706d9454adcd176c7e9be03516206522c8",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "f3d9afe20dd70cab00692a5dfb0e88706d9454adcd176c7e9be03516206522c8",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "2a2f04b3430f47394dbbef246f5afdace6dedfa85501801e39a689cf479ef7ea",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a/close/01": {
+      "path": "variants/a/close/composites/standing-a-close-face-01.png",
+      "sha256": "3c6f7e2a3e30e2a0b3c60a0a26526c371c2246628a6ad57792a8f6eae215f13f",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "3c6f7e2a3e30e2a0b3c60a0a26526c371c2246628a6ad57792a8f6eae215f13f",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "746c66c957652e1956955ded41445c24059cf3821e1906c7af9de18ae66f9b22",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a/close/02": {
+      "path": "variants/a/close/composites/standing-a-close-face-02.png",
+      "sha256": "37ddaf0dbe93812ac6f8f8afde11e89719401f4d1130b66e90c70a8f20767fc8",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "37ddaf0dbe93812ac6f8f8afde11e89719401f4d1130b66e90c70a8f20767fc8",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "77678fbe7b55a0fc154c7e533be615388172bdcbccd70ec640a6c32442820fe6",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a/close/03": {
+      "path": "variants/a/close/composites/standing-a-close-face-03.png",
+      "sha256": "76a83498f43c583519bf2136f44d37893a2939e0ce9ed0586fb27c9a46bdc5e9",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "76a83498f43c583519bf2136f44d37893a2939e0ce9ed0586fb27c9a46bdc5e9",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "db213f90ace87cf2c68b4ecd8afd7b4533676094f70affd533312d614b54fde8",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a/close/04": {
+      "path": "variants/a/close/composites/standing-a-close-face-04.png",
+      "sha256": "e1baf4dab9498aa42fe30ec6b32a37ae7b8c0d1debd32370577c7dd15bba266b",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "e1baf4dab9498aa42fe30ec6b32a37ae7b8c0d1debd32370577c7dd15bba266b",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "a78162f935b4377fdccf612e3e370b20be2425465bc05475934a98a30e1d8b57",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a/close/05": {
+      "path": "variants/a/close/composites/standing-a-close-face-05.png",
+      "sha256": "30da3394a0c6e4b227100af9c1dc46c3c0ba1140000e2b1586a91ed209b98b23",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "30da3394a0c6e4b227100af9c1dc46c3c0ba1140000e2b1586a91ed209b98b23",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "4f4de80176adfda89a984fe27c07cedf226f9e7bcea99288ee7bdde338efe273",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a/close/06": {
+      "path": "variants/a/close/composites/standing-a-close-face-06.png",
+      "sha256": "ecba40e7ad4bfc840068777bdb4619030c94b6da788fe18a512ff36367088dee",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "ecba40e7ad4bfc840068777bdb4619030c94b6da788fe18a512ff36367088dee",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "ef399118f7e255b52592d302fac6d6041e380bf9976f704cb900ce5fa23e5aea",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a/close/07": {
+      "path": "variants/a/close/composites/standing-a-close-face-07.png",
+      "sha256": "8d984e82199ed0eb9165e2ba631a3b1d9dd0b16d453eeba9e4011925a61277ef",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "8d984e82199ed0eb9165e2ba631a3b1d9dd0b16d453eeba9e4011925a61277ef",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "b9769cbb5f4e6b55c566e5921eb6b59a51d87a9a4fc439f9e579b42a467fc3dd",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a/close/08": {
+      "path": "variants/a/close/composites/standing-a-close-face-08.png",
+      "sha256": "74e5046ad99d6132bbf8934c8d9d481df43d2d3109784fe3fb2f0d8e2b6bc285",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "74e5046ad99d6132bbf8934c8d9d481df43d2d3109784fe3fb2f0d8e2b6bc285",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "9844af6eac54cbaf74471cafdd5769d6fbe807c5cc76ccd5add6ba992c207493",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a/close/09": {
+      "path": "variants/a/close/composites/standing-a-close-face-09.png",
+      "sha256": "255269e2cdbe211e7bfac5019417110ceb4ed6ad22a855b84140fece8a62d976",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "255269e2cdbe211e7bfac5019417110ceb4ed6ad22a855b84140fece8a62d976",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "ecdfcf920388a34d2744495b463f66c5b13a5d55ed59ebd100056fd011b37e3e",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a/close/10": {
+      "path": "variants/a/close/composites/standing-a-close-face-10.png",
+      "sha256": "594c31b26d12808537800cc9d1b759e873801bf69f6739d242653f5a5ad34343",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "594c31b26d12808537800cc9d1b759e873801bf69f6739d242653f5a5ad34343",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "b18fd105f48269505ec5f820d26f06a68138cc8429c9a25bb4fefb46e5daf1e5",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a/close/11": {
+      "path": "variants/a/close/composites/standing-a-close-face-11.png",
+      "sha256": "d106e5fe53a8367cc76f3445c8a0a311243d7fa64e2ce1a6b9af78f79bdb3f55",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "d106e5fe53a8367cc76f3445c8a0a311243d7fa64e2ce1a6b9af78f79bdb3f55",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "f8e887f5909de9daff5859dca9be3accbc2c305e26e64eb2c13984fa6eef40a7",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a_/full/00": {
+      "path": "variants/a_/full/composites/standing-a_-full-face-00.png",
+      "sha256": "afde8309d30f22fe65aa71ca645c19182d61771d591c069ad0effb85a518b688",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "afde8309d30f22fe65aa71ca645c19182d61771d591c069ad0effb85a518b688",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "afde8309d30f22fe65aa71ca645c19182d61771d591c069ad0effb85a518b688"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a_/full/01": {
+      "path": "variants/a_/full/composites/standing-a_-full-face-01.png",
+      "sha256": "f37c658e26b5c4715c2c8aa0a6eedec2604b05381fb446529465425d46cfa541",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "f37c658e26b5c4715c2c8aa0a6eedec2604b05381fb446529465425d46cfa541",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "f37c658e26b5c4715c2c8aa0a6eedec2604b05381fb446529465425d46cfa541"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a_/full/02": {
+      "path": "variants/a_/full/composites/standing-a_-full-face-02.png",
+      "sha256": "b55fa6c445002e1ee93bdb700191424da41f7b3328ab03a2b314bece6c2090cb",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "b55fa6c445002e1ee93bdb700191424da41f7b3328ab03a2b314bece6c2090cb",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "b55fa6c445002e1ee93bdb700191424da41f7b3328ab03a2b314bece6c2090cb"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a_/full/03": {
+      "path": "variants/a_/full/composites/standing-a_-full-face-03.png",
+      "sha256": "07b6afccc7823735f3cd338e6b071aa69039460da54ab9610c971901a7e1a0d9",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "07b6afccc7823735f3cd338e6b071aa69039460da54ab9610c971901a7e1a0d9",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "07b6afccc7823735f3cd338e6b071aa69039460da54ab9610c971901a7e1a0d9"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a_/full/04": {
+      "path": "variants/a_/full/composites/standing-a_-full-face-04.png",
+      "sha256": "c004bd80cf8e7067ba6d4c5bde47d4f354213f6ed9a27b5a041f6a8ddbaad0db",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "c004bd80cf8e7067ba6d4c5bde47d4f354213f6ed9a27b5a041f6a8ddbaad0db",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "c004bd80cf8e7067ba6d4c5bde47d4f354213f6ed9a27b5a041f6a8ddbaad0db"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a_/full/05": {
+      "path": "variants/a_/full/composites/standing-a_-full-face-05.png",
+      "sha256": "d6dffb9df05fc6048032dac33cc46954bfb339a7fdaff9a96c9b4733b565e620",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "d6dffb9df05fc6048032dac33cc46954bfb339a7fdaff9a96c9b4733b565e620",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "d6dffb9df05fc6048032dac33cc46954bfb339a7fdaff9a96c9b4733b565e620"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a_/full/06": {
+      "path": "variants/a_/full/composites/standing-a_-full-face-06.png",
+      "sha256": "cba4e5292a08e6b11854b28ae5cb967b8f44723da848df774b652cfe899854d0",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "cba4e5292a08e6b11854b28ae5cb967b8f44723da848df774b652cfe899854d0",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "cba4e5292a08e6b11854b28ae5cb967b8f44723da848df774b652cfe899854d0"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a_/full/07": {
+      "path": "variants/a_/full/composites/standing-a_-full-face-07.png",
+      "sha256": "b1d94f649b8f8548fe4e9e7cd2e196d2f3cdfa1467c8bf4c060268b77bfe14c1",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "b1d94f649b8f8548fe4e9e7cd2e196d2f3cdfa1467c8bf4c060268b77bfe14c1",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "b1d94f649b8f8548fe4e9e7cd2e196d2f3cdfa1467c8bf4c060268b77bfe14c1"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a_/full/08": {
+      "path": "variants/a_/full/composites/standing-a_-full-face-08.png",
+      "sha256": "d5c5ae0c660c6609d2cf7e96980e04826a9815dec7882dd94d437179b23102f9",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "d5c5ae0c660c6609d2cf7e96980e04826a9815dec7882dd94d437179b23102f9",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "d5c5ae0c660c6609d2cf7e96980e04826a9815dec7882dd94d437179b23102f9"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a_/full/09": {
+      "path": "variants/a_/full/composites/standing-a_-full-face-09.png",
+      "sha256": "7e043ab6eb15b9cf6986009393ef463d2f2cd0fee51f7ecacb7ed93a3fdd937b",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "7e043ab6eb15b9cf6986009393ef463d2f2cd0fee51f7ecacb7ed93a3fdd937b",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "7e043ab6eb15b9cf6986009393ef463d2f2cd0fee51f7ecacb7ed93a3fdd937b"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a_/full/10": {
+      "path": "variants/a_/full/composites/standing-a_-full-face-10.png",
+      "sha256": "b3b4eda23d84600934d3e7e472f2f016b919a6e7703f3c4fd6cffd166ed998d4",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "b3b4eda23d84600934d3e7e472f2f016b919a6e7703f3c4fd6cffd166ed998d4",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "b3b4eda23d84600934d3e7e472f2f016b919a6e7703f3c4fd6cffd166ed998d4"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a_/full/11": {
+      "path": "variants/a_/full/composites/standing-a_-full-face-11.png",
+      "sha256": "8fa499f7dd93e93c70fcb8d1f0162d2b114cb142dd875df241cbc49de86051e2",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "8fa499f7dd93e93c70fcb8d1f0162d2b114cb142dd875df241cbc49de86051e2",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "8fa499f7dd93e93c70fcb8d1f0162d2b114cb142dd875df241cbc49de86051e2"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "a_/close/00": {
+      "path": "variants/a_/close/composites/standing-a_-close-face-00.png",
+      "sha256": "5aa82f666891d600b98190bdc742a3f8c919e416fa19a0ce28bc02095d156c65",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "5aa82f666891d600b98190bdc742a3f8c919e416fa19a0ce28bc02095d156c65",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "dd4f68aa7375071723214a4b96c5f2b0977cf6c6900f7a482feae4a4e9e1d21e",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a_/close/01": {
+      "path": "variants/a_/close/composites/standing-a_-close-face-01.png",
+      "sha256": "1f032ef637fd9d6534be8a990165ce2ea5139d1bf0d3d7a2befdc25231dbf4ee",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "1f032ef637fd9d6534be8a990165ce2ea5139d1bf0d3d7a2befdc25231dbf4ee",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "28a7b1764f85c1d6b3918ff42064aa6c333e2a58c284ac5cc4ffa23599990bf9",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a_/close/02": {
+      "path": "variants/a_/close/composites/standing-a_-close-face-02.png",
+      "sha256": "3836fc55c932337dd7e1df4e96b30fd4f49056dcd5a5d2f7b3cbe39f40088199",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "3836fc55c932337dd7e1df4e96b30fd4f49056dcd5a5d2f7b3cbe39f40088199",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "143a2216ca466ba1b20424f8d4b0531212afc24204b837ab88ae720016db5bc4",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a_/close/03": {
+      "path": "variants/a_/close/composites/standing-a_-close-face-03.png",
+      "sha256": "5f7418398912999d0fd9d4a61b8bba8b2dbf89eec29d99eaadc68f25c20fdbaf",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "5f7418398912999d0fd9d4a61b8bba8b2dbf89eec29d99eaadc68f25c20fdbaf",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "4b8c545879630084b01f27e65e0dc4180a0297202bf5f486cd1a9cd8c323d447",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a_/close/04": {
+      "path": "variants/a_/close/composites/standing-a_-close-face-04.png",
+      "sha256": "e90a9a91e61595a2778849c0d7a81ae21cea09138e3cbaeb03fc12589c49be2c",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "e90a9a91e61595a2778849c0d7a81ae21cea09138e3cbaeb03fc12589c49be2c",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "0e6a7170d66547489031ab3bbfd2ad71b9387fcf9f8c8910ae04169d4c69dd66",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a_/close/05": {
+      "path": "variants/a_/close/composites/standing-a_-close-face-05.png",
+      "sha256": "dd115bb88d480e27cd2c34178c9620570a026045ca2b711c8f22823e0e470a88",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "dd115bb88d480e27cd2c34178c9620570a026045ca2b711c8f22823e0e470a88",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "2e16ca458a3a87078002665c28e88c84290fc0c7929a01d984e13f5a8c721280",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a_/close/06": {
+      "path": "variants/a_/close/composites/standing-a_-close-face-06.png",
+      "sha256": "fe22f7cbc715f9baa120fb6a2eb84c6baaab6f8ec9646ca0a2635d8162785973",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "fe22f7cbc715f9baa120fb6a2eb84c6baaab6f8ec9646ca0a2635d8162785973",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "4043a6baf3edc6074531868352bafef4961a25b6082a7046d153b27bac76f274",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a_/close/07": {
+      "path": "variants/a_/close/composites/standing-a_-close-face-07.png",
+      "sha256": "c7a668350acea54ece531d38fb80c0a95619141a9a91d65f49bcb040d9ea14f9",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "c7a668350acea54ece531d38fb80c0a95619141a9a91d65f49bcb040d9ea14f9",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "dca0bac82838e9069804edb2b0a3687ba1abcb2c663bedb95cda8a454fd87aac",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a_/close/08": {
+      "path": "variants/a_/close/composites/standing-a_-close-face-08.png",
+      "sha256": "03ab3e91695196995543e48bb55f9d36c6c84c94c86fa141a7bb81e135a168ce",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "03ab3e91695196995543e48bb55f9d36c6c84c94c86fa141a7bb81e135a168ce",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "bb2fe715e5bb518ec8643b72965c8392c1684dfb758415d84be013526a944463",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a_/close/09": {
+      "path": "variants/a_/close/composites/standing-a_-close-face-09.png",
+      "sha256": "858bbb38666e428e5dcbad9f048a432deb99802eb03de12c35a55eb49f6822b9",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "858bbb38666e428e5dcbad9f048a432deb99802eb03de12c35a55eb49f6822b9",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "ce6e087d894e1beb75b43553d0467479d0778cfae39092f21b3a2d3d834ffff8",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a_/close/10": {
+      "path": "variants/a_/close/composites/standing-a_-close-face-10.png",
+      "sha256": "a4fbf918072970d59b3246a50bec558dd7bbd5bae349a969823ff19c4e426ff8",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "a4fbf918072970d59b3246a50bec558dd7bbd5bae349a969823ff19c4e426ff8",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "8886b648562ad05142c37c60118f5825bcdd0e9934f888d4e694a1f324e91cf2",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "a_/close/11": {
+      "path": "variants/a_/close/composites/standing-a_-close-face-11.png",
+      "sha256": "250ee6f5666e4110ec78979b1f2b11bafba1a1d901cc78a7bf2f994cc1480d12",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "250ee6f5666e4110ec78979b1f2b11bafba1a1d901cc78a7bf2f994cc1480d12",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "b03e2095bc0d5c043b45949b4aa4a3f1db35ed886b13351f9933a13885dcbb87",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "b/full/00": {
+      "path": "variants/b/full/composites/standing-b-full-face-00.png",
+      "sha256": "12997ffb97f78f9c7c1bd6519681cf5f2c0b367aab47dc03cb6ba903faddc1e2",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "12997ffb97f78f9c7c1bd6519681cf5f2c0b367aab47dc03cb6ba903faddc1e2",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "12997ffb97f78f9c7c1bd6519681cf5f2c0b367aab47dc03cb6ba903faddc1e2"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "b/full/01": {
+      "path": "variants/b/full/composites/standing-b-full-face-01.png",
+      "sha256": "3d0191a6d792b0a49c4d8cc173d630506a8fa561048232b2d1a5685ef826dfe7",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "3d0191a6d792b0a49c4d8cc173d630506a8fa561048232b2d1a5685ef826dfe7",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "3d0191a6d792b0a49c4d8cc173d630506a8fa561048232b2d1a5685ef826dfe7"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "b/full/02": {
+      "path": "variants/b/full/composites/standing-b-full-face-02.png",
+      "sha256": "8f0a3e42ce784a2775bd103c773712b46bfafeeb82fca61ce5cb6cab0f95f260",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "8f0a3e42ce784a2775bd103c773712b46bfafeeb82fca61ce5cb6cab0f95f260",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "8f0a3e42ce784a2775bd103c773712b46bfafeeb82fca61ce5cb6cab0f95f260"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "b/full/03": {
+      "path": "variants/b/full/composites/standing-b-full-face-03.png",
+      "sha256": "43c3505853b15d806cc1b6625e9b4377207cb93224a7750eadab3f615edac303",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "43c3505853b15d806cc1b6625e9b4377207cb93224a7750eadab3f615edac303",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "43c3505853b15d806cc1b6625e9b4377207cb93224a7750eadab3f615edac303"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "b/full/04": {
+      "path": "variants/b/full/composites/standing-b-full-face-04.png",
+      "sha256": "c795ffc0b8e59237ba1f1f4d131662d156aba0e4c00aab9e499670599b24d03a",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "c795ffc0b8e59237ba1f1f4d131662d156aba0e4c00aab9e499670599b24d03a",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "c795ffc0b8e59237ba1f1f4d131662d156aba0e4c00aab9e499670599b24d03a"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "b/full/05": {
+      "path": "variants/b/full/composites/standing-b-full-face-05.png",
+      "sha256": "9641746249382a09880c7ba09c7cea910cdab3f2e524cb5b784e484129716843",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "9641746249382a09880c7ba09c7cea910cdab3f2e524cb5b784e484129716843",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "9641746249382a09880c7ba09c7cea910cdab3f2e524cb5b784e484129716843"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "b/full/06": {
+      "path": "variants/b/full/composites/standing-b-full-face-06.png",
+      "sha256": "323d3f223b445a7aadb3f79cfda9e8a56e2959b55d20a2da78c19e36fe3f8fd0",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "323d3f223b445a7aadb3f79cfda9e8a56e2959b55d20a2da78c19e36fe3f8fd0",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "323d3f223b445a7aadb3f79cfda9e8a56e2959b55d20a2da78c19e36fe3f8fd0"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "b/close/00": {
+      "path": "variants/b/close/composites/standing-b-close-face-00.png",
+      "sha256": "3e83354ba43acf390408cd7c8e6c12e7ac3ec4883132699acdd1e564e402f196",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "3e83354ba43acf390408cd7c8e6c12e7ac3ec4883132699acdd1e564e402f196",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "37aa0a426dd2ae6989a03383053f420b5b81c8cd018ff90693de54c4e7bdd4ef",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "b/close/01": {
+      "path": "variants/b/close/composites/standing-b-close-face-01.png",
+      "sha256": "d56c7df9284e15ca4dae75daed9c58556926f5050c9fa15a4a1d2ba28fdb2e49",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "d56c7df9284e15ca4dae75daed9c58556926f5050c9fa15a4a1d2ba28fdb2e49",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "33e35b32b4da29525b8f07557d03156457d461b731ffd8553eade83d5963a9c9",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "b/close/02": {
+      "path": "variants/b/close/composites/standing-b-close-face-02.png",
+      "sha256": "8a1720e25c68a9e3e939e4136df5e8700fbf815bc508d2cc2e698cdfd20cb148",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "8a1720e25c68a9e3e939e4136df5e8700fbf815bc508d2cc2e698cdfd20cb148",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "1705c59c9d9f3dfef1e38c7e9dd2ffe63db94253bb45d4fb4f10c2b50c548f48",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "b/close/03": {
+      "path": "variants/b/close/composites/standing-b-close-face-03.png",
+      "sha256": "485a40d8a951ee63d9ffd0a6e17c0fd60e67fd77994dba6e200f18dc191ea1d9",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "485a40d8a951ee63d9ffd0a6e17c0fd60e67fd77994dba6e200f18dc191ea1d9",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "c414bbcc8ae80b95f7950330f277b7c8ee286787f55e9868d416f5f1d98eeab2",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "b/close/04": {
+      "path": "variants/b/close/composites/standing-b-close-face-04.png",
+      "sha256": "57b0baf66520fb1d863b208e6959487bcab780a37c23fba4d0f24b13f4541bf4",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "57b0baf66520fb1d863b208e6959487bcab780a37c23fba4d0f24b13f4541bf4",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "d369bceffc3623f8334da49fe723bddcba16b509629b8e740690e6822f4e1368",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "b/close/05": {
+      "path": "variants/b/close/composites/standing-b-close-face-05.png",
+      "sha256": "85d89e3a4c9d4b6a6d834f9e4fe51cb206d150890a9afeca63f0ca417bcf5ffd",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "85d89e3a4c9d4b6a6d834f9e4fe51cb206d150890a9afeca63f0ca417bcf5ffd",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "2e8744a36735522524ef6dd53cf758f895022fe6f07b6dd9c75c7a96153f41e4",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "b/close/06": {
+      "path": "variants/b/close/composites/standing-b-close-face-06.png",
+      "sha256": "ee49ec103332c20d9dc1f12c2625cf9fde30fc44ff0d85040665c6165e19b9b0",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "ee49ec103332c20d9dc1f12c2625cf9fde30fc44ff0d85040665c6165e19b9b0",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "eb8465dba4bef4d9be45b7791e773714a792e304066dce6a5c9c5ab499e04aa6",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "b_/full/00": {
+      "path": "variants/b_/full/composites/standing-b_-full-face-00.png",
+      "sha256": "7737216fccb05f0c32daaa8406d9c5c4f74bcca130aeeecdf50e64c8a672dabe",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "7737216fccb05f0c32daaa8406d9c5c4f74bcca130aeeecdf50e64c8a672dabe",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "7737216fccb05f0c32daaa8406d9c5c4f74bcca130aeeecdf50e64c8a672dabe"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "b_/full/01": {
+      "path": "variants/b_/full/composites/standing-b_-full-face-01.png",
+      "sha256": "f132e2291be44f65733d3e453ed6ee290d0457d103a0fd444ce7229a2d068efd",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "f132e2291be44f65733d3e453ed6ee290d0457d103a0fd444ce7229a2d068efd",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "f132e2291be44f65733d3e453ed6ee290d0457d103a0fd444ce7229a2d068efd"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "b_/full/02": {
+      "path": "variants/b_/full/composites/standing-b_-full-face-02.png",
+      "sha256": "82e74c236dd391240e9f4f7a4714083ee4fc826a0f679dc4995ab496455640c0",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "82e74c236dd391240e9f4f7a4714083ee4fc826a0f679dc4995ab496455640c0",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "82e74c236dd391240e9f4f7a4714083ee4fc826a0f679dc4995ab496455640c0"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "b_/full/03": {
+      "path": "variants/b_/full/composites/standing-b_-full-face-03.png",
+      "sha256": "126d25c360eb7e242f6ac50b0de89de0db4e5c7ba1353fba9d865f570e1405d5",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "126d25c360eb7e242f6ac50b0de89de0db4e5c7ba1353fba9d865f570e1405d5",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "126d25c360eb7e242f6ac50b0de89de0db4e5c7ba1353fba9d865f570e1405d5"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "b_/full/04": {
+      "path": "variants/b_/full/composites/standing-b_-full-face-04.png",
+      "sha256": "b5cb393449a9f1457004f79c8271f1bba4e4c86be2a9c3d6b9a66cf668969c92",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "b5cb393449a9f1457004f79c8271f1bba4e4c86be2a9c3d6b9a66cf668969c92",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "b5cb393449a9f1457004f79c8271f1bba4e4c86be2a9c3d6b9a66cf668969c92"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "b_/full/05": {
+      "path": "variants/b_/full/composites/standing-b_-full-face-05.png",
+      "sha256": "21c269562f4f70ad9c66030f8ca262b20386d325832031fd2d1cfae46418ea96",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "21c269562f4f70ad9c66030f8ca262b20386d325832031fd2d1cfae46418ea96",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "21c269562f4f70ad9c66030f8ca262b20386d325832031fd2d1cfae46418ea96"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "b_/full/06": {
+      "path": "variants/b_/full/composites/standing-b_-full-face-06.png",
+      "sha256": "96ea7664115033e00cc1284fb53d47de662895048e57f6a448ab5a10e48ce32e",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "96ea7664115033e00cc1284fb53d47de662895048e57f6a448ab5a10e48ce32e",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "96ea7664115033e00cc1284fb53d47de662895048e57f6a448ab5a10e48ce32e"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "b_/close/00": {
+      "path": "variants/b_/close/composites/standing-b_-close-face-00.png",
+      "sha256": "15faa991a0df04b39739973ee5fb60212cdec854a4afb21ef94c851495a35ac9",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "15faa991a0df04b39739973ee5fb60212cdec854a4afb21ef94c851495a35ac9",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "ee99f00f6dd1c0f82ce79224d0ff47bfad11f50c2ffff2717e169ca52b4951c9",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "b_/close/01": {
+      "path": "variants/b_/close/composites/standing-b_-close-face-01.png",
+      "sha256": "8c0ed88668e4a9eb23ad870afe48a6beb7079eee5ae1d2de9e7008508f951e32",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "8c0ed88668e4a9eb23ad870afe48a6beb7079eee5ae1d2de9e7008508f951e32",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "2684a5b0ae367b4cd2177feb96a105da1ec88b892afc80a7bca43edea7ef4f7c",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "b_/close/02": {
+      "path": "variants/b_/close/composites/standing-b_-close-face-02.png",
+      "sha256": "eef5d8f995794195c4c5ea0c6990782a8f32b590e49d5b4fdbe4ffcf876232dc",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "eef5d8f995794195c4c5ea0c6990782a8f32b590e49d5b4fdbe4ffcf876232dc",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "d803912bacbba7cbe9bc69ee5ecfcd1d574fc28eb03f12f53b078b1d46c5d592",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "b_/close/03": {
+      "path": "variants/b_/close/composites/standing-b_-close-face-03.png",
+      "sha256": "e8497c0a03f9ce11553ed7a22aec5ff2550ccfd55d68a02cffea4fae82eb7ad7",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "e8497c0a03f9ce11553ed7a22aec5ff2550ccfd55d68a02cffea4fae82eb7ad7",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "e694d25cf8771361974f0d70af531ca2447ed136d6cf45205e343cc9ad4e5adf",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "b_/close/04": {
+      "path": "variants/b_/close/composites/standing-b_-close-face-04.png",
+      "sha256": "b3e298f5dbc9b20e77db4a0f3fae354fe135cdc588b6c37b233103649048457f",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "b3e298f5dbc9b20e77db4a0f3fae354fe135cdc588b6c37b233103649048457f",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "f547065e25289d4f183e243016e720faa5516c955d37424a28bbf23e401edd7d",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "b_/close/05": {
+      "path": "variants/b_/close/composites/standing-b_-close-face-05.png",
+      "sha256": "dc271dda716c9beb46b2733e6baf2ea1175040efd992524857344839cc6b9b78",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "dc271dda716c9beb46b2733e6baf2ea1175040efd992524857344839cc6b9b78",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "d6dff6d80c931725138afacd8d2157af4d526b3449cf6eb5eb05702049c809f7",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "b_/close/06": {
+      "path": "variants/b_/close/composites/standing-b_-close-face-06.png",
+      "sha256": "ed56fb2059163b8456a08155d7fade046efedd0f0b056c0d48e6aa1cec2cb9ac",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "ed56fb2059163b8456a08155d7fade046efedd0f0b056c0d48e6aa1cec2cb9ac",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "d0adeeb15e834c95d9873c4c6bc7b1ed3159dec1728323030297e342be0d2f15",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "c/full/00": {
+      "path": "variants/c/full/composites/standing-c-full-face-00.png",
+      "sha256": "56fa2d45ad3dc79e5319ec19f0f531202724dfbe03286141c99a0940245bb442",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "56fa2d45ad3dc79e5319ec19f0f531202724dfbe03286141c99a0940245bb442",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "56fa2d45ad3dc79e5319ec19f0f531202724dfbe03286141c99a0940245bb442"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "c/full/01": {
+      "path": "variants/c/full/composites/standing-c-full-face-01.png",
+      "sha256": "3cd99a63d0b74cf0ddfc1cd0cf9fc826c459efa8c6d64467168213b70a9a3875",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "3cd99a63d0b74cf0ddfc1cd0cf9fc826c459efa8c6d64467168213b70a9a3875",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "3cd99a63d0b74cf0ddfc1cd0cf9fc826c459efa8c6d64467168213b70a9a3875"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "c/full/02": {
+      "path": "variants/c/full/composites/standing-c-full-face-02.png",
+      "sha256": "0d59935e52078543937bc90cae6b329895be8a58f6ec0a7a4f8cfab5d0f76eec",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "0d59935e52078543937bc90cae6b329895be8a58f6ec0a7a4f8cfab5d0f76eec",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "0d59935e52078543937bc90cae6b329895be8a58f6ec0a7a4f8cfab5d0f76eec"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "c/full/03": {
+      "path": "variants/c/full/composites/standing-c-full-face-03.png",
+      "sha256": "91c6878d617569d1f20fc48a5373f4dd8c3369d008ba3de45a0f7acab3c57ae2",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "91c6878d617569d1f20fc48a5373f4dd8c3369d008ba3de45a0f7acab3c57ae2",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "91c6878d617569d1f20fc48a5373f4dd8c3369d008ba3de45a0f7acab3c57ae2"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "c/full/04": {
+      "path": "variants/c/full/composites/standing-c-full-face-04.png",
+      "sha256": "bf92f7857f43f49a1735641af85d16b1edb81485459b41a4dc7d64df55577380",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "bf92f7857f43f49a1735641af85d16b1edb81485459b41a4dc7d64df55577380",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "bf92f7857f43f49a1735641af85d16b1edb81485459b41a4dc7d64df55577380"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "c/full/05": {
+      "path": "variants/c/full/composites/standing-c-full-face-05.png",
+      "sha256": "d3b124b75559aef13951f22a5831a560c1d5cc3762ab230a1c11c34b7c71006f",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "d3b124b75559aef13951f22a5831a560c1d5cc3762ab230a1c11c34b7c71006f",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "d3b124b75559aef13951f22a5831a560c1d5cc3762ab230a1c11c34b7c71006f"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "c/full/06": {
+      "path": "variants/c/full/composites/standing-c-full-face-06.png",
+      "sha256": "58506be552949f223c2e799af090a2f6af32081f016c4bf6d6f6aeb582ba3cd2",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "58506be552949f223c2e799af090a2f6af32081f016c4bf6d6f6aeb582ba3cd2",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "58506be552949f223c2e799af090a2f6af32081f016c4bf6d6f6aeb582ba3cd2"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "c/full/07": {
+      "path": "variants/c/full/composites/standing-c-full-face-07.png",
+      "sha256": "3db3681e7c9a63fff8c93d693a0bcf6e9ad8e52cc6c85fb5c4844a692e59aa88",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "3db3681e7c9a63fff8c93d693a0bcf6e9ad8e52cc6c85fb5c4844a692e59aa88",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "3db3681e7c9a63fff8c93d693a0bcf6e9ad8e52cc6c85fb5c4844a692e59aa88"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "c/full/08": {
+      "path": "variants/c/full/composites/standing-c-full-face-08.png",
+      "sha256": "9fe2fa4ef4e300be3c07ded02f8b07e4a13a7bec52478329e8c68bddbe17e907",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "9fe2fa4ef4e300be3c07ded02f8b07e4a13a7bec52478329e8c68bddbe17e907",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "9fe2fa4ef4e300be3c07ded02f8b07e4a13a7bec52478329e8c68bddbe17e907"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "c/full/09": {
+      "path": "variants/c/full/composites/standing-c-full-face-09.png",
+      "sha256": "d4265729e69259e2f0d3a39b7b525a677a8bd5848f6e58e72ed14c25d6746330",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "d4265729e69259e2f0d3a39b7b525a677a8bd5848f6e58e72ed14c25d6746330",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "d4265729e69259e2f0d3a39b7b525a677a8bd5848f6e58e72ed14c25d6746330"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "c/full/10": {
+      "path": "variants/c/full/composites/standing-c-full-face-10.png",
+      "sha256": "0caa555016dbe74455d4d6f9a861a1c2c8cac5e69368fc12f9bace57ce202e59",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "0caa555016dbe74455d4d6f9a861a1c2c8cac5e69368fc12f9bace57ce202e59",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "0caa555016dbe74455d4d6f9a861a1c2c8cac5e69368fc12f9bace57ce202e59"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "c/full/11": {
+      "path": "variants/c/full/composites/standing-c-full-face-11.png",
+      "sha256": "2621cf8e3a1e733a5e0b31ea7db1b9065cdb5ec1e96a232c9f65f66a9643f989",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "2621cf8e3a1e733a5e0b31ea7db1b9065cdb5ec1e96a232c9f65f66a9643f989",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "2621cf8e3a1e733a5e0b31ea7db1b9065cdb5ec1e96a232c9f65f66a9643f989"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "c/close/00": {
+      "path": "variants/c/close/composites/standing-c-close-face-00.png",
+      "sha256": "e40d97ffa2b983c4e4605c2406a991b86467aa07851e17317adf6563a3335aca",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "e40d97ffa2b983c4e4605c2406a991b86467aa07851e17317adf6563a3335aca",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "f56f8114506776ff0cf073e408b439798a16b511e1917a6404ecf737d6385589",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "c/close/01": {
+      "path": "variants/c/close/composites/standing-c-close-face-01.png",
+      "sha256": "f7ddcc13492931bf224614ac187f1b37b727072253985b03d04fe8a634ea2202",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "f7ddcc13492931bf224614ac187f1b37b727072253985b03d04fe8a634ea2202",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "0030288931b0ef0f33391081614e7589d8f4d6ff1267530e019e457599522390",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "c/close/02": {
+      "path": "variants/c/close/composites/standing-c-close-face-02.png",
+      "sha256": "d2efedbe6520f709076dbae9aafb87da3b25db896806a5e056653c0d601bb2f0",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "d2efedbe6520f709076dbae9aafb87da3b25db896806a5e056653c0d601bb2f0",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "c7c506edfb5e88f77d2ea5c459969eec3e779a175bf01f5ebfa586dfa00fd72e",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "c/close/03": {
+      "path": "variants/c/close/composites/standing-c-close-face-03.png",
+      "sha256": "33238eec1bb415ec5b67644d80feb642664b80187828cf14dd4eb64d66fa1857",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "33238eec1bb415ec5b67644d80feb642664b80187828cf14dd4eb64d66fa1857",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "5127b6b1bc67149efec1c97683d3a567e996492b10b7cd56f9695478090c519e",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "c/close/04": {
+      "path": "variants/c/close/composites/standing-c-close-face-04.png",
+      "sha256": "e6cb140d64131e58b7acfed3400dea1cfbf60255131f518b581ffb78371fd8ce",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "e6cb140d64131e58b7acfed3400dea1cfbf60255131f518b581ffb78371fd8ce",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "4cbe9d89ef1087aa9733722ef54552b5342790e12548fc36030efd5ca5f2c46e",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "c/close/05": {
+      "path": "variants/c/close/composites/standing-c-close-face-05.png",
+      "sha256": "082e8d970c6ff4ab96f91b5fda2123b435170d8cdee84603ae3fd2f1d8926c90",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "082e8d970c6ff4ab96f91b5fda2123b435170d8cdee84603ae3fd2f1d8926c90",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "c3fdc66e620290b6888d016bfcb9850572d154b92a1d3e9d170d79c913046fa2",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "c/close/06": {
+      "path": "variants/c/close/composites/standing-c-close-face-06.png",
+      "sha256": "868322ed30c0c36c2b742ff54bd1301f26cd0392496703b090bc3150d54451b9",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "868322ed30c0c36c2b742ff54bd1301f26cd0392496703b090bc3150d54451b9",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "91c807584bd27580c6400e2a1b834264da793eb69cace66917bc3adc4416f129",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "c/close/07": {
+      "path": "variants/c/close/composites/standing-c-close-face-07.png",
+      "sha256": "072470d111eab3298151440fe7c0dd39d161609689c5757eb8304e1bda944d77",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "072470d111eab3298151440fe7c0dd39d161609689c5757eb8304e1bda944d77",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "c6fef739e2b2dbedecd5e26e978ab0e701c5d7859b09db7de3c8819be585fd7d",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "c/close/08": {
+      "path": "variants/c/close/composites/standing-c-close-face-08.png",
+      "sha256": "c1f84ca72cf8a1d9af164ec6b72b03589e4f4dc20c31439e7e71940ee38b3ee0",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "c1f84ca72cf8a1d9af164ec6b72b03589e4f4dc20c31439e7e71940ee38b3ee0",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "ddcb4b1bd698f51e18fe7c41fc528dac6170313d82f0f528c9fabaf88090a9ab",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "c/close/09": {
+      "path": "variants/c/close/composites/standing-c-close-face-09.png",
+      "sha256": "1fc51db8723c163702f7bf9d71007ec565ab1a6b696ac02aa17fa50ef106fe7e",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "1fc51db8723c163702f7bf9d71007ec565ab1a6b696ac02aa17fa50ef106fe7e",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "969f918cf0b1e93469e7c898e425338b2ed003ee5c75c74cca60e67d118d272f",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "c/close/10": {
+      "path": "variants/c/close/composites/standing-c-close-face-10.png",
+      "sha256": "53290347bf914254a1545834a0a3fbfd4bea3e6dfe4072f026c018c927370b46",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "53290347bf914254a1545834a0a3fbfd4bea3e6dfe4072f026c018c927370b46",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "01dd39b30e138582f1a22a7af67ae6fa632321311e5083bcf44f4dd8c676e27e",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "c/close/11": {
+      "path": "variants/c/close/composites/standing-c-close-face-11.png",
+      "sha256": "e0c09d56b696eeb1f7422ba2c8fdf4da8b46b9ae068754609dc5e06d11246f0c",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "e0c09d56b696eeb1f7422ba2c8fdf4da8b46b9ae068754609dc5e06d11246f0c",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "40f944057b158ca7ed98df05cee31c944f25749dd1d7355bb901c2e90266dea6",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "d/full/00": {
+      "path": "variants/d/full/composites/standing-d-full-face-00.png",
+      "sha256": "8a092812ecf91f99b592f65df6c271d35d4cd22aae6fe8f50254795ab62596d5",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "8a092812ecf91f99b592f65df6c271d35d4cd22aae6fe8f50254795ab62596d5",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "8a092812ecf91f99b592f65df6c271d35d4cd22aae6fe8f50254795ab62596d5"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "d/full/01": {
+      "path": "variants/d/full/composites/standing-d-full-face-01.png",
+      "sha256": "835e8c7610a739fc1cef117d3775fcd2aeb12ea04698c421b11f6617e5230499",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "835e8c7610a739fc1cef117d3775fcd2aeb12ea04698c421b11f6617e5230499",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "835e8c7610a739fc1cef117d3775fcd2aeb12ea04698c421b11f6617e5230499"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "d/full/02": {
+      "path": "variants/d/full/composites/standing-d-full-face-02.png",
+      "sha256": "4841ff1a03148ff91883a1a6cff3ce1c5a9a0d3e2ae25c311b398bdbd13e7d6e",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "4841ff1a03148ff91883a1a6cff3ce1c5a9a0d3e2ae25c311b398bdbd13e7d6e",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "4841ff1a03148ff91883a1a6cff3ce1c5a9a0d3e2ae25c311b398bdbd13e7d6e"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "d/full/03": {
+      "path": "variants/d/full/composites/standing-d-full-face-03.png",
+      "sha256": "a55dbf45c88f3e00766e8d123e13ebe364d8d6b78e77a1fdbad9f055c7609fd9",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "a55dbf45c88f3e00766e8d123e13ebe364d8d6b78e77a1fdbad9f055c7609fd9",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "a55dbf45c88f3e00766e8d123e13ebe364d8d6b78e77a1fdbad9f055c7609fd9"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "d/full/04": {
+      "path": "variants/d/full/composites/standing-d-full-face-04.png",
+      "sha256": "9fb5b54d872d9f4edfa8c350448620c2bd2980de87f068561258024e601a8c27",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "9fb5b54d872d9f4edfa8c350448620c2bd2980de87f068561258024e601a8c27",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "9fb5b54d872d9f4edfa8c350448620c2bd2980de87f068561258024e601a8c27"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "d/full/05": {
+      "path": "variants/d/full/composites/standing-d-full-face-05.png",
+      "sha256": "2c6814fe527e7bc5deeb2d4f723c9de219f5854d957a25927688ed10a2575fc4",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "2c6814fe527e7bc5deeb2d4f723c9de219f5854d957a25927688ed10a2575fc4",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "2c6814fe527e7bc5deeb2d4f723c9de219f5854d957a25927688ed10a2575fc4"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "d/full/06": {
+      "path": "variants/d/full/composites/standing-d-full-face-06.png",
+      "sha256": "76b8aa910c4180dafa12ebe161cdafa2c6f329919f52ca61449abdc5aab4857c",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "76b8aa910c4180dafa12ebe161cdafa2c6f329919f52ca61449abdc5aab4857c",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "76b8aa910c4180dafa12ebe161cdafa2c6f329919f52ca61449abdc5aab4857c"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "d/full/07": {
+      "path": "variants/d/full/composites/standing-d-full-face-07.png",
+      "sha256": "1d0bec25a344ca5aa6c264ba1c4d5769af56f7af83ee25fa4af64af529022a37",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "1d0bec25a344ca5aa6c264ba1c4d5769af56f7af83ee25fa4af64af529022a37",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "1d0bec25a344ca5aa6c264ba1c4d5769af56f7af83ee25fa4af64af529022a37"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "d/full/08": {
+      "path": "variants/d/full/composites/standing-d-full-face-08.png",
+      "sha256": "ce6667baf3955900d25159df57c5a36d5163d44d910f88382bc295136261a333",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "ce6667baf3955900d25159df57c5a36d5163d44d910f88382bc295136261a333",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "ce6667baf3955900d25159df57c5a36d5163d44d910f88382bc295136261a333"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "d/full/09": {
+      "path": "variants/d/full/composites/standing-d-full-face-09.png",
+      "sha256": "554ab53ac1d3c7ef7c66ed216e6bf48f759ffec076726a283d4b33868a159931",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "554ab53ac1d3c7ef7c66ed216e6bf48f759ffec076726a283d4b33868a159931",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "554ab53ac1d3c7ef7c66ed216e6bf48f759ffec076726a283d4b33868a159931"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "d/full/10": {
+      "path": "variants/d/full/composites/standing-d-full-face-10.png",
+      "sha256": "e12e04c3fc0044cc0538098d39d08c95903a67afbb1470f2fd97620c46fc1ae0",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "e12e04c3fc0044cc0538098d39d08c95903a67afbb1470f2fd97620c46fc1ae0",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "e12e04c3fc0044cc0538098d39d08c95903a67afbb1470f2fd97620c46fc1ae0"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "d/full/11": {
+      "path": "variants/d/full/composites/standing-d-full-face-11.png",
+      "sha256": "39d3684e01a5b9acccb83ddfdd64df4fea71951fdd49dc8cd8b24fb108e222eb",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "39d3684e01a5b9acccb83ddfdd64df4fea71951fdd49dc8cd8b24fb108e222eb",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "39d3684e01a5b9acccb83ddfdd64df4fea71951fdd49dc8cd8b24fb108e222eb"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "d/close/00": {
+      "path": "variants/d/close/composites/standing-d-close-face-00.png",
+      "sha256": "7faeb2d9baecd12cadfeeb3d1b3d22cf3e0ca0ec94b7bc9c0b0343cf87b38472",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "7faeb2d9baecd12cadfeeb3d1b3d22cf3e0ca0ec94b7bc9c0b0343cf87b38472",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "2fd9394453fe6d282ec4a9c95a8afa4db97fc3f85313f1ff7c759efb956d9e55",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "d/close/01": {
+      "path": "variants/d/close/composites/standing-d-close-face-01.png",
+      "sha256": "8c5315eb74801362d26724fe9186e724fd3f7e537bede7698aef8d50fb369e41",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "8c5315eb74801362d26724fe9186e724fd3f7e537bede7698aef8d50fb369e41",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "159e1242cc63135ccb4c0934e28a0f4e18a6b746b0120cf0d6ad387285126bc9",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "d/close/02": {
+      "path": "variants/d/close/composites/standing-d-close-face-02.png",
+      "sha256": "601fcc05df72b75c52cdacc36d38c68e6fb2c2b73ead1ffb77cf6d8b70f3b9bf",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "601fcc05df72b75c52cdacc36d38c68e6fb2c2b73ead1ffb77cf6d8b70f3b9bf",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "f50c2a71a2b5386e58405bb4f2344836e27e2d59fffb3cf458a343475847394a",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "d/close/03": {
+      "path": "variants/d/close/composites/standing-d-close-face-03.png",
+      "sha256": "fecaf0514d243f5012fcb3b8b897a207ef31c9b1b09c8f4b855cf3c9bb17de95",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "fecaf0514d243f5012fcb3b8b897a207ef31c9b1b09c8f4b855cf3c9bb17de95",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "0db8c7fcca6afc7911fcd4ec7f3134b3876f55c3a2e0635eff025e5c2aa5c55b",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "d/close/04": {
+      "path": "variants/d/close/composites/standing-d-close-face-04.png",
+      "sha256": "73ec1331d096be8c208656b6257127cf1fca4d448a4ef7915681e2391712d262",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "73ec1331d096be8c208656b6257127cf1fca4d448a4ef7915681e2391712d262",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "c09e519b52a7c2ce22fcafbd9406ccc76c9272661b703233f353c31793d2d579",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "d/close/05": {
+      "path": "variants/d/close/composites/standing-d-close-face-05.png",
+      "sha256": "2806244efdc166c1d9b8cf61dcbadb9464d3c0b1bdb043d60ee83c0f62d43727",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "2806244efdc166c1d9b8cf61dcbadb9464d3c0b1bdb043d60ee83c0f62d43727",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "afe6022e823d31f667a379c9c4ae82137cfdcc90d72a3aeda302cff26782f881",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "d/close/06": {
+      "path": "variants/d/close/composites/standing-d-close-face-06.png",
+      "sha256": "db689db57bf4472c8ccaa3b287970bf009ab9c458db1b266055b1a9bc0897fd5",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "db689db57bf4472c8ccaa3b287970bf009ab9c458db1b266055b1a9bc0897fd5",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "d1f84f436668cad7ac11b72cdc65e775f5850e5bd19396dfc3268beb783c9a7e",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "d/close/07": {
+      "path": "variants/d/close/composites/standing-d-close-face-07.png",
+      "sha256": "1fe3a487783f6838f5e54f76d46a1f322d1bc8932be21e1e5aedd69989423e5b",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "1fe3a487783f6838f5e54f76d46a1f322d1bc8932be21e1e5aedd69989423e5b",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "f7cf3a8edf9f514253c60f8dadb07bb47c49956755cb302aa2271ab250e8ffa1",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "d/close/08": {
+      "path": "variants/d/close/composites/standing-d-close-face-08.png",
+      "sha256": "427569368d68f563834435b00c48d385951014dd102a96a8f1fd129927b06a2b",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "427569368d68f563834435b00c48d385951014dd102a96a8f1fd129927b06a2b",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "5a2869251f7cb60d0cf1a261629a773af73dd8b5a17e7213b7a0db3338dc89bb",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "d/close/09": {
+      "path": "variants/d/close/composites/standing-d-close-face-09.png",
+      "sha256": "fdf056941291dff590224164284fdf38be7d277ccf0fcf8ac3b98d91ad395ece",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "fdf056941291dff590224164284fdf38be7d277ccf0fcf8ac3b98d91ad395ece",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "921ae59683aea9b847e3dc507dc13e659568a8002141f770cce79bfa78c5b881",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "d/close/10": {
+      "path": "variants/d/close/composites/standing-d-close-face-10.png",
+      "sha256": "65202dd9800126fd390a4c1c9a179fe439e26a874db190c42ad23c012537ac1e",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "65202dd9800126fd390a4c1c9a179fe439e26a874db190c42ad23c012537ac1e",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "c3c0c63d0d27f78ddabfb923f49864a8d7badf27cb421acccda9da73d2724fc2",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "d/close/11": {
+      "path": "variants/d/close/composites/standing-d-close-face-11.png",
+      "sha256": "922761346deb30f1453de34691474b0a76b6d8741e7db135f0d7c6356c38fc0c",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "922761346deb30f1453de34691474b0a76b6d8741e7db135f0d7c6356c38fc0c",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "79feb67cffa77bacdef8f23dbd08d043a2898b1532c8f71b1c862041e8850414",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "e/full/00": {
+      "path": "variants/e/full/composites/standing-e-full-face-00.png",
+      "sha256": "c6fcce791a1bc16d70ae48d9f9bf21c3275b7969c0e80ba7ee5e512d58085f83",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "c6fcce791a1bc16d70ae48d9f9bf21c3275b7969c0e80ba7ee5e512d58085f83",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "c6fcce791a1bc16d70ae48d9f9bf21c3275b7969c0e80ba7ee5e512d58085f83"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "e/full/01": {
+      "path": "variants/e/full/composites/standing-e-full-face-01.png",
+      "sha256": "a03783a288f1be1eaafffe53c7ab947edf10539c8d6ca83605c66bb0e51cd398",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "a03783a288f1be1eaafffe53c7ab947edf10539c8d6ca83605c66bb0e51cd398",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "a03783a288f1be1eaafffe53c7ab947edf10539c8d6ca83605c66bb0e51cd398"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "e/full/02": {
+      "path": "variants/e/full/composites/standing-e-full-face-02.png",
+      "sha256": "eafc09857bf331c9428b46523868258659cd0341c4061601dd4734504fcb8c17",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "eafc09857bf331c9428b46523868258659cd0341c4061601dd4734504fcb8c17",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "eafc09857bf331c9428b46523868258659cd0341c4061601dd4734504fcb8c17"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "e/full/03": {
+      "path": "variants/e/full/composites/standing-e-full-face-03.png",
+      "sha256": "57fc41de61cdec394774877a24b49d5fae4a0df439dc2b1bc50287b3f6ad6837",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "57fc41de61cdec394774877a24b49d5fae4a0df439dc2b1bc50287b3f6ad6837",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "57fc41de61cdec394774877a24b49d5fae4a0df439dc2b1bc50287b3f6ad6837"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "e/full/04": {
+      "path": "variants/e/full/composites/standing-e-full-face-04.png",
+      "sha256": "6e318dfc1dcff1dc65b8b093f5a5fda9533c550bd0202dfdc6cc1e02759c8e15",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "6e318dfc1dcff1dc65b8b093f5a5fda9533c550bd0202dfdc6cc1e02759c8e15",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "6e318dfc1dcff1dc65b8b093f5a5fda9533c550bd0202dfdc6cc1e02759c8e15"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "e/full/05": {
+      "path": "variants/e/full/composites/standing-e-full-face-05.png",
+      "sha256": "62e2aeecee6d165b4d1fcd66ea79b802cddcec0c3813dc1cfeb52ba68bde8a98",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "62e2aeecee6d165b4d1fcd66ea79b802cddcec0c3813dc1cfeb52ba68bde8a98",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "62e2aeecee6d165b4d1fcd66ea79b802cddcec0c3813dc1cfeb52ba68bde8a98"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "e/full/06": {
+      "path": "variants/e/full/composites/standing-e-full-face-06.png",
+      "sha256": "2767d98f059c92e7e779f2712b888a7b31cc36322c9f58bdc79329196415c0e1",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "2767d98f059c92e7e779f2712b888a7b31cc36322c9f58bdc79329196415c0e1",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "2767d98f059c92e7e779f2712b888a7b31cc36322c9f58bdc79329196415c0e1"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "e/full/07": {
+      "path": "variants/e/full/composites/standing-e-full-face-07.png",
+      "sha256": "a97486f780c8b997c7571b84fe33aa0ae2c087d372eeef1abc7e5da414b64a6d",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "a97486f780c8b997c7571b84fe33aa0ae2c087d372eeef1abc7e5da414b64a6d",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "a97486f780c8b997c7571b84fe33aa0ae2c087d372eeef1abc7e5da414b64a6d"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "e/full/08": {
+      "path": "variants/e/full/composites/standing-e-full-face-08.png",
+      "sha256": "0d90095a5ce58dad3f03c3a8305548fdc8ed4323707b931672c4e830965b8ee0",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "0d90095a5ce58dad3f03c3a8305548fdc8ed4323707b931672c4e830965b8ee0",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "0d90095a5ce58dad3f03c3a8305548fdc8ed4323707b931672c4e830965b8ee0"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "e/full/09": {
+      "path": "variants/e/full/composites/standing-e-full-face-09.png",
+      "sha256": "413c13ff2ba419f0e3494de288da871751780783741255d108342556fb658c34",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "413c13ff2ba419f0e3494de288da871751780783741255d108342556fb658c34",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "413c13ff2ba419f0e3494de288da871751780783741255d108342556fb658c34"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "e/full/10": {
+      "path": "variants/e/full/composites/standing-e-full-face-10.png",
+      "sha256": "fa70ecce86344fb973f0d137b0439dfed06c05324d180ce0c50d3189b6b39652",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "fa70ecce86344fb973f0d137b0439dfed06c05324d180ce0c50d3189b6b39652",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "fa70ecce86344fb973f0d137b0439dfed06c05324d180ce0c50d3189b6b39652"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "e/full/11": {
+      "path": "variants/e/full/composites/standing-e-full-face-11.png",
+      "sha256": "c2e76a292fb1e00470fa7bdbc661e91c0584bc2f108c975b08248831be9f8d74",
+      "humanReview": "approved",
+      "approvalMessage": "全景全部通过",
+      "approvalRecordedAt": "2026-10-01T11:20:51+08:00",
+      "reviewSource": "Explicit user message in this Codex conversation",
+      "reviewedSHA256": "c2e76a292fb1e00470fa7bdbc661e91c0584bc2f108c975b08248831be9f8d74",
+      "carriedFrom": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "c2e76a292fb1e00470fa7bdbc661e91c0584bc2f108c975b08248831be9f8d74"
+      },
+      "supersedes": null,
+      "agentVisualInspection": "inspected"
+    },
+    "e/close/00": {
+      "path": "variants/e/close/composites/standing-e-close-face-00.png",
+      "sha256": "c6819c3f0d9860ed7647c1dc74cbe933ef458598934b699d3c4cd6efee696b0a",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "c6819c3f0d9860ed7647c1dc74cbe933ef458598934b699d3c4cd6efee696b0a",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "6d997ec9d78dfc7b48edf276ec4da3e42ccfef896a47267e36b9939357f820a4",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "e/close/01": {
+      "path": "variants/e/close/composites/standing-e-close-face-01.png",
+      "sha256": "ec84eb0d2ed4cfe8f546dd35c4fccfedea2d0cde452d81e1510be795b89b66f8",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "ec84eb0d2ed4cfe8f546dd35c4fccfedea2d0cde452d81e1510be795b89b66f8",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "09216ac5f22a1b380df955020c777444919a32cc74b443bdd35b1799f3510704",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "e/close/02": {
+      "path": "variants/e/close/composites/standing-e-close-face-02.png",
+      "sha256": "a56ccbd1266990934da14f7060b262f46a659227c02813dd00212736376710ed",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "a56ccbd1266990934da14f7060b262f46a659227c02813dd00212736376710ed",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "7971aa3f6ffbd5c90ccb6d7746875f216b171bf3d866d0e1c8ffb73a7415e643",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "e/close/03": {
+      "path": "variants/e/close/composites/standing-e-close-face-03.png",
+      "sha256": "4c59c212907e7e5415d369ff3d87c042a844eca24a6215e5cc61e85d2ed9e7fc",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "4c59c212907e7e5415d369ff3d87c042a844eca24a6215e5cc61e85d2ed9e7fc",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "aeaf1310babb02831e024d7ce1ae1ee28790230be239edd53f538a3cc4d8c8f0",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "e/close/04": {
+      "path": "variants/e/close/composites/standing-e-close-face-04.png",
+      "sha256": "8d961b7c496d67353430a22c6e833d5c346e03670d7477f88e173b6f5eadfe2d",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "8d961b7c496d67353430a22c6e833d5c346e03670d7477f88e173b6f5eadfe2d",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "43589781ab8b8f990822e8b94c8b168114be5be4f797d8bec4719977ae3b98ad",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "e/close/05": {
+      "path": "variants/e/close/composites/standing-e-close-face-05.png",
+      "sha256": "ad900c5daab20abb705f53ad404b805ee626175a3c069a22305f4154edfa1e25",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "ad900c5daab20abb705f53ad404b805ee626175a3c069a22305f4154edfa1e25",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "fd6355266ed85048ce5f54d4aca7e27e7fdf0d817f5508c82583c269e748c381",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "e/close/06": {
+      "path": "variants/e/close/composites/standing-e-close-face-06.png",
+      "sha256": "66a2982d348542471b47b19450357063576814c5665178a969cde122e6ad03bb",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "66a2982d348542471b47b19450357063576814c5665178a969cde122e6ad03bb",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "29a1109abc45ef17c91b4f6a3ac226ff9d4bcf7ada23ce3b4978d294fd1c35d6",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "e/close/07": {
+      "path": "variants/e/close/composites/standing-e-close-face-07.png",
+      "sha256": "bb72b561fd63aa0411fc860d282cb7600f7050629958f40304a5d9f954db2f8d",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "bb72b561fd63aa0411fc860d282cb7600f7050629958f40304a5d9f954db2f8d",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "0f09be7700119ccc2053b0e052d6d8f5dd40ee29ee1ecc36a706860637b8a196",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "e/close/08": {
+      "path": "variants/e/close/composites/standing-e-close-face-08.png",
+      "sha256": "7e5aa842f15e0abaf252ecd58836a2700a61e4fab8804f2185d55e5108740da5",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "7e5aa842f15e0abaf252ecd58836a2700a61e4fab8804f2185d55e5108740da5",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "e0af9b3e2ec0866a271bb7fde579f65f3cdc28aba68a078d601b49d38f0de513",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "e/close/09": {
+      "path": "variants/e/close/composites/standing-e-close-face-09.png",
+      "sha256": "0ab016bd2724a129e4ff452a484b8e75bff52cd2296b359cef40518077d83eb3",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "0ab016bd2724a129e4ff452a484b8e75bff52cd2296b359cef40518077d83eb3",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "e5902698ff8bf993819563dfff847c1e862670b419f3c971b08a4c3af181dd4e",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "e/close/10": {
+      "path": "variants/e/close/composites/standing-e-close-face-10.png",
+      "sha256": "04d1a9f728c409fe3124c28615aa4306912bbc109fde68c0f30494095ea74454",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "04d1a9f728c409fe3124c28615aa4306912bbc109fde68c0f30494095ea74454",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "fcc239840f1d21be882d7c2c6a20ea9d018a9b1e2e0b19d9427f0db5953e3cf2",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    },
+    "e/close/11": {
+      "path": "variants/e/close/composites/standing-e-close-face-11.png",
+      "sha256": "8b28366794f6befa2c1643f059fd4e32fcf28338d467059fcdacf33cc85890bd",
+      "humanReview": "approved",
+      "approvalMessage": "OK，没问题。放入项目资源中，开启新的issue来接入应用",
+      "approvalRecordedAt": "2026-10-01T12:08:09+08:00",
+      "reviewSource": "Explicit user approval of the unified v2 review page in this Codex conversation",
+      "reviewedSHA256": "8b28366794f6befa2c1643f059fd4e32fcf28338d467059fcdacf33cc85890bd",
+      "carriedFrom": null,
+      "supersedes": {
+        "pack": "ArtSources/CharacterExpansion/original-standing/v1",
+        "sha256": "6ed061e737757afe405bff3eda0191786608b306ce1b71da50ee7a8fb36b8bed",
+        "humanReview": "revise",
+        "revisionMessage": "所有近景头部头发缺失，补全身体层，可以做到自动补全表情"
+      },
+      "agentVisualInspection": "inspected",
+      "approvalScope": "Unified v2 resource set accepted for project delivery"
+    }
+  },
+  "agentInspectionEvidence": "qa/agent-inspection.json",
+  "projectResourceDelivery": {
+    "status": "archived",
+    "path": "ChihayaPet/Resources/OriginalStandingSprites",
+    "recordedAt": "2026-10-01T12:08:09+08:00",
+    "bundleRegistration": "pending-application-integration",
+    "applicationLoading": "pending-application-integration",
+    "productionTimeStatus": "staged",
+    "runtimeDirectory": "ChihayaPet/Resources/StandingCharacterSprites",
+    "applicationIssue": 31
+  },
+  "productionTimeApplicationAcceptance": "not-integrated",
+  "applicationDelivery": {
+    "issue": 31,
+    "status": "accepted",
+    "recordedAt": "2026-10-03T14:06:15+08:00",
+    "integrationCommit": "20ba84add07db9efd4492e1eab3bd96706ae2833",
+    "reportURL": "https://github.com/a1457139709/ChihayaPet/blob/20ba84add07db9efd4492e1eab3bd96706ae2833/docs/reports/2026-10-03-issue-31-integration.md",
+    "resourceDirectory": "ChihayaPet/Resources/StandingCharacterSprites",
+    "runtimeManifestSHA256": "035a0e557645117daafd88235cc1fcda8326eba0681694b8f26607c182a949da",
+    "scope": "292 hash-matched numbered composites only. Mothers and standalone action references remain art archives.",
+    "images": {
+      "a/full/00": "514d0535f325e167b1ee6232fe3a69c6723dbd5ce2193235eb6babe47625a6a8",
+      "a/full/01": "f11bd62280921f44b34b9cbe00425e2a3f3d4219503529ec5ad82ac604084822",
+      "a/full/02": "56fa33e7596125d427f5b4c52570000564df69ccc9e3d4bc834967c175d3a543",
+      "a/full/03": "4fa9b21cda093c9c5e55d332c93cd0b0c8c4d7a4bd654c948e76ae005c1e39e9",
+      "a/full/04": "a4111bce1939e3bcb643cb6d7d9f22648911b92793095de9cefd8f0b8f6c571c",
+      "a/full/05": "7be2496164e8ae641f240a6fd08bff1cea670e581e1bb4dd9b8472409bf14619",
+      "a/full/06": "e82f12aa9fe08ea1a5e21a79dc94268b87d3d6d6e506e84c1416244fed08a17e",
+      "a/full/07": "2d04a5fbab2c21ae1b17dfac3d894f93d97684c6817bd75f43cec569e86a79b6",
+      "a/full/08": "1136171d245029db36ca63da66bcf48f65aae6784934eb48e711f9999f1df248",
+      "a/full/09": "c1b3ab6ed23d3297e8dbdc9ab643aa25d321968a77b511a00472f732e600503c",
+      "a/full/10": "013249cc438ddf8981b329faf687a17f33a42e6952814a870f0279d39402ee80",
+      "a/full/11": "466a35c8ec4e03f4668849c19e9f08cd62056aba7f9438fff833dc6929f69021",
+      "a/close/00": "f3d9afe20dd70cab00692a5dfb0e88706d9454adcd176c7e9be03516206522c8",
+      "a/close/01": "3c6f7e2a3e30e2a0b3c60a0a26526c371c2246628a6ad57792a8f6eae215f13f",
+      "a/close/02": "37ddaf0dbe93812ac6f8f8afde11e89719401f4d1130b66e90c70a8f20767fc8",
+      "a/close/03": "76a83498f43c583519bf2136f44d37893a2939e0ce9ed0586fb27c9a46bdc5e9",
+      "a/close/04": "e1baf4dab9498aa42fe30ec6b32a37ae7b8c0d1debd32370577c7dd15bba266b",
+      "a/close/05": "30da3394a0c6e4b227100af9c1dc46c3c0ba1140000e2b1586a91ed209b98b23",
+      "a/close/06": "ecba40e7ad4bfc840068777bdb4619030c94b6da788fe18a512ff36367088dee",
+      "a/close/07": "8d984e82199ed0eb9165e2ba631a3b1d9dd0b16d453eeba9e4011925a61277ef",
+      "a/close/08": "74e5046ad99d6132bbf8934c8d9d481df43d2d3109784fe3fb2f0d8e2b6bc285",
+      "a/close/09": "255269e2cdbe211e7bfac5019417110ceb4ed6ad22a855b84140fece8a62d976",
+      "a/close/10": "594c31b26d12808537800cc9d1b759e873801bf69f6739d242653f5a5ad34343",
+      "a/close/11": "d106e5fe53a8367cc76f3445c8a0a311243d7fa64e2ce1a6b9af78f79bdb3f55",
+      "a_/full/00": "afde8309d30f22fe65aa71ca645c19182d61771d591c069ad0effb85a518b688",
+      "a_/full/01": "f37c658e26b5c4715c2c8aa0a6eedec2604b05381fb446529465425d46cfa541",
+      "a_/full/02": "b55fa6c445002e1ee93bdb700191424da41f7b3328ab03a2b314bece6c2090cb",
+      "a_/full/03": "07b6afccc7823735f3cd338e6b071aa69039460da54ab9610c971901a7e1a0d9",
+      "a_/full/04": "c004bd80cf8e7067ba6d4c5bde47d4f354213f6ed9a27b5a041f6a8ddbaad0db",
+      "a_/full/05": "d6dffb9df05fc6048032dac33cc46954bfb339a7fdaff9a96c9b4733b565e620",
+      "a_/full/06": "cba4e5292a08e6b11854b28ae5cb967b8f44723da848df774b652cfe899854d0",
+      "a_/full/07": "b1d94f649b8f8548fe4e9e7cd2e196d2f3cdfa1467c8bf4c060268b77bfe14c1",
+      "a_/full/08": "d5c5ae0c660c6609d2cf7e96980e04826a9815dec7882dd94d437179b23102f9",
+      "a_/full/09": "7e043ab6eb15b9cf6986009393ef463d2f2cd0fee51f7ecacb7ed93a3fdd937b",
+      "a_/full/10": "b3b4eda23d84600934d3e7e472f2f016b919a6e7703f3c4fd6cffd166ed998d4",
+      "a_/full/11": "8fa499f7dd93e93c70fcb8d1f0162d2b114cb142dd875df241cbc49de86051e2",
+      "a_/close/00": "5aa82f666891d600b98190bdc742a3f8c919e416fa19a0ce28bc02095d156c65",
+      "a_/close/01": "1f032ef637fd9d6534be8a990165ce2ea5139d1bf0d3d7a2befdc25231dbf4ee",
+      "a_/close/02": "3836fc55c932337dd7e1df4e96b30fd4f49056dcd5a5d2f7b3cbe39f40088199",
+      "a_/close/03": "5f7418398912999d0fd9d4a61b8bba8b2dbf89eec29d99eaadc68f25c20fdbaf",
+      "a_/close/04": "e90a9a91e61595a2778849c0d7a81ae21cea09138e3cbaeb03fc12589c49be2c",
+      "a_/close/05": "dd115bb88d480e27cd2c34178c9620570a026045ca2b711c8f22823e0e470a88",
+      "a_/close/06": "fe22f7cbc715f9baa120fb6a2eb84c6baaab6f8ec9646ca0a2635d8162785973",
+      "a_/close/07": "c7a668350acea54ece531d38fb80c0a95619141a9a91d65f49bcb040d9ea14f9",
+      "a_/close/08": "03ab3e91695196995543e48bb55f9d36c6c84c94c86fa141a7bb81e135a168ce",
+      "a_/close/09": "858bbb38666e428e5dcbad9f048a432deb99802eb03de12c35a55eb49f6822b9",
+      "a_/close/10": "a4fbf918072970d59b3246a50bec558dd7bbd5bae349a969823ff19c4e426ff8",
+      "a_/close/11": "250ee6f5666e4110ec78979b1f2b11bafba1a1d901cc78a7bf2f994cc1480d12",
+      "b/full/00": "12997ffb97f78f9c7c1bd6519681cf5f2c0b367aab47dc03cb6ba903faddc1e2",
+      "b/full/01": "3d0191a6d792b0a49c4d8cc173d630506a8fa561048232b2d1a5685ef826dfe7",
+      "b/full/02": "8f0a3e42ce784a2775bd103c773712b46bfafeeb82fca61ce5cb6cab0f95f260",
+      "b/full/03": "43c3505853b15d806cc1b6625e9b4377207cb93224a7750eadab3f615edac303",
+      "b/full/04": "c795ffc0b8e59237ba1f1f4d131662d156aba0e4c00aab9e499670599b24d03a",
+      "b/full/05": "9641746249382a09880c7ba09c7cea910cdab3f2e524cb5b784e484129716843",
+      "b/full/06": "323d3f223b445a7aadb3f79cfda9e8a56e2959b55d20a2da78c19e36fe3f8fd0",
+      "b/close/00": "3e83354ba43acf390408cd7c8e6c12e7ac3ec4883132699acdd1e564e402f196",
+      "b/close/01": "d56c7df9284e15ca4dae75daed9c58556926f5050c9fa15a4a1d2ba28fdb2e49",
+      "b/close/02": "8a1720e25c68a9e3e939e4136df5e8700fbf815bc508d2cc2e698cdfd20cb148",
+      "b/close/03": "485a40d8a951ee63d9ffd0a6e17c0fd60e67fd77994dba6e200f18dc191ea1d9",
+      "b/close/04": "57b0baf66520fb1d863b208e6959487bcab780a37c23fba4d0f24b13f4541bf4",
+      "b/close/05": "85d89e3a4c9d4b6a6d834f9e4fe51cb206d150890a9afeca63f0ca417bcf5ffd",
+      "b/close/06": "ee49ec103332c20d9dc1f12c2625cf9fde30fc44ff0d85040665c6165e19b9b0",
+      "b_/full/00": "7737216fccb05f0c32daaa8406d9c5c4f74bcca130aeeecdf50e64c8a672dabe",
+      "b_/full/01": "f132e2291be44f65733d3e453ed6ee290d0457d103a0fd444ce7229a2d068efd",
+      "b_/full/02": "82e74c236dd391240e9f4f7a4714083ee4fc826a0f679dc4995ab496455640c0",
+      "b_/full/03": "126d25c360eb7e242f6ac50b0de89de0db4e5c7ba1353fba9d865f570e1405d5",
+      "b_/full/04": "b5cb393449a9f1457004f79c8271f1bba4e4c86be2a9c3d6b9a66cf668969c92",
+      "b_/full/05": "21c269562f4f70ad9c66030f8ca262b20386d325832031fd2d1cfae46418ea96",
+      "b_/full/06": "96ea7664115033e00cc1284fb53d47de662895048e57f6a448ab5a10e48ce32e",
+      "b_/close/00": "15faa991a0df04b39739973ee5fb60212cdec854a4afb21ef94c851495a35ac9",
+      "b_/close/01": "8c0ed88668e4a9eb23ad870afe48a6beb7079eee5ae1d2de9e7008508f951e32",
+      "b_/close/02": "eef5d8f995794195c4c5ea0c6990782a8f32b590e49d5b4fdbe4ffcf876232dc",
+      "b_/close/03": "e8497c0a03f9ce11553ed7a22aec5ff2550ccfd55d68a02cffea4fae82eb7ad7",
+      "b_/close/04": "b3e298f5dbc9b20e77db4a0f3fae354fe135cdc588b6c37b233103649048457f",
+      "b_/close/05": "dc271dda716c9beb46b2733e6baf2ea1175040efd992524857344839cc6b9b78",
+      "b_/close/06": "ed56fb2059163b8456a08155d7fade046efedd0f0b056c0d48e6aa1cec2cb9ac",
+      "c/full/00": "56fa2d45ad3dc79e5319ec19f0f531202724dfbe03286141c99a0940245bb442",
+      "c/full/01": "3cd99a63d0b74cf0ddfc1cd0cf9fc826c459efa8c6d64467168213b70a9a3875",
+      "c/full/02": "0d59935e52078543937bc90cae6b329895be8a58f6ec0a7a4f8cfab5d0f76eec",
+      "c/full/03": "91c6878d617569d1f20fc48a5373f4dd8c3369d008ba3de45a0f7acab3c57ae2",
+      "c/full/04": "bf92f7857f43f49a1735641af85d16b1edb81485459b41a4dc7d64df55577380",
+      "c/full/05": "d3b124b75559aef13951f22a5831a560c1d5cc3762ab230a1c11c34b7c71006f",
+      "c/full/06": "58506be552949f223c2e799af090a2f6af32081f016c4bf6d6f6aeb582ba3cd2",
+      "c/full/07": "3db3681e7c9a63fff8c93d693a0bcf6e9ad8e52cc6c85fb5c4844a692e59aa88",
+      "c/full/08": "9fe2fa4ef4e300be3c07ded02f8b07e4a13a7bec52478329e8c68bddbe17e907",
+      "c/full/09": "d4265729e69259e2f0d3a39b7b525a677a8bd5848f6e58e72ed14c25d6746330",
+      "c/full/10": "0caa555016dbe74455d4d6f9a861a1c2c8cac5e69368fc12f9bace57ce202e59",
+      "c/full/11": "2621cf8e3a1e733a5e0b31ea7db1b9065cdb5ec1e96a232c9f65f66a9643f989",
+      "c/close/00": "e40d97ffa2b983c4e4605c2406a991b86467aa07851e17317adf6563a3335aca",
+      "c/close/01": "f7ddcc13492931bf224614ac187f1b37b727072253985b03d04fe8a634ea2202",
+      "c/close/02": "d2efedbe6520f709076dbae9aafb87da3b25db896806a5e056653c0d601bb2f0",
+      "c/close/03": "33238eec1bb415ec5b67644d80feb642664b80187828cf14dd4eb64d66fa1857",
+      "c/close/04": "e6cb140d64131e58b7acfed3400dea1cfbf60255131f518b581ffb78371fd8ce",
+      "c/close/05": "082e8d970c6ff4ab96f91b5fda2123b435170d8cdee84603ae3fd2f1d8926c90",
+      "c/close/06": "868322ed30c0c36c2b742ff54bd1301f26cd0392496703b090bc3150d54451b9",
+      "c/close/07": "072470d111eab3298151440fe7c0dd39d161609689c5757eb8304e1bda944d77",
+      "c/close/08": "c1f84ca72cf8a1d9af164ec6b72b03589e4f4dc20c31439e7e71940ee38b3ee0",
+      "c/close/09": "1fc51db8723c163702f7bf9d71007ec565ab1a6b696ac02aa17fa50ef106fe7e",
+      "c/close/10": "53290347bf914254a1545834a0a3fbfd4bea3e6dfe4072f026c018c927370b46",
+      "c/close/11": "e0c09d56b696eeb1f7422ba2c8fdf4da8b46b9ae068754609dc5e06d11246f0c",
+      "d/full/00": "8a092812ecf91f99b592f65df6c271d35d4cd22aae6fe8f50254795ab62596d5",
+      "d/full/01": "835e8c7610a739fc1cef117d3775fcd2aeb12ea04698c421b11f6617e5230499",
+      "d/full/02": "4841ff1a03148ff91883a1a6cff3ce1c5a9a0d3e2ae25c311b398bdbd13e7d6e",
+      "d/full/03": "a55dbf45c88f3e00766e8d123e13ebe364d8d6b78e77a1fdbad9f055c7609fd9",
+      "d/full/04": "9fb5b54d872d9f4edfa8c350448620c2bd2980de87f068561258024e601a8c27",
+      "d/full/05": "2c6814fe527e7bc5deeb2d4f723c9de219f5854d957a25927688ed10a2575fc4",
+      "d/full/06": "76b8aa910c4180dafa12ebe161cdafa2c6f329919f52ca61449abdc5aab4857c",
+      "d/full/07": "1d0bec25a344ca5aa6c264ba1c4d5769af56f7af83ee25fa4af64af529022a37",
+      "d/full/08": "ce6667baf3955900d25159df57c5a36d5163d44d910f88382bc295136261a333",
+      "d/full/09": "554ab53ac1d3c7ef7c66ed216e6bf48f759ffec076726a283d4b33868a159931",
+      "d/full/10": "e12e04c3fc0044cc0538098d39d08c95903a67afbb1470f2fd97620c46fc1ae0",
+      "d/full/11": "39d3684e01a5b9acccb83ddfdd64df4fea71951fdd49dc8cd8b24fb108e222eb",
+      "d/close/00": "7faeb2d9baecd12cadfeeb3d1b3d22cf3e0ca0ec94b7bc9c0b0343cf87b38472",
+      "d/close/01": "8c5315eb74801362d26724fe9186e724fd3f7e537bede7698aef8d50fb369e41",
+      "d/close/02": "601fcc05df72b75c52cdacc36d38c68e6fb2c2b73ead1ffb77cf6d8b70f3b9bf",
+      "d/close/03": "fecaf0514d243f5012fcb3b8b897a207ef31c9b1b09c8f4b855cf3c9bb17de95",
+      "d/close/04": "73ec1331d096be8c208656b6257127cf1fca4d448a4ef7915681e2391712d262",
+      "d/close/05": "2806244efdc166c1d9b8cf61dcbadb9464d3c0b1bdb043d60ee83c0f62d43727",
+      "d/close/06": "db689db57bf4472c8ccaa3b287970bf009ab9c458db1b266055b1a9bc0897fd5",
+      "d/close/07": "1fe3a487783f6838f5e54f76d46a1f322d1bc8932be21e1e5aedd69989423e5b",
+      "d/close/08": "427569368d68f563834435b00c48d385951014dd102a96a8f1fd129927b06a2b",
+      "d/close/09": "fdf056941291dff590224164284fdf38be7d277ccf0fcf8ac3b98d91ad395ece",
+      "d/close/10": "65202dd9800126fd390a4c1c9a179fe439e26a874db190c42ad23c012537ac1e",
+      "d/close/11": "922761346deb30f1453de34691474b0a76b6d8741e7db135f0d7c6356c38fc0c",
+      "e/full/00": "c6fcce791a1bc16d70ae48d9f9bf21c3275b7969c0e80ba7ee5e512d58085f83",
+      "e/full/01": "a03783a288f1be1eaafffe53c7ab947edf10539c8d6ca83605c66bb0e51cd398",
+      "e/full/02": "eafc09857bf331c9428b46523868258659cd0341c4061601dd4734504fcb8c17",
+      "e/full/03": "57fc41de61cdec394774877a24b49d5fae4a0df439dc2b1bc50287b3f6ad6837",
+      "e/full/04": "6e318dfc1dcff1dc65b8b093f5a5fda9533c550bd0202dfdc6cc1e02759c8e15",
+      "e/full/05": "62e2aeecee6d165b4d1fcd66ea79b802cddcec0c3813dc1cfeb52ba68bde8a98",
+      "e/full/06": "2767d98f059c92e7e779f2712b888a7b31cc36322c9f58bdc79329196415c0e1",
+      "e/full/07": "a97486f780c8b997c7571b84fe33aa0ae2c087d372eeef1abc7e5da414b64a6d",
+      "e/full/08": "0d90095a5ce58dad3f03c3a8305548fdc8ed4323707b931672c4e830965b8ee0",
+      "e/full/09": "413c13ff2ba419f0e3494de288da871751780783741255d108342556fb658c34",
+      "e/full/10": "fa70ecce86344fb973f0d137b0439dfed06c05324d180ce0c50d3189b6b39652",
+      "e/full/11": "c2e76a292fb1e00470fa7bdbc661e91c0584bc2f108c975b08248831be9f8d74",
+      "e/close/00": "c6819c3f0d9860ed7647c1dc74cbe933ef458598934b699d3c4cd6efee696b0a",
+      "e/close/01": "ec84eb0d2ed4cfe8f546dd35c4fccfedea2d0cde452d81e1510be795b89b66f8",
+      "e/close/02": "a56ccbd1266990934da14f7060b262f46a659227c02813dd00212736376710ed",
+      "e/close/03": "4c59c212907e7e5415d369ff3d87c042a844eca24a6215e5cc61e85d2ed9e7fc",
+      "e/close/04": "8d961b7c496d67353430a22c6e833d5c346e03670d7477f88e173b6f5eadfe2d",
+      "e/close/05": "ad900c5daab20abb705f53ad404b805ee626175a3c069a22305f4154edfa1e25",
+      "e/close/06": "66a2982d348542471b47b19450357063576814c5665178a969cde122e6ad03bb",
+      "e/close/07": "bb72b561fd63aa0411fc860d282cb7600f7050629958f40304a5d9f954db2f8d",
+      "e/close/08": "7e5aa842f15e0abaf252ecd58836a2700a61e4fab8804f2185d55e5108740da5",
+      "e/close/09": "0ab016bd2724a129e4ff452a484b8e75bff52cd2296b359cef40518077d83eb3",
+      "e/close/10": "04d1a9f728c409fe3124c28615aa4306912bbc109fde68c0f30494095ea74454",
+      "e/close/11": "8b28366794f6befa2c1643f059fd4e32fcf28338d467059fcdacf33cc85890bd",
+      "blue-white-rose/full/00": "8a708748ac5f2eb67862361dba6bcd36851f249ec519b592bc26abb6fcfa2e6a",
+      "blue-white-rose/full/01": "37eec2428d28fa2611f611b5c4a01b329fd650e2a5d56e22fa65a037f20cddd8",
+      "blue-white-rose/full/02": "8f637252808b159508688a07f1052a6d7f85bda56d1274474825c058eb746d9d",
+      "blue-white-rose/full/03": "75ec0b1d48a4c82aad24c32a22f58ba883602105ef32092472b9087dea4a47ba",
+      "blue-white-rose/full/04": "589bb2d76c831c24a932a66ef51effa3150bd17a1bf6bd09af2bfacd1318acac",
+      "blue-white-rose/full/05": "ddb7117277c3efbbd1e874463ea93db5dc639921f10cea14e547fc12bc59f6cf",
+      "blue-white-rose/full/06": "11748de80ba51e19749c503872c761d98ecd54ed64011c8f73f0dbba8a06b27e",
+      "blue-white-rose/full/07": "4ed2ba6d259563942335ff39000425b02a9378c438649837a19e5047debf7aa5",
+      "blue-white-rose/full/08": "590c5e54e3a4293a1e2755fdb24a77493400c235e9e830ef0b633323a5856738",
+      "blue-white-rose/full/09": "6db8d1b272043c5f96a0b265a3c0a8102d96c284881be32cc5300e8339c71c66",
+      "blue-white-rose/full/10": "3c0189ff6f536d02d7ba9e15271361b87bf2d258fc2a6276923c443331e676ae",
+      "blue-white-rose/full/11": "1fa7f39b5f529bbceaf4b24282cab9270f755a478f1ae68f2e201c5aa5a30cf3",
+      "blue-white-rose/close/00": "4ccc87db5368f758fc1abaccc7aa62d00b311a953d64769b92c25992b5b161e9",
+      "blue-white-rose/close/01": "2bec612a63c4f05d29772400463e1c928f660214e78eccee520e304cb0a4975d",
+      "blue-white-rose/close/02": "c5e6846c7b55fd8f5cb0c0061aa6cd9fca723b8e0af83adeb756b1ea9bb7d80b",
+      "blue-white-rose/close/03": "857de0b90da35d192ff5167c71787105a103d8d6c2b7fcbf547f98f607e8c4d0",
+      "blue-white-rose/close/04": "002ff375377aa1066b53e6253289c646b64ed8851b6fae58d70857b9ab8b41d6",
+      "blue-white-rose/close/05": "0519fbf56d5aa9de405e219600fea21431ca5690f4ea0d77d64e424e10cfdce1",
+      "blue-white-rose/close/06": "2111f81764687a930f40dde31ecbd3af7c6c3c83b42da0ca04bb9b9e5153386c",
+      "blue-white-rose/close/07": "2ee217ef60b39821f5c7ed9cca029fadf716b4f5a89fbef64c671975e223aaf7",
+      "blue-white-rose/close/08": "9682f30219b6db0cce9c37d7b298eb6150ccf1070f69af92f492caa447eb4fce",
+      "blue-white-rose/close/09": "9ffb3bac567671a243ccc14008a38e6a0f3fc9642ac0d775bf038f31a41f58fb",
+      "blue-white-rose/close/10": "d851cd10122c4ebbd94368206496d19ec79f00c40b04f72a71f86b9b4e613e6e",
+      "blue-white-rose/close/11": "31f232d65f3b2f4f67edf795075618e7f3531c84cdbb324ab0c65c476f317a7c",
+      "red-white-anime-maid/full/00": "b59ab282d1cee806d66eadc8f5bbdf750fc0028b528d192277e64ced5fe5a598",
+      "red-white-anime-maid/full/01": "2c60905f19523b125c2a7ccc1927050bae933cde25097d79ac144cea7d79e20b",
+      "red-white-anime-maid/full/02": "a37726388648c6421c27c09080bbe48550fdb5e6558ba318fa7791b84196a712",
+      "red-white-anime-maid/full/03": "4104fd539ec4ce48550bfedd56623ee43564b8bcc4fe5e7df7c0488e57c07f02",
+      "red-white-anime-maid/full/04": "596ec6233a45b13d2ff2b7dbed2a45ab19cb6c859e13611cba8ccc652d18ba98",
+      "red-white-anime-maid/full/05": "72ee26ffa89aaaa2800f701fde7a47d7c7c86d0053cddfe761cdb2da899f879a",
+      "red-white-anime-maid/full/06": "e7ac420d56e15a619346e9b6ff93a88efe39a3e9d5a6485d5e6dda5d4a9b4888",
+      "red-white-anime-maid/full/07": "30583ca02a55182190a2b204f6be7257ec5909447133cb38ff1be9f826765a06",
+      "red-white-anime-maid/full/08": "b294dad60adcd0c5914776ba4a700374ecdcb954a93865d8ad917326bd6f4287",
+      "red-white-anime-maid/full/09": "85464ab30bf496ca0a41ae4aa137847673ff8181ec414ead3a515b067cddbc4e",
+      "red-white-anime-maid/full/10": "9e519f68208255b417816a01c79817a65107918771f7a3a70fd45e185e831c22",
+      "red-white-anime-maid/full/11": "46477f13603efbdfaa77004b63677851e67e92010d325add41b35b812d0393e2",
+      "red-white-anime-maid/close/00": "342618e41add9283aa692287368e6c4783e644a23e417ce5db369b68fd869a63",
+      "red-white-anime-maid/close/01": "a57ea24686e5331a83ca192ab592890aef0b6fc7d484369650bf3731eded81c0",
+      "red-white-anime-maid/close/02": "7e9606c8aa973b81e0db2b19c16504ad22debd60678172858badd446e92bff2d",
+      "red-white-anime-maid/close/03": "251e513f07c36296ffc7d4fedb946fe715da32b5af1582b5e787ee2267ec1617",
+      "red-white-anime-maid/close/04": "5432fdfefebef3474e94e2b2960401c9f44b88bce04dc5dc7584a9a9aa5be407",
+      "red-white-anime-maid/close/05": "3626160748412a9f96c1a7e40410764f8d0c1e4644d066893482144f24cd62ba",
+      "red-white-anime-maid/close/06": "a201ba0921ba1b5f4ad2db59bc459be95491173f87e03aea01f26253b7e99b38",
+      "red-white-anime-maid/close/07": "7b8dcc2826b0c8fa5007cf33daa19da61dd4e8de875806e20159fa09eeaf7887",
+      "red-white-anime-maid/close/08": "0cb218b5b5ccb908bead63606698888c859c555566e7749d2ccf0b257ba71266",
+      "red-white-anime-maid/close/09": "fff46703e5c25bc032a71d31763475df32f2cc619287873af89ea472a618e01e",
+      "red-white-anime-maid/close/10": "21de4e9aaf8352a5f05be355f54a7835d60dc30db772b456d3c3b0c7d09ce8fa",
+      "red-white-anime-maid/close/11": "b0d1b0799a0d734651c37b789b8c451b3236b05f0e6b4d746c62f94e9e70067f",
+      "loose-long-shirt-experiment-v4/full/00": "0b29d24d8778c62297f3824e5f4cd2310cf0ad92be6b830b84340468ad1c150c",
+      "loose-long-shirt-experiment-v4/full/01": "86aec6f9e6b4b184242c6424c5d72e41af3fd357d8fb27b26d925149fdee3933",
+      "loose-long-shirt-experiment-v4/full/02": "e151da4b05b08cf280668a02d5b8ef38f3af7dd7c8258885e1bcfb6e15c1148a",
+      "loose-long-shirt-experiment-v4/full/03": "4fec9ef2a95980dcbe61051df818c9b709d6b15e75a0de821f3d23b131532b2d",
+      "loose-long-shirt-experiment-v4/full/04": "2ff1577fab1a4c9074d033e0c8854d2c4e090d54f9e582ab5f02f73bf798468f",
+      "loose-long-shirt-experiment-v4/full/05": "dfdfec2839882ab3d953a357941c10f5366e6a49e28047b75611790c26a60eb8",
+      "loose-long-shirt-experiment-v4/full/06": "d5e111f864f171f8035cffabaf60b842cc63c3fd4fabd5b83978adb217db7730",
+      "loose-long-shirt-experiment-v4/full/07": "6bfd695104196b7c21f01c3cb29fc501ff526231400b5aa5779382d6552b48ca",
+      "loose-long-shirt-experiment-v4/full/08": "288862f8ce40b7e6eadc377a7cd98de090d0f10826c7f51cb193d452638c8969",
+      "loose-long-shirt-experiment-v4/full/09": "3b7b5610f9f34d1ea069e13b9d49951e86e4d7630134f39ee00cb61a04ace212",
+      "loose-long-shirt-experiment-v4/full/10": "d65d917392300d2370ab641504c8b1e00a57916de2743fe2761f2d40f1d53fcc",
+      "loose-long-shirt-experiment-v4/full/11": "2a319c6b398f7e0adc6d7df5c52ebda60df14c374571aa9fcd6c696973c9dd49",
+      "loose-long-shirt-experiment-v1/full/00": "4f5b49f64dbea664bbc937f254ff6b6cc290f9d24377d2f63d413e2f3cd97cc2",
+      "loose-long-shirt-experiment-v1/full/01": "1651cdd98a6a0eb821851d9033a35c4729bf26a8fca703b80ff5d0fb352d94a3",
+      "loose-long-shirt-experiment-v1/full/02": "93f56e30cb0c21221aa9d719c1a72636bc7254248e31628ed98edb610bd95318",
+      "loose-long-shirt-experiment-v1/full/03": "f21007a553d647b78b0f014e39b66854b9650f7a29986eb468ee0690a6e53acc",
+      "loose-long-shirt-experiment-v1/full/04": "a6bf11904abcff63fb9281119234648b5a72be4d3d1b9012e3a1aff3c52651bb",
+      "loose-long-shirt-experiment-v1/full/05": "237a5dc19a493f91d1c721bfc4310603c113402ae2ca74011cb990042fc6a64f",
+      "loose-long-shirt-experiment-v1/full/06": "fc32c983dc5d5de76018b7b32b4f5edbfa69f50abf444e4d5dbb480850796cac",
+      "loose-long-shirt-experiment-v1/full/07": "14c92afc013e603b555d5bfd027066159254e73505c0ee3e57700826f40d58eb",
+      "loose-long-shirt-experiment-v1/full/08": "c4e16afa6fbcc3f782d114f7fdad2d89172eb7d0ee47af5f8d7055c8717c19c9",
+      "loose-long-shirt-experiment-v1/full/09": "5c06d8e1aac5ed4a2431e7d9b69879194c8804d26ff527fba843e8746cf5bcfa",
+      "loose-long-shirt-experiment-v1/full/10": "dd7a2cb9c40f97f0aaa0444aed438d833606a2ca2c0c12fecc51c6213b4b082c",
+      "loose-long-shirt-experiment-v1/full/11": "ce326562d60f46e79785cf70b86cf29f38aecbf8ad1c0e18698d7eb480323155",
+      "loose-long-shirt-experiment-v1/close/00": "875400fe3ec13857cec97045c360e0a449737fd6d93fcc610d22f8c9d372be88",
+      "loose-long-shirt-experiment-v1/close/01": "49a6bf2a21fb78df6c8a3895133b96eb56190bb3990dcb323b0e8be8d5416f85",
+      "loose-long-shirt-experiment-v1/close/02": "5397fe5f5e2e5d42463bd9328eaa26ca31dc8be427af2ba9107114cfc0f7b078",
+      "loose-long-shirt-experiment-v1/close/03": "e2091c10af86dd4c46afbf2a73bca5fed1bc2235aa770423b44a1f9ec8f30bf1",
+      "loose-long-shirt-experiment-v1/close/04": "c2d937e693406439a703f1e60014fed47346ca95014a8a6999b26a52ada7a6de",
+      "loose-long-shirt-experiment-v1/close/05": "67a390ecc02b4edbf3c6beb16a668cd234b10d2c9deaad98e846a4898e4f5ecf",
+      "loose-long-shirt-experiment-v1/close/06": "647c8d3e07e66e925022cd7dc4303248b9898b8d13056d074c2ea637cc32881f",
+      "loose-long-shirt-experiment-v1/close/07": "2c993c0ae21da5d85e237accca48910270cc77e34b260747e40974293aabb792",
+      "loose-long-shirt-experiment-v1/close/08": "e77df02e0870194bd000e503c9ab4a9c7ef4950b399d698c0450f674d617ee61",
+      "loose-long-shirt-experiment-v1/close/09": "f63a63a968e2747c1c8133ffbc50b4f020d2483541a18c8ddd63a742956ab5db",
+      "loose-long-shirt-experiment-v1/close/10": "3c1860dba312a522ecfe99be53187167f247c04b88f7d6246a64ba0f353a574c",
+      "loose-long-shirt-experiment-v1/close/11": "7040f739876c2a9229092518c0d2539aab854f504986c1793b998dcadf0b6283",
+      "loose-long-shirt-experiment-v4/close/00": "b691c03e0aa5e751bf0c184e80583ab30155ac6a680d98839dc9dfc1290f715f",
+      "loose-long-shirt-experiment-v4/close/01": "d2c0e212bffa4b4c2fca1b5bcb61ea0bf71e3d08152e4c879948138d49d9f15f",
+      "loose-long-shirt-experiment-v4/close/02": "efd6e35449f9344a9e0cf1531dc2ac1f8a779e785516ffc14ee42fcdbe432e64",
+      "loose-long-shirt-experiment-v4/close/03": "98f5c76371d793819dce440b9aebafd521592d4f3de7726852920c0a413e18b0",
+      "loose-long-shirt-experiment-v4/close/04": "8b41feb355874fd36260eff97e856ca89d00740e1872b9d9131007f64d8c2557",
+      "loose-long-shirt-experiment-v4/close/05": "efb59748d22273103f6a878c7ca8156f02524ade3cca12a9c1a91cad14b5c78e",
+      "loose-long-shirt-experiment-v4/close/06": "8efe91c44772ded4a1c2f613f6b627bbde68b5c794c8c9e3dfb056d3f1638958",
+      "loose-long-shirt-experiment-v4/close/07": "5827a1ea6153617597a567bcc4aa16d2bf498183974269339d3603b0c52e8727",
+      "loose-long-shirt-experiment-v4/close/08": "bdaf6aad091556d524cc9977fb3397fae872b04dc73d475554f83f7125555729",
+      "loose-long-shirt-experiment-v4/close/09": "5697f0ea07afe21c7ee9fa1c13af1a91d368b10376d5707b1f946a84b05372e1",
+      "loose-long-shirt-experiment-v4/close/10": "855b4071e553fec8c2e215416077ab55c62de30754dab6d41b4a5cd9e765e6aa",
+      "loose-long-shirt-experiment-v4/close/11": "144780d86ab06d75d74a5183ec4a3030805879fc33fe17d654d1aed3d65ef125",
+      "red-white-anime-maid-work/full/00": "71c939599a44bc27cd3fb3b780e48ac9fb0ca15f7a1a87094f8ab784dc055ba0",
+      "red-white-anime-maid-work/full/01": "14831901d6d9172526f3c092bf895ffa3de9317ff1663a78ae0a7c1a912c5a9b",
+      "red-white-anime-maid-work/full/02": "0e3f329eb7f2777ebc098c2be685c12c1c85c08e163e7979497a59d71e5d6852",
+      "red-white-anime-maid-work/full/03": "5900b8b47262989a106729ffc9d12648d9342ec851bf5e48506aa646fbe14881",
+      "red-white-anime-maid-work/full/04": "2114bd46e1d2c13d59c4b4a563b32f2b45d7114812c3676d7fb80051459dda65",
+      "red-white-anime-maid-work/full/05": "000b07d2e002692558bf1a3d7222e2012526508b26851028723fb21cde8159a3",
+      "red-white-anime-maid-work/full/06": "4d9cabefa42bb995ee9191af4810b5b025ba17dc93c0fd9e43add0f558d4e11c",
+      "red-white-anime-maid-work/full/07": "aac61bebc8c7d52df4fd9e14b0d1fb06cec0a50e85b7d12df40d027cd0df1fc5",
+      "red-white-anime-maid-work/full/08": "fc5f4c175338c668f87a7d2df4181d5f8545073d30e095a97712515006a7b27a",
+      "red-white-anime-maid-work/full/09": "44aaa7aa5677b5251983fe9b23dade0ae2319d03fbb8541d27409a19122301c1",
+      "red-white-anime-maid-work/full/10": "af30f25cd22bf7c6298f996aa1a9475c17fd1c63008b0bbcfa699918cfa732c0",
+      "red-white-anime-maid-work/full/11": "c3d593e3ce221e41b37114b222ce990f5b1888b49961ef1dac7f1e7bb6bfcea9",
+      "red-white-anime-maid-work/close/00": "b9a744c08038dde1caa305327012ac7b7853f9ce0145f214cd2e832366b0ebf4",
+      "red-white-anime-maid-work/close/01": "428b645f958c3ed70edaad0a3ef2f3868f25204fb2b754ec1f69eb06fc99bc75",
+      "red-white-anime-maid-work/close/02": "9a477ab6b80cb1bdedd8363cb2d30c827b3e3e2a9cf960fd5e078897986b3c2b",
+      "red-white-anime-maid-work/close/03": "9178b8ca351971dc427bfadd2522859cdafd619bb26069d9cd67cb7d3b5ae901",
+      "red-white-anime-maid-work/close/04": "1b1fbe2abbf5e322e839ca51a70f01d46724cf02488943c665751e4d91e3dbb1",
+      "red-white-anime-maid-work/close/05": "fa5cea587e0a4e07243be5d7d064dafb0e78c793bbaaa44e9ea28ac65ec5331f",
+      "red-white-anime-maid-work/close/06": "109a71ffea78eec3b753f984c34df3fe33c428c78a7ea2d2a93503b0155ad421",
+      "red-white-anime-maid-work/close/07": "a8a8cc46a4fcc6c7b4b3b8d3423ad8b2991815815548c1b660c23b30aa7abe9e",
+      "red-white-anime-maid-work/close/08": "83825e5fc406a837a14c5c67478ac36c61f5bf8e1fa1c67918ce1301728d26bf",
+      "red-white-anime-maid-work/close/09": "8f68f74bea698706ef4a9ff38c047e747e270ac90dddb43d43517148aeae43cf",
+      "red-white-anime-maid-work/close/10": "bfd7058edc17d4a3109ceb76a9bfe3eaa7fa0cd2db3185f1b158c455b653d74d",
+      "red-white-anime-maid-work/close/11": "1400544d2b6977b17cbbad20309db12a81f24148f79aade97b10462534bd2f39",
+      "blue-white-rose-princess-hands/full/00": "06f66b1983eefc85ce2ee55d015d0228e23efd032952d8d5cdcfce5962bd17a0",
+      "blue-white-rose-princess-hands/full/01": "f81aaf304f8301536d2ccdc7b4c5a41baf5545142f0b8653ead6924ba41d211f",
+      "blue-white-rose-princess-hands/full/02": "ef4b999dce06f6e8fabde5b9a7ff405b4c4324cfb9f0626b2bf557af83cf1d66",
+      "blue-white-rose-princess-hands/full/03": "8726e5b2744f47d7b51a881ec2468e23ae9acbebe36a92fd903d833b5304978f",
+      "blue-white-rose-princess-hands/full/04": "ae34a3b5a207c8aaa940a9a99ec8af02eea722ae7da1aa1f280b32b54a4983fb",
+      "blue-white-rose-princess-hands/full/05": "8acbf9e72c1ca466084007e8c217c5c2231a8d03c49dce4a821d9f2326b96d70",
+      "blue-white-rose-princess-hands/full/06": "226ff8d256897c07e69dec0ae33816e331838b8e3db91279e15c674af6b65c95",
+      "blue-white-rose-princess-hands/full/07": "58b14296eabed27f7d156beffcaeeca24fa514a6026051b7096a03c22d8f1cf6",
+      "blue-white-rose-princess-hands/full/08": "a7f7add3d3b166887ccf5c5cf0d2bd78d0c7099fe5d0010f6e30390a263a3790",
+      "blue-white-rose-princess-hands/full/09": "c391152f598873c458e24b12bda41eeec011a995225bdb8871b08056dea95728",
+      "blue-white-rose-princess-hands/full/10": "3e8e64bd2688ddb3259b5c99ace928fb56054d405db42bbe22a9a101123634d0",
+      "blue-white-rose-princess-hands/full/11": "159bddf9765ca408bd8157ed1d4ab7a443134129f9819b209f16fa9fd21798be",
+      "blue-white-rose-princess-hands/close/00": "a75ca07ec1a27306242caba2256c85703494b32f887d59b814d5325c227d855f",
+      "blue-white-rose-princess-hands/close/01": "79401118f49efa70bad400a67829caf9155ff057724cb7af045c75b1998a258e",
+      "blue-white-rose-princess-hands/close/02": "b0b65020ceb7dbd70c27bf802984a9f4464170eb8308d949c777c935355bac22",
+      "blue-white-rose-princess-hands/close/03": "e63c1a6b7b5f21a28bedc2e776cdae676b845f3691bfe6775c7d5af34241f224",
+      "blue-white-rose-princess-hands/close/04": "9b54385c6447a7d8ae0d274da3817188b3789a1326484709a7b335209787d089",
+      "blue-white-rose-princess-hands/close/05": "9b8fe65fc2e5895e5facaf4fff76dce4859c5f95b0cef05c5cdde1e775bd95b8",
+      "blue-white-rose-princess-hands/close/06": "95765cdbe0221ec3051741964add4d4e49c50662d3de7e0463a5e1d40d0499e9",
+      "blue-white-rose-princess-hands/close/07": "2a3c5536602df8c0341e218f65b2cec55b2bf2788b953b47cd670cf6d556318f",
+      "blue-white-rose-princess-hands/close/08": "5344f2dc6510943733c8f0d977af44108fe0b373ddcd5cb316159a1be193ad57",
+      "blue-white-rose-princess-hands/close/09": "b3ff1932fd389102dce81aac6614559c0b37bad93ac93c7537c0bd74c44dae05",
+      "blue-white-rose-princess-hands/close/10": "c4dd2f94547b753faebf7d92950a00f69ebb8d98a5bbf1517f7b4b80c3229f69",
+      "blue-white-rose-princess-hands/close/11": "479310ed4f7c51f4140d5be5177dd975b45418c437137cbb5b667348e94e3242"
+    }
+  }
+}

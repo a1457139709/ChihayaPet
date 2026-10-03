@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>千早 · 立绘展示与逐图审核</title>
+<style>
+:root{color-scheme:light;--ink:#363747;--muted:#707280;--line:#dddce2;--rose:#97627e;--green:#406957;font:15px/1.6 system-ui,-apple-system,sans-serif;background:#f7f5f0;color:var(--ink)}
+*{box-sizing:border-box}body{margin:0}header{padding:28px 32px 18px;border-bottom:1px solid var(--line);background:#fffcf7}h1{margin:0;font-size:25px;font-weight:650}p{margin:8px 0}a{color:#76566e}button,select{font:inherit;color:inherit;border:1px solid var(--line);border-radius:7px;background:#fff;padding:6px 12px}button{cursor:pointer}button:disabled{opacity:.45;cursor:default}button.primary{background:var(--green);color:white;border-color:var(--green)}button.active{border-color:var(--rose);box-shadow:0 0 0 1px var(--rose)}.meta{font-size:13px;color:var(--muted)}.stats{display:flex;gap:20px;margin-top:12px;flex-wrap:wrap}.stats strong{color:var(--green)}nav{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:16px 32px;background:#f0ede7;border-bottom:1px solid var(--line)}main{display:grid;grid-template-columns:minmax(260px,340px) minmax(0,1fr);min-height:700px}.list{padding:18px;border-right:1px solid var(--line);max-height:calc(100vh - 250px);overflow:auto}.list h2{font-size:15px;margin:14px 0 8px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.card{padding:5px;background:#fff;border-radius:8px;border:1px solid var(--line);position:relative}.card img{display:block;width:100%;height:100px;object-fit:contain;background:repeating-conic-gradient(#eee 0% 25%,#fff 0% 50%) 0/12px 12px}.card span{font-size:12px;display:block;text-align:center}.card.approved{border-color:var(--green)}.card.revise{border-color:#a34d54}.workspace{min-width:0;padding:20px 28px}.workspace h2{margin:0;font-size:20px}.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0}.stage-scroll{overflow:auto;max-height:740px;border:1px solid var(--line);border-radius:8px}.stage{min-height:380px;display:flex;justify-content:center;align-items:flex-start;padding:24px;gap:24px;min-width:max-content;background:#f6f2ea}.stage.dark{background:#242836}.stage.checker{background:repeating-conic-gradient(#d5d5d5 0% 25%,#fff 0% 50%) 0/16px 16px}.stage img{display:block;flex-shrink:0;object-fit:contain}.layer-box{position:relative;flex-shrink:0}.layer-box img{position:absolute;top:0;left:0}.stage .label{font-size:12px;margin:0 0 8px;color:#555}.stage.dark .label{color:#eee}textarea{font:inherit;width:100%;min-height:64px;border:1px solid var(--line);border-radius:7px;padding:9px;background:#fff}.review{margin-top:18px;padding:14px;border:1px solid var(--line);border-radius:8px;background:#fffcf7}.review p{font-size:13px;color:var(--muted)}details{margin:16px 0;font-size:13px}pre{white-space:pre-wrap;word-break:break-all;background:#eeece8;padding:12px;border-radius:8px;max-height:330px;overflow:auto}.links{display:flex;gap:14px;flex-wrap:wrap;font-size:13px}#notice{color:#9b4854;font-size:13px}.fallback{padding:30px}.fallback a{display:block}@media(max-width:850px){main{grid-template-columns:1fr}.list{max-height:250px;border-right:0;border-bottom:1px solid var(--line)}.cards{grid-template-columns:repeat(7,1fr)}header,nav,.workspace{padding:16px}.stage-scroll{max-height:650px}}
+</style>
+<header>
+  <h1 id="page-title">千早 · 游戏原站姿</h1>
+  <p id="pack-summary">7 组服装与朝向 · 14 个取景 · 148 张正式透明 PNG。使用各自配对的游戏身体与原脸。</p>
+  <div class="stats"><span><strong>148 / 148</strong> 原站姿已导出</span><span><strong>148 / 148</strong> 原站姿像素检查通过</span><span id="review-count">原站姿人工批准 0 / 148</span><span id="showcase-count" hidden></span><span id="mother-count" hidden></span><span id="experiment-count" hidden></span><span id="action-count" hidden></span><span id="application-status">应用验收记录待核对</span></div>
+  <p class="meta" id="pack-description"></p>
+  <div class="links" id="showcase-shortcuts"></div>
+  <div class="links"><a href="inventory.csv">原站姿 CSV 清单</a><a href="manifest.json">原站姿来源与坐标</a><a href="qa/verification.json">原站姿像素验证</a><a href="progress.json">原站姿审核进度</a><a href="https://github.com/a1457139709/ChihayaPet/issues/29">Issue #29</a></div>
+</header>
+<nav>
+  <label>服装 <select id="outfit"><option value="all">全部</option></select></label>
+  <label>取景 <select id="view"><option value="all">全景与近景</option><option value="full">全景</option><option value="close">近景</option></select></label>
+  <label>审核 <select id="status"><option value="all">全部</option><option value="pending">待审核</option><option value="approved">已批准</option><option value="revise">需修改</option></select></label>
+  <button id="export">导出逐图审核记录</button><span class="meta" id="storage-note">页面包含正式审核状态；新增本机记录需导出登记</span>
+</nav>
+<section id="export-panel" class="review" style="margin:16px 32px" hidden>
+  <strong>逐图审核 JSON</strong>
+  <p>保存 JSON，或复制下方文本交回。记录只包含你明确批准或要求修改的图片。</p>
+  <textarea id="export-text" aria-label="导出的逐图审核 JSON" readonly style="min-height:180px;font:12px/1.5 monospace"></textarea>
+  <div class="tools"><a id="download-records" download="chihaya-standing-human-review.json">保存 JSON 文件</a><button id="close-export">收起审核 JSON</button></div>
+</section>
+<main>
+  <aside class="list" id="list"></aside>
+  <section class="workspace">
+    <h2 id="image-title"></h2><p class="meta" id="geometry"></p><p class="meta" id="variant-note"></p>
+    <div class="tools"><button id="previous">上一张</button><button id="next">下一张</button><button id="cycle">切换本取景表情</button><span id="position" class="meta"></span></div>
+    <div class="tools">
+      <label>背景 <select id="background"><option value="light">浅色</option><option value="dark">深色</option><option value="checker">透明网格</option></select></label>
+      <label>显示高度 <select id="height"><option value="native">原尺寸</option><option value="240">240</option><option value="256" selected>256</option><option value="480">480</option></select></label>
+      <label>像素模拟 <select id="density"><option value="1">1×</option><option value="2">2× Retina 像素</option></select></label>
+      <label>查看 <select id="mode"><option value="output">透明合成 PNG</option><option value="compare">合成 PNG 与身体＋原脸并排</option><option value="body">身体／去脸母图</option><option value="face">独立原脸层</option><option value="original-face" hidden disabled>游戏原始脸层（未变换）</option><option value="game-mothers" hidden disabled>母图与游戏去脸母图并排</option><option value="game" hidden disabled>与游戏米色便服并排</option><option value="candidate" hidden disabled>与试验原候选并排</option></select></label>
+    </div>
+    <div class="stage-scroll"><div class="stage" id="stage"></div></div>
+    <p class="meta">2× 选项放大到对应设备像素，便于检查显示缩放。独立层分别缩放时可能出现浏览器叠加细缝，图像验收以正式 PNG 为准。此处为独立图片预览；原 PNG 尺寸不变。</p>
+    <div class="links" id="image-links"></div>
+    <section class="review">
+      <strong id="image-status">待人工审核</strong>
+      <p id="review-instructions">查看刘海、脸缘、领口与透明边缘，并切换表情核对定位。批准仅适用于当前图片及其哈希。</p>
+      <textarea id="note" aria-label="本张审核意见" placeholder="可填写接缝、定位等审核意见"></textarea>
+      <div class="tools"><button class="primary" id="approve">批准当前图</button><button id="revise">本图需修改</button><button id="pending">恢复待审核</button></div>
+      <div id="notice" aria-live="polite"></div>
+      <p>记录保存在当前浏览器。导出 JSON 并交回后，代理才会核实、登记人工批准并更新 issue。浏览或自动切换不会批准图片。</p>
+    </section>
+    <details><summary>当前图的完整来源与像素检查</summary><pre id="evidence"></pre></details>
+  </section>
+</main>
+<noscript><p class="fallback">需启用 JavaScript 进行逐图查看；也可通过完整 CSV 清单逐张打开 PNG。</p></noscript>
+<script id="data" type="application/json">__MANIFEST__</script>
+<script id="showcase-data" type="application/json">__SHOWCASE__</script>
+<script>
+const manifest=JSON.parse(document.getElementById('data').textContent);
+// Apply gallery display names while retaining the source version identifiers.
+const showcaseCatalog=JSON.parse(document.getElementById('showcase-data').textContent);
+const outfitDisplayNames={'loose-long-shirt-experiment-v1':'体检服','loose-long-shirt-experiment-v4':'体检服-里'};
+for(const [outfit,name] of Object.entries(outfitDisplayNames)){
+  if(Object.hasOwn(showcaseCatalog.outfits||{},outfit))showcaseCatalog.outfits[outfit]=name;
+  for(const variant of Object.values(showcaseCatalog.variants||{}))if(variant.outfit===outfit){
+    variant.name=name;variant.outputLabel=name+' · '+(variant.view==='full'?'全景':'近景');
+    for(const result of variant.results||[])result.outputLabel=variant.outputLabel+' · '+(result.kind==='mother'?'固定去脸母图':'表情 '+result.id);
+    if(variant.candidateReference)variant.candidateLabel=name+' · 原候选';
+  }
+}
+const visibleOutfits=new Set(['red-white-anime-maid-work','blue-white-rose','blue-white-rose-princess-hands','red-white-anime-maid','loose-long-shirt-experiment-v1','loose-long-shirt-experiment-v4']);
+const showcase={...showcaseCatalog,outfits:Object.fromEntries(Object.entries(showcaseCatalog.outfits||{}).filter(([key])=>visibleOutfits.has(key))),variants:Object.fromEntries(Object.entries(showcaseCatalog.variants||{}).filter(([,variant])=>visibleOutfits.has(variant.outfit)))};
+const $=id=>document.getElementById(id), names={a:'冬服正面',a_:'夏服正面',b:'冬服侧身',b_:'夏服侧身',c:'米色便服',d:'粉色裙装',e:'体操服',...showcase.outfits};
+const variants={...manifest.variants,...showcase.variants};
+const images=Object.entries(variants).flatMap(([key,v])=>v.results.map(r=>({key:key+'/'+r.id,variantKey:key,v,r})));
+const originals=images.filter(i=>Object.hasOwn(manifest.variants,i.variantKey)),actions=images.filter(i=>i.r.kind==='action-candidate'),samples=images.filter(i=>!Object.hasOwn(manifest.variants,i.variantKey)&&!i.v.experimental&&i.r.kind!=='mother'&&i.r.kind!=='action-candidate'),motherEntries=images.filter(i=>i.r.kind==='mother'),mothers=motherEntries.filter(i=>!i.v.experimental),trialSamples=images.filter(i=>i.v.experimental&&i.r.kind!=='mother'&&i.r.kind!=='action-candidate'),trialMothers=motherEntries.filter(i=>i.v.experimental);
+const storageKey='chihaya-standing-review:'+manifest.originalsSHA256+':'+manifest.producedAt;
+let reviews={},selected=images[0],timer=null,exportUrl=null;
+if(samples.length||trialSamples.length||actions.length){
+  $('page-title').textContent='千早 · 原站姿与新增服装';
+  $('pack-summary').textContent='游戏原站姿 '+originals.length+' 张 · 新增服装 '+samples.length+' 张表情 PNG 与 '+mothers.length+' 张固定母图。'+(trialSamples.length?'独立试验 '+trialSamples.length+' 张表情 PNG 与 '+trialMothers.length+' 张母图。':'')+(actions.length?'历史完整动作图 '+actions.length+' 张（独立参考）。':'')+'统一查看全景、近景、透明 PNG 与不同显示高度。';
+  for(const v of Object.values(showcase.variants||{})){const shortcut=link(v.name+' · '+(v.view==='full'?'全景':'近景'),'?outfit='+encodeURIComponent(v.outfit)+'&view='+v.view);shortcut.target='_self';$('showcase-shortcuts').append(shortcut);}
+  if(showcase.manifest)$('showcase-shortcuts').append(link('新增服装展示清单',showcase.manifest));
+}
+$('pack-description').textContent=manifest.bodyCompletion?.status==='completed'?'全景高 606，近景高 670；身体层与绑定按各取景分别固定。体检服全景与女仆装-工使用登记的派生脸层，其余现行取景使用完整原脸原生绑定。人工审核按具体 PNG 哈希记录。':'制作画布高 606，保留游戏近景原有裁切。人工审核按具体 PNG 记录。';
+try{reviews=JSON.parse(localStorage.getItem(storageKey)||'{}');if(!reviews||Array.isArray(reviews)||typeof reviews!=='object')reviews={};}catch{reviews={};$('storage-note').textContent='本机存储不可用，请导出审核 JSON 保存';}
+for(const [key,name] of Object.entries(names)){const option=document.createElement('option');option.value=key;option.textContent=name;$('outfit').append(option);}
+const query=new URLSearchParams(location.search);
+for(const id of ['outfit','view','status'])if([...$(id).options].some(o=>o.value===query.get(id)))$(id).value=query.get(id);
+function review(image){const r=reviews[image.key];if(!r||r.sha256!==image.r.sha256)return null;const registeredAt=Date.parse(image.r.approvalRecordedAt),localAt=Date.parse(r.recordedAt);return image.r.reviewedSHA256===r.sha256&&Number.isFinite(registeredAt)&&Number.isFinite(localAt)&&localAt<=registeredAt?null:r;}
+function status(image){return review(image)?.status||image.r.humanReview||'pending';}
+function applicationDelivery(image){const receipt=Object.hasOwn(manifest.variants,image.variantKey)?manifest.applicationDelivery:showcase.applicationDelivery;return /^\d{2}$/.test(image.r.id)&&receipt?.status==='accepted'&&receipt.images?.[image.key]===image.r.sha256?receipt:null;}
+const applicationCount=images.filter(i=>applicationDelivery(i)).length;
+$('application-status').textContent=applicationCount?'正式表情应用验收：'+applicationCount+' / '+images.filter(i=>/^\d{2}$/.test(i.r.id)).length+'（#31）':'应用验收：尚无匹配当前 PNG 的交付记录';
+if(applicationCount)$('showcase-shortcuts').append(link('#31 分阶段应用验收',manifest.applicationDelivery?.reportURL||showcase.applicationDelivery.reportURL));
+$('showcase-shortcuts').append(link('当前工作与历史索引','https://github.com/a1457139709/ChihayaPet/blob/codex/issue-60-artwork-audit/docs/reports/2026-10-03-issue-60-artwork-audit.md'));
+function filtered(){return images.filter(i=>($('outfit').value==='all'||i.v.outfit===$('outfit').value)&&($('view').value==='all'||i.v.view===$('view').value)&&($('status').value==='all'||status(i)===$('status').value));}
+function stop(){if(timer)clearInterval(timer);timer=null;$('cycle').textContent='切换本取景表情';}
+function drawList(){
+  $('list').replaceChildren();
+  const visible=filtered();
+  for(const key of Object.keys(variants)){
+    const group=visible.filter(i=>i.variantKey===key);if(!group.length)continue;
+    const h=document.createElement('h2');h.textContent=group[0].v.name+' · '+(group[0].v.view==='full'?'全景':'近景');$('list').append(h);
+    const cards=document.createElement('div');cards.className='cards';
+    for(const image of group){const b=document.createElement('button');b.className='card '+status(image)+(selected?.key===image.key?' active':'');const title=image.r.kind==='mother'?'母图':image.r.kind==='action-candidate'?'动作图':'表情 '+image.r.id;b.setAttribute('aria-label',h.textContent+' '+title);const img=document.createElement('img');img.src=image.r.path;img.alt=image.key;img.loading='lazy';const label=document.createElement('span');label.textContent=(image.r.kind==='mother'?'母图':image.r.kind==='action-candidate'?'动作图':image.r.id)+' · '+({pending:'待审核',approved:'已批准',revise:'需修改'}[status(image)]);b.append(img,label);b.onclick=()=>{stop();select(image);};cards.append(b);}
+    $('list').append(cards);
+  }
+  if(!visible.length){const p=document.createElement('p');p.textContent='该筛选下没有图片。';$('list').append(p);}
+  const approved=originals.filter(i=>status(i)==='approved').length,official=originals.filter(i=>i.r.humanReview==='approved').length;
+  $('review-count').textContent='原站姿人工批准 '+approved+' / '+originals.length+'（已登记 '+official+'）';
+  $('showcase-count').hidden=!samples.length;
+  $('showcase-count').textContent='新增服装表情人工批准 '+samples.filter(i=>status(i)==='approved').length+' / '+samples.length+'（已登记 '+samples.filter(i=>i.r.humanReview==='approved').length+'）';
+  $('mother-count').hidden=!mothers.length;$('mother-count').textContent='新增服装母图人工批准 '+mothers.filter(i=>status(i)==='approved').length+' / '+mothers.length;
+  $('experiment-count').hidden=!trialSamples.length;$('experiment-count').textContent='试验表情人工批准 '+trialSamples.filter(i=>status(i)==='approved').length+' / '+trialSamples.length+' · 试验母图 '+trialMothers.filter(i=>status(i)==='approved').length+' / '+trialMothers.length;
+  $('action-count').hidden=!actions.length;$('action-count').textContent='动作图人工批准 '+actions.filter(i=>status(i)==='approved').length+' / '+actions.length+'（独立参考）';
+}
+function link(label,path){const a=document.createElement('a');a.textContent=label;a.href=path;a.target='_blank';a.rel='noopener';return a;}
+function drawStage(){
+  const stage=$('stage');stage.replaceChildren();stage.className='stage '+$('background').value;if(!selected)return;
+  const {v,r}=selected;
+  const displayHeight=$('height').value==='native'?v.canvas[1]:Number($('height').value);
+  const scale=displayHeight*Number($('density').value)/v.canvas[1];
+  const makeImage=(path,w,h)=>{const img=document.createElement('img');img.src=path;img.alt=path;img.style.width=w*scale+'px';img.style.height=h*scale+'px';return img;};
+  const output=()=>{const group=document.createElement('div');const p=document.createElement('p');p.className='label';p.textContent=r.outputLabel||v.outputLabel||'正式导出 PNG';group.append(p,makeImage(r.path,...v.canvas));stage.append(group);};
+  const mode=$('mode').value;
+  if(mode==='output'||mode==='compare'||mode==='game'||mode==='candidate')output();
+  if(mode==='body')stage.append(makeImage(v.bodyLayer,...v.canvas));
+  if(mode==='face')stage.append(makeImage(r.faceLayer,...v.faceSize));
+  if(mode==='original-face'&&r.originalFaceLayer){const group=document.createElement('div'),p=document.createElement('p');p.className='label';p.textContent='游戏完整原件 · 未缩放、未旋转';group.append(p,makeImage(r.originalFaceLayer,...(v.originalFaceSize||v.faceSize)));stage.append(group);}
+  if(mode==='game-mothers'&&v.gameMotherReferences?.length){for(const reference of [{label:'当前固定去脸母图',path:v.bodyLayer,canvas:v.canvas},...v.gameMotherReferences]){const group=document.createElement('div'),p=document.createElement('p');p.className='label';p.textContent=reference.label;group.append(p,makeImage(reference.path,...reference.canvas));stage.append(group);}}
+  if(mode==='compare'){
+    const group=document.createElement('div'),p=document.createElement('p');p.className='label';p.textContent=v.layerCompositionLabel||(v.experimental?'固定母图＋派生脸层':'独立身体＋原脸');
+    const box=document.createElement('div');box.className='layer-box';box.style.width=v.canvas[0]*scale+'px';box.style.height=v.canvas[1]*scale+'px';
+    const body=makeImage(v.bodyLayer,...v.canvas),face=makeImage(r.faceLayer,...v.faceSize);face.style.left=v.faceOffset[0]*scale+'px';face.style.top=v.faceOffset[1]*scale+'px';box.append(body);if(v.backingLayer)box.append(makeImage(v.backingLayer,...v.canvas));box.append(face);if(v.foregroundLayer)box.append(makeImage(v.foregroundLayer,...v.canvas));if(r.browLayer)box.append(makeImage(r.browLayer,...v.canvas));group.append(p,box);stage.append(group);
+  }
+  if(mode==='game'&&r.gameReference){const group=document.createElement('div'),p=document.createElement('p');p.className='label';p.textContent='游戏米色便服 · 同一原脸 '+r.id;group.append(p,makeImage(r.gameReference,...v.canvas));stage.append(group);}
+  if(mode==='candidate'&&v.candidateReference){const group=document.createElement('div'),p=document.createElement('p');p.className='label';p.textContent=v.candidateLabel||'试验 v4 原候选 · 保留原文件';group.append(p,makeImage(v.candidateReference,...v.canvas));stage.append(group);}
+}
+function select(image){
+  const wasMother=selected?.r.kind==='mother';
+  selected=image;
+  for(const id of ['previous','next','cycle','approve','revise','pending'])$(id).disabled=!image;
+  if(!image){$('image-title').textContent='该筛选下没有图片';$('geometry').textContent='';$('variant-note').textContent='';$('position').textContent='0 / 0';$('image-status').textContent='请选择有图片的服装、取景或审核状态';$('note').value='';$('notice').textContent='';$('evidence').textContent='';$('image-links').replaceChildren();drawList();drawStage();return;}
+  const {v,r}=image,current=review(image),isMother=r.kind==='mother',isCandidate=r.kind==='action-candidate',gameOption=$('mode').querySelector('[value="game"]');gameOption.hidden=gameOption.disabled=!r.gameReference;if($('mode').value==='game'&&!r.gameReference)$('mode').value='output';
+  const candidateOption=$('mode').querySelector('[value="candidate"]');candidateOption.hidden=candidateOption.disabled=!v.candidateReference;if($('mode').value==='candidate'&&!v.candidateReference)$('mode').value='output';
+  candidateOption.textContent=isCandidate?'与原版礼装站姿并排':'与试验原候选并排';
+  const originalOption=$('mode').querySelector('[value="original-face"]');originalOption.hidden=originalOption.disabled=!r.originalFaceLayer;if($('mode').value==='original-face'&&!r.originalFaceLayer)$('mode').value='output';
+  const mothersOption=$('mode').querySelector('[value="game-mothers"]');mothersOption.hidden=mothersOption.disabled=!v.gameMotherReferences?.length;if($('mode').value==='game-mothers'&&!v.gameMotherReferences?.length)$('mode').value='output';
+  $('mode').querySelector('[value="compare"]').textContent=v.layerCompositionLabel?'合成 PNG 与独立图层并排':v.experimental?'合成 PNG 与母图＋派生脸层并排':'合成 PNG 与身体＋原脸并排';$('mode').querySelector('[value="face"]').textContent=v.faceLayerLabel||(v.experimental?'独立派生脸层':'独立原脸层');
+  for(const value of ['body','face','compare']){const option=$('mode').querySelector('[value="'+value+'"]');option.hidden=isCandidate;option.disabled=isCandidate||(isMother&&value!=='body');}
+  if((isCandidate&&['body','face','compare'].includes($('mode').value))||(isMother&&['face','compare'].includes($('mode').value))||(wasMother&&!isMother&&$('mode').value==='body'))$('mode').value='output';
+  $('mode').querySelector('[value="output"]').textContent=isCandidate?'完整动作 PNG':'透明合成 PNG';
+  $('image-title').textContent=v.name+' · '+(v.view==='full'?'全景':'近景')+' · '+(isCandidate?'小腹叠手动作':isMother?'固定去脸母图':v.faceBindingType==='native-original'?'原脸表情 '+r.id:v.experimental||v.faceBindingType==='derived-game-features'?'适配表情 '+r.id:'原脸 '+r.id);
+  $('variant-note').textContent=v.description||'';
+  $('geometry').textContent=v.geometryLabel||(v.experimental?v.canvas.join(' × ')+' px · 游戏源脸 '+v.originalFaceSize.join(' × ')+' px · 统一缩放 '+(v.faceTransform.scale*100).toFixed(2)+'%／旋转 '+v.faceTransform.rotationDegrees.toFixed(2)+'° · 固定脸区遮罩':v.canvas.join(' × ')+' px · 原脸 '+v.faceSize.join(' × ')+' px · 左上角 ('+v.faceOffset.join(', ')+') · '+(isMother?'背景与脸孔透明':r.id==='00'?'游戏默认表情':'游戏来源编号'));
+  $('height').options[0].textContent=v.canvas[1]+' 原尺寸';
+  const all=filtered(),index=all.findIndex(i=>i.key===selected.key);$('position').textContent=(index+1)+' / '+all.length;
+  $('previous').disabled=index<=0;$('next').disabled=index<0||index===all.length-1;
+  $('cycle').disabled=isMother||isCandidate;$('cycle').hidden=isCandidate;$('approve').textContent=isMother?'批准当前母图':'批准当前图';
+  $('review-instructions').textContent=isCandidate?'查看叠手姿势、手指、衣料与透明边缘。批准仅适用于当前完整动作图及其哈希。':'查看刘海、脸缘、领口与透明边缘，并切换表情核对定位。批准仅适用于当前图片及其哈希。';
+  $('image-status').textContent=current?{pending:'本机记录：本张恢复待审核，待登记',approved:'本机记录：本张已批准，待登记',revise:'本机记录：本张需修改，待登记'}[current.status]:{pending:'待人工审核',approved:'已登记：本张已获用户批准',revise:'已登记：本张需修改'}[status(image)];$('note').value=current?.note||r.revisionMessage||r.approvalMessage||'';$('notice').textContent='';
+  $('evidence').textContent=JSON.stringify({imageKey:image.key,issue:r.issue||v.issue||manifest.issue,canvas:v.canvas,faceOffset:v.faceOffset,originalFaceSize:v.originalFaceSize,faceTransform:v.faceTransform,faceBinding:v.faceBinding,bodySource:v.bodySource,bodySHA256:v.bodySHA256,bodyLayer:v.bodyLayer,bodyRepair:v.bodyRepair,motherApproval:v.motherApproval,...r,humanReview:status(image),localHumanRecord:current,applicationAcceptance:applicationDelivery(image)?'accepted-by-issue-31':/^\d{2}$/.test(r.id)?'no-matching-delivery-record':'art-reference-only',applicationDelivery:applicationDelivery(image)},null,2);
+  const evidenceLinks=[...(v.links||[{label:'原尺寸接缝 · 浅底',path:v.previews.light.nativeSeams},{label:'原尺寸接缝 · 深底',path:v.previews.dark.nativeSeams},{label:'240／256／480 对照',path:v.previews.light.representativeScales}])];
+  if(r.previews?.light)for(const [theme,label] of [['light','浅底'],['dark','深底']]){evidenceLinks.unshift({label:'本表情接缝 · '+label,path:r.previews[theme].seams},{label:'本表情 240／256／480 · '+label,path:r.previews[theme].heights});}
+  $('image-links').replaceChildren(link('打开／保存本张原 PNG',r.path),...(v.bodyLayer?[link(v.motherApproval?'固定去脸母图':'独立身体',v.bodyLayer)]:[]),...(r.faceLayer?[link(v.faceLayerLabel||(v.experimental?'派生脸层':'独立原脸'),r.faceLayer)]:[]),...(r.browLayer?[link('独立眉线层',r.browLayer)]:[]),...(r.originalFaceLayer?[link('游戏原脸源文件',r.originalFaceLayer)]:[]),...evidenceLinks.map(item=>link(item.label,item.path)));
+  drawList();drawStage();
+}
+for(const id of ['outfit','view','status'])$(id).onchange=()=>{stop();const all=filtered();select(all.find(i=>i.key===selected?.key)||all[0]);};
+for(const id of ['background','height','density'])$(id).onchange=drawStage;
+$('mode').onchange=()=>{stop();if(['body','game-mothers'].includes($('mode').value)&&selected){const mother=motherEntries.find(i=>i.variantKey===selected.variantKey);if(mother){if($('status').value!=='all'&&$('status').value!==status(mother))$('status').value='all';select(mother);return;}}drawStage();};
+for(const [id,step] of [['previous',-1],['next',1]])$(id).onclick=()=>{stop();const all=filtered(),i=all.findIndex(x=>x.key===selected?.key);if(all[i+step])select(all[i+step]);};
+$('cycle').onclick=()=>{if(timer){stop();return;}if(!selected||selected.r.kind==='mother')return;$('cycle').textContent='停止切换';timer=setInterval(()=>{const group=filtered().filter(i=>i.variantKey===selected.variantKey&&i.r.kind!=='mother'),index=group.findIndex(i=>i.key===selected.key);select(group[(index+1)%group.length]);},1100);};
+function record(value){
+  stop();if(!selected)return;const note=$('note').value.trim();
+  if(value==='revise'&&!note){$('notice').textContent='请填写本张需要修改的位置或问题。';return;}
+  reviews[selected.key]={status:value,issue:selected.r.issue||selected.v.issue||manifest.issue,sha256:selected.r.sha256,path:selected.r.path,note,approvalMessage:value==='approved'?'用户点击“'+$('approve').textContent+'”确认 '+selected.key:null,recordedAt:new Date().toISOString()};
+  try{localStorage.setItem(storageKey,JSON.stringify(reviews));}catch{$('storage-note').textContent='本机存储不可用，请立即导出 JSON 保存';}
+  const all=filtered();select(all.find(i=>i.key===selected.key)||all[0]);
+}
+for(const [id,value] of [['approve','approved'],['revise','revise'],['pending','pending']])$(id).onclick=()=>record(value);
+$('note').onfocus=stop;
+$('export').onclick=()=>{
+  stop();
+  const valid=Object.fromEntries(images.filter(i=>review(i)).map(i=>[i.key,review(i)]));
+  const data={version:1,issue:manifest.issue,showcaseSources:showcase.sources||[],packProducedAt:manifest.producedAt,originalsSHA256:manifest.originalsSHA256,exportedAt:new Date().toISOString(),scope:'Explicit per-image human actions only; no application acceptance.',images:valid};
+  const serialized=JSON.stringify(data,null,2)+'\n';
+  $('export-text').value=serialized;$('export-panel').hidden=false;
+  if(exportUrl)URL.revokeObjectURL(exportUrl);
+  exportUrl=URL.createObjectURL(new Blob([serialized],{type:'application/json'}));$('download-records').href=exportUrl;
+};
+$('close-export').onclick=()=>{$('export-panel').hidden=true;};
+document.addEventListener('keydown',e=>{if(['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName))return;if(e.key==='ArrowRight')$('next').click();if(e.key==='ArrowLeft')$('previous').click();});
+select(filtered().find(i=>i.r.id===query.get('face'))||filtered()[0]);
+</script>
+</html>

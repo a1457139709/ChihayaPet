@@ -1,0 +1,114 @@
+{
+  "recordedAt": "2026-10-03T03:25:54.547832+00:00",
+  "scope": "New v13 fixed mother and twelve close/v7 composites",
+  "mother": {
+    "path": "mother-body.png",
+    "sha256": "2d6e5121375e844a9ae7131a369ce8e825a60cbe5ffb05919e4d8a33f0c86111",
+    "status": "approved",
+    "message": "ok",
+    "approvalMessage": "ok",
+    "recordedAt": "2026-10-03T03:25:54.547832+00:00",
+    "approvalRecordedAt": "2026-10-03T03:25:54.547832+00:00",
+    "reviewedSHA256": "2d6e5121375e844a9ae7131a369ce8e825a60cbe5ffb05919e4d8a33f0c86111",
+    "scope": "v13 close mother and the red-framed broad-hair seam correction",
+    "basis": "User replied ok after v13 mother / before-after delivery; current review target is mother."
+  },
+  "images": {
+    "00": {
+      "path": "face-00.png",
+      "sha256": "b691c03e0aa5e751bf0c184e80583ab30155ac6a680d98839dc9dfc1290f715f",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "reviewedSHA256": null
+    },
+    "01": {
+      "path": "face-01.png",
+      "sha256": "d2c0e212bffa4b4c2fca1b5bcb61ea0bf71e3d08152e4c879948138d49d9f15f",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "reviewedSHA256": null
+    },
+    "02": {
+      "path": "face-02.png",
+      "sha256": "efd6e35449f9344a9e0cf1531dc2ac1f8a779e785516ffc14ee42fcdbe432e64",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "reviewedSHA256": null
+    },
+    "03": {
+      "path": "face-03.png",
+      "sha256": "98f5c76371d793819dce440b9aebafd521592d4f3de7726852920c0a413e18b0",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "reviewedSHA256": null
+    },
+    "04": {
+      "path": "face-04.png",
+      "sha256": "8b41feb355874fd36260eff97e856ca89d00740e1872b9d9131007f64d8c2557",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "reviewedSHA256": null
+    },
+    "05": {
+      "path": "face-05.png",
+      "sha256": "efb59748d22273103f6a878c7ca8156f02524ade3cca12a9c1a91cad14b5c78e",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "reviewedSHA256": null
+    },
+    "06": {
+      "path": "face-06.png",
+      "sha256": "8efe91c44772ded4a1c2f613f6b627bbde68b5c794c8c9e3dfb056d3f1638958",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "reviewedSHA256": null
+    },
+    "07": {
+      "path": "face-07.png",
+      "sha256": "5827a1ea6153617597a567bcc4aa16d2bf498183974269339d3603b0c52e8727",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "reviewedSHA256": null
+    },
+    "08": {
+      "path": "face-08.png",
+      "sha256": "bdaf6aad091556d524cc9977fb3397fae872b04dc73d475554f83f7125555729",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "reviewedSHA256": null
+    },
+    "09": {
+      "path": "face-09.png",
+      "sha256": "5697f0ea07afe21c7ee9fa1c13af1a91d368b10376d5707b1f946a84b05372e1",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "reviewedSHA256": null
+    },
+    "10": {
+      "path": "face-10.png",
+      "sha256": "855b4071e553fec8c2e215416077ab55c62de30754dab6d41b4a5cd9e765e6aa",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "reviewedSHA256": null
+    },
+    "11": {
+      "path": "face-11.png",
+      "sha256": "144780d86ab06d75d74a5183ec4a3030805879fc33fe17d654d1aed3d65ef125",
+      "status": "pending",
+      "message": null,
+      "recordedAt": null,
+      "reviewedSHA256": null
+    }
+  }
+}
