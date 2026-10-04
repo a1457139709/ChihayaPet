@@ -9,17 +9,17 @@ import { fromMacOrigin, toMacOrigin, clamped, bubbleFrame } from '../app/shared/
 import { inputCommand, validateInput } from '../app/shared/text.ts';
 import { IdleCatalog, idleAllowed, idleDelay } from '../app/shared/idle.ts';
 
-test('development and packaged Mac prompts share the build project file; QA prompts stay isolated', () => {
+test('custom persona belongs to the local data directory and never overwrites build source', () => {
   const root = mkdtempSync(path.join(os.tmpdir(), 'chihaya-prompt-paths-'));
   try {
     const projectRoot = path.join(root, 'project'); mkdirSync(projectRoot);
     writeFileSync(path.join(projectRoot, 'package.json'), '{}');
     for (const packaged of [false, true]) {
-      const options = { platform: 'darwin' as const, packaged, executable: '/Applications/ChihayaPet.app/Contents/MacOS/ChihayaPet', appPath: packaged ? '/Applications/ChihayaPet.app/Contents/Resources/app.asar' : path.join(projectRoot, 'dist'), projectRoot, home: root };
+      const options = { platform: 'darwin' as const, packaged, executable: '/Applications/ChihayaPet.app/Contents/MacOS/ChihayaPet', appPath: packaged ? '/Applications/ChihayaPet.app/Contents/Resources/app.asar' : path.join(projectRoot, 'dist'), home: root };
       const paths = resolvePaths(options);
-      assert.equal(paths.prompt, path.join(projectRoot, 'chihaya_prompt.md'));
+      assert.equal(paths.prompt, path.join(paths.root, 'persona.md'));
       const qaRoot = path.join(root, 'qa');
-      assert.equal(resolvePaths({ ...options, qaRoot }).prompt, path.join(qaRoot, 'chihaya_prompt.md'));
+      assert.equal(resolvePaths({ ...options, qaRoot }).prompt, path.join(qaRoot, 'persona.md'));
     }
   } finally { rmSync(root, { recursive: true, force: true }); }
 });

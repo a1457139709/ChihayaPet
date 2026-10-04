@@ -3,7 +3,7 @@ import path from 'node:path';
 import os from 'node:os';
 
 export type DataPaths = { root: string; config: string; prompt: string; preferences: string; music: string; runtime: string; session: string; cache: string; logs: string; crashes: string; temp: string; files: string };
-export function resolvePaths(options: { platform: NodeJS.Platform; packaged: boolean; executable: string; appPath: string; home?: string; qaRoot?: string; projectRoot?: string }): DataPaths {
+export function resolvePaths(options: { platform: NodeJS.Platform; packaged: boolean; executable: string; appPath: string; home?: string; qaRoot?: string }): DataPaths {
   let root: string;
   if (options.qaRoot) root = path.resolve(options.qaRoot);
   else if (options.platform === 'win32' && options.packaged) root = path.join(path.dirname(options.executable), 'Data');
@@ -14,12 +14,9 @@ export function resolvePaths(options: { platform: NodeJS.Platform; packaged: boo
     if (!existsSync(path.join(candidate, 'package.json'))) throw new Error('无法定位开发项目目录。');
     root = candidate;
   } else root = path.join(options.home ?? os.homedir(), 'Library', 'Application Support', 'ChihayaPet');
-  // Packaged Mac builds keep the editable prompt bound to their source project.
-  // QA always uses its temporary data directory; Windows data remains portable.
-  const promptRoot = !options.qaRoot && options.platform === 'darwin' && options.packaged && options.projectRoot ? path.resolve(options.projectRoot) : root;
   const runtime = path.join(root, 'ElectronRuntime');
   return {
-    root, config: path.join(root, 'config.json'), prompt: path.join(promptRoot, 'chihaya_prompt.md'), preferences: path.join(root, 'preferences.json'), music: path.join(root, 'Music'), runtime,
+    root, config: path.join(root, 'config.json'), prompt: path.join(root, 'persona.md'), preferences: path.join(root, 'preferences.json'), music: path.join(root, 'Music'), runtime,
     session: path.join(runtime, 'Session'), cache: path.join(runtime, 'Cache'), logs: path.join(runtime, 'Logs'),
     crashes: path.join(runtime, 'Crashes'), temp: path.join(runtime, 'Temp'),
     files: options.platform === 'win32' && options.packaged ? path.join(path.dirname(options.executable), 'FILES.txt') : path.join(root, 'FILES.txt'),

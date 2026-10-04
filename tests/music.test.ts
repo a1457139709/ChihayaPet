@@ -7,14 +7,13 @@ import { tmpdir } from 'node:os';
 import { MusicLibrary, AudioDecoder, MusicController } from '../app/main/music.ts';
 import { JSONPreferences } from '../app/main/storage.ts';
 
-test('legacy audio migrates to named files and all six formats play without reimport', async () => {
+test('named audio files in all six formats play without an index', async () => {
   const root = mkdtempSync(path.join(tmpdir(), 'chihaya-audio-'));
   const ffmpeg = path.resolve('node_modules/ffmpeg-static', process.platform === 'win32' ? 'ffmpeg.exe' : 'ffmpeg');
   const music = path.join(root, 'Music'); mkdirSync(music);
-  const tracks = ['wav', 'aiff', 'aif', 'mp3', 'm4a', 'aac'].map((ext, i) => ({ id: `00000000-0000-4000-8000-00000000000${i}`, title: ext, fileName: `00000000-0000-4000-8000-00000000000${i}.${ext}` }));
+  const tracks = ['wav', 'aiff', 'aif', 'mp3', 'm4a', 'aac'].map((ext, i) => ({ id: `${ext}.${ext}`, title: ext, fileName: `${ext}.${ext}` }));
   try {
     for (const t of tracks) execFileSync(ffmpeg, ['-v', 'error', '-f', 'lavfi', '-i', 'sine=frequency=440:duration=0.2', path.join(music, t.fileName)]);
-    const original = JSON.stringify(tracks); writeFileSync(path.join(music, 'library.json'), original);
     const library = new MusicLibrary(music), decoder = new AudioDecoder(ffmpeg, path.join(root, 'Cache'));
     assert.equal(library.list().length, tracks.length);
     assert.ok(library.list().every(t => t.fileName === `${t.title}.${t.title}`));
@@ -39,12 +38,11 @@ test('legacy audio migrates to named files and all six formats play without reim
 test('single-track previous and next explicitly rewind with playback intent preserved, on cold and warm caches', async () => {
   const root = mkdtempSync(path.join(tmpdir(), 'chihaya-rewind-'));
   const ffmpeg = path.resolve('node_modules/ffmpeg-static', process.platform === 'win32' ? 'ffmpeg.exe' : 'ffmpeg');
-  const id = '00000000-0000-4000-8000-000000000000';
+  const id = 'one';
   const music = path.join(root, 'Music'); mkdirSync(music);
   let controller: MusicController | undefined;
   try {
     execFileSync(ffmpeg, ['-v', 'error', '-f', 'lavfi', '-i', 'sine=frequency=440:duration=0.2', path.join(music, id + '.wav')]);
-    writeFileSync(path.join(music, 'library.json'), JSON.stringify([{ id, title: 'one', fileName: id + '.wav' }]));
     const prefs = new JSONPreferences(path.join(root, 'preferences.json')); prefs.save({ 'music.autoplayEnabled': false });
     controller = new MusicController(new MusicLibrary(music), new AudioDecoder(ffmpeg, path.join(root, 'Cache')), prefs);
     await controller.ready;
@@ -66,11 +64,10 @@ test('existing tracks remain selectable and playable while importing; automatic 
   const root = mkdtempSync(path.join(tmpdir(), 'chihaya-import-controls-'));
   const ffmpeg = path.resolve('node_modules/ffmpeg-static', process.platform === 'win32' ? 'ffmpeg.exe' : 'ffmpeg');
   const music = path.join(root, 'Music'); mkdirSync(music);
-  const tracks = [0, 1].map(i => ({ id: `00000000-0000-4000-8000-00000000000${i}`, title: String(i), fileName: `00000000-0000-4000-8000-00000000000${i}.wav` }));
+  const tracks = [0, 1].map(i => ({ id: `${i}.wav`, title: String(i), fileName: `${i}.wav` }));
   let controller: MusicController | undefined;
   try {
     for (const track of tracks) execFileSync(ffmpeg, ['-v', 'error', '-f', 'lavfi', '-i', 'sine=frequency=440:duration=0.2', path.join(music, track.fileName)]);
-    writeFileSync(path.join(music, 'library.json'), JSON.stringify(tracks));
     const prefs = new JSONPreferences(path.join(root, 'preferences.json')); prefs.save({ 'music.autoplayEnabled': false });
     controller = new MusicController(new MusicLibrary(music), new AudioDecoder(ffmpeg, path.join(root, 'Cache')), prefs);
     await controller.ready;
@@ -104,45 +101,5 @@ test('directory libraries preserve names, avoid collisions, and removal survives
     writeFileSync(path.join(music, '直接添加.mp3'), 'other');
     symlinkSync(source, path.join(music, 'link.wav'));
     assert.deepEqual(library.list().map(t => t.title), ['直接添加', '自由な翼 (2)']);
-  } finally { rmSync(root, { recursive: true, force: true }); }
-});
-
-test('migration resumes after preference failure, preserving selection and duplicate titles', () => {
-  const root = mkdtempSync(path.join(tmpdir(), 'chihaya-migration-'));
-  try {
-    const tracks = [0, 1].map(i => ({id: `old-${i}`, title: '同名', fileName: `old-${i}.wav`}));
-    tracks.forEach(t => writeFileSync(path.join(root, t.fileName), t.id));
-    writeFileSync(path.join(root, 'library.json'), JSON.stringify(tracks));
-    const values: Record<string, string> = { 'music.selected': 'old-1' };
-    assert.throws(() => new MusicLibrary(root, { load: () => values, save: () => { throw new Error('disk full'); } }).list(), /disk full/);
-    assert.ok(existsSync(path.join(root, 'library.json')));
-    const library = new MusicLibrary(root, { load: () => values, save: changes => Object.assign(values, changes) });
-    assert.equal(values['music.selected'], '同名 (2).wav');
-    assert.equal(library.list().length, 2);
-    assert.equal(readFileSync(path.join(root, '同名 (2).wav'), 'utf8'), 'old-1');
-    assert.equal(existsSync(path.join(root, 'library.json')), false);
-    assert.deepEqual(new MusicLibrary(root).list(), library.list());
-  } finally { rmSync(root, { recursive: true, force: true }); }
-});
-
-test('invalid or missing legacy audio leaves the old index and files intact', () => {
-  const root = mkdtempSync(path.join(tmpdir(), 'chihaya-invalid-music-'));
-  try {
-    const original = JSON.stringify([{id:'old',title:'song',fileName:'missing.wav'}]);
-    writeFileSync(path.join(root, 'library.json'), original);
-    assert.throws(() => new MusicLibrary(root).list(), /音频缺失/);
-    assert.equal(readFileSync(path.join(root, 'library.json'), 'utf8'), original);
-    assert.deepEqual(readdirSync(root), ['library.json']);
-  } finally { rmSync(root, { recursive: true, force: true }); }
-});
-
-test('migration keeps previously removed UUID copies outside the scanned library', () => {
-  const root = mkdtempSync(path.join(tmpdir(), 'chihaya-orphan-'));
-  try {
-    const orphan = '00000000-0000-4000-8000-000000000000.wav';
-    writeFileSync(path.join(root, orphan), 'removed audio');
-    writeFileSync(path.join(root, 'library.json'), '[]');
-    assert.deepEqual(new MusicLibrary(root).list(), []);
-    assert.equal(readFileSync(path.join(root, '已移除', orphan), 'utf8'), 'removed audio');
   } finally { rmSync(root, { recursive: true, force: true }); }
 });

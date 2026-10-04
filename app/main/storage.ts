@@ -1,7 +1,8 @@
 import { existsSync, readFileSync, mkdirSync, writeFileSync, renameSync, unlinkSync, openSync, closeSync, fsyncSync } from 'node:fs';
 import path from 'node:path';
 import { randomUUID } from 'node:crypto';
-import { defaultPrompt, type Configuration, type Preferences } from '../shared/contracts';
+import type { Configuration, Preferences } from '../shared/contracts';
+import { defaultPrompt } from './default-prompt';
 
 export function normalizeService(input: string): string {
   const raw = input.trim();

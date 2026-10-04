@@ -30,9 +30,8 @@ try {
   execFileSync('/usr/bin/defaults', ['write', qaDomain, 'music.volume', '-float', '0']);
   execFileSync('/usr/bin/defaults', ['write', qaDomain, 'idle.enabled', '-bool', 'false']);
   mkdirSync(path.join(uniqueData, 'Music'));
-  const tracks = [0, 1].map(i => ({ id: `00000000-0000-4000-8000-00000000000${i}`, title: `Silent fixture ${i + 1}`, fileName: `00000000-0000-4000-8000-00000000000${i}.wav` }));
+  const tracks = [0, 1].map(i => ({ id: `Silent fixture ${i + 1}.wav`, title: `Silent fixture ${i + 1}`, fileName: `Silent fixture ${i + 1}.wav` }));
   for (const track of tracks) execFileSync(path.join(root, 'dist/media/ffmpeg'), ['-v', 'error', '-f', 'lavfi', '-i', 'anullsrc', '-t', '30', path.join(uniqueData, 'Music', track.fileName)]);
-  writeFileSync(path.join(uniqueData, 'Music/library.json'), JSON.stringify(tracks));
   application = await electron.launch({ args: [fixture], env: { ...process.env, CHIHAYA_QA: '1', CHIHAYA_QA_DATA: uniqueData, CHIHAYA_QA_REPLY: '1' }, timeout: 30_000 });
   const pet = await application.firstWindow();
   const snapshot = () => pet.evaluate(() => window.chihaya.snapshot());

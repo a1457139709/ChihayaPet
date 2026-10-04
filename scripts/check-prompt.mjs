@@ -7,7 +7,7 @@ import { execFileSync } from 'node:child_process';
 
 const root = path.resolve(import.meta.dirname, '..');
 const data = mkdtempSync(path.join(os.tmpdir(), 'chihaya-prompt-runtime-'));
-const file = path.join(data, 'chihaya_prompt.md');
+const file = path.join(data, 'persona.md');
 const domain = `local.ChihayaPet.QA.${path.basename(data).replace(/[^a-zA-Z\d]/g, '')}`;
 const initial = '# 千早\n\n启动读取的角色设定。\n';
 const saved = '# 千早\n\n菜单保存的角色设定。\n';
@@ -54,6 +54,10 @@ try {
   assert.equal(await settings.locator('#prompt').inputValue(), external, 'The next process must read the external edit.');
   assert.equal(readFileSync(file, 'utf8'), external);
   assert.equal(readFileSync(path.join(data, 'FILES.txt'), 'utf8').includes(file), true);
+  await settings.locator('#restore-prompt').click();
+  const expected = readFileSync(path.join(root, 'chihaya_prompt.md'), 'utf8');
+  await settings.waitForFunction(expected => document.querySelector('#prompt').value === expected, expected);
+  assert.equal(readFileSync(file, 'utf8'), expected);
   console.log('Prompt verified: startup file load, settings save, running prompt retained after external edit, next-launch reload, and actual file path in FILES.txt.');
 } finally {
   await app?.close();

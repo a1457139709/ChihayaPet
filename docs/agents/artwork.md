@@ -34,6 +34,6 @@ python3 scripts/verify_resources.py --source-only --require-approved-standing
 
 `output/` 是旧验收输出，已删除。开发版使用项目根目录 `Music/` 保存导入曲库，安装版使用 `~/Library/Application Support/ChihayaPet/Music/`；曲库是用户数据，由 Git 忽略。
 
-本机游戏 BGM 的名称以远程 `bgm` 分支为准。[曲目来源清单](../../scripts/bgm-catalog.json)固定了 #68 核对过的 43 个 WAV 文件名和 Git 内容哈希；该分支中的两个 OGG 不在清单内，`20.wav`、`21.wav` 沿用来源名称。退出桌宠后运行 `python3 scripts/restore_bgm_names.py`，按音频内容重命名 `assets/bgm/wav/` 并更新 `Music/library.json` 中的曲名，保留 UUID、曲目顺序和音频字节，删除 `assets/bgm/` 下的 OGG。相同编号的其他个人曲目不会被改名。此脚本只修复本机资料，不参与应用构建或打包。
+本机游戏 BGM 的名称以远程 `bgm` 分支为准。[曲目来源清单](../../scripts/bgm-catalog.json)记录 43 个 WAV 文件名和 Git 内容哈希；两个 OGG 不在清单内，`20.wav`、`21.wav` 沿用来源名称。
 
-所有版本直接扫描 `Music/` 顶层音频并按文件名排序，无常驻索引。旧 `library.json` 仅供首次迁移使用，完成后删除；原曲名成为文件名，移除曲目保留在 `已移除/` 子目录。上述 BGM 修复脚本只适用于迁移前的旧索引。
+所有版本直接扫描 `Music/` 顶层音频并按文件名排序，无索引，不保留旧 UUID 曲库迁移或修复脚本。移除曲目保留在 `已移除/` 子目录。

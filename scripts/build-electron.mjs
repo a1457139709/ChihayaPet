@@ -1,5 +1,5 @@
 import { build } from 'esbuild';
-import { mkdir, copyFile, cp, realpath, access } from 'node:fs/promises';
+import { mkdir, copyFile, cp, realpath, access, readFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 import { createRequire } from 'node:module';
@@ -8,7 +8,7 @@ const require = createRequire(import.meta.url);
 execFileSync('python3', ['scripts/verify_resources.py', '--source-only', '--require-approved-standing'], { cwd: root, stdio: 'inherit' });
 await mkdir('dist/platform', { recursive: true });
 await mkdir('dist/media', { recursive: true });
-await build({ entryPoints: ['app/main/index.ts'], bundle: true, platform: 'node', format: 'cjs', target: 'node24', outfile: 'dist/main.cjs', external: ['electron'], sourcemap: false, define: { __CHIHAYA_PROJECT_ROOT__: JSON.stringify(root) } });
+await build({ entryPoints: ['app/main/index.ts'], bundle: true, platform: 'node', format: 'cjs', target: 'node24', outfile: 'dist/main.cjs', external: ['electron'], sourcemap: false, plugins: [{ name: 'embed-default-persona', setup(builder) { builder.onLoad({ filter: /[/\\]default-prompt\.ts$/ }, async () => ({ contents: 'export const defaultPrompt = ' + JSON.stringify(await readFile(path.join(root, 'chihaya_prompt.md'), 'utf8')) + ';', loader: 'ts' })); } }] });
 await build({ entryPoints: ['app/preload.ts'], bundle: true, platform: 'node', format: 'cjs', target: 'node24', outfile: 'dist/preload.cjs', external: ['electron'] });
 await build({ entryPoints: ['app/renderer/index.ts'], bundle: true, platform: 'browser', target: 'chrome144', outfile: 'dist/renderer.js' });
 await copyFile('app/renderer/index.html', 'dist/index.html');

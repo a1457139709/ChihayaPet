@@ -11,6 +11,7 @@
     "build": "npm run typecheck && node scripts/build-electron.mjs",
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test tests/*.test.ts",
+    "test:qa69": "node --import tsx scripts/check-qa69.mts",
     "test:runtime": "node scripts/check-runtime.mjs",
     "test:prompt": "node scripts/check-prompt.mjs",
     "test:menu": "node scripts/check-menu.mjs",

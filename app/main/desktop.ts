@@ -157,11 +157,15 @@ export class DesktopApplication {
   }
   snapshot(includeKey = false): Snapshot {
     const conversation = this.companion.snapshot(); if (!includeKey) conversation.draft.key = '';
-    return { ...conversation, desktop: { ...this.desktop }, clickThrough: this.clickThrough, visible: this.visible, awake: this.awake, reducedMotion: this.reducedMotion, sprite: this.sprite, resourceError: this.resourceError, outfits: this.manifest?.outfits ?? [], expressions: this.manifest?.variants[`${this.desktop.outfit}/${this.desktop.framing}`]?.results.map(r => ({ id: r.id, approved: approved(r) })) ?? [], idleEnabled: this.idleEnabled, idleFrequency: this.idleFrequency, bubble: this.bubble, chatVisible: this.chatOpen, settingsVisible: this.settingsOpen, chatFocus: this.chatFocus, settingsTab: this.settingsTab, settingsFocus: this.settingsFocus, music: this.music.snapshot() };
+    return { ...conversation, desktop: { ...this.desktop }, clickThrough: this.clickThrough, visible: this.visible, awake: this.awake, reducedMotion: this.reducedMotion, sprite: this.sprite, resourceError: this.resourceError, outfits: this.manifest?.outfits ?? [], expressions: this.manifest?.variants[`${this.desktop.outfit}/${this.desktop.framing}`]?.results.map(r => ({ id: r.id, approved: approved(r) })) ?? [], canSay: this.allowed(), idleEnabled: this.idleEnabled, idleFrequency: this.idleFrequency, bubble: this.bubble, chatVisible: this.chatOpen, settingsVisible: this.settingsOpen, chatFocus: this.chatFocus, settingsTab: this.settingsTab, settingsFocus: this.settingsFocus, music: this.music.snapshot() };
   }
   private allowed(): boolean {
     const state = this.companion.snapshot();
     return idleAllowed({ visible: this.visible, awake: this.awake, clickThrough: this.clickThrough, chat: this.chatOpen, settings: this.settingsOpen, input: state.input, busy: Boolean(state.busy), bubble: Boolean(this.bubble) || Boolean(this.candidate) });
+  }
+  private canShowIdle(): boolean {
+    const state = this.companion.snapshot();
+    return idleAllowed({ visible: this.visible, awake: this.awake, clickThrough: this.clickThrough, chat: this.chatOpen, settings: this.settingsOpen, input: state.input, busy: Boolean(state.busy), bubble: Boolean(this.candidate) });
   }
   private canShowReply(): boolean {
     if (!this.visible || !this.awake || this.clickThrough || this.chatOpen || this.settingsOpen) return false;
@@ -244,7 +248,7 @@ export class DesktopApplication {
     this.dismissBubble(false); this.bubble = bubble; this.bubbleFinished = false; this.hover = false;
     this.speechReady = false;
     const speech = this.speech = this.createWindow('bubble', true); this.positionBubble();
-    speech.once('ready-to-show', () => { if (this.speech === speech) { this.speechReady = true; if (this.canShowReply()) speech.showInactive(); this.refresh(); } }); this.refresh();
+    speech.once('ready-to-show', () => { if (this.speech === speech) { this.speechReady = true; if (bubble.kind === 'idle' ? this.canShowIdle() : this.canShowReply()) speech.showInactive(); else if (bubble.kind === 'idle') this.dismissBubble(false); this.refresh(); } }); this.refresh();
   }
   private positionBubble(): void {
     if (!this.speech || !this.sprite || !this.bubble) return;

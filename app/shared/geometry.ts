@@ -14,10 +14,10 @@ export function bubbleFrame(pet: Rect, area: Rect, speech: Speech, canvasHeight:
   const right = pet.x + 12 + speech.hairRight * scale + 4 - 12;
   const side = left >= area.x || area.x + area.width - mouthX < mouthX - area.x ? 'left' : 'right';
   const preferredTail = clamp(size.height * .35, 62, size.height - 54);
-  const frame = clamped({ x: side === 'left' ? left : right, y: mouthY - preferredTail, ...size }, area);
+  const frame = clamped({ x: side === 'left' ? left : right, y: mouthY - preferredTail, width: size.width, height: size.height }, area);
   return { ...frame, side, tailY: clamp(mouthY - frame.y, 62, size.height - 54) };
 }
 export function nearbyPanel(pet: Rect, area: Rect, size: { width: number; height: number }): Rect {
   const left = pet.x - size.width - 8;
-  return clamped({ x: left >= area.x ? left : pet.x + pet.width + 8, y: pet.y + (pet.height - size.height) / 2, ...size }, area);
+  return clamped({ x: left >= area.x ? left : pet.x + pet.width + 8, y: pet.y + (pet.height - size.height) / 2, width: size.width, height: size.height }, area);
 }

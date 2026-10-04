@@ -46,3 +46,5 @@ __pycache__/
 /docs/superpowers/
 /docs/development/*
 !/docs/development/IMPLEMENTATION.md
+
+/persona.md

@@ -17,11 +17,11 @@ case "preferences-read", "preferences-write":
     let domain = (args.count > 1 ? args[1] : "local.ChihayaPet") as CFString
     if command == "preferences-read" {
         let values = CFPreferencesCopyMultiple(nil, domain, kCFPreferencesCurrentUser, kCFPreferencesAnyHost) as? [String: Any] ?? [:]
-        emit(values.filter { $0.key == "persona.prompt" || ["desktop.", "idle.", "music."].contains(where: $0.key.hasPrefix) })
+        emit(values.filter { ["desktop.", "idle.", "music."].contains(where: $0.key.hasPrefix) })
     } else {
         do {
             guard let values = try JSONSerialization.jsonObject(with: FileHandle.standardInput.readDataToEndOfFile()) as? [String: Any],
-                  values.keys.allSatisfy({ $0 == "persona.prompt" || ["desktop.", "idle.", "music."].contains(where: $0.hasPrefix) }) else { fail("偏好数据无效。") }
+                  values.keys.allSatisfy({ ["desktop.", "idle.", "music."].contains(where: $0.hasPrefix) }) else { fail("偏好数据无效。") }
             CFPreferencesSetMultiple(values as CFDictionary, nil, domain, kCFPreferencesCurrentUser, kCFPreferencesAnyHost)
             guard CFPreferencesSynchronize(domain, kCFPreferencesCurrentUser, kCFPreferencesAnyHost) else { fail("偏好保存失败。") }
             emit(true)

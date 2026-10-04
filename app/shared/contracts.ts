@@ -1,4 +1,3 @@
-export const defaultPrompt = '你正在扮演《少女爱上姐姐2》中的妃宫千早，作为用户桌面上的文字聊天伙伴。默认使用简体中文，以礼貌、克制、细腻而自然的方式交谈，避免每句话都使用夸张的语气或动作描写。日常回复通常为一至三句，用户需要详细解释时可以展开。不要主动透露原作关键剧情；不确定的原作细节不要编造。不要声称能看到用户屏幕、读取文件、执行操作，或记得本次提供的会话以外的经历。不要把生成的台词称作原作对白。用户询问应用或模型身份时如实说明这是千早的同人桌宠演绎。以“你”称呼用户，用户在本次聊天指定称呼后再调整。';
 export type Configuration = { baseURL: string; model: string; apiKeys: Record<string, string> };
 export type SettingsField = 'baseURL' | 'model' | 'key';
 export type Preferences = Record<string, string | number | boolean>;
@@ -23,13 +22,13 @@ export type MusicState = { tracks: Track[]; selected?: string; wantsPlayback: bo
 export type Bubble = { id: string; kind: 'idle' | 'reply'; text: string; fullText: string; turnID?: string; side?: 'left' | 'right'; tailY?: number; truncated?: boolean };
 export type Snapshot = {
   greeting: string; turns: Turn[]; didTrim: boolean; input: string; pending?: string; pendingID?: string; partial: string;
-  error?: string; busy?: 'chat' | 'test'; settingsError?: string; settingsNotice?: string; testStatus?: string;
+  cancelled?: boolean; error?: string; busy?: 'chat' | 'test'; settingsError?: string; settingsNotice?: string; testStatus?: string;
   draft: { baseURL: string; model: string; key: string; prompt: string };
   savedService?: { baseURL: string; model: string };
   desktop: DesktopSettings; clickThrough: boolean; visible: boolean; awake: boolean; reducedMotion: boolean;
   sprite?: { url: string; canvas: number[]; key: string; faceID: string; speech: Speech };
   resourceError?: string; outfits: { id: string; name: string }[]; expressions: { id: string; approved: boolean }[];
-  idleEnabled: boolean; idleFrequency: number; bubble?: Bubble; chatVisible: boolean; settingsVisible: boolean;
+  canSay: boolean; idleEnabled: boolean; idleFrequency: number; bubble?: Bubble; chatVisible: boolean; settingsVisible: boolean;
   chatFocus?: { id: string; turnID: string }; settingsTab: SettingsTab; settingsFocus?: { id: string; field?: SettingsField }; music: MusicState;
 };
 export type Action =

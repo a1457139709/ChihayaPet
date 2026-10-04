@@ -1,21 +1,14 @@
-import { readFileSync, existsSync, mkdirSync, copyFileSync, unlinkSync, statSync, readdirSync, renameSync, constants, lstatSync } from 'node:fs';
+import { existsSync, mkdirSync, copyFileSync, unlinkSync, statSync, readdirSync, renameSync, constants, lstatSync } from 'node:fs';
 import path from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
 import { spawn, type ChildProcess } from 'node:child_process';
 import type { MusicState, Track } from '../shared/contracts';
-import { atomicJSON, type PreferenceStore } from './storage';
+import { type PreferenceStore } from './storage';
 import { safeChild } from './paths';
 const extensions = new Set(['wav', 'aiff', 'aif', 'mp3', 'm4a', 'aac']);
 // Filenames are the stable identity for directory-based libraries.
 export class MusicLibrary {
-  private error?: string;
-  private legacyIDs = new Map<string, string>();
-  constructor(readonly directory: string, preferences?: PreferenceStore) {
-    try {
-      if (existsSync(directory) && lstatSync(directory).isSymbolicLink()) throw new Error('音乐目录不能是符号链接。');
-      this.migrate(preferences);
-    } catch (e) { this.error = `旧曲库迁移未完成：${(e as Error).message}`; }
-  }
+  constructor(readonly directory: string) {}
   private availableName(directory: string, name: string, reserved = new Set<string>()): string {
     const ext = path.extname(name), stem = path.basename(name, ext);
     let candidate = name, n = 2;
@@ -23,54 +16,8 @@ export class MusicLibrary {
     while (occupied.has(candidate.toLowerCase()) || reserved.has(candidate.toLowerCase())) candidate = `${stem} (${n++})${ext}`;
     reserved.add(candidate.toLowerCase()); return candidate;
   }
-  private migrate(preferences?: PreferenceStore): void {
-    const index = path.join(this.directory, 'library.json');
-    if (!existsSync(index)) return;
-    if (lstatSync(index).isSymbolicLink()) throw new Error('索引不能是符号链接。');
-    const tracks = JSON.parse(readFileSync(index, 'utf8')) as (Track & { migratedFileName?: string })[];
-    if (!Array.isArray(tracks)) throw new Error('索引格式无效。');
-    const reserved = new Set<string>(), sources = new Set<string>();
-    for (const t of tracks) {
-      if (!t || typeof t.id !== 'string' || typeof t.title !== 'string' || typeof t.fileName !== 'string' || path.basename(t.fileName) !== t.fileName || /[\\/]/.test(t.fileName) || !extensions.has(path.extname(t.fileName).slice(1).toLowerCase())) throw new Error('曲目格式无效。');
-      if (sources.has(t.fileName.toLowerCase())) throw new Error('旧曲库包含重复文件。');
-      sources.add(t.fileName.toLowerCase());
-      const ext = path.extname(t.fileName);
-      // Windows filenames must also work when a library is moved between platforms.
-      let title = t.title.replace(/[<>:"/\\|?*\x00-\x1f]/g, '_').replace(/[. ]+$/, '') || '未命名';
-      if (/^(con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)/i.test(title)) title = '_' + title;
-      if (t.migratedFileName) {
-        if (path.basename(t.migratedFileName) !== t.migratedFileName || /[\\/]/.test(t.migratedFileName) || path.extname(t.migratedFileName) !== ext || reserved.has(t.migratedFileName.toLowerCase())) throw new Error('迁移文件名无效。');
-        reserved.add(t.migratedFileName.toLowerCase());
-      } else t.migratedFileName = this.availableName(this.directory, title + ext, reserved);
-      const source = path.join(this.directory, t.fileName), target = path.join(this.directory, t.migratedFileName);
-      if (existsSync(source) && existsSync(target) && source !== target) throw new Error('迁移目标已存在，请先处理同名文件。');
-      const current = existsSync(source) ? source : target;
-      if (!existsSync(current) || !lstatSync(current).isFile()) throw new Error(`音频缺失或不是普通文件：${t.fileName}`);
-    }
-    // Reuse the old index only as a resumable migration record, then remove it.
-    atomicJSON(index, tracks);
-    for (const t of tracks) {
-      const source = path.join(this.directory, t.fileName), target = path.join(this.directory, t.migratedFileName!);
-      if (source !== target && existsSync(source)) renameSync(source, target);
-      this.legacyIDs.set(t.id, t.migratedFileName!);
-    }
-    if (preferences) {
-      const selected = preferences.load()['music.selected'];
-      if (typeof selected === 'string' && this.legacyIDs.has(selected)) preferences.save({ 'music.selected': this.legacyIDs.get(selected)! });
-    }
-    // Old index-only removal left UUID copies behind; keep those out of the new library.
-    const removed = path.join(this.directory, '已移除');
-    for (const entry of readdirSync(this.directory, { withFileTypes: true })) {
-      if (!entry.isFile() || !/^[a-f\d]{8}(?:-[a-f\d]{4}){3}-[a-f\d]{12}\.(wav|aiff|aif|mp3|m4a|aac)$/i.test(entry.name) || reserved.has(entry.name.toLowerCase())) continue;
-      if (existsSync(removed) && lstatSync(removed).isSymbolicLink()) throw new Error('已移除目录不能是符号链接。');
-      mkdirSync(removed, { recursive: true });
-      renameSync(path.join(this.directory, entry.name), path.join(removed, this.availableName(removed, entry.name)));
-    }
-    unlinkSync(index);
-  }
-  resolveID(id: unknown): unknown { return typeof id === 'string' ? this.legacyIDs.get(id) ?? id : id; }
   list(): Track[] {
-    if (this.error) throw new Error(this.error);
+    if (existsSync(this.directory) && lstatSync(this.directory).isSymbolicLink()) throw new Error('音乐目录不能是符号链接。');
     if (!existsSync(this.directory)) return [];
     return readdirSync(this.directory, { withFileTypes: true })
       .filter(f => f.isFile() && extensions.has(path.extname(f.name).slice(1).toLowerCase()))
@@ -157,7 +104,7 @@ export class MusicController {
     this.state = { tracks: [], wantsPlayback: false, playing: false, volume: Math.min(1, Math.max(0, Number(values['music.volume'] ?? 0.2))), loop: ['list', 'playlist'].includes(String(values['music.loop'])) ? 'playlist' : 'single', autoplay: values['music.autoplayEnabled'] !== false, suspended: false, suspensionReasons: [], revision: 0, playbackID: 0, busy: false };
     if (!Number.isFinite(this.state.volume)) this.state.volume = 0.2;
     try { this.state.tracks = library.list(); } catch (e) { this.state.error = (e as Error).message; }
-    this.state.selected = this.state.tracks.find(t => t.id === library.resolveID(values['music.selected']))?.id ?? this.state.tracks[0]?.id;
+    this.state.selected = this.state.tracks.find(t => t.id === values['music.selected'])?.id ?? this.state.tracks[0]?.id;
     this.state.wantsPlayback = this.state.autoplay && Boolean(this.state.selected);
     this.ready = this.reconcile();
   }

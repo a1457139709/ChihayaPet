@@ -94,12 +94,14 @@ export function mountChat(root: HTMLElement, act: (action: Action) => void): { r
       }
       thinking.hidden = state.busy !== 'chat' || Boolean(state.partial);
       error.textContent = state.error ?? ''; error.hidden = !state.error;
-      retry.hidden = !state.pending || !state.error; retry.disabled = Boolean(state.busy);
+      retry.textContent = state.cancelled ? '再回答一次' : '重试';
+      retry.hidden = !state.pending || (!state.error && !state.cancelled); retry.disabled = Boolean(state.busy);
       resourceError.textContent = state.resourceError ?? ''; resourceError.hidden = !state.resourceError;
-      if (state.pending && state.busy !== 'chat') {
-        const hint = '未完成内容不会加入后续上下文。';
-        error.textContent = state.error ? state.error + '\n' + hint : hint; error.hidden = false;
+      if (state.cancelled) {
+        error.textContent = '嗯，那就先停在这里。'; error.hidden = false;
       }
+      error.classList.toggle('error', !state.cancelled);
+      error.setAttribute('role', state.cancelled ? 'status' : 'alert');
       if (freshPending || followsBottom) history.scrollTop = history.scrollHeight;
       if (state.chatFocus && state.chatFocus.id !== focusID) {
         const target = document.getElementById('turn-' + state.chatFocus.turnID);

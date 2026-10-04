@@ -12,25 +12,25 @@
 
 聊天只保存在内存。输入最多 2,000 个 Unicode 字素，回复最多 20,000 个；模型上下文最多 10 个完整轮次／12,000 字素，界面最多 50 轮／100,000 字素。取消或失败的片段标为未完成，不进入后续上下文，可手动重试。每次启动从五句问候中选择一句。清空会话、保存服务或角色提示词会使在途请求失效并清空会话。
 
-角色提示词每次启动从 `chihaya_prompt.md` 读取。开发版使用项目根目录；本项目构建的 macOS 安装版也绑定构建时的项目目录，本机为 `/Users/red/Project/ChihayaPet/chihaya_prompt.md`。菜单中的「角色设定」保存或恢复默认会写回同一文件，并立即应用、清空会话。运行中直接编辑文件，下一次启动时生效。文件缺失时使用内置默认提示词，保存时才创建文件；读取或保存失败会在设置中报错。
+角色默认设定唯一来源是根目录 `chihaya_prompt.md`，构建时完整嵌入各平台应用。自定义角色设定使用各版本数据目录的 `persona.md`；菜单保存或恢复默认写回该文件并立即生效，重启读取外部编辑。不读取旧角色偏好或旧提示词文件，不绑定开发机路径。源 Markdown 不会被应用改写。
 
 最新回复逐字显示；聊天收起后出现最多 60 字／四行的摘录气泡，“查看全文”打开原回复。点击气泡文字补全，全文展示完约 12 秒收起；悬停保留，离开重新计时。主动闲话默认每 3–7 分钟一句，可选 1–3 或 10–15 分钟；最近 8 句不重复。聊天、设置、草稿、请求、已有气泡、隐藏、穿透和睡眠时避让，恢复后重新计时，不补发积压台词。
 
-背景音乐支持 WAV、AIFF/AIF、MP3、M4A/AAC。直接扫描 `Music/` 顶层音频，以原文件名显示并排序，不使用索引。旧 UUID 曲库自动按原索引曲名迁移，转换已保存选曲后删除 `library.json`，不要求重导入。播放前用随包 FFmpeg 在运行缓存中转成 WAV，再交给人物窗口的音频元素；音乐不依赖聊天或设置窗口。支持播放／暂停、上一首／下一首、音量、单曲／列表循环、启动播放、淡入淡出。隐藏与睡眠自动暂停，恢复尊重手动暂停。导入保留原名，同名加数字后缀；移除曲目会移至 `Music/已移除/`，移回即可恢复。外部增删或改名后重启应用刷新曲库。
+背景音乐支持 WAV、AIFF/AIF、MP3、M4A/AAC。直接扫描 `Music/` 顶层音频，以原文件名显示并排序，不使用索引。不读取旧索引或迁移 UUID 曲库。播放前用随包 FFmpeg 在运行缓存中转成 WAV，再交给人物窗口的音频元素；音乐不依赖聊天或设置窗口。支持播放／暂停、上一首／下一首、音量、单曲／列表循环、启动播放、淡入淡出。隐藏与睡眠自动暂停，恢复尊重手动暂停。导入保留原名，同名加数字后缀；移除曲目会移至 `Music/已移除/`，移回即可恢复。外部增删或改名后重启应用刷新曲库。
 
 ## 安装和数据
 
 macOS 产物为 `release/ChihayaPet-macOS-arm64.dmg`，将完整 `ChihayaPet.app` 拖入 Applications 或用户选择的位置。采用个人使用的 ad-hoc 签名，未做 Developer ID 公证。首次运行原位读取：
 
 - `~/Library/Application Support/ChihayaPet/config.json`，保留 `baseURL`、`model`、所有按地址保存的 `apiKeys`。
-- 构建项目目录的 `chihaya_prompt.md`，每次启动读取角色提示词；菜单保存时写回。
+- 同一数据目录的 `persona.md` 保存自定义角色设定；缺省使用随包内置的长版设定。
 - UserDefaults 域 `local.ChihayaPet` 中的 `desktop.*`、`idle.*`、`music.*`；通过 CFPreferences 实际读写。
-- 同一数据目录的 `Music/` 原名音频；旧索引仅用于首次迁移，之后按文件名排序。
+- 同一数据目录的 `Music/` 原名音频；按文件名排序。
 - 新运行文件集中在 `ElectronRuntime/Session`、`Cache`、`Logs`、`Crashes`、`Temp`。
 
-首次启动保留既有配置；旧音乐索引会迁移为原名音频。损坏配置报错并保护原文件。API Key 为本机明文，Mac 配置文件权限 0600；不写聊天或密钥日志。已安装的 Mac 应用约 3 秒后尝试推出带本项目安装标记的 DMG，不强制推出占用的卷。
+启动直接使用当前数据格式，不执行旧版迁移。损坏配置报错并保护原文件。API Key 为本机明文，Mac 配置文件权限 0600；不写聊天或密钥日志。已安装的 Mac 应用约 3 秒后尝试推出带本项目安装标记的 DMG，不强制推出占用的卷。
 
-Windows 产物为 `release/ChihayaPet-Windows-x64.zip`。完整解压后运行 `ChihayaPet.exe`，无需另装 Node/npm；EXE、运行库、locales 和 resources 必须一起保留。配置在 `Data/config.json`，角色提示词在 `Data/chihaya_prompt.md`，偏好在 `Data/preferences.json`，音乐在 `Data/Music/`，浏览器、缓存、日志、崩溃及临时文件在 `Data/ElectronRuntime/`。路径在 Electron 会话初始化前设置，目录不可写时提示移动整个文件夹。移动整个解压目录后数据继续可用。Windows 系统自己的运行记录由操作系统管理。
+Windows 产物为 `release/ChihayaPet-Windows-x64.zip`。完整解压后运行 `ChihayaPet.exe`，无需另装 Node/npm；EXE、运行库、locales 和 resources 必须一起保留。配置在 `Data/config.json`，角色提示词在 `Data/persona.md`，偏好在 `Data/preferences.json`，音乐在 `Data/Music/`，浏览器、缓存、日志、崩溃及临时文件在 `Data/ElectronRuntime/`。路径在 Electron 会话初始化前设置，目录不可写时提示移动整个文件夹。移动整个解压目录后数据继续可用。Windows 系统自己的运行记录由操作系统管理。
 
 文件说明以独立文件交付。Mac 静态中文 `FILES.txt` 留在 `.app/Contents/Resources/`，首次运行在数据目录生成实际路径说明；Windows 静态说明在解压目录，启动后补充绝对路径。发行文件清单从最终应用自动生成。说明包括用途、创建时机、升级需保留的内容，以及删除程序与删除数据的方法。
 

@@ -24,7 +24,7 @@ export function desktopMenu(s: Snapshot): DesktopMenuItem[] {
     toggle('置顶', 'onTop'), { label: '鼠标穿透', type: 'checkbox', checked: s.clickThrough, action: { type: 'click-through', value: !s.clickThrough } },
     toggle('启用动效', 'animations'), toggle('摸头互动', 'headPetting'), separator,
     { label: '主动闲话', type: 'checkbox', checked: s.idleEnabled, action: { type: 'idle-enabled', value: !s.idleEnabled } },
-    { label: '说一句', enabled: s.visible && s.awake && !s.clickThrough && !s.chatVisible && !s.settingsVisible && !s.input && !s.busy && !s.bubble, action: { type: 'say' } },
+    { label: '说一句', enabled: s.canSay, action: { type: 'say' } },
     { label: '闲话频率', submenu: ['经常 · 1–3 分钟', '适中 · 3–7 分钟', '安静 · 10–15 分钟'].map((label, i) => ({ label, type: 'radio', checked: s.idleFrequency === i + 1, action: { type: 'idle-frequency', value: i + 1 } })) }, separator,
     { label: s.music.wantsPlayback ? '暂停背景音乐' : '播放背景音乐', enabled: musicAvailable && Boolean(s.music.selected), action: { type: 'music-toggle' } },
     { label: '上一首', enabled: musicAvailable && Boolean(s.music.tracks.length), action: { type: 'music-previous' } },

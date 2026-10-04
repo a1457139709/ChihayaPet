@@ -8,11 +8,10 @@ import { waitForSprite } from './ready-sprite.mjs';
 const root = path.resolve(import.meta.dirname, '..');
 const data = mkdtempSync(path.join(os.tmpdir(), 'chihaya-runtime-'));
 const domain = `local.ChihayaPet.QA.${path.basename(data).replace(/[^a-zA-Z\d]/g, '')}`;
-const fixtureTracks = ['wav', 'aiff', 'aif', 'mp3', 'm4a', 'aac'].map((ext, i) => ({ id: `00000000-0000-4000-8000-00000000000${i}`, title: ext, fileName: `00000000-0000-4000-8000-00000000000${i}.${ext}` }));
+const fixtureTracks = ['wav', 'aiff', 'aif', 'mp3', 'm4a', 'aac'].map((ext, i) => ({ id: `${ext}.${ext}`, title: ext, fileName: `${ext}.${ext}` }));
 mkdirSync(path.join(data, 'Music'));
 const ffmpeg = path.join(root, 'node_modules/ffmpeg-static', process.platform === 'win32' ? 'ffmpeg.exe' : 'ffmpeg');
 for (const track of fixtureTracks) execFileSync(ffmpeg, ['-v', 'error', '-f', 'lavfi', '-i', 'sine=frequency=440:duration=3', path.join(data, 'Music', track.fileName)]);
-writeFileSync(path.join(data, 'Music/library.json'), JSON.stringify(fixtureTracks));
 if (process.platform === 'darwin') {
   execFileSync('/usr/bin/defaults', ['write', domain, 'music.autoplayEnabled', '-bool', 'false']);
   execFileSync('/usr/bin/defaults', ['write', domain, 'music.volume', '-float', '0']);

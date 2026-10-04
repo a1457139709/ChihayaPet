@@ -135,3 +135,31 @@ test('opening a panel closes a menu still loading and preserves the original foc
     assert.equal(restored, 1);
   } finally { f.close(); }
 });
+
+test('cancelled chat can retry while manual idle speech remains visible after closing chat', async context => {
+  const f = await fixture();
+  try {
+    // Hold the real conversation request until cancellation.
+    context.mock.method(f.companion as unknown as { fetcher: typeof fetch }, 'fetcher', (_url: Parameters<typeof fetch>[0], options?: Parameters<typeof fetch>[1]) => new Promise((_resolve, reject) => {
+      options?.signal?.addEventListener('abort', () => reject(new Error('cancelled')), { once: true });
+    }));
+    await f.controller.act({ type: 'chat' }); await f.controller.act({ type: 'input', text: '保留重试的问题' });
+    const request = f.controller.act({ type: 'send' });
+    await f.controller.act({ type: 'cancel' }); await request;
+    await f.controller.act({ type: 'close', window: 'chat' });
+    await f.controller.act({ type: 'say' }); await Promise.resolve();
+    assert.equal(f.controller.snapshot().pending, '保留重试的问题');
+    assert.equal(f.controller.snapshot().turns.length, 0);
+    assert.equal(f.controller.snapshot().bubble?.kind, 'idle');
+    assert.equal(WindowBoundary.instances.at(-1)!.isVisible(), true);
+    assert.equal(f.controller.snapshot().canSay, false);
+    await f.controller.act({ type: 'chat' });
+    assert.equal(f.controller.snapshot().bubble, undefined);
+    context.mock.method(f.companion as unknown as { fetcher: typeof fetch }, 'fetcher', async () => new Response('{"choices":[{"message":{"content":"重试完成"}}]}'));
+    await f.controller.act({ type: 'retry' });
+    assert.equal(f.controller.snapshot().turns[0]?.user, '保留重试的问题');
+    assert.equal(f.controller.snapshot().turns[0]?.assistant, '重试完成');
+    assert.equal(f.controller.snapshot().cancelled, false);
+
+  } finally { f.close(); }
+});

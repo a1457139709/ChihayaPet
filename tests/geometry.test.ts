@@ -17,3 +17,11 @@ test('visible bubble tips include ornament margins and follow the mouth after sc
   assert.equal(right.y + right.tailY, 292);
   assert.deepEqual(nearbyPanel({ x: 1430, y: 890, width: 280, height: 280 }, area, { width: 360, height: 420 }), { x: 1062, y: 480, width: 360, height: 420 });
 });
+
+test('real window bounds cannot overwrite newly calculated chat and bubble positions', () => {
+  const pet = { x: 100, y: 100, width: 180, height: 280 }, area = { x: 0, y: 0, width: 1440, height: 900 };
+  const dimensions = { width: 278, height: 180 }, oldBounds = { ...dimensions, x: 600, y: 350 };
+  const speech = { mouth: [100, 100], hairLeft: 0, hairRight: 200 };
+  assert.deepEqual(nearbyPanel(pet, area, oldBounds), nearbyPanel(pet, area, dimensions));
+  assert.deepEqual(bubbleFrame(pet, area, speech, 500, 256, oldBounds), bubbleFrame(pet, area, speech, 500, 256, dimensions));
+});

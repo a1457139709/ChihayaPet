@@ -1,11 +1,11 @@
 import { randomUUID } from 'node:crypto';
 import type { Message, Snapshot, Turn, Configuration, SettingsField } from '../shared/contracts';
-import { defaultPrompt } from '../shared/contracts';
+import { defaultPrompt } from './default-prompt';
 import { characterCount, validateInput } from '../shared/text';
 import { ConfigStore, PromptStore, connection, normalizeService } from './storage';
 import { requestReply } from './network';
 
-type ConversationState = Pick<Snapshot, 'greeting' | 'turns' | 'didTrim' | 'input' | 'pending' | 'pendingID' | 'partial' | 'error' | 'busy' | 'settingsError' | 'settingsNotice' | 'testStatus' | 'draft'>;
+type ConversationState = Pick<Snapshot, 'greeting' | 'turns' | 'didTrim' | 'input' | 'pending' | 'pendingID' | 'partial' | 'cancelled' | 'error' | 'busy' | 'settingsError' | 'settingsNotice' | 'testStatus' | 'draft'>;
 const greetings = ['你好，我是妃宫千早。今天过得怎么样？', '来了呀。先坐一会儿吧，今天想聊些什么？', '忙到现在，辛苦了。要不要稍微歇一歇？', '今天也请多关照。有什么想说的，我听着。', '一直这样看着我……是有什么话想说吗？'];
 const errorText = (error: unknown) => error instanceof Error ? error.message : '操作失败，请检查本机数据目录。';
 export class Companion {
@@ -45,7 +45,7 @@ export class Companion {
     for (const turn of this.context()) messages.push({ role: 'user', content: turn.user }, { role: 'assistant', content: turn.assistant });
     messages.push({ role: 'user', content: text });
     const active = { kind: 'chat' as const, controller: new AbortController() };
-    this.active = active; this.state.busy = 'chat'; this.state.error = undefined; this.state.partial = ''; this.state.pending = text; this.state.pendingID = randomUUID();
+    this.active = active; this.state.busy = 'chat'; this.state.cancelled = false; this.state.error = undefined; this.state.partial = ''; this.state.pending = text; this.state.pendingID = randomUUID();
     if (!retry) this.state.input = '';
     this.onChange();
     try {
@@ -72,13 +72,13 @@ export class Companion {
   cancel(): void {
     const old = this.active; this.active = undefined; this.state.busy = undefined;
     old?.controller.abort();
-    if (old?.kind === 'chat') this.state.error = '已取消，可手动重试。';
+    if (old?.kind === 'chat') { this.state.cancelled = true; this.state.error = undefined; }
     if (old?.kind === 'test') this.state.testStatus = undefined;
     this.onChange();
   }
   clear(): void {
     this.cancel(); this.state.turns = []; this.state.didTrim = false; this.state.pending = undefined; this.state.pendingID = undefined;
-    this.state.partial = ''; this.state.error = undefined; this.state.input = ''; this.state.testStatus = undefined;
+    this.state.partial = ''; this.state.cancelled = false; this.state.error = undefined; this.state.input = ''; this.state.testStatus = undefined;
     this.onCleared(); this.onChange();
   }
   beginSettings(): void {
