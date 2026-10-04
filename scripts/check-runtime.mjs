@@ -1,5 +1,5 @@
 import { _electron as electron } from 'playwright-core';
-import { mkdtempSync, rmSync, mkdirSync, writeFileSync, readFileSync, realpathSync } from 'node:fs';
+import { mkdtempSync, rmSync, mkdirSync, writeFileSync, readFileSync, realpathSync, existsSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import assert from 'node:assert/strict';
@@ -184,7 +184,7 @@ try {
   for (const value of runtimePaths) assert.equal(realpathSync(value).startsWith(path.join(realpathSync(data), 'ElectronRuntime')), true, JSON.stringify({ data, runtimePaths }));
   assert.equal(await pet.evaluate(() => window.chihaya.snapshot().then(s => s.music.loop)), 'playlist');
   for (const track of fixtureTracks) {
-    await pet.evaluate(id => window.chihaya.act({ type: 'music-select', id }), track.id);
+    await pet.evaluate(id => window.chihaya.act({ type: 'music-select', id }), `${track.title}.${path.extname(track.fileName).slice(1)}`);
     const playing = await pet.evaluate(() => window.chihaya.snapshot().then(s => s.music.wantsPlayback));
     if (!playing) await pet.evaluate(() => window.chihaya.act({ type: 'music-toggle' }));
     await pet.waitForFunction(() => window.chihaya.snapshot().then(s => s.music.playing), { timeout: 10_000 });
@@ -194,7 +194,7 @@ try {
   await pet.evaluate(() => window.chihaya.act({ type: 'music-toggle' }));
   await app.evaluate(({ powerMonitor }) => powerMonitor.emit('resume'));
   assert.equal(await pet.evaluate(() => window.chihaya.snapshot().then(s => s.music.wantsPlayback)), false);
-  assert.equal(readFileSync(path.join(data, 'Music/library.json'), 'utf8'), JSON.stringify(fixtureTracks));
+  assert.equal(existsSync(path.join(data, 'Music/library.json')), false);
   assert.deepEqual(errors, []);
   console.log('Runtime verified: isolated storage, approved rendering, native Spaces/fullscreen flags after repeated top-level setters, alpha hit/click-through commands, missing service routing/focus/draft preservation/reopened settings, settings save, expression normalization, Chinese composition, capped-history playback/prefix, scroll following/reader position, fast JSON playback, reply suppression/restoration, panel reuse, idle bubble, all six music formats, simulated sleep/manual pause and FILES.txt.');
 } finally {

@@ -4,7 +4,7 @@ import { Readable } from 'node:stream';
 import path from 'node:path';
 import { resolvePaths, initializePaths } from './paths';
 import { Platform } from '../platform/native';
-import { ConfigStore } from './storage';
+import { ConfigStore, PromptStore } from './storage';
 import { Companion } from './companion';
 import { MusicLibrary, AudioDecoder, MusicController } from './music';
 import { DesktopApplication } from './desktop';
@@ -13,9 +13,11 @@ import { validAction } from './ipc';
 import { runtimeGuide } from './files-guide';
 import { qaFetch } from './qa-network';
 
+declare const __CHIHAYA_PROJECT_ROOT__: string;
+
 app.setName('千早桌宠');
 const qa = process.env.CHIHAYA_QA === '1' && Boolean(process.env.CHIHAYA_QA_DATA);
-const paths = resolvePaths({ platform: process.platform, packaged: app.isPackaged, executable: process.execPath, appPath: app.getAppPath(), qaRoot: qa ? process.env.CHIHAYA_QA_DATA : undefined });
+const paths = resolvePaths({ platform: process.platform, packaged: app.isPackaged, executable: process.execPath, appPath: app.getAppPath(), projectRoot: __CHIHAYA_PROJECT_ROOT__, qaRoot: qa ? process.env.CHIHAYA_QA_DATA : undefined });
 let startupError: unknown;
 try {
   initializePaths(paths);
@@ -38,8 +40,8 @@ else void app.whenReady().then(async () => {
   const resources = app.isPackaged ? path.join(process.resourcesPath, 'RuntimeResources') : path.join(app.getAppPath(), 'ChihayaPet/Resources');
   const binaries = app.isPackaged ? path.join(process.resourcesPath, 'app.asar.unpacked', 'dist') : directory;
   const platform = new Platform(process.platform, path.join(binaries, 'platform'), paths.preferences, qa ? `local.ChihayaPet.QA.${path.basename(paths.root).replace(/[^a-zA-Z\d]/g, '')}` : 'local.ChihayaPet');
-  const music = new MusicController(new MusicLibrary(paths.music), new AudioDecoder(path.join(binaries, 'media', process.platform === 'win32' ? 'ffmpeg.exe' : 'ffmpeg'), paths.cache), platform);
-  const companion = new Companion(new ConfigStore(paths.config), platform, qa && process.env.CHIHAYA_QA_REPLY === '1' ? qaFetch : fetch);
+  const music = new MusicController(new MusicLibrary(paths.music, platform), new AudioDecoder(path.join(binaries, 'media', process.platform === 'win32' ? 'ffmpeg.exe' : 'ffmpeg'), paths.cache), platform);
+  const companion = new Companion(new ConfigStore(paths.config), new PromptStore(paths.prompt), qa && process.env.CHIHAYA_QA_REPLY === '1' ? qaFetch : fetch);
   controller = new DesktopApplication(companion, music, platform, paths, directory, resources);
   tray = installMenu(controller);
   runtimeGuide(paths, app.isPackaged ? (process.platform === 'darwin' ? path.resolve(process.execPath, '../../..') : path.dirname(process.execPath)) : app.getAppPath(), process.platform, path.join(process.resourcesPath, 'FILES.txt'), platform.domain);

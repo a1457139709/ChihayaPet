@@ -9,6 +9,21 @@ import { fromMacOrigin, toMacOrigin, clamped, bubbleFrame } from '../app/shared/
 import { inputCommand, validateInput } from '../app/shared/text.ts';
 import { IdleCatalog, idleAllowed, idleDelay } from '../app/shared/idle.ts';
 
+test('development and packaged Mac prompts share the build project file; QA prompts stay isolated', () => {
+  const root = mkdtempSync(path.join(os.tmpdir(), 'chihaya-prompt-paths-'));
+  try {
+    const projectRoot = path.join(root, 'project'); mkdirSync(projectRoot);
+    writeFileSync(path.join(projectRoot, 'package.json'), '{}');
+    for (const packaged of [false, true]) {
+      const options = { platform: 'darwin' as const, packaged, executable: '/Applications/ChihayaPet.app/Contents/MacOS/ChihayaPet', appPath: packaged ? '/Applications/ChihayaPet.app/Contents/Resources/app.asar' : path.join(projectRoot, 'dist'), projectRoot, home: root };
+      const paths = resolvePaths(options);
+      assert.equal(paths.prompt, path.join(projectRoot, 'chihaya_prompt.md'));
+      const qaRoot = path.join(root, 'qa');
+      assert.equal(resolvePaths({ ...options, qaRoot }).prompt, path.join(qaRoot, 'chihaya_prompt.md'));
+    }
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
 test('portable data follows the executable directory when the entire Windows folder moves', () => {
   const root = mkdtempSync(path.join(os.tmpdir(), 'chihaya-portable-'));
   try {
@@ -18,7 +33,7 @@ test('portable data follows the executable directory when the entire Windows fol
     const moved = path.join(root, 'moved'); renameSync(original, moved);
     const next = resolvePaths({ platform: 'win32', packaged: true, executable: path.join(moved, 'ChihayaPet.exe'), appPath: path.join(moved, 'resources/app.asar') });
     assert.equal(new ConfigStore(next.config).key('https://example.com/v1'), 'synthetic');
-    for (const key of ['root', 'config', 'preferences', 'music', 'runtime', 'session', 'cache', 'logs', 'crashes', 'temp'] as const) assert.equal(next[key].startsWith(moved + path.sep), true);
+    for (const key of ['root', 'config', 'prompt', 'preferences', 'music', 'runtime', 'session', 'cache', 'logs', 'crashes', 'temp'] as const) assert.equal(next[key].startsWith(moved + path.sep), true);
     assert.equal(next.files, path.join(moved, 'FILES.txt'));
     const mac = resolvePaths({ platform: 'darwin', packaged: true, executable: '/custom/ChihayaPet.app/Contents/MacOS/ChihayaPet', appPath: '/custom/ChihayaPet.app', home: '/Users/example' });
     assert.equal(mac.config, '/Users/example/Library/Application Support/ChihayaPet/config.json');

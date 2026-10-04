@@ -2,7 +2,7 @@ import { randomUUID } from 'node:crypto';
 import type { Message, Snapshot, Turn, Configuration, SettingsField } from '../shared/contracts';
 import { defaultPrompt } from '../shared/contracts';
 import { characterCount, validateInput } from '../shared/text';
-import { ConfigStore, connection, normalizeService, type PreferenceStore } from './storage';
+import { ConfigStore, PromptStore, connection, normalizeService } from './storage';
 import { requestReply } from './network';
 
 type ConversationState = Pick<Snapshot, 'greeting' | 'turns' | 'didTrim' | 'input' | 'pending' | 'pendingID' | 'partial' | 'error' | 'busy' | 'settingsError' | 'settingsNotice' | 'testStatus' | 'draft'>;
@@ -11,6 +11,7 @@ const errorText = (error: unknown) => error instanceof Error ? error.message : '
 export class Companion {
   private settings: Configuration = { baseURL: '', model: '', apiKeys: {} };
   private prompt = defaultPrompt;
+  private promptError?: string;
   private active?: { kind: 'chat' | 'test'; controller: AbortController };
   private state: ConversationState;
   onChange: () => void = () => {};
@@ -18,10 +19,11 @@ export class Companion {
   onNeedsSettings: () => void = () => {};
   onInvalidSettings: () => void = () => {};
   onCleared: () => void = () => {};
-  constructor(private config: ConfigStore, private preferences: PreferenceStore, private fetcher: typeof fetch = fetch, random: () => number = Math.random) {
+  constructor(private config: ConfigStore, private prompts: PromptStore, private fetcher: typeof fetch = fetch, random: () => number = Math.random) {
     this.state = { greeting: greetings[Math.min(4, Math.floor(random() * 5))]!, turns: [], didTrim: false, input: '', partial: '', draft: { baseURL: '', model: '', key: '', prompt: defaultPrompt } };
     try { this.settings = config.load(); } catch (e) { this.state.settingsError = errorText(e); }
-    try { this.prompt = String(preferences.load()['persona.prompt'] ?? defaultPrompt); } catch (e) { this.state.settingsError = errorText(e); }
+    try { this.prompt = prompts.load(); } catch (e) { this.promptError = this.state.settingsError = errorText(e); }
+    this.state.draft.prompt = this.prompt;
   }
   snapshot(): ConversationState & Pick<Snapshot, 'savedService'> {
     return { ...structuredClone(this.state), savedService: this.settings.baseURL ? { baseURL: this.settings.baseURL, model: this.settings.model } : undefined };
@@ -83,7 +85,7 @@ export class Companion {
     this.endSettings();
     this.state.draft = { baseURL: this.settings.baseURL, model: this.settings.model, key: '', prompt: this.prompt };
     this.state.settingsNotice = undefined;
-    try { this.config.load(); this.preferences.load(); this.state.settingsError = undefined; } catch (e) { this.state.settingsError = errorText(e); }
+    try { this.config.load(); this.state.settingsError = this.promptError; } catch (e) { this.state.settingsError = errorText(e); }
     this.loadDraftKey(); this.onChange();
   }
   missingSettingsField(): SettingsField | undefined {
@@ -141,7 +143,7 @@ export class Companion {
   savePrompt(restore = false): boolean {
     try {
       const prompt = restore ? defaultPrompt : this.state.draft.prompt;
-      this.preferences.save({ 'persona.prompt': prompt }); this.clear(); this.prompt = prompt; this.state.draft.prompt = prompt;
+      this.prompts.save(prompt); this.clear(); this.prompt = prompt; this.state.draft.prompt = prompt; this.promptError = undefined;
       this.state.settingsError = undefined; this.state.settingsNotice = '角色设定已保存，会话已清空。';
       this.onChange(); return true;
     } catch (e) { this.state.settingsError = errorText(e); this.state.settingsNotice = undefined; this.onChange(); return false; }

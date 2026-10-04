@@ -59,7 +59,7 @@ try {
   assert.equal(await settings.locator('[data-tab="music"]').getAttribute('aria-selected'), 'true');
   await choose(['服装／姿态', '冬服侧身'], s => s.desktop.outfit === 'b');
   await choose(['取景', '近景'], s => s.desktop.framing === 'close');
-  await choose(['表情编号', '03'], s => s.desktop.expression === '03');
+  await choose(['表情', '03 · 生气'], s => s.desktop.expression === '03');
   await choose(['角色大小', '320 点'], s => s.desktop.height === 320);
   await native('slide', 333); await wait(s => s.desktop.height === 333);
   assert.equal(await settings.locator('#height').inputValue(), '333');
@@ -72,8 +72,8 @@ try {
   await choose(['主动闲话'], s => s.idleEnabled);
   await choose(['闲话频率', '安静'], s => s.idleFrequency === 3);
   await choose(['播放背景音乐'], s => s.music.wantsPlayback);
-  await choose(['下一首'], s => s.music.selected === tracks[1].id);
-  await choose(['上一首'], s => s.music.selected === tracks[0].id);
+  await choose(['下一首'], s => s.music.selected === tracks[1].title + '.wav');
+  await choose(['上一首'], s => s.music.selected === tracks[0].title + '.wav');
   await choose(['暂停背景音乐'], s => !s.music.wantsPlayback);
   await settings.locator('#close').click(); await chat.locator('#close').click(); await wait(s => !s.chatVisible && !s.settingsVisible);
   await choose(['说一句'], s => s.bubble?.kind === 'idle');

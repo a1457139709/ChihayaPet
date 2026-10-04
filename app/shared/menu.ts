@@ -1,4 +1,5 @@
 import type { Action, Snapshot } from './contracts';
+import { expressionLabel } from './expressions';
 
 export type DesktopMenuItem = { label?: string; type?: 'separator' | 'checkbox' | 'radio' | 'slider'; enabled?: boolean; checked?: boolean; value?: number; action?: Action; submenu?: DesktopMenuItem[] };
 export function desktopMenu(s: Snapshot): DesktopMenuItem[] {
@@ -11,9 +12,9 @@ export function desktopMenu(s: Snapshot): DesktopMenuItem[] {
     { label: '打开聊天', action: { type: 'chat' } }, separator,
     { label: `服装／姿态 · ${outfit}`, submenu: s.outfits.map(o => ({ label: o.name, type: 'radio', checked: o.id === s.desktop.outfit, action: desktop('outfit', o.id) })) },
     { label: `取景 · ${s.desktop.framing === 'full' ? '全景' : '近景'}`, submenu: ['full', 'close'].map(f => ({ label: f === 'full' ? '全景' : '近景', type: 'radio', checked: f === s.desktop.framing, action: desktop('framing', f) })) },
-    { label: `表情编号 · ${s.desktop.expression === 'automatic' ? '自动' : s.desktop.expression}`, submenu: [
+    { label: `表情 · ${expressionLabel(s.desktop.outfit, s.desktop.expression)}`, submenu: [
       { label: '自动', type: 'radio', checked: s.desktop.expression === 'automatic', action: desktop('expression', 'automatic') }, separator,
-      ...s.expressions.map(e => ({ label: e.id + (e.approved ? '' : ' · 待审核'), type: 'radio' as const, enabled: e.approved, checked: e.id === s.desktop.expression, action: desktop('expression', e.id) })),
+      ...s.expressions.map(e => ({ label: expressionLabel(s.desktop.outfit, e.id) + (e.approved ? '' : ' · 待审核'), type: 'radio' as const, enabled: e.approved, checked: e.id === s.desktop.expression, action: desktop('expression', e.id) })),
     ] },
     ...(s.resourceError ? [{ label: '当前取景／表情图片加载失败', enabled: false }] : []),
     { label: `角色大小 · ${Math.round(s.desktop.height)} 点`, submenu: [

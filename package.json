@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test tests/*.test.ts",
     "test:runtime": "node scripts/check-runtime.mjs",
+    "test:prompt": "node scripts/check-prompt.mjs",
     "test:menu": "node scripts/check-menu.mjs",
     "package": "npm run build && node scripts/package-electron.mjs",
     "verify": "python3 scripts/verify_resources.py --source-only --require-approved-standing && node scripts/verify-package.mjs"

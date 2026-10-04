@@ -1,4 +1,5 @@
 import type { Action, SettingsTab, Snapshot } from '../shared/contracts';
+import { expressionLabel } from '../shared/expressions';
 import { headerFlowers, icon, iconButton, panelChrome } from './chrome';
 
 export function mountSettings(root: HTMLElement, act: (action: Action) => void): { render(state: Snapshot): void; composing(): boolean } {
@@ -38,14 +39,14 @@ export function mountSettings(root: HTMLElement, act: (action: Action) => void):
       <div class="row volume-row">${icon('volume')}<input id="volume" aria-label="背景音乐音量" type="range" min="0" max="1" step="0.01"><output id="volume-value" for="volume"></output></div>
       <p id="music-suspended" class="notice"></p><div id="music-progress" class="row muted" role="status" hidden><span class="spinner" aria-hidden="true"></span><span id="music-operation"></span></div>
       <p id="music-notice" class="notice" role="status"></p><p id="music-error" class="notice error" role="alert"></p>
-      <div class="danger-zone"><button id="music-remove" class="plain danger">从曲库移除所选曲目</button><p class="help">移除索引不会删除原文件及导入副本。</p></div>
+      <div class="danger-zone"><button id="music-remove" class="plain danger">从曲库移除所选曲目</button><p class="help">移除后保存在 Music/已移除/，移回即可恢复。</p></div>
       <p class="quiet">隐藏桌宠或电脑休眠时，音乐会暂停。</p>
     </section>
     <section id="section-portrait" data-section="portrait" role="tabpanel" aria-labelledby="tab-portrait" hidden>
       <h2>立绘</h2>
       <label><span class="field-label">服装／姿态</span><select id="outfit"></select></label>
       <label><span class="field-label">取景</span><select id="framing"><option value="full">全景</option><option value="close">近景</option></select></label>
-      <label><span class="field-label">表情编号</span><select id="expression"></select></label>
+      <label><span class="field-label">表情</span><select id="expression"></select></label>
       <label><span class="field-label">角色大小 · <output id="height-value" for="height"></output></span><input id="height" aria-label="角色显示高度" type="range" min="240" max="480" step="1"></label>
       <p class="help">240–480 点 · 默认 256 点</p>
       <div class="portrait-toggles"><label class="check-label"><input id="onTop" type="checkbox">置顶</label><label class="check-label"><input id="clickThrough" type="checkbox">鼠标穿透</label><label class="check-label"><input id="animations" type="checkbox">启用动效</label><label class="check-label"><input id="headPetting" type="checkbox">摸头互动</label></div>
@@ -159,10 +160,10 @@ export function mountSettings(root: HTMLElement, act: (action: Action) => void):
       for (const field of ['notice', 'error'] as const) { node('music-' + field).textContent = music[field] ?? ''; node('music-' + field).hidden = !music[field]; }
       const outfits = JSON.stringify(state.outfits);
       if (outfits !== outfitSignature) { outfitSignature = outfits; node<HTMLSelectElement>('outfit').replaceChildren(...state.outfits.map(o => new Option(o.name, o.id))); }
-      const expressions = JSON.stringify(state.expressions);
+      const expressions = JSON.stringify([state.desktop.outfit, state.expressions]);
       if (expressions !== expressionSignature) {
         expressionSignature = expressions;
-        node<HTMLSelectElement>('expression').replaceChildren(new Option('自动', 'automatic'), ...state.expressions.map(e => { const option = new Option(e.id + (e.approved ? '' : ' · 待审核'), e.id); option.disabled = !e.approved; return option; }));
+        node<HTMLSelectElement>('expression').replaceChildren(new Option('自动', 'automatic'), ...state.expressions.map(e => { const option = new Option(expressionLabel(state.desktop.outfit, e.id) + (e.approved ? '' : ' · 待审核'), e.id); option.disabled = !e.approved; return option; }));
       }
       setValue('outfit', state.desktop.outfit); setValue('framing', state.desktop.framing); setValue('expression', state.desktop.expression); setValue('height', String(state.desktop.height)); node('height-value').textContent = `${Math.round(state.desktop.height)} 点`;
       for (const field of ['onTop', 'animations', 'headPetting'] as const) node<HTMLInputElement>(field).checked = state.desktop[field];

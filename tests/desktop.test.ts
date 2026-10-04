@@ -6,7 +6,7 @@ import { mkdtempSync, rmSync } from 'node:fs';
 import path from 'node:path';
 import { tmpdir } from 'node:os';
 import { Companion } from '../app/main/companion.ts';
-import { ConfigStore } from '../app/main/storage.ts';
+import { ConfigStore, PromptStore } from '../app/main/storage.ts';
 import { MusicLibrary, AudioDecoder, MusicController } from '../app/main/music.ts';
 import { Platform } from '../app/platform/native.ts';
 import { resolvePaths } from '../app/main/paths.ts';
@@ -57,7 +57,7 @@ async function fixture() {
   const platform = new Platform('win32', root, paths.preferences);
   platform.save({ 'desktop.headPettingEnabled': false });
   const config = new ConfigStore(paths.config); config.saveService('https://example.com/v1', 'fixture', 'synthetic');
-  const companion = new Companion(config, platform, async () => new Response('{"choices":[{"message":{"content":"完整回复"}}]}'));
+  const companion = new Companion(config, new PromptStore(paths.prompt), async () => new Response('{"choices":[{"message":{"content":"完整回复"}}]}'));
   const music = new MusicController(new MusicLibrary(paths.music), new AudioDecoder('/unused', paths.cache), platform);
   await music.ready;
   const controller = new DesktopApplication(companion, music, platform, paths, path.resolve('dist'), path.resolve('ChihayaPet/Resources'));

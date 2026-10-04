@@ -1,7 +1,7 @@
 import { existsSync, readFileSync, mkdirSync, writeFileSync, renameSync, unlinkSync, openSync, closeSync, fsyncSync } from 'node:fs';
 import path from 'node:path';
 import { randomUUID } from 'node:crypto';
-import type { Configuration, Preferences } from '../shared/contracts';
+import { defaultPrompt, type Configuration, type Preferences } from '../shared/contracts';
 
 export function normalizeService(input: string): string {
   const raw = input.trim();
@@ -20,14 +20,29 @@ export function connection(baseURL: string, model: string): { baseURL: string; m
   if (!model.trim()) throw new Error('请填写模型名称。');
   return { baseURL: normalizeService(baseURL), model: model.trim() };
 }
-export function atomicJSON(file: string, values: unknown): void {
+function atomicText(file: string, text: string): void {
   mkdirSync(path.dirname(file), { recursive: true });
   const temporary = path.join(path.dirname(file), `.config-${randomUUID()}.tmp`);
   try {
-    writeFileSync(temporary, JSON.stringify(values, null, 2) + '\n', { mode: 0o600, flag: 'wx' });
+    writeFileSync(temporary, text, { mode: 0o600, flag: 'wx' });
     const fd = openSync(temporary, 'r'); try { fsyncSync(fd); } finally { closeSync(fd); }
     renameSync(temporary, file);
   } finally { try { unlinkSync(temporary); } catch { /* Renamed, or never created. */ } }
+}
+export function atomicJSON(file: string, values: unknown): void { atomicText(file, JSON.stringify(values, null, 2) + '\n'); }
+export class PromptStore {
+  constructor(readonly file: string) {}
+  load(): string {
+    try { return readFileSync(this.file, 'utf8'); }
+    catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') return defaultPrompt;
+      throw new Error(`无法读取角色提示词文件：${this.file}。请检查文件和读取权限。`);
+    }
+  }
+  save(prompt: string): void {
+    try { atomicText(this.file, prompt); }
+    catch { throw new Error(`无法保存角色提示词文件：${this.file}。请检查文件和目录写入权限，当前角色设定未更改。`); }
+  }
 }
 export class ConfigStore {
   constructor(readonly file: string) {}

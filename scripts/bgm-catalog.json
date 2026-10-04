@@ -1,0 +1,222 @@
+{
+  "source": "https://github.com/a1457139709/ChihayaPet/tree/bgm/bgm",
+  "sourceTree": "0e96f7926f37f0fb33ed90ca88926dc62547db36",
+  "issue": "https://github.com/a1457139709/ChihayaPet/issues/68",
+  "tracks": [
+    {
+      "fileName": "20.wav",
+      "gitBlob": "161f47f0dd666a7fae615c1547e83208662da49e",
+      "bytes": 23061294
+    },
+    {
+      "fileName": "21.wav",
+      "gitBlob": "dfc7e17dff4e5427ecb925ee6e36c9eecdb076c6",
+      "bytes": 6186706
+    },
+    {
+      "fileName": "Lament.wav",
+      "gitBlob": "692e0aa75f80ebc44b7bd2424c8df589fdf94032",
+      "bytes": 29375278
+    },
+    {
+      "fileName": "You make my day !..wav",
+      "gitBlob": "e5757e56fcecfd4644daade6019f14726af61682",
+      "bytes": 24186158
+    },
+    {
+      "fileName": "いとしいきもち.wav",
+      "gitBlob": "88f77860a1ae0c0b0a7aad8df4537f9818d7a994",
+      "bytes": 51752918
+    },
+    {
+      "fileName": "お話しよっ!.wav",
+      "gitBlob": "e34f7568f78a29de3404507616903f22e961e6db",
+      "bytes": 22776110
+    },
+    {
+      "fileName": "きらきら星花.wav",
+      "gitBlob": "1527acf7f8c0330075b3e03ef50bbe5c2e151008",
+      "bytes": 20404234
+    },
+    {
+      "fileName": "さよならの囁き.wav",
+      "gitBlob": "b58653a51ea98d52088f7697ae9a36dab812a3ef",
+      "bytes": 54374190
+    },
+    {
+      "fileName": "そよ風のように~薰子のテ一マ.wav",
+      "gitBlob": "35a10a673a62228a1d3a9c874631cd4d1694a428",
+      "bytes": 37782042
+    },
+    {
+      "fileName": "つぶやき~史のテ一マ.wav",
+      "gitBlob": "84454b5b5a2aecf5f5f442295016a41ccb83375d",
+      "bytes": 16792770
+    },
+    {
+      "fileName": "ひまわり あお空 白いくも~初音のテ一マ.wav",
+      "gitBlob": "82d949290f7a2a52a6d1203e3780447a6f812060",
+      "bytes": 24779314
+    },
+    {
+      "fileName": "アンダ一ハンテッド・ガ一ル.wav",
+      "gitBlob": "28336d8dc6a8bcd175e0f664eec12ed2c6ad86ed",
+      "bytes": 41806846
+    },
+    {
+      "fileName": "エッヘン.wav",
+      "gitBlob": "011fb43adb0d2e0d62b36139e915d97962ddfdd5",
+      "bytes": 23545646
+    },
+    {
+      "fileName": "エメラルドの風.wav",
+      "gitBlob": "af77245b6eb0d4769e821dc9c5b4744b8dc8bb04",
+      "bytes": 22025518
+    },
+    {
+      "fileName": "クチナシの香り~香織理のテ一マ.wav",
+      "gitBlob": "29f2bd33cffa4468f027448130e4f9010d256a6c",
+      "bytes": 29725998
+    },
+    {
+      "fileName": "クリス夕ル・サイレソス.wav",
+      "gitBlob": "46b11bb576540cb864b3870239ce4218ab2d3866",
+      "bytes": 21192558
+    },
+    {
+      "fileName": "フアイト.wav",
+      "gitBlob": "fb7835b6e225a7136badb15cd3dca74be303d01d",
+      "bytes": 25950370
+    },
+    {
+      "fileName": "不穏.wav",
+      "gitBlob": "5c66c9355f69a42c512b9b818ddca9e0439c1470",
+      "bytes": 34462510
+    },
+    {
+      "fileName": "丘の上の散策.wav",
+      "gitBlob": "7320c43bfd6af193a792d76c929dd83927132a94",
+      "bytes": 26726190
+    },
+    {
+      "fileName": "乙女よ駆けぬけろ！.wav",
+      "gitBlob": "7239d3926a3878f4c93af08fd27ac50a1f5bc5ed",
+      "bytes": 33672694
+    },
+    {
+      "fileName": "仮面の中の思い.wav",
+      "gitBlob": "bbcde7ac52df3a92b36155ffe8454806e2792429",
+      "bytes": 32334982
+    },
+    {
+      "fileName": "儚き王妃.wav",
+      "gitBlob": "882b3750852ae99ee5f2c785f7dc1e1526d10729",
+      "bytes": 23751394
+    },
+    {
+      "fileName": "君のままで.wav",
+      "gitBlob": "e9e6a1f8ef070977b618ca96cdcc6c386b6d6c2c",
+      "bytes": 53272846
+    },
+    {
+      "fileName": "夕陽のあたる教室~ひのあたるへや~.wav",
+      "gitBlob": "27486a2878bd729f6da3b01a5abf528d5e5cb005",
+      "bytes": 26709294
+    },
+    {
+      "fileName": "夢の中で….wav",
+      "gitBlob": "d94559c3d79a7f46708fc92ad6d40bcc1bdae5a2",
+      "bytes": 21938990
+    },
+    {
+      "fileName": "姫を救う騎士の如く.wav",
+      "gitBlob": "ff5cc718395e96eb08a16365a425ab9f68a37225",
+      "bytes": 32485166
+    },
+    {
+      "fileName": "宝石のワルツ 作品418 ワルツNo.2.wav",
+      "gitBlob": "b6b62860d6ece39c52634c97c1bb71ad102cf33c",
+      "bytes": 8934706
+    },
+    {
+      "fileName": "小さないたずら.wav",
+      "gitBlob": "b3b3949274abf6d4970a9c8034df17d1033391e2",
+      "bytes": 17460458
+    },
+    {
+      "fileName": "強い絆.wav",
+      "gitBlob": "417363d1779b932a7f73374dcdfe9950e99be97a",
+      "bytes": 28146990
+    },
+    {
+      "fileName": "微笑の肖像.wav",
+      "gitBlob": "b944d98a4275713762753360f9cded410f650840",
+      "bytes": 26766638
+    },
+    {
+      "fileName": "木漏れ日の雪解け.wav",
+      "gitBlob": "280a4f841dfd3dfe559024bb0dcf65bb8a86b6d6",
+      "bytes": 19342638
+    },
+    {
+      "fileName": "気の合う仲間たち.wav",
+      "gitBlob": "124b67784a0488c06606c0947b809af01511d181",
+      "bytes": 35648814
+    },
+    {
+      "fileName": "溢れ出す優しさと愛と.wav",
+      "gitBlob": "affc8b88b8d88a20fa6d1b32dda6af5c9a74e2c4",
+      "bytes": 23281082
+    },
+    {
+      "fileName": "爽やかな風に吹かれて.wav",
+      "gitBlob": "6e728b6cc8040910733a9dc30a5f53d2621d06a8",
+      "bytes": 36376366
+    },
+    {
+      "fileName": "硝子の月兔~優雨のテ一マ.wav",
+      "gitBlob": "2dec25fab59a87cceb44eb45ec2cbc7941f4324c",
+      "bytes": 22944974
+    },
+    {
+      "fileName": "確かな想い.wav",
+      "gitBlob": "fd7f0bbca43efc52bcd8bf3f2f05f56fcf840896",
+      "bytes": 22007086
+    },
+    {
+      "fileName": "移りゆく花のように.wav",
+      "gitBlob": "eafe9130fd0b59a258f7138c81d575d1aea7a741",
+      "bytes": 52743646
+    },
+    {
+      "fileName": "自由な翼.wav",
+      "gitBlob": "294a498a6bd88427bd11d5a132badd0a8273b806",
+      "bytes": 33890606
+    },
+    {
+      "fileName": "螺旋宮殿~ケイリのテ一マ.wav",
+      "gitBlob": "eee7f5bffaf7730e16784f3b3769581fe3241af5",
+      "bytes": 23561134
+    },
+    {
+      "fileName": "負けず嫌いの少女~淡雪のテ一マ.wav",
+      "gitBlob": "033206f990e47b1096e7ec326e8fb828f60f0331",
+      "bytes": 31787886
+    },
+    {
+      "fileName": "野ネズミの踊り.wav",
+      "gitBlob": "84803ca531a0794d2cd5d57ca3e34576a2cc5ae7",
+      "bytes": 22226922
+    },
+    {
+      "fileName": "陽だまりの中へ.wav",
+      "gitBlob": "c3a23b4e94316ffecf6f7f151ef227b740c5cd47",
+      "bytes": 53978446
+    },
+    {
+      "fileName": "霧の向こうへ~雅楽乃のテ一マ.wav",
+      "gitBlob": "85b96713a35bde82bf915e416d236682e6563779",
+      "bytes": 23958318
+    }
+  ]
+}
