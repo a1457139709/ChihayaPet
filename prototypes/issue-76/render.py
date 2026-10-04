@@ -1,10 +1,10 @@
 from PIL import Image, ImageDraw, ImageFont
 from pathlib import Path
-base=Path('/Users/red/Documents/Codex/2026-10-04/wan')
-src=Image.open(base/'work/issue-76-reference.png').convert('RGB')
+base=Path(__file__).resolve().parent
+src=Image.open(base/'reference.png').convert('RGB')
 box=(62,0,246,184)
 crop=src.crop(box)
-crop.save(base/'outputs/chihaya-icon-prototype.png')
+crop.save(base/'crop.png')
 canvas=Image.new('RGB',(1000,630),'#f4f2ee')
 d=ImageDraw.Draw(canvas)
 font='/System/Library/Fonts/Helvetica.ttc'
@@ -25,4 +25,4 @@ d.rectangle((484+box[0]*.6,409+box[1]*.6,484+box[2]*.6,409+box[3]*.6),outline='#
 label(704,418,'PROTOTYPE',16,'#8b4775')
 label(704,450,'Framing review only',16)
 label(704,478,'Square image, original background',14)
-canvas.save(base/'outputs/chihaya-icon-review.png')
+canvas.save(base/'review.png')

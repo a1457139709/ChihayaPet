@@ -10,3 +10,5 @@ The user approved review.png on 2026-10-04: “可以，就这样吧”.
 Decision: retain the background and minor supporting-character edges, use this exact crop for macOS arm64 and Windows x64 application icons. Keep tray/menu-bar icons unchanged. Accept softness at larger sizes.
 
 This branch is a prototype archive, not production source.
+
+Run with Pillow installed: `python3 prototypes/issue-76/render.py`.
