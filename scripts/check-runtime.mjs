@@ -4,6 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
+import { waitForSprite } from './ready-sprite.mjs';
 const root = path.resolve(import.meta.dirname, '..');
 const data = mkdtempSync(path.join(os.tmpdir(), 'chihaya-runtime-'));
 const domain = `local.ChihayaPet.QA.${path.basename(data).replace(/[^a-zA-Z\d]/g, '')}`;
@@ -39,7 +40,7 @@ try {
   };
   const errors = []; pet.on('pageerror', error => errors.push(error.message));
   pet.on('console', message => { if (message.type() === 'error') console.error('Renderer:', message.text()); });
-  await pet.waitForFunction(() => document.querySelector('canvas')?.height === 606).catch(async error => { console.error('Renderer failures:', errors, await pet.evaluate(() => ({ html: document.body.innerHTML.slice(0, 500), bridge: typeof window.chihaya }))); throw error; });
+  await waitForSprite(pet).catch(async error => { console.error('Renderer failures:', errors, await pet.evaluate(() => ({ html: document.body.innerHTML.slice(0, 500), bridge: typeof window.chihaya }))); throw error; });
   assert.equal(await pet.evaluate(() => window.chihaya.snapshot().then(s => s.outfits.length)), 13);
   await checkSpaces('pet', true);
   await app.evaluate(({ BrowserWindow }) => {
