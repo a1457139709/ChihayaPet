@@ -36,4 +36,6 @@ alpha 检查直接注入转发的鼠标坐标并观察 setIgnoreMouseEvents；�
 
 Standards 与 Spec 独立源码审查及修复后复核均无剩余发现。已修复立绘控件同步、Windows 菜单焦点／键盘导航、气泡悬停与键盘保持，以及淡出旧曲的迟到事件错误归属。
 
-本次未运行 `test:runtime` 或任何截图／视觉 UI 测试；前文运行记录属于 #62。Mac／Windows 视觉、辅助技术和实际声音验收由用户按 [交接矩阵](issue-63-acceptance.md)记录；构建通过不代表实机验收通过。
+后续用户反馈原生菜单无法操作。无窗口菜单事件复现捕获 `TypeError: Cannot convert undefined or null to object`：`napi_make_callback` 的接收对象使用了 undefined，菜单项与滑条事件在进入 JS 前失败。改为全局对象后原复现通过。新增 `npm run test:menu` 使用隔离临时应用、独立 QA 偏好域和静音曲目，经真实 AppKit target/action 进入生产应用，再检查公开快照和 renderer 控件。聊天／设置／音乐页、服装／取景／表情、大小预设与连续滑条、开关／闲话／频率、播放／前后曲、隐藏／显示及正常退出均通过。测试专用事件驱动仅存在于夹具 addon，发行适配器不导出这些方法。
+
+#63 未运行 `test:runtime` 或任何截图／视觉 UI 测试；前文运行记录属于 #62。菜单功能回归会启动应用并检查功能状态，视觉、辅助技术和实际声音验收仍由用户按 [交接矩阵](issue-63-acceptance.md)记录。

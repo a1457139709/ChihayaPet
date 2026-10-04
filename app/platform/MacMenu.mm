@@ -27,7 +27,9 @@
     if (napi_open_handle_scope(env, &scope) != napi_ok) return;
     napi_value listener, receiver, value, result;
     napi_get_reference_value(env, callback, &listener);
-    napi_get_undefined(env, &receiver);
+    // napi_make_callback requires an object receiver, including callbacks
+    // entered from AppKit rather than an existing JavaScript stack.
+    napi_get_global(env, &receiver);
     napi_create_string_utf8(env, static_cast<const char *>(data.bytes), data.length, &value);
     napi_make_callback(env, context, receiver, listener, 1, &value, &result);
     napi_close_handle_scope(env, scope);
