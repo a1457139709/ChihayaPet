@@ -29,8 +29,9 @@ const config = {
   directories: { output: 'release', buildResources: 'app/platform' },
   files: ['dist/**', 'package.json', '!dist/media/ffmpeg.exe'],
   extraResources: [{ from: 'ChihayaPet/Resources', to: 'RuntimeResources' }, { from: bundledBGM, to: 'BundledBGM' }],
-  mac: { target: 'dir', identity: '-', minimumSystemVersion: '26.0.0', category: 'public.app-category.entertainment', extendInfo: { LSUIElement: true }, entitlements: 'app/platform/entitlements.mac.plist', entitlementsInherit: 'app/platform/entitlements.mac.plist' },
-  win: { target: 'dir', signAndEditExecutable: false },
+  mac: { target: 'dir', icon: 'app/platform/icons/chihaya.icns', identity: '-', minimumSystemVersion: '26.0.0', category: 'public.app-category.entertainment', extendInfo: { LSUIElement: true }, entitlements: 'app/platform/entitlements.mac.plist', entitlementsInherit: 'app/platform/entitlements.mac.plist' },
+  // Keep EXE icon/metadata editing enabled even though Windows builds are unsigned.
+  win: { target: 'dir', icon: 'app/platform/icons/chihaya.ico', signExecutable: false },
   afterPack: async context => {
     const platform = context.electronPlatformName;
     const appRoot = platform === 'darwin' ? path.join(context.appOutDir, 'ChihayaPet.app') : context.appOutDir;
