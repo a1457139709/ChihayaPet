@@ -16,6 +16,8 @@
 
 最新回复逐字显示；聊天收起后出现最多 60 字／四行的摘录气泡，“查看全文”打开原回复。点击气泡文字补全，全文展示完约 12 秒收起；悬停保留，离开重新计时。主动闲话默认每 3–7 分钟一句，可选 1–3 或 10–15 分钟；最近 8 句不重复。聊天、设置、草稿、请求、已有气泡、隐藏、穿透和睡眠时避让，恢复后重新计时，不补发积压台词。
 
+macOS 和 Windows 发行包都附带 bgm 分支清单中的 43 首原名 WAV。首次启动将随包音乐导入实际 Music/；同名用户文件及已移除曲目保持不变。Music/.bundled-bgm-installed.json 是一次性导入标记，升级时应与曲库一同保留，避免重新加入已移除的曲目。
+
 背景音乐支持 WAV、AIFF/AIF、MP3、M4A/AAC。直接扫描 `Music/` 顶层音频，以原文件名显示并排序，不使用索引。不读取旧索引或迁移 UUID 曲库。播放前用随包 FFmpeg 在运行缓存中转成 WAV，再交给人物窗口的音频元素；音乐不依赖聊天或设置窗口。支持播放／暂停、上一首／下一首、音量、单曲／列表循环、启动播放、淡入淡出。隐藏与睡眠自动暂停，恢复尊重手动暂停。导入保留原名，同名加数字后缀；移除曲目会移至 `Music/已移除/`，移回即可恢复。外部增删或改名后重启应用刷新曲库。
 
 ## 安装和数据
@@ -45,11 +47,12 @@ npm run typecheck
 ./scripts/test.sh
 npm run test:prompt
 npm run test:runtime
+git fetch origin bgm
 npm run package
 npm run verify
 ```
 
-`npm run build` 编译共用代码并验证正式资源；`npm run dev` 编译后启动。开发配置和 `Music/` 使用 `package.json` 所在项目目录，不依赖终端工作目录或旧 Xcode 工程。`scripts/build.sh`、`test.sh`、`package.sh` 是同一工作流的 shell 入口。Mac 上 `npm run package` 生成两端产物；可用 `node scripts/package-electron.mjs mac` 或 `win` 单独打包已编译代码，DMG 必须在 Mac 构建。
+`npm run build` 编译共用代码并验证正式资源；`npm run dev` 编译后启动。开发配置和 `Music/` 使用 `package.json` 所在项目目录，不依赖终端工作目录或旧 Xcode 工程。`scripts/build.sh`、`test.sh`、`package.sh` 是同一工作流的 shell 入口。Mac 上 `npm run package` 生成两端产物；可用 `node scripts/package-electron.mjs mac` 或 `win` 单独打包已编译代码，DMG 必须在 Mac 构建。打包从 scripts/bgm-catalog.json 固定的 Git 内容哈希提取 BGM 并逐首校验，不复制开发目录 Music/；浅克隆或单分支克隆需先执行 git fetch origin bgm。43 首原始音频约 1.24 GB，安装包和首次导入后的用户曲库各保留一份。
 
 测试使用临时文件、独立偏好域、模拟网络和静音音频，不访问个人服务或曲库。实机检查和资源统计的口径见 [验收记录](docs/VALIDATION.md)，Windows 操作步骤见 [自测清单](docs/windows-acceptance.md)。
 

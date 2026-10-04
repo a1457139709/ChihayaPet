@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, rmSync, mkdirSync, renameSync, writeFileSync, readFileSync } from 'node:fs';
+import { mkdtempSync, rmSync, mkdirSync, renameSync, writeFileSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import { resolvePaths, initializePaths } from '../app/main/paths.ts';
@@ -29,6 +29,7 @@ test('portable data follows the executable directory when the entire Windows fol
   try {
     const original = path.join(root, 'first'); mkdirSync(original);
     const paths = resolvePaths({ platform: 'win32', packaged: true, executable: path.join(original, 'ChihayaPet.exe'), appPath: path.join(original, 'resources/app.asar') }); initializePaths(paths);
+    assert.ok(statSync(paths.music).isDirectory(), 'First startup creates the music import directory');
     new ConfigStore(paths.config).saveService('https://example.com/v1', 'model', 'synthetic');
     const moved = path.join(root, 'moved'); renameSync(original, moved);
     const next = resolvePaths({ platform: 'win32', packaged: true, executable: path.join(moved, 'ChihayaPet.exe'), appPath: path.join(moved, 'resources/app.asar') });

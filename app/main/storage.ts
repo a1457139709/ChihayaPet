@@ -26,7 +26,8 @@ function atomicText(file: string, text: string): void {
   const temporary = path.join(path.dirname(file), `.config-${randomUUID()}.tmp`);
   try {
     writeFileSync(temporary, text, { mode: 0o600, flag: 'wx' });
-    const fd = openSync(temporary, 'r'); try { fsyncSync(fd); } finally { closeSync(fd); }
+    // Windows FlushFileBuffers requires a writable handle.
+    const fd = openSync(temporary, 'r+'); try { fsyncSync(fd); } finally { closeSync(fd); }
     renameSync(temporary, file);
   } finally { try { unlinkSync(temporary); } catch { /* Renamed, or never created. */ } }
 }

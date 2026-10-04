@@ -7,8 +7,11 @@ import { gunzipSync } from 'node:zlib';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { writeInventory } from './package-inventory.mjs';
+import { stageBundledBGM } from './bundled-bgm.mjs';
 const require = createRequire(import.meta.url), root = path.resolve(import.meta.dirname, '..');
 const selected = process.argv[2] ?? 'all';
+const bundledBGM = path.join(root, 'build/BundledBGM');
+stageBundledBGM(root, bundledBGM);
 const ffmpegVersion = 'b6.1.1';
 const winDecoder = path.join(root, 'build/tools/ffmpeg-win32-x64.exe');
 mkdirSync(path.dirname(winDecoder), { recursive: true }); mkdirSync('release', { recursive: true });
@@ -25,7 +28,7 @@ const config = {
   appId: 'local.ChihayaPet', productName: 'ChihayaPet', asar: true, asarUnpack: ['dist/platform/**', 'dist/media/**'],
   directories: { output: 'release', buildResources: 'app/platform' },
   files: ['dist/**', 'package.json', '!dist/media/ffmpeg.exe'],
-  extraResources: [{ from: 'ChihayaPet/Resources', to: 'RuntimeResources' }],
+  extraResources: [{ from: 'ChihayaPet/Resources', to: 'RuntimeResources' }, { from: bundledBGM, to: 'BundledBGM' }],
   mac: { target: 'dir', identity: '-', minimumSystemVersion: '26.0.0', category: 'public.app-category.entertainment', extendInfo: { LSUIElement: true }, entitlements: 'app/platform/entitlements.mac.plist', entitlementsInherit: 'app/platform/entitlements.mac.plist' },
   win: { target: 'dir', signAndEditExecutable: false },
   afterPack: async context => {
@@ -33,6 +36,8 @@ const config = {
     const appRoot = platform === 'darwin' ? path.join(context.appOutDir, 'ChihayaPet.app') : context.appOutDir;
     const resources = platform === 'darwin' ? path.join(appRoot, 'Contents/Resources') : path.join(appRoot, 'resources');
     if (platform === 'win32') {
+      // Ship the import location, but never copy the developer's personal library.
+      mkdirSync(path.join(appRoot, 'Data/Music'), { recursive: true });
       const media = path.join(resources, 'app.asar.unpacked/dist/media');
       rmSync(path.join(media, 'ffmpeg'), { force: true }); copyFileSync(winDecoder, path.join(media, 'ffmpeg.exe'));
       for (const suffix of ['LICENSE', 'README']) copyFileSync(winDecoder + '.' + suffix, path.join(media, 'FFmpeg.' + suffix));
