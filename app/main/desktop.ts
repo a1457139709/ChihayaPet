@@ -16,6 +16,10 @@ export class DesktopApplication {
   private settings?: BrowserWindow;
   private speech?: BrowserWindow;
   private menu?: BrowserWindow;
+  private menuReady = false;
+  private menuOpen = false;
+  private menuSession = 0;
+  private menuWarmup?: NodeJS.Immediate;
   private chatOpen = false;
   private settingsOpen = false;
   private speechReady = false;
@@ -63,7 +67,13 @@ export class DesktopApplication {
     this.pet = this.createWindow('pet', false);
     this.pet.setBounds(this.restoreFrame(prefs));
     this.pet.setIgnoreMouseEvents(true, { forward: true });
-    this.pet.once('ready-to-show', () => this.pet.showInactive());
+    this.pet.once('ready-to-show', () => {
+      this.pet.showInactive();
+      if (this.platform.kind === 'win32') this.menuWarmup = setImmediate(() => {
+        this.menuWarmup = undefined;
+        if (!this.shutdownFlag) this.prepareMenu();
+      });
+    });
     this.pet.on('closed', () => { if (!this.shutdownFlag) app.quit(); });
     this.companion.onChange = () => this.refresh(); this.companion.onNeedsSettings = () => {
       this.open('settings', 'service'); this.focusMissingSettings();
@@ -157,7 +167,7 @@ export class DesktopApplication {
   }
   snapshot(includeKey = false): Snapshot {
     const conversation = this.companion.snapshot(); if (!includeKey) conversation.draft.key = '';
-    return { ...conversation, desktop: { ...this.desktop }, clickThrough: this.clickThrough, visible: this.visible, awake: this.awake, reducedMotion: this.reducedMotion, sprite: this.sprite, resourceError: this.resourceError, outfits: this.manifest?.outfits ?? [], expressions: this.manifest?.variants[`${this.desktop.outfit}/${this.desktop.framing}`]?.results.map(r => ({ id: r.id, approved: approved(r) })) ?? [], canSay: this.allowed(), idleEnabled: this.idleEnabled, idleFrequency: this.idleFrequency, bubble: this.bubble, chatVisible: this.chatOpen, settingsVisible: this.settingsOpen, chatFocus: this.chatFocus, settingsTab: this.settingsTab, settingsFocus: this.settingsFocus, music: this.music.snapshot() };
+    return { ...conversation, menuSession: this.menuSession, desktop: { ...this.desktop }, clickThrough: this.clickThrough, visible: this.visible, awake: this.awake, reducedMotion: this.reducedMotion, sprite: this.sprite, resourceError: this.resourceError, outfits: this.manifest?.outfits ?? [], expressions: this.manifest?.variants[`${this.desktop.outfit}/${this.desktop.framing}`]?.results.map(r => ({ id: r.id, approved: approved(r) })) ?? [], canSay: this.allowed(), idleEnabled: this.idleEnabled, idleFrequency: this.idleFrequency, bubble: this.bubble, chatVisible: this.chatOpen, settingsVisible: this.settingsOpen, chatFocus: this.chatFocus, settingsTab: this.settingsTab, settingsFocus: this.settingsFocus, music: this.music.snapshot() };
   }
   private allowed(): boolean {
     const state = this.companion.snapshot();
@@ -186,12 +196,12 @@ export class DesktopApplication {
     if (this.publishTimer) return;
     this.publishTimer = setTimeout(() => {
       this.publishTimer = undefined;
-      for (const window of [this.pet, this.chat, this.settings, this.speech, this.menu]) if (window && !window.isDestroyed()) window.webContents.send('chihaya:state', this.snapshot(window === this.settings));
+      for (const window of [this.pet, this.chat, this.settings, this.speech, this.menu]) if (window && !window.isDestroyed() && (window !== this.menu || this.menuOpen)) window.webContents.send('chihaya:state', this.snapshot(window === this.settings));
       this.onMenuChanged();
     }, 40);
   }
   open(kind: 'chat' | 'settings', tab?: SettingsTab): void {
-    if (!this.chatOpen && !this.settingsOpen && !this.menu) this.platform.rememberFocus();
+    if (!this.chatOpen && !this.settingsOpen && !this.menuOpen) this.platform.rememberFocus();
     this.visible = true; this.pet.showInactive(); void this.music.resume('hidden');
     if (kind === 'chat') this.chatOpen = true; else { this.settingsOpen = true; if (tab) this.settingsTab = tab; }
     // The first Windows tray click may still be loading this menu when the
@@ -226,14 +236,42 @@ export class DesktopApplication {
     if (this.chat) this.chat.setBounds(nearbyPanel(this.pet.getBounds(), screen.getDisplayMatching(this.pet.getBounds()).workArea, this.chat.getBounds()));
     if (this.settings) this.settings.setBounds(clamped(this.settings.getBounds(), screen.getDisplayMatching(this.settings.getBounds()).workArea));
   }
-  openMenu(): void {
-    if (this.menu && !this.menu.isDestroyed()) { this.menu.show(); this.menu.focus(); return; }
-    if (!this.chatOpen && !this.settingsOpen) this.platform.rememberFocus();
-    const cursor = screen.getCursorScreenPoint(), area = screen.getDisplayNearestPoint(cursor).workArea;
+  private prepareMenu(): BrowserWindow {
+    if (this.menu && !this.menu.isDestroyed()) return this.menu;
+    this.menuReady = false;
     const menu = this.menu = this.createWindow('menu', true);
-    menu.setBounds(clamped({ ...cursor, width: 320, height: Math.min(690, area.height) }, area));
-    menu.on('blur', () => menu.close()); menu.on('closed', () => { if (this.menu === menu) this.menu = undefined; if (!this.chatOpen && !this.settingsOpen) this.platform.restoreFocus(); });
-    menu.once('ready-to-show', () => { if (this.menu === menu && !menu.isDestroyed()) { menu.show(); menu.focus(); } });
+    menu.on('blur', () => this.closeMenu());
+    menu.on('close', event => { if (!this.shutdownFlag) { event.preventDefault(); this.closeMenu(); } });
+    menu.on('closed', () => {
+      if (this.menu === menu) { this.closeMenu(); this.menu = undefined; this.menuReady = false; }
+    });
+    menu.once('ready-to-show', () => {
+      if (this.menu !== menu || menu.isDestroyed()) return;
+      this.menuReady = true;
+      if (this.menuOpen) this.showMenu();
+    });
+    return menu;
+  }
+  private closeMenu(): void {
+    if (!this.menuOpen) return;
+    this.menuOpen = false;
+    if (this.menu && !this.menu.isDestroyed()) this.menu.hide();
+    if (!this.shutdownFlag && !this.chatOpen && !this.settingsOpen) this.platform.restoreFocus();
+  }
+  private showMenu(): void {
+    if (!this.menuOpen || !this.menuReady || !this.menu || this.menu.isDestroyed()) return;
+    this.menu.webContents.send('chihaya:state', this.snapshot());
+    this.menu.show(); this.menu.focus();
+  }
+  openMenu(): void {
+    if (this.shutdownFlag) return;
+    if (this.menuOpen) { this.showMenu(); return; }
+    if (!this.chatOpen && !this.settingsOpen) this.platform.rememberFocus();
+    this.menuOpen = true; this.menuSession++;
+    const menu = this.prepareMenu();
+    const cursor = screen.getCursorScreenPoint(), area = screen.getDisplayNearestPoint(cursor).workArea;
+    menu.setBounds(clamped({ ...cursor, width: 320, height: Math.min(menu.getBounds().height, area.height) }, area));
+    this.showMenu();
   }
   private presentReply(): void {
     if (!this.candidate || !this.canShowReply()) return;
@@ -366,7 +404,7 @@ export class DesktopApplication {
   }
   windowKind(id: number): string | undefined { return this.settings?.webContents.id === id ? 'settings' : this.chat?.webContents.id === id ? 'chat' : this.pet.webContents.id === id ? 'pet' : this.speech?.webContents.id === id ? 'bubble' : this.menu?.webContents.id === id ? 'menu' : undefined; }
   shutdown(): void {
-    this.shutdownFlag = true; this.flushPreferences(); for (const timer of [this.idleTimer, this.expiryTimer, this.publishTimer]) clearTimeout(timer);
+    this.shutdownFlag = true; if (this.menuWarmup) clearImmediate(this.menuWarmup); this.flushPreferences(); for (const timer of [this.idleTimer, this.expiryTimer, this.publishTimer]) clearTimeout(timer);
     this.companion.shutdown(); this.music.shutdown(); this.platform.shutdown();
     for (const window of [this.speech, this.chat, this.settings, this.pet, this.menu]) if (window && !window.isDestroyed()) window.destroy();
   }

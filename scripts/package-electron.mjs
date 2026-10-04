@@ -59,6 +59,7 @@ const { afterPack, afterSign, ...options } = config;
 const freshConfig = platform => {
   const values = structuredClone(options);
   if (platform === 'win32') values.files.push('!dist/media/ffmpeg', '!dist/platform/MacBridge', '!dist/platform/MacWindow.node');
+  if (platform === 'darwin') values.files.push('!dist/platform/WindowsFFI/**');
   return { ...values, afterPack, afterSign };
 };
 if (selected !== 'win' && process.platform === 'darwin') {

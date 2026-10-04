@@ -21,6 +21,7 @@ export type SettingsTab = 'service' | 'persona' | 'music' | 'portrait';
 export type MusicState = { tracks: Track[]; selected?: string; wantsPlayback: boolean; playing: boolean; volume: number; loop: 'single' | 'playlist'; autoplay: boolean; suspended: boolean; suspensionReasons: string[]; source?: string; revision: number; playbackID: number; error?: string; notice?: string; busy: boolean; operation?: 'import' | 'remove' };
 export type Bubble = { id: string; kind: 'idle' | 'reply'; text: string; fullText: string; turnID?: string; side?: 'left' | 'right'; tailY?: number; truncated?: boolean };
 export type Snapshot = {
+  menuSession?: number;
   greeting: string; turns: Turn[]; didTrim: boolean; input: string; pending?: string; pendingID?: string; partial: string;
   cancelled?: boolean; error?: string; busy?: 'chat' | 'test'; settingsError?: string; settingsNotice?: string; testStatus?: string;
   draft: { baseURL: string; model: string; key: string; prompt: string };

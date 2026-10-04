@@ -6,7 +6,7 @@ import { desktopMenu, type DesktopMenuItem } from '../shared/menu';
 export function mountMenu(root: HTMLElement, act: (action: Action) => void): { render(state: Snapshot): void } {
   document.body.className = 'desktop-menu';
   const panel = document.createElement('div'); panel.className = 'menu-panel'; panel.setAttribute('role', 'menu'); root.append(panel);
-  let state: Snapshot, path: number[] = [], signature = '', height = 0;
+  let state: Snapshot, path: number[] = [], signature = '', height = 0, session: number | undefined;
   const build = (navigating = false) => {
     let items = desktopMenu(state);
     for (const i of path) items = items[i]?.submenu ?? items;
@@ -62,5 +62,12 @@ export function mountMenu(root: HTMLElement, act: (action: Action) => void): { r
     if (event.key === 'ArrowLeft' && path.length && !(document.activeElement instanceof HTMLInputElement)) { event.preventDefault(); path.pop(); signature = ''; build(true); panel.querySelector<HTMLButtonElement>('button')?.focus(); }
     if (event.key === 'ArrowRight' && document.activeElement instanceof HTMLButtonElement && document.activeElement.hasAttribute('aria-haspopup')) { event.preventDefault(); document.activeElement.click(); }
   });
-  return { render(next) { state = next; build(); } };
+  return { render(next) {
+    const opened = session !== next.menuSession;
+    if (opened) {
+      session = next.menuSession; path = []; signature = ''; height = 0;
+      (document.activeElement as HTMLElement | null)?.blur();
+    }
+    state = next; build(opened);
+  } };
 }

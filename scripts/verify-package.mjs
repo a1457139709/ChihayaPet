@@ -56,6 +56,11 @@ for (const root of roots) {
   const binary = path.join(resources, 'app.asar.unpacked/dist/media', mac ? 'ffmpeg' : 'ffmpeg.exe');
   assert.ok(existsSync(binary)); assert.ok(existsSync(binary.replace(/ffmpeg(\.exe)?$/, 'FFmpeg.LICENSE')));
   assert.equal(entries.includes('/dist/platform/MacWindow.node'), mac, 'macOS window adapter must only be in the Mac package');
+  assert.ok(!entries.includes('/dist/platform/WindowsFocus.ps1'), 'Legacy PowerShell focus bridge must not ship');
+  const bridge = 'dist/platform/WindowsFFI/build/koffi/win32_x64/koffi.node';
+  assert.equal(entries.includes('/' + bridge), !mac, 'Windows native focus bridge must only ship on Windows');
+  if (!mac) assert.ok(existsSync(path.join(resources, 'app.asar.unpacked', bridge)), 'Windows bridge must be unpacked');
+  assert.ok(!entries.some(entry => entry.startsWith('/node_modules/koffi/')), 'Do not ship the complete development bridge package');
   const files = readFileSync(path.join(root, mac ? 'Contents/Resources/FILES.txt' : 'FILES.txt'), 'utf8');
   for (const file of inventory.files) assert.ok(files.includes(file), file);
   if (!mac) { assert.ok(existsSync(path.join(root, 'ChihayaPet.exe'))); for (const file of ['ffmpeg.dll', 'icudtl.dat', 'resources.pak']) assert.ok(existsSync(path.join(root, file))); assert.ok(inventory.files.some(f => f.startsWith('locales/'))); }
