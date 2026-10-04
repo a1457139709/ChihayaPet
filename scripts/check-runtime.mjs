@@ -24,8 +24,19 @@ let app;
 try {
   app = await electron.launch(launch);
   const pet = await app.firstWindow();
-  const openWindow = async action => { const waiting = app.waitForEvent('window'); await pet.evaluate(a => window.chihaya.act(a), action); return waiting; };
-  const closeWindow = async page => Promise.all([page.waitForEvent('close'), page.locator('#close').click()]);
+  const openWindow = async action => {
+    const kind = action.type === 'say' ? 'bubble' : action.type;
+    const existing = app.windows().find(page => new URL(page.url()).searchParams.get('window') === kind);
+    const waiting = existing ? Promise.resolve(existing) : app.waitForEvent('window');
+    await pet.evaluate(a => window.chihaya.act(a), action); return waiting;
+  };
+  const closeWindow = async page => {
+    const kind = new URL(page.url()).searchParams.get('window');
+    await page.locator('#close').click();
+    await page.waitForFunction(kind => window.chihaya.snapshot().then(s => !s[kind + 'Visible']), kind);
+  };
+  const visibleCount = () => app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows().filter(w => w.isVisible()).length);
+  const bubbleVisible = () => app.evaluate(({ BrowserWindow }) => Boolean(BrowserWindow.getAllWindows().find(w => w.webContents.getURL().includes('window=bubble'))?.isVisible()));
   const checkSpaces = async (kind, allSpaces) => {
     if (process.platform !== 'darwin') return;
     const behavior = await app.evaluate(({ app, BrowserWindow }, kind) => {
@@ -87,13 +98,14 @@ try {
   await settings.locator('#key').fill('unsaved-key'); await settings.locator('[data-tab="persona"]').click(); await missing.locator('#input').press('Enter');
   await settings.waitForFunction(() => document.querySelector('[data-tab="service"]').getAttribute('aria-selected') === 'true', undefined, { timeout: 5000 });
   await closeWindow(settings);
-  const reopening = app.waitForEvent('window'); await missing.locator('#input').press('Enter'); settings = await reopening;
-  await settings.waitForFunction(() => document.activeElement.id === 'baseURL', undefined, { timeout: 5000 });
+  await missing.locator('#input').press('Enter');
+  await settings.waitForFunction(() => document.querySelector('[data-tab="service"]').getAttribute('aria-selected') === 'true');
+  assert.equal(await settings.locator('#model').inputValue(), 'unsaved-model');
   await missing.evaluate(() => window.chihaya.act({ type: 'clear' })); await closeWindow(missing);
   await settings.locator('#baseURL').fill('https://Example.com/v1///'); await settings.locator('#model').fill('example-model'); await settings.locator('#key').fill('synthetic-key');
   await settings.locator('#save-service').click(); await settings.waitForFunction(() => document.querySelector('#settings-notice').textContent.includes('已保存'));
   assert.equal(JSON.parse(readFileSync(path.join(data, 'config.json'), 'utf8')).baseURL, 'https://example.com/v1');
-  await settings.locator('[data-tab="desktop"]').click(); await settings.locator('#framing').selectOption('close');
+  await settings.locator('[data-tab="portrait"]').click(); await settings.locator('#framing').selectOption('close');
   await pet.waitForFunction(() => document.querySelector('canvas').height === 670);
   await checkSpaces('pet', true);
   await settings.locator('#expression').selectOption('03');
@@ -124,7 +136,7 @@ try {
   const base = await chat.evaluate(() => window.chihaya.snapshot());
   const partial = '逐字播放需要保留已显示的前缀。'.repeat(100);
   const oldTurns = Array.from({ length: 50 }, (_, i) => ({ id: `fixture-${i}`, user: `虚构消息 ${i}`, assistant: `虚构回复 ${i}`, truncated: false }));
-  const pending = { ...base, desktop: { ...base.desktop, animations: true }, reducedMotion: false, input: '', busy: 'chat', turns: oldTurns, pending: '下一条虚构消息', partial, didTrim: true };
+  const pending = { ...base, desktop: { ...base.desktop, animations: true }, reducedMotion: false, input: '', busy: 'chat', turns: oldTurns, pending: '下一条虚构消息', pendingID: 'pending-fixture', partial, didTrim: true };
   const inject = value => app.evaluate(({ BrowserWindow }, snapshot) => BrowserWindow.getAllWindows().find(w => w.webContents.getURL().includes('window=chat')).webContents.send('chihaya:state', snapshot), value);
   await inject(pending); await chat.waitForSelector('#history .incomplete'); await chat.waitForTimeout(500);
   const gap = () => chat.locator('#history').evaluate(el => el.scrollHeight - el.scrollTop - el.clientHeight);
@@ -133,12 +145,12 @@ try {
   await chat.waitForTimeout(200);
   assert.ok(Math.abs(await chat.locator('#history').evaluate(el => el.scrollTop) - readingPosition) < 2, 'Typing must preserve the reader’s scroll position.');
   await chat.locator('#history').evaluate(el => { el.scrollTop = el.scrollHeight; });
-  const prefix = await chat.locator('#history .dialogue:last-child .text').textContent();
-  await inject({ ...pending, busy: undefined, pending: undefined, partial: '', turns: [...oldTurns.slice(1), { id: 'completed-fixture', user: pending.pending, assistant: partial, truncated: false }] });
+  const prefix = await chat.locator('#pending-reply .text').textContent();
+  await inject({ ...pending, busy: undefined, pending: undefined, pendingID: undefined, partial: '', turns: [...oldTurns.slice(1), { id: 'completed-fixture', user: pending.pending, assistant: partial, truncated: false }] });
   await chat.waitForSelector('#turn-completed-fixture');
   const displayed = await chat.locator('#turn-completed-fixture .text').textContent();
   assert.ok(displayed.startsWith(prefix) && displayed.length < partial.length, `History trimming must preserve gradual playback and its prefix: ${JSON.stringify({ prefix: prefix.slice(0, 30), displayed: displayed.slice(0, 30), prefixLength: prefix.length, displayedLength: displayed.length, targetLength: partial.length })}`);
-  await inject({ ...pending, busy: undefined, pending: undefined, partial: '', turns: [...oldTurns.slice(1), { id: 'fast-json-fixture', user: '快速 JSON 回复', assistant: partial, truncated: false }] });
+  await inject({ ...pending, busy: undefined, pending: undefined, pendingID: undefined, partial: '', turns: [...oldTurns.slice(1), { id: 'fast-json-fixture', user: '快速 JSON 回复', assistant: partial, truncated: false }] });
   await chat.waitForSelector('#turn-fast-json-fixture');
   assert.ok((await chat.locator('#turn-fast-json-fixture .text').textContent()).length < partial.length, 'Fast complete responses should animate even if the pending state was coalesced.');
   await chat.evaluate(() => window.chihaya.act({ type: 'clear' }));
@@ -146,16 +158,18 @@ try {
   await chat.waitForFunction(() => window.chihaya.snapshot().then(s => s.turns.length === 1 && !s.busy));
   const replyCreated = app.waitForEvent('window'); await closeWindow(chat); const reply = await replyCreated;
   await reply.waitForSelector('#bubble');
-  await Promise.all([reply.waitForEvent('close'), pet.evaluate(() => window.chihaya.act({ type: 'click-through', value: true }))]);
-  const restored = app.waitForEvent('window'); await pet.evaluate(() => window.chihaya.act({ type: 'click-through', value: false })); await restored;
+  const replyID = await pet.evaluate(() => window.chihaya.snapshot().then(s => s.bubble.id));
+  await pet.evaluate(() => window.chihaya.act({ type: 'click-through', value: true })); assert.equal(await bubbleVisible(), false);
+  await pet.evaluate(() => window.chihaya.act({ type: 'click-through', value: false })); assert.equal(await bubbleVisible(), true);
+  assert.equal(await pet.evaluate(() => window.chihaya.snapshot().then(s => s.bubble.id)), replyID);
   const second = await openWindow({ type: 'chat' }); await second.waitForSelector('#input');
   await checkSpaces('chat', false);
   await second.evaluate(() => { void window.chihaya.act({ type: 'input', text: '第二条虚构请求' }).then(() => window.chihaya.act({ type: 'send' })).catch(() => {}); });
   await second.waitForFunction(() => window.chihaya.snapshot().then(s => s.busy === 'chat'));
   await closeWindow(second); await pet.waitForTimeout(150);
-  assert.equal(await app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows().length), 1, 'Pending requests suppress the previous reply bubble.');
+  assert.equal(await visibleCount(), 1, 'Pending requests hide the preserved reply bubble.');
   await pet.evaluate(() => window.chihaya.act({ type: 'cancel' }));
-  assert.equal(await app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows().length), 1);
+  assert.equal(await visibleCount(), 1);
   await pet.evaluate(() => window.chihaya.act({ type: 'input', text: '' })).catch(() => {});
   // Clear the preserved draft through the public chat input, then test idle bubble lifetime.
   const fresh = await openWindow({ type: 'chat' }); await fresh.waitForSelector('#input');
@@ -164,7 +178,7 @@ try {
   await checkSpaces('bubble', true);
   await bubble.locator('.text').click(); await bubble.screenshot({ path: path.join(root, 'build/QA/runtime/bubble.png'), omitBackground: true });
   await Promise.all([bubble.waitForEvent('close'), bubble.locator('.bubble-close').click({ force: true })]);
-  assert.equal(await app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows().length), 1);
+  assert.equal(await visibleCount(), 1);
   assert.equal(readFileSync(path.join(data, 'FILES.txt'), 'utf8').includes(data), true);
   const runtimePaths = await app.evaluate(({ app }) => ['userData', 'sessionData', 'temp', 'logs', 'crashDumps'].map(n => app.getPath(n)));
   for (const value of runtimePaths) assert.equal(realpathSync(value).startsWith(path.join(realpathSync(data), 'ElectronRuntime')), true, JSON.stringify({ data, runtimePaths }));
@@ -182,7 +196,7 @@ try {
   assert.equal(await pet.evaluate(() => window.chihaya.snapshot().then(s => s.music.wantsPlayback)), false);
   assert.equal(readFileSync(path.join(data, 'Music/library.json'), 'utf8'), JSON.stringify(fixtureTracks));
   assert.deepEqual(errors, []);
-  console.log('Runtime verified: isolated storage, approved rendering, native Spaces/fullscreen flags after repeated top-level setters, alpha hit/click-through commands, missing service routing/focus/draft preservation/reopened settings, settings save, expression normalization, Chinese composition, capped-history playback/prefix, scroll following/reader position, fast JSON playback, reply suppression/restoration, panel destruction, idle bubble, all six music formats, simulated sleep/manual pause and FILES.txt.');
+  console.log('Runtime verified: isolated storage, approved rendering, native Spaces/fullscreen flags after repeated top-level setters, alpha hit/click-through commands, missing service routing/focus/draft preservation/reopened settings, settings save, expression normalization, Chinese composition, capped-history playback/prefix, scroll following/reader position, fast JSON playback, reply suppression/restoration, panel reuse, idle bubble, all six music formats, simulated sleep/manual pause and FILES.txt.');
 } finally {
   await app?.close();
   if (process.platform === 'darwin') {

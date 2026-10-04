@@ -1,5 +1,5 @@
 import type { Action } from '../shared/contracts';
-const commands = new Set(['send', 'retry', 'cancel', 'clear', 'chat', 'settings', 'files', 'quit', 'say', 'bubble-dismiss', 'bubble-complete', 'read-more', 'music-import', 'music-remove', 'music-toggle', 'music-next', 'music-previous', 'test', 'save-service', 'delete-key', 'save-prompt', 'restore-prompt', 'context-menu']);
+const commands = new Set(['send', 'retry', 'cancel', 'clear', 'chat', 'quit', 'say', 'bubble-dismiss', 'bubble-complete', 'read-more', 'music-import', 'music-remove', 'music-toggle', 'music-next', 'music-previous', 'test', 'save-service', 'delete-key', 'save-prompt', 'restore-prompt', 'context-menu']);
 export function validAction(value: unknown, kind: string): value is Action {
   if (!value || typeof value !== 'object') return false;
   const a = value as Record<string, unknown>; if (typeof a.type !== 'string') return false;
@@ -11,6 +11,9 @@ export function validAction(value: unknown, kind: string): value is Action {
   if (commands.has(a.type)) return true;
   switch (a.type) {
     case 'input': return typeof a.text === 'string' && a.text.length <= 100_000;
+    case 'settings': return a.tab === undefined || ['service', 'persona', 'music', 'portrait'].includes(String(a.tab));
+    case 'settings-tab': return kind === 'settings' && ['service', 'persona', 'music', 'portrait'].includes(String(a.tab));
+    case 'chat-focus-consumed': return kind === 'chat' && typeof a.id === 'string';
     case 'draft': return ['baseURL', 'model', 'key', 'prompt'].includes(String(a.field)) && typeof a.text === 'string' && a.text.length <= 200_000;
     case 'visible': case 'click-through': case 'idle-enabled': case 'bubble-hover': case 'music-autoplay': return typeof a.value === 'boolean';
     case 'idle-frequency': return [1, 2, 3].includes(Number(a.value));
@@ -21,8 +24,9 @@ export function validAction(value: unknown, kind: string): value is Action {
     case 'hit': return typeof a.opaque === 'boolean';
     case 'drag': return ['start', 'move', 'end'].includes(String(a.phase));
     case 'bubble-size': return typeof a.width === 'number' && typeof a.height === 'number' && Number.isFinite(a.width + a.height) && a.width >= 100 && a.width <= 1000 && a.height >= 60 && a.height <= 2000;
-    case 'close': return a.window === kind && ['chat', 'settings'].includes(kind);
-    case 'desktop': return ['outfit', 'framing', 'expression'].includes(String(a.field)) ? typeof a.value === 'string' : ['onTop', 'animations'].includes(String(a.field)) ? typeof a.value === 'boolean' : a.field === 'height' && typeof a.value === 'number' && Number.isFinite(a.value);
+    case 'menu-size': return kind === 'menu' && typeof a.height === 'number' && Number.isFinite(a.height) && a.height >= 60 && a.height <= 2000;
+    case 'close': return a.window === kind && ['chat', 'settings', 'menu'].includes(kind);
+    case 'desktop': return ['outfit', 'framing', 'expression'].includes(String(a.field)) ? typeof a.value === 'string' : ['onTop', 'animations', 'headPetting'].includes(String(a.field)) ? typeof a.value === 'boolean' : a.field === 'height' && typeof a.value === 'number' && Number.isFinite(a.value);
     default: return false;
   }
 }

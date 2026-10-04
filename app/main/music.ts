@@ -84,12 +84,14 @@ export class MusicController {
   private reasons = new Set<string>();
   private task?: AbortController;
   private closed = false;
+  private volumeTimer?: NodeJS.Timeout;
+  private pendingVolume?: number;
   readonly ready: Promise<void>;
   onChange: () => void = () => {};
   constructor(private library: MusicLibrary, private decoder: AudioDecoder, private preferences: PreferenceStore) {
     let prefs = {}; try { prefs = preferences.load(); } catch {}
     const values = prefs as Record<string, unknown>;
-    this.state = { tracks: [], wantsPlayback: false, playing: false, volume: Math.min(1, Math.max(0, Number(values['music.volume'] ?? 0.2))), loop: ['list', 'playlist'].includes(String(values['music.loop'])) ? 'playlist' : 'single', autoplay: values['music.autoplayEnabled'] !== false, suspended: false, revision: 0, busy: false };
+    this.state = { tracks: [], wantsPlayback: false, playing: false, volume: Math.min(1, Math.max(0, Number(values['music.volume'] ?? 0.2))), loop: ['list', 'playlist'].includes(String(values['music.loop'])) ? 'playlist' : 'single', autoplay: values['music.autoplayEnabled'] !== false, suspended: false, suspensionReasons: [], revision: 0, playbackID: 0, busy: false };
     if (!Number.isFinite(this.state.volume)) this.state.volume = 0.2;
     try { this.state.tracks = library.list(); } catch (e) { this.state.error = (e as Error).message; }
     this.state.selected = this.state.tracks.find(t => t.id === values['music.selected'])?.id ?? this.state.tracks[0]?.id;
@@ -100,54 +102,64 @@ export class MusicController {
   private save(changes: Record<string, string | number | boolean>): boolean {
     try { this.preferences.save(changes); return true; } catch { this.state.error = '音乐偏好保存失败，请检查数据目录。'; this.onChange(); return false; }
   }
-  setVolume(value: number): void { if (!Number.isFinite(value)) return; value = Math.min(1, Math.max(0, value)); if (this.save({ 'music.volume': value })) this.state.volume = value; this.onChange(); }
+  setVolume(value: number): void {
+    if (!Number.isFinite(value)) return;
+    this.state.volume = this.pendingVolume = Math.min(1, Math.max(0, value));
+    clearTimeout(this.volumeTimer); this.volumeTimer = setTimeout(() => this.flushVolume(), 200); this.volumeTimer.unref();
+    this.onChange();
+  }
+  private flushVolume(): void { clearTimeout(this.volumeTimer); if (this.pendingVolume !== undefined) { this.save({ 'music.volume': this.pendingVolume }); this.pendingVolume = undefined; } }
   setLoop(value: 'single' | 'playlist'): void { if (this.save({ 'music.loop': value === 'playlist' ? 'list' : 'single' })) this.state.loop = value; this.onChange(); }
   setAutoplay(value: boolean): void { if (this.save({ 'music.autoplayEnabled': value })) this.state.autoplay = value; this.onChange(); }
   async select(id: string): Promise<void> {
-    if (this.state.busy || !this.state.tracks.some(t => t.id === id) || this.state.selected === id) return;
+    if (this.state.operation === 'remove' || !this.state.tracks.some(t => t.id === id) || this.state.selected === id) return;
     if (!this.save({ 'music.selected': id })) return;
     this.state.selected = id; if (this.reasons.size) this.state.wantsPlayback = false;
-    this.state.source = undefined; await this.reconcile();
+    this.state.source = undefined; this.state.playbackID++; await this.reconcile();
   }
-  async play(): Promise<void> { if (this.state.busy || !this.state.selected) return; this.state.wantsPlayback = true; this.state.error = undefined; await this.reconcile(); }
-  pause(): void { this.state.wantsPlayback = false; void this.reconcile(); }
+  async play(): Promise<void> { if (this.state.operation === 'remove' || !this.state.selected) return; this.state.wantsPlayback = true; this.state.error = undefined; await this.reconcile(); }
+  pause(): void { if (this.state.operation === 'remove') return; this.state.wantsPlayback = false; void this.reconcile(); }
   async toggle(): Promise<void> { if (this.state.wantsPlayback) this.pause(); else await this.play(); }
   async next(direction = 1): Promise<void> {
-    if (!this.state.tracks.length || this.state.busy) return;
+    if (!this.state.tracks.length || this.state.operation === 'remove') return;
     const index = this.state.tracks.findIndex(t => t.id === this.state.selected);
     const next = this.state.tracks[(Math.max(0, index) + direction + this.state.tracks.length) % this.state.tracks.length]!;
-    if (next.id === this.state.selected) { if (this.reasons.size) this.state.wantsPlayback = false; this.state.source = undefined; await this.reconcile(); }
+    if (next.id === this.state.selected) { if (this.reasons.size) this.state.wantsPlayback = false; this.state.playbackID++; await this.reconcile(); }
     else await this.select(next.id);
   }
   suspend(reason: string): void { if (this.reasons.has(reason)) return; this.reasons.add(reason); void this.reconcile(); }
   async resume(reason: string): Promise<void> { if (!this.reasons.delete(reason)) return; await this.reconcile(); }
   async importFiles(files: string[]): Promise<void> {
-    if (this.state.busy || this.closed) return; this.state.busy = true; this.state.error = undefined; this.onChange();
+    if (this.state.busy || this.closed) return; this.state.busy = true; this.state.operation = 'import'; this.state.error = undefined; this.onChange();
     try {
       const result = await this.library.importFiles(files, this.decoder);
       if (this.closed) return; this.state.tracks = result.tracks; this.state.selected ??= result.tracks[0]?.id;
       this.state.notice = `已导入 ${result.imported} 首音乐。`; this.state.error = result.failures.join('\n') || undefined;
     } catch (e) { this.state.error = (e as Error).message; }
-    finally { this.state.busy = false; this.onChange(); }
+    finally { this.state.busy = false; this.state.operation = undefined; this.onChange(); }
   }
   async remove(): Promise<void> {
     if (this.state.busy || !this.state.selected) return;
     this.pause();
+    this.state.busy = true; this.state.operation = 'remove'; this.onChange();
+    // Publish the locked state before the synchronous index transaction.
+    await new Promise<void>(resolve => setImmediate(resolve));
+    if (this.closed) return;
     try { this.state.tracks = this.library.remove(this.state.selected); this.state.selected = this.state.tracks[0]?.id; this.state.source = undefined; this.save({ 'music.selected': this.state.selected ?? '' }); this.state.notice = '已从曲库移除，原文件未改动。'; }
     catch (e) { this.state.error = (e as Error).message; }
-    this.onChange();
+    this.state.busy = false; this.state.operation = undefined; this.onChange();
   }
   status(revision: number, playing: boolean, ended = false, error = false): void {
     if (revision !== this.state.revision || this.closed) return;
     this.state.playing = playing;
     if (error) { this.state.error = '无法播放这首音乐，请检查文件或选择下一首。'; this.pause(); }
-    else if (ended && this.state.wantsPlayback && !this.reasons.size) { if (this.state.loop === 'playlist') void this.next(); else { this.state.source = undefined; void this.reconcile(); } }
+    else if (ended && this.state.wantsPlayback && !this.reasons.size) { if (this.state.loop === 'playlist') void this.next(); else { this.state.playbackID++; void this.reconcile(); } }
     this.onChange();
   }
   private async reconcile(): Promise<void> {
     this.task?.abort(); this.task = undefined;
     const task = new AbortController(); this.task = task;
-    this.state.revision++; this.state.suspended = this.reasons.size > 0; this.state.playing = false;
+    this.state.revision++; this.state.suspended = this.reasons.size > 0; this.state.suspensionReasons = [...this.reasons]; this.state.playing = false;
     if (!this.state.wantsPlayback || this.state.suspended || this.closed || !this.state.selected) { this.onChange(); return; }
     this.onChange();
     try {
@@ -157,5 +169,5 @@ export class MusicController {
       this.state.source = source; this.onChange();
     } catch { if (this.task === task && !this.closed) { this.state.wantsPlayback = false; this.state.error = '无法播放这首音乐，请检查文件或选择下一首。'; this.onChange(); } }
   }
-  shutdown(): void { this.closed = true; this.task?.abort(); this.decoder.shutdown(); }
+  shutdown(): void { this.flushVolume(); this.closed = true; this.task?.abort(); this.decoder.shutdown(); }
 }

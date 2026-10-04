@@ -90,3 +90,16 @@ test('only successful complete turns become context; request and UI histories ha
     assert.deepEqual(messages.map(m => m.role), ['system', 'user']);
   } finally { app.shutdown(); rmSync(root, { recursive: true, force: true }); }
 });
+
+test('deleting the saved service key leaves another service draft intact and exposes the actual deletion target', () => {
+  const root = mkdtempSync(path.join(tmpdir(), 'chihaya-delete-target-'));
+  const config = new ConfigStore(path.join(root, 'config.json')); config.saveService('https://a.example/v1', 'A', 'a-key');
+  const app = new Companion(config, new JSONPreferences(path.join(root, 'preferences.json')));
+  try {
+    app.beginSettings(); app.setDraft('baseURL', 'https://b.example/v1'); app.setDraft('key', 'b-draft-key');
+    assert.deepEqual(app.snapshot().savedService, { baseURL: 'https://a.example/v1', model: 'A' });
+    app.deleteKey();
+    assert.equal(config.key('https://a.example/v1'), '');
+    assert.equal(app.snapshot().draft.key, 'b-draft-key');
+  } finally { app.shutdown(); rmSync(root, { recursive: true, force: true }); }
+});

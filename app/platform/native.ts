@@ -9,7 +9,7 @@ export class Platform implements PreferenceStore {
   private json: JSONPreferences;
   private watcher?: ChildProcess;
   private previousFocus?: string;
-  private macWindows?: { configure(handle: Buffer, allSpaces: boolean): void };
+  private macWindows?: { configure(handle: Buffer, allSpaces: boolean): void; installMenu(json: string, listener: (action: string) => void): void; updateMenu(json: string): void; popupMenu(): void; destroyMenu(): void };
   constructor(readonly kind: NodeJS.Platform, readonly directory: string, preferenceFile: string, readonly domain = 'local.ChihayaPet') { this.json = new JSONPreferences(preferenceFile); }
   private mac(command: string, input?: string): string { return execFileSync(path.join(this.directory, 'MacBridge'), [command, this.domain], { encoding: 'utf8', input, timeout: 10_000, maxBuffer: 2_000_000 }).trim(); }
   load(): Preferences { return this.kind === 'darwin' ? JSON.parse(this.mac('preferences-read')) as Preferences : this.json.load(); }
@@ -19,6 +19,12 @@ export class Platform implements PreferenceStore {
     if (this.kind !== 'darwin') return;
     this.macWindows ??= require(path.join(this.directory, 'MacWindow.node'));
     this.macWindows!.configure(handle, allSpaces);
+  }
+  installMenu(json: string, listener: (action: string) => void): { update(json: string): void; popup(): void; destroy(): void } {
+    this.macWindows ??= require(path.join(this.directory, 'MacWindow.node'));
+    const native = this.macWindows!;
+    native.installMenu(json, listener);
+    return { update: json => native.updateMenu(json), popup: () => native.popupMenu(), destroy: () => native.destroyMenu() };
   }
   watchReducedMotion(listener: (value: boolean) => void): void {
     if (this.kind !== 'darwin') return;

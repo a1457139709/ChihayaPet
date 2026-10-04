@@ -5,7 +5,7 @@ import { characterCount, validateInput } from '../shared/text';
 import { ConfigStore, connection, normalizeService, type PreferenceStore } from './storage';
 import { requestReply } from './network';
 
-type ConversationState = Pick<Snapshot, 'greeting' | 'turns' | 'didTrim' | 'input' | 'pending' | 'partial' | 'error' | 'busy' | 'settingsError' | 'settingsNotice' | 'testStatus' | 'draft'>;
+type ConversationState = Pick<Snapshot, 'greeting' | 'turns' | 'didTrim' | 'input' | 'pending' | 'pendingID' | 'partial' | 'error' | 'busy' | 'settingsError' | 'settingsNotice' | 'testStatus' | 'draft'>;
 const greetings = ['你好，我是妃宫千早。今天过得怎么样？', '来了呀。先坐一会儿吧，今天想聊些什么？', '忙到现在，辛苦了。要不要稍微歇一歇？', '今天也请多关照。有什么想说的，我听着。', '一直这样看着我……是有什么话想说吗？'];
 const errorText = (error: unknown) => error instanceof Error ? error.message : '操作失败，请检查本机数据目录。';
 export class Companion {
@@ -16,13 +16,16 @@ export class Companion {
   onChange: () => void = () => {};
   onReply: (turn: Turn) => void = () => {};
   onNeedsSettings: () => void = () => {};
+  onInvalidSettings: () => void = () => {};
   onCleared: () => void = () => {};
   constructor(private config: ConfigStore, private preferences: PreferenceStore, private fetcher: typeof fetch = fetch, random: () => number = Math.random) {
     this.state = { greeting: greetings[Math.min(4, Math.floor(random() * 5))]!, turns: [], didTrim: false, input: '', partial: '', draft: { baseURL: '', model: '', key: '', prompt: defaultPrompt } };
     try { this.settings = config.load(); } catch (e) { this.state.settingsError = errorText(e); }
     try { this.prompt = String(preferences.load()['persona.prompt'] ?? defaultPrompt); } catch (e) { this.state.settingsError = errorText(e); }
   }
-  snapshot(): ConversationState { return structuredClone(this.state); }
+  snapshot(): ConversationState & Pick<Snapshot, 'savedService'> {
+    return { ...structuredClone(this.state), savedService: this.settings.baseURL ? { baseURL: this.settings.baseURL, model: this.settings.model } : undefined };
+  }
   setInput(text: string): void { this.state.input = text; this.onChange(); }
   async send(retry = false): Promise<void> {
     if (this.active) return;
@@ -40,7 +43,7 @@ export class Companion {
     for (const turn of this.context()) messages.push({ role: 'user', content: turn.user }, { role: 'assistant', content: turn.assistant });
     messages.push({ role: 'user', content: text });
     const active = { kind: 'chat' as const, controller: new AbortController() };
-    this.active = active; this.state.busy = 'chat'; this.state.error = undefined; this.state.partial = ''; this.state.pending = text;
+    this.active = active; this.state.busy = 'chat'; this.state.error = undefined; this.state.partial = ''; this.state.pending = text; this.state.pendingID = randomUUID();
     if (!retry) this.state.input = '';
     this.onChange();
     try {
@@ -54,7 +57,7 @@ export class Companion {
       while (this.state.turns.length > 50 || count > 100_000) {
         const old = this.state.turns.shift()!; count -= characterCount(old.user) + characterCount(old.assistant); this.state.didTrim = true;
       }
-      this.state.pending = undefined; this.state.partial = ''; this.onReply(turn);
+      this.state.pending = undefined; this.state.pendingID = undefined; this.state.partial = ''; this.onReply(turn);
     } catch (e) { if (this.active === active) this.state.error = errorText(e); }
     finally { if (this.active === active) { this.active = undefined; this.state.busy = undefined; this.onChange(); } }
   }
@@ -72,7 +75,7 @@ export class Companion {
     this.onChange();
   }
   clear(): void {
-    this.cancel(); this.state.turns = []; this.state.didTrim = false; this.state.pending = undefined;
+    this.cancel(); this.state.turns = []; this.state.didTrim = false; this.state.pending = undefined; this.state.pendingID = undefined;
     this.state.partial = ''; this.state.error = undefined; this.state.input = ''; this.state.testStatus = undefined;
     this.onCleared(); this.onChange();
   }
@@ -107,7 +110,7 @@ export class Companion {
     if (this.active) return;
     const draft = { ...this.state.draft };
     try { connection(draft.baseURL, draft.model); if (!draft.key.trim()) throw new Error('请填写 API Key。'); }
-    catch (e) { this.state.settingsError = errorText(e); this.onChange(); return; }
+    catch (e) { this.state.settingsError = errorText(e); this.onChange(); this.onInvalidSettings(); return; }
     const active = { kind: 'test' as const, controller: new AbortController() };
     this.active = active; this.state.busy = 'test'; this.state.testStatus = undefined; this.state.settingsError = undefined; this.onChange();
     try {
@@ -120,26 +123,28 @@ export class Companion {
     try {
       const draft = this.state.draft; connection(draft.baseURL, draft.model);
       if (!draft.key.trim()) throw new Error('请填写 API Key。');
-      this.clear(); this.settings = this.config.saveService(draft.baseURL, draft.model, draft.key);
+      this.settings = this.config.saveService(draft.baseURL, draft.model, draft.key); this.clear();
       draft.baseURL = this.settings.baseURL; draft.model = this.settings.model;
       this.state.settingsError = undefined; this.state.settingsNotice = '服务配置已保存，会话已清空。';
-    } catch (e) { this.state.settingsError = errorText(e); }
+    } catch (e) { this.state.settingsError = errorText(e); if (this.missingSettingsField()) this.onInvalidSettings(); }
     this.onChange();
   }
   deleteKey(): void {
     try {
-      connection(this.settings.baseURL, this.settings.model); this.clear(); this.settings = this.config.deleteKey(this.settings.baseURL);
-      this.state.draft.key = ''; this.state.settingsError = undefined; this.state.settingsNotice = '已删除当前已保存服务的密钥。';
+      connection(this.settings.baseURL, this.settings.model);
+      this.settings = this.config.deleteKey(this.settings.baseURL); this.clear();
+      try { if (normalizeService(this.state.draft.baseURL) === this.settings.baseURL) this.state.draft.key = ''; } catch { /* Unrelated invalid draft is preserved. */ }
+      this.state.settingsError = undefined; this.state.settingsNotice = '已删除当前已保存服务的密钥。';
     } catch (e) { this.state.settingsError = errorText(e); }
     this.onChange();
   }
-  savePrompt(restore = false): void {
+  savePrompt(restore = false): boolean {
     try {
       const prompt = restore ? defaultPrompt : this.state.draft.prompt;
       this.preferences.save({ 'persona.prompt': prompt }); this.clear(); this.prompt = prompt; this.state.draft.prompt = prompt;
       this.state.settingsError = undefined; this.state.settingsNotice = '角色设定已保存，会话已清空。';
-    } catch (e) { this.state.settingsError = errorText(e); this.state.settingsNotice = undefined; }
-    this.onChange();
+      this.onChange(); return true;
+    } catch (e) { this.state.settingsError = errorText(e); this.state.settingsNotice = undefined; this.onChange(); return false; }
   }
   shutdown(): void { this.cancel(); this.state.draft.key = ''; }
 }

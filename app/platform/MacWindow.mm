@@ -2,6 +2,7 @@
 #import <objc/runtime.h>
 #include <node_api.h>
 #include <cstring>
+void RegisterMenus(napi_env env, napi_value exports);
 
 // Electron's macOS native handle contains NSView*. This module runs in its main
 // process; an external helper cannot apply NSWindow collection behavior.
@@ -72,6 +73,7 @@ static napi_value Init(napi_env env, napi_value exports) {
         { "behavior", nullptr, Behavior, nullptr, nullptr, nullptr, napi_default, nullptr }
     };
     napi_define_properties(env, exports, 2, properties);
+    RegisterMenus(env, exports);
     return exports;
 }
 NAPI_MODULE(MacWindow, Init)

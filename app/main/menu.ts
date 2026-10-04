@@ -1,50 +1,62 @@
-import { app, Menu, Tray, nativeImage, type MenuItemConstructorOptions } from 'electron';
+import { app, Menu, Tray, nativeImage } from 'electron';
 import { PNG } from 'pngjs';
 import type { DesktopApplication } from './desktop';
+import { desktopMenu } from '../shared/menu';
 import type { Action } from '../shared/contracts';
-export function installMenu(controller: DesktopApplication): Tray {
+
+// Outline leaf and vein, rasterized from cubic vector curves for the Windows tray.
+function windowsLeaf(): Electron.NativeImage {
+  type Point = [number, number];
+  const curves: [Point, Point, Point, Point][] = [
+    [[5, 24], [1, 14], [14, 4], [28, 4]], [[28, 4], [29, 19], [23, 29], [12, 26]],
+    [[12, 26], [10, 24], [7, 25], [5, 24]], [[4, 28], [11, 23], [19, 17], [24, 9]],
+  ];
+  const segments = curves.flatMap(curve => {
+    const points = Array.from({ length: 33 }, (_, i): Point => {
+      const t = i / 32, u = 1 - t;
+      return [0, 1].map(axis => u ** 3 * curve[0][axis]! + 3 * u * u * t * curve[1][axis]! + 3 * u * t * t * curve[2][axis]! + t ** 3 * curve[3][axis]!) as Point;
+    });
+    return points.slice(1).map((point, i) => [points[i]!, point] as const);
+  });
   const image = new PNG({ width: 32, height: 32 });
   for (let y = 0; y < 32; y++) for (let x = 0; x < 32; x++) {
-    const dx = x - 16, dy = y - 16, inside = ((dx + dy) ** 2 / 500 + (dx - dy) ** 2 / 90) < 1;
+    let covered = 0;
+    for (const dx of [.125, .375, .625, .875]) for (const dy of [.125, .375, .625, .875]) {
+      if (segments.some(([a, b]) => {
+        const vx = b[0] - a[0], vy = b[1] - a[1];
+        const t = Math.min(1, Math.max(0, ((x + dx - a[0]) * vx + (y + dy - a[1]) * vy) / (vx * vx + vy * vy || 1)));
+        return Math.hypot(x + dx - a[0] - t * vx, y + dy - a[1] - t * vy) < 1;
+      })) covered++;
+    }
     const offset = (y * 32 + x) * 4;
-    image.data[offset] = process.platform === 'darwin' ? 0 : 135; image.data[offset + 1] = process.platform === 'darwin' ? 0 : 150; image.data[offset + 2] = process.platform === 'darwin' ? 0 : 142; image.data[offset + 3] = inside ? 255 : 0;
+    image.data[offset] = 102; image.data[offset + 1] = 119; image.data[offset + 2] = 109; image.data[offset + 3] = Math.round(covered / 16 * 255);
   }
-  const icon = nativeImage.createFromBuffer(PNG.sync.write(image)); icon.setTemplateImage(process.platform === 'darwin');
-  const tray = new Tray(icon); tray.setToolTip('妃宫千早桌宠');
-  const act = (a: Action) => () => { void controller.act(a); };
-  const template = (): MenuItemConstructorOptions[] => {
-    const s = controller.snapshot(), music = s.music;
-    return [
-      { label: '打开聊天', click: act({ type: 'chat' }) }, { label: '设置…', click: act({ type: 'settings' }) },
-      { label: '打开文件说明', click: act({ type: 'files' }) }, { type: 'separator' },
-      { label: '造型', submenu: s.outfits.map(o => ({ label: o.name, type: 'radio' as const, checked: o.id === s.desktop.outfit, click: act({ type: 'desktop', field: 'outfit', value: o.id }) })) },
-      { label: '取景', submenu: ['full', 'close'].map(f => ({ label: f === 'full' ? '全景' : '近景', type: 'radio' as const, checked: f === s.desktop.framing, click: act({ type: 'desktop', field: 'framing', value: f }) })) },
-      { label: '表情', submenu: ['automatic', ...s.expressions].map(id => ({ label: id === 'automatic' ? '自动' : id, type: 'radio' as const, checked: id === s.desktop.expression, click: act({ type: 'desktop', field: 'expression', value: id }) })) },
-      { label: '图片高度', submenu: [240, 256, 320, 400, 480].map(value => ({ label: `${value} 点`, type: 'radio' as const, checked: value === s.desktop.height, click: act({ type: 'desktop', field: 'height', value }) })) },
-      { label: '置顶', type: 'checkbox', checked: s.desktop.onTop, click: act({ type: 'desktop', field: 'onTop', value: !s.desktop.onTop }) },
-      { label: '呼吸与轻摆', type: 'checkbox', checked: s.desktop.animations, click: act({ type: 'desktop', field: 'animations', value: !s.desktop.animations }) },
-      { label: '鼠标穿透', type: 'checkbox', checked: s.clickThrough, click: act({ type: 'click-through', value: !s.clickThrough }) },
-      { label: s.visible ? '隐藏人物' : '恢复人物', click: act({ type: 'visible', value: !s.visible }) }, { type: 'separator' },
-      { label: '说一句', enabled: s.visible && s.awake && !s.clickThrough && !s.chatVisible && !s.settingsVisible && !s.input && !s.busy && !s.bubble, click: act({ type: 'say' }) },
-      { label: '主动闲话', type: 'checkbox', checked: s.idleEnabled, click: act({ type: 'idle-enabled', value: !s.idleEnabled }) },
-      { label: '闲话频率', submenu: ['经常 · 1–3 分钟', '适中 · 3–7 分钟', '安静 · 10–15 分钟'].map((label, i) => ({ label, type: 'radio' as const, checked: s.idleFrequency === i + 1, click: act({ type: 'idle-frequency', value: i + 1 }) })) },
-      { label: '背景音乐', submenu: [
-        { label: music.tracks.find(t => t.id === music.selected)?.title ?? '尚未导入音乐', enabled: false },
-        { label: music.wantsPlayback ? '暂停' : '播放', enabled: music.tracks.length > 0, click: act({ type: 'music-toggle' }) },
-        { label: '上一首', enabled: music.tracks.length > 0, click: act({ type: 'music-previous' }) }, { label: '下一首', enabled: music.tracks.length > 0, click: act({ type: 'music-next' }) },
-      ] }, { type: 'separator' }, { label: '退出千早桌宠', click: () => app.quit() },
-    ];
-  };
-  let signature = '';
-  const update = () => {
-    const s = controller.snapshot(); const next = JSON.stringify([s.desktop, s.clickThrough, s.visible, s.awake, s.idleEnabled, s.idleFrequency, s.chatVisible, s.settingsVisible, Boolean(s.busy), Boolean(s.input), Boolean(s.bubble), s.music.selected, s.music.wantsPlayback, s.music.tracks]);
-    if (next !== signature) { signature = next; tray.setContextMenu(Menu.buildFromTemplate(template())); }
-  };
-  controller.onMenuChanged = update; controller.onContextMenu = () => Menu.buildFromTemplate(template()).popup(); update();
-  tray.on('double-click', () => controller.open('chat'));
+  return nativeImage.createFromBuffer(PNG.sync.write(image));
+}
+export function installMenu(controller: DesktopApplication): { destroy(): void } {
+  const act = (action: Action) => { void controller.act(action).catch(() => {}); };
+  let handle: { destroy(): void };
+  if (process.platform === 'darwin') {
+    const menu = controller.platform.installMenu(JSON.stringify(desktopMenu(controller.snapshot())), json => act(JSON.parse(json) as Action));
+    let signature = '';
+    controller.onMenuChanged = () => { const next = JSON.stringify(desktopMenu(controller.snapshot())); if (signature !== next) { signature = next; menu.update(next); } };
+    controller.onContextMenu = () => menu.popup(); handle = menu;
+  } else {
+    const tray = new Tray(windowsLeaf()); tray.setToolTip('千早桌宠');
+    tray.on('click', () => controller.openMenu()); tray.on('right-click', () => controller.openMenu());
+    tray.on('double-click', () => controller.open('chat'));
+    controller.onContextMenu = () => controller.openMenu(); handle = tray;
+  }
   Menu.setApplicationMenu(Menu.buildFromTemplate([
-    ...(process.platform === 'darwin' ? [{ label: 'ChihayaPet', submenu: [{ label: '设置…', click: act({ type: 'settings' }) }, { label: '打开文件说明', click: act({ type: 'files' }) }, { type: 'separator' as const }, { role: 'quit' as const }] }] : []),
-    { label: '编辑', submenu: [{ role: 'undo' }, { role: 'redo' }, { type: 'separator' }, { role: 'cut' }, { role: 'copy' }, { role: 'paste' }, { role: 'selectAll' }] },
+    ...(process.platform === 'darwin' ? [{ label: '千早桌宠', submenu: [
+      { label: '设置…', accelerator: 'Command+,', click: () => act({ type: 'settings' }) },
+      { type: 'separator' as const }, { label: '退出千早桌宠', role: 'quit' as const, accelerator: 'Command+Q' },
+    ] }] : []),
+    { label: '编辑', submenu: [
+      { label: '撤销', role: 'undo', accelerator: 'CmdOrCtrl+Z' }, { label: '重做', role: 'redo', accelerator: 'CmdOrCtrl+Shift+Z' }, { type: 'separator' },
+      { label: '剪切', role: 'cut', accelerator: 'CmdOrCtrl+X' }, { label: '复制', role: 'copy', accelerator: 'CmdOrCtrl+C' },
+      { label: '粘贴', role: 'paste', accelerator: 'CmdOrCtrl+V' }, { label: '全选', role: 'selectAll', accelerator: 'CmdOrCtrl+A' },
+    ] },
   ]));
-  return tray;
+  return handle;
 }

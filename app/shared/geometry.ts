@@ -6,13 +6,16 @@ export function clamped(frame: Rect, workArea: Rect): Rect {
 export function initialFrame(width: number, height: number, workArea: Rect): Rect { return clamped({ x: workArea.x + workArea.width - width - 16, y: workArea.y + workArea.height - height, width, height }, workArea); }
 export function fromMacOrigin(origin: Point, size: { width: number; height: number }, primaryHeight: number): Rect { return { x: origin.x, y: primaryHeight - origin.y - size.height, ...size }; }
 export function toMacOrigin(frame: Rect, primaryHeight: number): Point { return { x: frame.x, y: primaryHeight - frame.y - frame.height }; }
-export function bubbleFrame(pet: Rect, area: Rect, speech: Speech, canvasHeight: number, imageHeight: number, size: { width: number; height: number }): Rect & { side: 'left' | 'right' } {
+export function bubbleFrame(pet: Rect, area: Rect, speech: Speech, canvasHeight: number, imageHeight: number, size: { width: number; height: number }): Rect & { side: 'left' | 'right'; tailY: number } {
   const scale = imageHeight / canvasHeight;
   const mouthY = pet.y + 12 + speech.mouth[1]! * scale;
-  const left = pet.x + 12 + speech.hairLeft * scale - 4 - size.width;
-  const right = pet.x + 12 + speech.hairRight * scale + 4;
-  const side = left >= area.x ? 'left' : 'right';
-  return { ...clamped({ x: side === 'left' ? left : right, y: mouthY - size.height / 2, ...size }, area), side };
+  const mouthX = pet.x + 12 + speech.mouth[0]! * scale;
+  const left = pet.x + 12 + speech.hairLeft * scale - 4 - size.width + 12;
+  const right = pet.x + 12 + speech.hairRight * scale + 4 - 12;
+  const side = left >= area.x || area.x + area.width - mouthX < mouthX - area.x ? 'left' : 'right';
+  const preferredTail = clamp(size.height * .35, 62, size.height - 54);
+  const frame = clamped({ x: side === 'left' ? left : right, y: mouthY - preferredTail, ...size }, area);
+  return { ...frame, side, tailY: clamp(mouthY - frame.y, 62, size.height - 54) };
 }
 export function nearbyPanel(pet: Rect, area: Rect, size: { width: number; height: number }): Rect {
   const left = pet.x - size.width - 8;

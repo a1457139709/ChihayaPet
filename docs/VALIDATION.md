@@ -20,7 +20,7 @@
 
 ## macOS 发行版运行检查
 
-`scripts/check-runtime.mjs` 通过 Playwright 启动源码和最终已签名 Release 二进制，使用独立临时数据和偏好。立绘就绪检查核对快照尺寸并读取 canvas 的非透明像素，确认正式立绘已实际绘制。还检查人物不可获得焦点、alpha／穿透模式发出的系统命令、缺少配置时已有及新建设置面板的服务页／字段焦点／草稿保留、设置保存与编号切换、中文 composition Enter／Escape、Shift+Enter、多次面板销毁、闲话气泡收起、实际 FILES.txt 路径、运行目录、原索引六种格式的实际音频播放，以及模拟休眠后手动暂停保持。截图保存在 `build/QA/runtime/`。
+`scripts/check-runtime.mjs` 通过 Playwright 启动源码和最终已签名 Release 二进制，使用独立临时数据和偏好。立绘就绪检查核对快照尺寸并读取 canvas 的非透明像素，确认正式立绘已实际绘制。还检查人物不可获得焦点、alpha／穿透模式发出的系统命令、缺少配置时已有及新建设置面板的服务页／字段焦点／草稿保留、设置保存与编号切换、中文 composition Enter／Escape、Shift+Enter、多次面板收起与复用、闲话气泡收起、实际 FILES.txt 路径、运行目录、原索引六种格式的实际音频播放，以及模拟休眠后手动暂停保持。截图保存在 `build/QA/runtime/`。
 
 alpha 检查直接注入转发的鼠标坐标并观察 setIgnoreMouseEvents；不把 CDP 注入当作真实桌面后方窗口点击的证明。Mac 窗口检查读取 NSWindow 原生 collectionBehavior，确认人物／闲话 CanJoinAllSpaces／FullScreenNone、聊天／设置 MoveToActiveSpace／FullScreenNone，重建聊天窗口、修改动效／取景、重复相同置顶值与切换置顶后再次确认。相同置顶调用会重设 Chromium 的 collectionBehavior 而不发出 always-on-top-changed，现只在置顶操作时调用并显式恢复原生策略。设置的当前 Space 策略与聊天统一，原设置窗口未显式指定 MoveToActiveSpace。前台焦点恢复、真实桌面鼠标转发、实际跨 Spaces／全屏切换、真实睡眠及多屏热拔插还需人工实机观察。
 
@@ -29,3 +29,11 @@ alpha 检查直接注入转发的鼠标坐标并观察 setIgnoreMouseEvents；�
 ## Windows 验收边界
 
 开发端完成共享逻辑、路径契约和最终 ZIP 结构校验。Windows 11 实机运行由用户完成；[自测清单](windows-acceptance.md) 没有填入任何未经运行的通过结果。真实系统输入、焦点、虚拟桌面、多屏缩放、音频、只读目录和整目录移动必须在用户机器上确认。
+
+## Issue #63 验证与交接
+
+2026-10-04，按 #65 resolution 恢复旧 UI 后，`./scripts/test.sh` 的 28 项 Node 逻辑测试与 15 项 Python 测试全部通过，TypeScript 类型检查和 `npm run build` 通过。构建校验 13 组造型、26 个取景、292 张已批准 RGBA PNG 的白名单和 SHA-256，并编译 macOS 原生菜单／窗口适配器。测试覆盖约定的聊天发送、气泡摘录／布局、偏好／IPC 和音乐状态边界；窗口与音频回归使用外部 API 模拟，不启动 UI。
+
+Standards 与 Spec 独立源码审查及修复后复核均无剩余发现。已修复立绘控件同步、Windows 菜单焦点／键盘导航、气泡悬停与键盘保持，以及淡出旧曲的迟到事件错误归属。
+
+本次未运行 `test:runtime` 或任何截图／视觉 UI 测试；前文运行记录属于 #62。Mac／Windows 视觉、辅助技术和实际声音验收由用户按 [交接矩阵](issue-63-acceptance.md)记录；构建通过不代表实机验收通过。

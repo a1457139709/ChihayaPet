@@ -17,22 +17,27 @@ export type Variant = {
   automaticMappings: Record<string, string>; results: SpriteResult[];
 };
 export type Manifest = { version: number; outfits: { id: string; name: string }[]; variants: Record<string, Variant> };
-export type DesktopSettings = { outfit: string; framing: Framing; expression: string; height: number; onTop: boolean; animations: boolean };
-export type MusicState = { tracks: Track[]; selected?: string; wantsPlayback: boolean; playing: boolean; volume: number; loop: 'single' | 'playlist'; autoplay: boolean; suspended: boolean; source?: string; revision: number; error?: string; notice?: string; busy: boolean };
-export type Bubble = { id: string; kind: 'idle' | 'reply'; text: string; fullText: string; turnID?: string; side?: 'left' | 'right' };
+export type DesktopSettings = { outfit: string; framing: Framing; expression: string; height: number; onTop: boolean; animations: boolean; headPetting: boolean };
+export type SettingsTab = 'service' | 'persona' | 'music' | 'portrait';
+export type MusicState = { tracks: Track[]; selected?: string; wantsPlayback: boolean; playing: boolean; volume: number; loop: 'single' | 'playlist'; autoplay: boolean; suspended: boolean; suspensionReasons: string[]; source?: string; revision: number; playbackID: number; error?: string; notice?: string; busy: boolean; operation?: 'import' | 'remove' };
+export type Bubble = { id: string; kind: 'idle' | 'reply'; text: string; fullText: string; turnID?: string; side?: 'left' | 'right'; tailY?: number; truncated?: boolean };
 export type Snapshot = {
-  greeting: string; turns: Turn[]; didTrim: boolean; input: string; pending?: string; partial: string;
+  greeting: string; turns: Turn[]; didTrim: boolean; input: string; pending?: string; pendingID?: string; partial: string;
   error?: string; busy?: 'chat' | 'test'; settingsError?: string; settingsNotice?: string; testStatus?: string;
   draft: { baseURL: string; model: string; key: string; prompt: string };
+  savedService?: { baseURL: string; model: string };
   desktop: DesktopSettings; clickThrough: boolean; visible: boolean; awake: boolean; reducedMotion: boolean;
   sprite?: { url: string; canvas: number[]; key: string; faceID: string; speech: Speech };
-  resourceError?: string; outfits: { id: string; name: string }[]; expressions: string[];
+  resourceError?: string; outfits: { id: string; name: string }[]; expressions: { id: string; approved: boolean }[];
   idleEnabled: boolean; idleFrequency: number; bubble?: Bubble; chatVisible: boolean; settingsVisible: boolean;
-  focusTurnID?: string; settingsFocus?: { id: string; field?: SettingsField }; music: MusicState;
+  chatFocus?: { id: string; turnID: string }; settingsTab: SettingsTab; settingsFocus?: { id: string; field?: SettingsField }; music: MusicState;
 };
 export type Action =
   | { type: 'input'; text: string }
-  | { type: 'send' | 'retry' | 'cancel' | 'clear' | 'chat' | 'settings' | 'files' | 'quit' | 'say' | 'bubble-dismiss' | 'bubble-complete' | 'read-more' | 'music-import' | 'music-remove' | 'music-toggle' | 'music-next' | 'music-previous' | 'test' | 'save-service' | 'delete-key' | 'save-prompt' | 'restore-prompt' | 'context-menu' }
+  | { type: 'send' | 'retry' | 'cancel' | 'clear' | 'chat' | 'quit' | 'say' | 'bubble-dismiss' | 'bubble-complete' | 'read-more' | 'music-import' | 'music-remove' | 'music-toggle' | 'music-next' | 'music-previous' | 'test' | 'save-service' | 'delete-key' | 'save-prompt' | 'restore-prompt' | 'context-menu' }
+  | { type: 'settings'; tab?: SettingsTab }
+  | { type: 'settings-tab'; tab: SettingsTab }
+  | { type: 'chat-focus-consumed'; id: string }
   | { type: 'draft'; field: 'baseURL' | 'model' | 'key' | 'prompt'; text: string }
   | { type: 'desktop'; field: keyof DesktopSettings; value: string | number | boolean }
   | { type: 'visible' | 'click-through' | 'idle-enabled' | 'bubble-hover'; value: boolean }
@@ -45,7 +50,8 @@ export type Action =
   | { type: 'hit'; opaque: boolean }
   | { type: 'drag'; phase: 'start' | 'move' | 'end' }
   | { type: 'bubble-size'; width: number; height: number }
-  | { type: 'close'; window: 'chat' | 'settings' };
+  | { type: 'menu-size'; height: number }
+  | { type: 'close'; window: 'chat' | 'settings' | 'menu' };
 export interface Bridge {
   snapshot(): Promise<Snapshot>;
   act(action: Action): Promise<void>;

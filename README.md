@@ -29,7 +29,7 @@ macOS 产物为 `release/ChihayaPet-macOS-arm64.dmg`，将完整 `ChihayaPet.app
 
 Windows 产物为 `release/ChihayaPet-Windows-x64.zip`。完整解压后运行 `ChihayaPet.exe`，无需另装 Node/npm；EXE、运行库、locales 和 resources 必须一起保留。配置在 `Data/config.json`，偏好在 `Data/preferences.json`，音乐在 `Data/Music/`，浏览器、缓存、日志、崩溃及临时文件在 `Data/ElectronRuntime/`。路径在 Electron 会话初始化前设置，目录不可写时提示移动整个文件夹。移动整个解压目录后数据继续可用。Windows 系统自己的运行记录由操作系统管理。
 
-两端菜单及聊天／设置提供“文件说明”。Mac 静态中文 `FILES.txt` 留在 `.app/Contents/Resources/`，首次运行在数据目录生成实际路径说明；Windows 静态说明在解压目录，启动后补充绝对路径。发行文件清单从最终应用自动生成。说明包括用途、创建时机、升级需保留的内容，以及删除程序与删除数据的方法。
+文件说明以独立文件交付。Mac 静态中文 `FILES.txt` 留在 `.app/Contents/Resources/`，首次运行在数据目录生成实际路径说明；Windows 静态说明在解压目录，启动后补充绝对路径。发行文件清单从最终应用自动生成。说明包括用途、创建时机、升级需保留的内容，以及删除程序与删除数据的方法。
 
 ## 开发、验证与打包
 

@@ -13,7 +13,7 @@ import { validAction } from './ipc';
 import { runtimeGuide } from './files-guide';
 import { qaFetch } from './qa-network';
 
-app.setName('ChihayaPet');
+app.setName('千早桌宠');
 const qa = process.env.CHIHAYA_QA === '1' && Boolean(process.env.CHIHAYA_QA_DATA);
 const paths = resolvePaths({ platform: process.platform, packaged: app.isPackaged, executable: process.execPath, appPath: app.getAppPath(), qaRoot: qa ? process.env.CHIHAYA_QA_DATA : undefined });
 let startupError: unknown;
