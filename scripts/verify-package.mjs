@@ -10,6 +10,26 @@ const roots = specified ? [specified] : ['release/mac-arm64/ChihayaPet.app', 're
 if (!roots.length) { console.log('No release directories yet; source resources verified separately.'); process.exit(0); }
 for (const root of roots) {
   const mac = root.endsWith('.app'), resources = path.join(root, mac ? 'Contents/Resources' : 'resources');
+  const icons = path.resolve(import.meta.dirname, '../app/platform/icons');
+  if (mac) {
+    const plist = readFileSync(path.join(root, 'Contents/Info.plist'), 'utf8');
+    const iconName = plist.match(/<key>CFBundleIconFile<\/key>\s*<string>([^<]+)<\/string>/)?.[1];
+    assert.ok(iconName, 'Missing macOS application icon declaration');
+    const iconFile = iconName.endsWith('.icns') ? iconName : iconName + '.icns';
+    assert.deepEqual(readFileSync(path.join(resources, iconFile)), readFileSync(path.join(icons, 'chihaya.icns')), 'macOS application icon differs from approved artwork');
+  } else {
+    // Use the same PE reader that electron-builder uses to write EXE resources.
+    const { NtExecutable, NtExecutableResource, Resource, Data } = createRequire(require.resolve('app-builder-lib'))('resedit');
+    const executable = NtExecutable.from(readFileSync(path.join(root, 'ChihayaPet.exe')));
+    const { entries } = NtExecutableResource.from(executable);
+    const group = Resource.IconGroupEntry.fromEntries(entries).find(icon => icon.id === 1);
+    assert.ok(group, 'Missing Windows application icon group');
+    const expectedIcons = Data.IconFile.from(readFileSync(path.join(icons, 'chihaya.ico'))).icons.map(icon => icon.data);
+    const actualIcons = group.getIconItemsFromEntries(entries);
+    // ICO group dimensions use a zero byte to represent 256 pixels.
+    const fingerprint = icon => ({ width: icon.width || 256, height: icon.height || 256, sha256: createHash('sha256').update(Buffer.from(icon.isRaw() ? icon.bin : icon.generate())).digest('hex') });
+    assert.deepEqual(actualIcons.map(fingerprint), expectedIcons.map(fingerprint), 'Windows EXE icon differs from approved artwork');
+  }
   const inventory = JSON.parse(readFileSync(path.join(resources, 'PACKAGE-FILES.json'), 'utf8'));
   assert.deepEqual(fileList(root), inventory.files, 'Final distribution inventory mismatch');
   const archive = path.join(resources, 'app.asar'), entries = asar.listPackage(archive);
@@ -35,5 +55,5 @@ for (const root of roots) {
   const files = readFileSync(path.join(root, mac ? 'Contents/Resources/FILES.txt' : 'FILES.txt'), 'utf8');
   for (const file of inventory.files) assert.ok(files.includes(file), file);
   if (!mac) { assert.ok(existsSync(path.join(root, 'ChihayaPet.exe'))); for (const file of ['ffmpeg.dll', 'icudtl.dat', 'resources.pak']) assert.ok(existsSync(path.join(root, file))); assert.ok(inventory.files.some(f => f.startsWith('locales/'))); }
-  console.log(`Verified ${root}: complete ${inventory.platform}/${inventory.arch} runtime, 292 approved PNGs, inventory and Chinese file guide.`);
+  console.log(`Verified ${root}: approved application icon, complete ${inventory.platform}/${inventory.arch} runtime, 292 approved PNGs, inventory and Chinese file guide.`);
 }
