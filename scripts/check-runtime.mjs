@@ -10,6 +10,8 @@ const data = mkdtempSync(path.join(os.tmpdir(), 'chihaya-runtime-'));
 const domain = `local.ChihayaPet.QA.${path.basename(data).replace(/[^a-zA-Z\d]/g, '')}`;
 const fixtureTracks = ['wav', 'aiff', 'aif', 'mp3', 'm4a', 'aac'].map((ext, i) => ({ id: `${ext}.${ext}`, title: ext, fileName: `${ext}.${ext}` }));
 mkdirSync(path.join(data, 'Music'));
+// This suite exercises an existing six-track user library, not first-run seeding.
+writeFileSync(path.join(data, 'Music/.bundled-bgm-installed.json'), '{}');
 const ffmpeg = path.join(root, 'node_modules/ffmpeg-static', process.platform === 'win32' ? 'ffmpeg.exe' : 'ffmpeg');
 for (const track of fixtureTracks) execFileSync(ffmpeg, ['-v', 'error', '-f', 'lavfi', '-i', 'sine=frequency=440:duration=3', path.join(data, 'Music', track.fileName)]);
 if (process.platform === 'darwin') {

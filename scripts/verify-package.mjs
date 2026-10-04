@@ -1,15 +1,19 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, lstatSync } from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { createRequire } from 'node:module';
 import { fileList } from './package-inventory.mjs';
+import { verifyBundledBGM } from './bundled-bgm.mjs';
 const require = createRequire(import.meta.url), asar = require('@electron/asar');
 const specified = process.argv[2];
 const roots = specified ? [specified] : ['release/mac-arm64/ChihayaPet.app', 'release/win-unpacked'].filter(existsSync);
 if (!roots.length) { console.log('No release directories yet; source resources verified separately.'); process.exit(0); }
 for (const root of roots) {
   const mac = root.endsWith('.app'), resources = path.join(root, mac ? 'Contents/Resources' : 'resources');
+  assert.ok(existsSync(path.join(resources, 'BundledBGM/catalog.json')), 'Release is missing bundled BGM');
+  verifyBundledBGM(path.join(resources, 'BundledBGM'));
+  if (!mac) assert.ok(lstatSync(path.join(root, 'Data/Music'), { throwIfNoEntry: false })?.isDirectory(), 'Windows package is missing Data/Music');
   const inventory = JSON.parse(readFileSync(path.join(resources, 'PACKAGE-FILES.json'), 'utf8'));
   assert.deepEqual(fileList(root), inventory.files, 'Final distribution inventory mismatch');
   const archive = path.join(resources, 'app.asar'), entries = asar.listPackage(archive);
@@ -35,5 +39,5 @@ for (const root of roots) {
   const files = readFileSync(path.join(root, mac ? 'Contents/Resources/FILES.txt' : 'FILES.txt'), 'utf8');
   for (const file of inventory.files) assert.ok(files.includes(file), file);
   if (!mac) { assert.ok(existsSync(path.join(root, 'ChihayaPet.exe'))); for (const file of ['ffmpeg.dll', 'icudtl.dat', 'resources.pak']) assert.ok(existsSync(path.join(root, file))); assert.ok(inventory.files.some(f => f.startsWith('locales/'))); }
-  console.log(`Verified ${root}: complete ${inventory.platform}/${inventory.arch} runtime, 292 approved PNGs, inventory and Chinese file guide.`);
+  console.log(`Verified ${root}: complete ${inventory.platform}/${inventory.arch} runtime, 292 approved PNGs, 43 catalogued BGM tracks, inventory and Chinese file guide.`);
 }
