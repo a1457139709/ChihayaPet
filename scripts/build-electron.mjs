@@ -1,5 +1,5 @@
 import { build } from 'esbuild';
-import { mkdir, copyFile, cp, realpath, access, readFile } from 'node:fs/promises';
+import { mkdir, copyFile, cp, realpath, access, readFile, rm } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 import { createRequire } from 'node:module';
@@ -13,7 +13,12 @@ await build({ entryPoints: ['app/preload.ts'], bundle: true, platform: 'node', f
 await build({ entryPoints: ['app/renderer/index.ts'], bundle: true, platform: 'browser', target: 'chrome144', outfile: 'dist/renderer.js' });
 await copyFile('app/renderer/index.html', 'dist/index.html');
 await copyFile('app/renderer/style.css', 'dist/style.css');
-await cp('app/platform/WindowsFocus.ps1', 'dist/platform/WindowsFocus.ps1');
+await rm('dist/platform/WindowsFocus.ps1', { force: true });
+// Copy only the x64 Windows runtime bridge, not Koffi's sources/other platforms.
+const ffiRoot = path.dirname(require.resolve('koffi/package.json'));
+await mkdir('dist/platform/WindowsFFI/build/koffi/win32_x64', { recursive: true });
+for (const file of ['index.js', 'package.json', 'LICENSE.txt']) await copyFile(path.join(ffiRoot, file), path.join('dist/platform/WindowsFFI', file));
+await copyFile(path.join(ffiRoot, 'build/koffi/win32_x64/koffi.node'), 'dist/platform/WindowsFFI/build/koffi/win32_x64/koffi.node');
 if (process.platform === 'darwin') {
   execFileSync('/usr/bin/xcrun', ['swiftc', '-O', '-target', 'arm64-apple-macos26.0', '-module-cache-path', path.join(root, 'build/SwiftModuleCache'), '-framework', 'AppKit', 'app/platform/MacBridge.swift', '-o', 'dist/platform/MacBridge'], { stdio: 'inherit', env: { ...process.env, DEVELOPER_DIR: process.env.DEVELOPER_DIR ?? '/Applications/Xcode.app/Contents/Developer' } });
   const headers = path.resolve(path.dirname(await realpath(process.execPath)), '../include/node');

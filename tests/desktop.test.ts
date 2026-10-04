@@ -54,7 +54,7 @@ async function fixture() {
   const { DesktopApplication } = await import('../app/main/desktop.ts');
   const root = mkdtempSync(path.join(tmpdir(), 'chihaya-desktop-state-'));
   const paths = resolvePaths({ platform: 'win32', packaged: false, executable: '/unused', appPath: root, qaRoot: root });
-  const platform = new Platform('win32', root, paths.preferences);
+  const platform = new Platform('win32', root, paths.preferences, undefined, { foreground: () => null, isWindow: () => false, processID: () => 0, activate() {} });
   platform.save({ 'desktop.headPettingEnabled': false });
   const config = new ConfigStore(paths.config); config.saveService('https://example.com/v1', 'fixture', 'synthetic');
   const companion = new Companion(config, new PromptStore(paths.prompt), async () => new Response('{"choices":[{"message":{"content":"完整回复"}}]}'));
@@ -125,7 +125,7 @@ test('opening a panel closes a menu still loading and preserves the original foc
     f.controller.openMenu();
     const menu = WindowBoundary.instances.at(-1)!;
     f.controller.open('chat');
-    assert.equal(menu.isDestroyed(), true);
+    assert.equal(menu.isDestroyed(), false);
     await Promise.resolve();
     menu.emit('ready-to-show'); // A late native readiness event cannot show it.
     assert.equal(menu.isVisible(), false);
@@ -161,5 +161,60 @@ test('cancelled chat can retry while manual idle speech remains visible after cl
     assert.equal(f.controller.snapshot().turns[0]?.assistant, '重试完成');
     assert.equal(f.controller.snapshot().cancelled, false);
 
+  } finally { f.close(); }
+});
+
+test('menu opens reuse one prepared window without waiting for another page load', async context => {
+  const f = await fixture();
+  context.mock.method(f.platform, 'rememberFocus', () => {});
+  context.mock.method(f.platform, 'restoreFocus', () => {});
+  try {
+    f.controller.openMenu(); await Promise.resolve();
+    const menu = WindowBoundary.instances.at(-1)!;
+    assert.equal(menu.isVisible(), true);
+    await f.controller.act({ type: 'close', window: 'menu' });
+    assert.equal(menu.isDestroyed(), false, 'Closing must retain the prepared menu');
+    assert.equal(menu.isVisible(), false);
+    const count = WindowBoundary.instances.length;
+    f.controller.openMenu();
+    assert.equal(WindowBoundary.instances.length, count, 'Reopening must not load another page');
+    assert.equal(menu.isVisible(), true, 'Warm menu must show in the same turn');
+  } finally { f.close(); }
+});
+
+test('repeated requests while menu loads never show an unready window', async context => {
+  const f = await fixture();
+  context.mock.method(f.platform, 'rememberFocus', () => {});
+  try {
+    f.controller.openMenu();
+    const menu = WindowBoundary.instances.at(-1)!;
+    f.controller.openMenu();
+    assert.equal(menu.isVisible(), false);
+    await Promise.resolve();
+    assert.equal(menu.isVisible(), true);
+  } finally { f.close(); }
+});
+
+test('Windows prewarms after pet readiness, refreshes each opening and never restores focus just for warming', async context => {
+  const f = await fixture(); let remembered = 0, restored = 0;
+  context.mock.method(f.platform, 'rememberFocus', () => { remembered++; });
+  context.mock.method(f.platform, 'restoreFocus', () => { restored++; });
+  try {
+    await new Promise(resolve => setImmediate(resolve));
+    const menu = WindowBoundary.instances.at(-1)!;
+    assert.notEqual(menu, f.controller.pet);
+    assert.equal(menu.isVisible(), false);
+    assert.equal(remembered, 0); assert.equal(restored, 0);
+    const count = WindowBoundary.instances.length;
+    f.controller.openMenu();
+    assert.equal(menu.isVisible(), true);
+    const first = f.controller.snapshot().menuSession;
+    menu.emit('blur');
+    assert.equal(menu.isVisible(), false); assert.equal(restored, 1);
+    f.controller.openMenu();
+    assert.equal(WindowBoundary.instances.length, count);
+    assert.notEqual(f.controller.snapshot().menuSession, first);
+    assert.equal(remembered, 2);
+    f.controller.shutdown(); assert.equal(menu.isDestroyed(), true);
   } finally { f.close(); }
 });

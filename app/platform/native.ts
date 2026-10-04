@@ -3,14 +3,20 @@ import { readFileSync, realpathSync } from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import type { Preferences } from '../shared/contracts';
+import { WindowsFocus, loadWindowsWindowAPI, type WindowsWindowAPI } from './windows-focus';
 import { JSONPreferences, type PreferenceStore } from '../main/storage';
 
 export class Platform implements PreferenceStore {
   private json: JSONPreferences;
   private watcher?: ChildProcess;
   private previousFocus?: string;
+  private windowsFocus?: WindowsFocus;
   private macWindows?: { configure(handle: Buffer, allSpaces: boolean): void; installMenu(json: string, listener: (action: string) => void): void; updateMenu(json: string): void; popupMenu(): void; destroyMenu(): void };
-  constructor(readonly kind: NodeJS.Platform, readonly directory: string, preferenceFile: string, readonly domain = 'local.ChihayaPet') { this.json = new JSONPreferences(preferenceFile); }
+  constructor(readonly kind: NodeJS.Platform, readonly directory: string, preferenceFile: string, readonly domain = 'local.ChihayaPet', windowsAPI?: WindowsWindowAPI) { this.json = new JSONPreferences(preferenceFile);
+    if (kind === 'win32' && (windowsAPI || process.platform === 'win32')) {
+      this.windowsFocus = new WindowsFocus(windowsAPI ?? loadWindowsWindowAPI(path.join(directory, 'WindowsFFI')));
+    }
+  }
   private mac(command: string, input?: string): string { return execFileSync(path.join(this.directory, 'MacBridge'), [command, this.domain], { encoding: 'utf8', input, timeout: 10_000, maxBuffer: 2_000_000 }).trim(); }
   load(): Preferences { return this.kind === 'darwin' ? JSON.parse(this.mac('preferences-read')) as Preferences : this.json.load(); }
   save(changes: Preferences): void { if (this.kind === 'darwin') this.mac('preferences-write', JSON.stringify(changes)); else this.json.save(changes); }
@@ -40,16 +46,17 @@ export class Platform implements PreferenceStore {
     this.watcher.on('error', () => {});
   }
   rememberFocus(): void {
+    if (this.kind === 'win32') { this.windowsFocus?.remember(); return; }
     try {
-      const value = this.kind === 'darwin' ? this.mac('focus-read') : execFileSync('powershell.exe', ['-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass', '-File', path.join(this.directory, 'WindowsFocus.ps1'), 'read'], { encoding: 'utf8', timeout: 10_000, windowsHide: true }).trim();
+      const value = this.mac('focus-read');
       if (/^\d+$/.test(value) && Number(value) > 0 && (this.kind !== 'darwin' || Number(value) !== process.pid)) this.previousFocus = value;
     } catch { this.previousFocus = undefined; }
   }
   restoreFocus(): void {
+    if (this.kind === 'win32') { this.windowsFocus?.restore(); return; }
     const value = this.previousFocus; this.previousFocus = undefined;
     if (!value) return;
     if (this.kind === 'darwin') execFile(path.join(this.directory, 'MacBridge'), ['focus-restore', value], { timeout: 10_000 }, () => {});
-    else execFile('powershell.exe', ['-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass', '-File', path.join(this.directory, 'WindowsFocus.ps1'), 'restore', value], { windowsHide: true, timeout: 10_000 }, () => {});
   }
   cleanupInstaller(application: string): void {
     if (this.kind !== 'darwin') return;
