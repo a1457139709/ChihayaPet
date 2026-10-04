@@ -24,7 +24,7 @@ export function resolvePaths(options: { platform: NodeJS.Platform; packaged: boo
 }
 export function initializePaths(paths: DataPaths): void {
   try {
-    for (const dir of [paths.root, paths.runtime, paths.session, paths.cache, paths.logs, paths.crashes, paths.temp]) mkdirSync(dir, { recursive: true });
+    for (const dir of [paths.root, paths.music, paths.runtime, paths.session, paths.cache, paths.logs, paths.crashes, paths.temp]) mkdirSync(dir, { recursive: true });
     accessSync(paths.root, constants.W_OK);
     const probe = path.join(paths.temp, `.write-${process.pid}`);
     writeFileSync(probe, '', { flag: 'wx' }); unlinkSync(probe);
