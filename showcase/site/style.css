@@ -1381,7 +1381,7 @@ body.garden {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 205/115;
+  aspect-ratio: 16/9;
   object-fit: contain;
   border-radius: 48% 48% 9% 9% / 13% 13% 7% 7%;
   box-shadow: 0 15px 45px #a06f9115;
