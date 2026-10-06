@@ -1094,6 +1094,7 @@ body.garden {
   color: #887d89;
 }
 .feature-list {
+  gap: 14px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1106,13 +1107,6 @@ body.garden {
   padding: 18px 0;
   border-bottom: 1px solid #89968e30;
   align-items: center;
-}
-.feature-list li:first-child {
-  padding-top: 0;
-}
-.feature-list li:last-child {
-  padding-bottom: 0;
-  border: 0;
 }
 .feature-icon {
   flex: none;
@@ -1435,27 +1429,27 @@ body.garden {
   padding: 5px 0;
   border-radius: 0;
 }
-.feature-list li:first-child {
+.feature-list li {
   background:
     linear-gradient(
       110deg,
       #eadde670,
       transparent);
   padding: 22px 18px;
-  margin: -4px -8px 5px;
+  margin: 0;
   border-radius: 24px 5px 25px 5px;
   align-items: flex-start;
 }
-.feature-list li:first-child h3 {
+.feature-list li h3 {
   color: #8b617f;
   font-size: 18px;
   margin-bottom: 10px;
 }
-.feature-list li:first-child p {
+.feature-list li p {
   font-size: 13px;
   line-height: 2;
 }
-.feature-list li:first-child .feature-icon {
+.feature-list li .feature-icon {
   margin-top: 4px;
 }
 @media (max-width: 760px) {
@@ -1493,14 +1487,14 @@ body.garden {
     margin-top: 17px;
     padding: 5px 0;
   }
-  .feature-list li:first-child {
+  .feature-list li {
     padding: 16px 10px;
   }
-  .feature-list li:first-child h3 {
+  .feature-list li h3 {
     font-size: 15px;
     line-height: 1.7;
   }
-  .feature-list li:first-child p {
+  .feature-list li p {
     font-size: 12px;
   }
 }
@@ -1640,7 +1634,7 @@ body.garden:after {
 .garden .feature-list li {
   border-color: #95a2ab40;
 }
-.garden .feature-list li:first-child {
+.garden .feature-list li {
   background:
     linear-gradient(
       110deg,
@@ -1648,7 +1642,7 @@ body.garden:after {
       #eef0e855);
   border: 1px solid #9eacb333;
 }
-.garden .feature-list li:first-child h3 {
+.garden .feature-list li h3 {
   color: #3e5972;
 }
 .garden .feature-icon {
@@ -1869,7 +1863,7 @@ body.garden:after {
   .garden .leaf-question p {
     font-size: 13px;
   }
-  .garden .feature-list li:first-child h3 {
+  .garden .feature-list li h3 {
     font-size: 15px;
   }
 }
