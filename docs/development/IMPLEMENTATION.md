@@ -12,7 +12,7 @@
 - `platform/MacWindow.mm` 是进程内 Node-API 小适配器，仅操作主进程取得的 NSView／NSWindow。人物和闲话设置 CanJoinAllSpaces／FullScreenNone，聊天设置 MoveToActiveSpace／FullScreenNone；设置面板也采用聊天的当前 Space 规则（原设置窗口没有显式 MoveToActiveSpace）。ElectronNSPanel 自己强制添加 FullScreenAuxiliary，因此调用公开 NSWindow setter 实现原生排除全屏的规则；显示及置顶操作后恢复策略，包括不发出变化事件的同值置顶操作，不轮询，不向 renderer 暴露原生句柄。Windows 包排除该模块。依据：[Electron 原生句柄](https://www.electronjs.org/docs/latest/api/browser-window#wingetnativewindowhandle)、[Electron 44.5.1 面板实现](https://github.com/electron/electron/blob/v44.5.1/shell/browser/ui/cocoa/electron_ns_panel.mm)。
 - `main/desktop.ts` 持有人物、按需聊天／设置／气泡窗口、尺寸与多屏布局、显示隐藏、闲话与气泡生命周期。人物不可获得焦点；气泡用 showInactive 展示，用户仍可通过键盘操作；聊天和设置可正常输入。收起聊天和设置隐藏并复用 renderer，草稿、选择、历史视口及设置页签保留；退出才释放面板。回复气泡暂停时复用 renderer，人工关闭和到期才消费。Mac 人物／气泡／聊天的普通 Spaces／全屏规则与 native 基线一致；Windows 虚拟桌面使用系统默认窗口规则。
 - `main/resources.ts` 验证清单、审批、路径、哈希、完整 RGBA 解码和尺寸。每次切换只持有当前 PNG；renderer canvas 和 alpha 命中数据也只有当前帧。透明命中使用当前 CSS 变换的逆矩阵，鼠标移动事件决定整个窗口是否透传；穿透模式通过菜单恢复。
-- `main/music.ts` 保留原音乐 UUID 和索引格式。FFmpeg 对所有既有格式执行实际解码，WAV 输出只在运行缓存，切歌释放旧缓存。播放意图与 hidden／sleep 原因分开；手动暂停和隐藏期间切歌不会在恢复时自行播放。异步解码和 renderer 音频事件携带版本，迟到结果不接管新曲目。
+- `main/music.ts` 直接扫描曲库顶层音频，保留原文件名，不使用旧 UUID 索引。移除的曲目移至 `已移除/`，随包音乐按一次性标记导入；曲库约定见[资源指南](../agents/artwork.md)。FFmpeg 对所有既有格式执行实际解码，WAV 输出只在运行缓存，切歌释放旧缓存。播放意图与 hidden／sleep 原因分开；手动暂停和隐藏期间切歌不会在恢复时自行播放。异步解码和 renderer 音频事件携带版本，迟到结果不接管新曲目。
 - `renderer/` 共用浅色“紫苑夜奏”主题，字体回退、矢量花饰、中文编辑器、逐字回复和摘录气泡。人物使用 CSS 呼吸、轻摆与点击变换，无永久 JS 动画循环。音频只在人物 renderer 中，后台节流保留默认值。输入在 composition／229 键码期间拒绝发送和关闭。
 - `preload.ts` 只暴露结构化快照和操作。渲染器禁用 Node，开启隔离与 sandbox，阻止导航／新窗口及权限请求，CSP 限制加载。主进程按来源窗口验证操作。自定义本地协议只服务当前已验证图片和当前音频，支持 Range。
 
