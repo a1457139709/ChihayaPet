@@ -1954,4 +1954,9 @@ nav a[aria-current=page]:after {
 .garden .conversation-reply {color:#415464}
 .conversation-reply p + p {margin-top:1em}
 
-.demo-media.demo-closeup { background: #fff; }
+.demo-media.demo-closeup {
+  background: radial-gradient(ellipse at 75% 20%, #dce5e8, transparent 65%), #f4f0e5;
+  background-size: 150% 156%;
+  background-position: center;
+}
+.demo-closeup img { padding: 5% 0 0; box-sizing: border-box; }
