@@ -415,7 +415,7 @@ body.garden {
 .petal-answer .speaker {
   color: var(--rose);
 }
-.reply-placeholder {
+.conversation-reply {
   font-size: 14px;
   letter-spacing: 2px;
   line-height: 2.2;
@@ -763,7 +763,7 @@ body.garden {
     min-height: 265px;
     padding: 54px 42px 39px;
   }
-  .petal-answer .reply-placeholder {
+  .petal-answer .conversation-reply {
     font-size: 12px;
     letter-spacing: 1px;
   }
@@ -1739,7 +1739,7 @@ body.garden:after {
 .garden .petal-answer .speaker {
   color: #987477;
 }
-.garden .reply-placeholder {
+.garden .conversation-reply {
   font-family: var(--sans);
   color: #768596;
 }
@@ -1950,3 +1950,6 @@ nav a[aria-current=page]:after {
 .garden .brand, .garden nav {pointer-events:auto}
 /* Decorative clipping must not create a focus-scrollable inner viewport. */
 .garden-page, .showcase-home {overflow:clip}
+
+.garden .conversation-reply {color:#415464}
+.conversation-reply p + p {margin-top:1em}
