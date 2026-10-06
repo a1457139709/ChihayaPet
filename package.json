@@ -16,7 +16,9 @@
     "test:prompt": "node scripts/check-prompt.mjs",
     "test:menu": "node scripts/check-menu.mjs",
     "package": "npm run build && node scripts/package-electron.mjs",
-    "verify": "python3 scripts/verify_resources.py --source-only --require-approved-standing && node scripts/verify-package.mjs"
+    "verify": "python3 scripts/verify_resources.py --source-only --require-approved-standing && node scripts/verify-package.mjs",
+    "build:showcase": "node scripts/build-showcase.mjs",
+    "preview:showcase": "npm run build:showcase && python3 -m http.server 4186 --bind 127.0.0.1 --directory dist/showcase"
   },
   "dependencies": {
     "pngjs": "7.0.0"
