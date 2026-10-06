@@ -1045,7 +1045,7 @@ body.garden {
       #e6e9df,
       #f0e9ec);
 }
-.demo-media video {
+.demo-media img {
   display: block;
   width: 100%;
   height: 100%;
@@ -1953,3 +1953,5 @@ nav a[aria-current=page]:after {
 
 .garden .conversation-reply {color:#415464}
 .conversation-reply p + p {margin-top:1em}
+
+.demo-media.demo-closeup { background: #fff; }
