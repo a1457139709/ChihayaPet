@@ -3,6 +3,8 @@ const costumes = ["\u590F\u5B63\u6821\u670D", "\u6DE1\u7C73\u8272\u957F\u88D9", 
 const outfitIds = ["a_", "c", "blue-white-rose"];
 const faceIds = ["01", "03", "05", "09", "11"];
 const expressions = ["\u6D45\u7B11", "\u60CA\u8BB6", "\u51DD\u601D", "\u4F4E\u7709", "\u6E29\u67D4"];
+let costume = 0;
+let expression = 0;
 function currentPage() {
   const value = new URLSearchParams(location.search).get("page");
   return Object.hasOwn(pages, value) ? value : "home";
